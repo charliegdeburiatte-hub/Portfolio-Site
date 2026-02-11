@@ -1,0 +1,372 @@
+{
+  "personal": {
+    "name": "Charlie",
+    "tagline": "Building tools, learning AI, documenting the journey",
+    "status": {
+      "current_focus": "AI-powered development tools",
+      "learning": "Transformer architectures, local AI models",
+      "experience_level": "Entry-level, actively shipping",
+      "time_coding": "Just under a month"
+    },
+    "location": "London, England, GB",
+    "contact": {
+      "email": "charlieg.deburiatte@gmail.com",
+      "github": "charliegdeburiatte-hub",
+      "linkedin": "https://www.linkedin.com/in/charliedeburiatte-it/"
+    },
+    "setup": {
+      "processor": "i9-13900K",
+      "ram": "48GB",
+      "gpu": "RTX 5070 Ti",
+      "purpose": "Built for local AI workloads and development"
+    }
+  },
+
+  "bio": {
+    "short": "Learning web development for just under a month. Building portfolio projects that solve real problems. Currently focused on AI-powered tools that run locally.",
+    
+    "medium": "I've been learning web development for just under a month, using Claude Code and building portfolio projects that solve real problems instead of toy apps. Currently focused on AI-powered tools that run locally—no cloud dependencies, no subscriptions.\n\nMy setup (i9-13900K, 48GB RAM, RTX 5070 Ti) is built specifically for local AI workloads. I'm exploring practical applications of transformer models, speech recognition, and interview analysis tools.",
+    
+    "full": "I've been learning web development for just under a month, using Claude Code and building portfolio projects that solve real problems. Currently focused on AI-powered tools that run locally—no cloud dependencies, no subscriptions.\n\nPrevious context: [ADD YOUR BACKGROUND HERE]\nCurrent direction: AI/IT, practical applications, learning in public\nSetup: i9-13900K • 48GB RAM • RTX 5070 Ti (built for local AI workloads)\n\nI'm actively job searching and building a portfolio that demonstrates development skills through real-world applications. Every project here exists because I needed it or wanted to explore a technology hands-on.\n\nThe portfolio you're reading is version 2.0. It'll change as I do.",
+    
+    "journey_timeline": [
+      {
+        "period": "Recent weeks",
+        "milestone": "Started learning web development with Claude Code",
+        "context": "Focus on practical projects over tutorials"
+      },
+      {
+        "period": "Current",
+        "milestone": "Shipping production tools (Job Application Analyzer)",
+        "context": "14 releases, real users, active development"
+      },
+      {
+        "period": "Exploring",
+        "milestone": "Local AI applications",
+        "context": "Whisper transcription, Llama models, interview analysis"
+      },
+      {
+        "period": "Next",
+        "milestone": "AI-powered development tools",
+        "context": "Leveraging high-end hardware for local inference"
+      }
+    ]
+  },
+
+  "projects": [
+    {
+      "id": "job-analyzer",
+      "title": "Job Application Analyzer",
+      "version": "1.4",
+      "status": "active",
+      "status_label": "Active development",
+      "tagline": "Browser extension that analyzes job postings against your CV",
+      
+      "description": "Firefox extension that automatically detects job postings on LinkedIn, Indeed, and Reed, then analyzes match quality against your uploaded CV. Built because I needed it during my job search.",
+      
+      "long_description": "Automatically detects job postings while browsing LinkedIn, Indeed, and Reed. Analyzes requirements against your CV to provide match scores and specific recommendations. Shows which skills you have, which you're missing, and suggestions for how to position your experience.\n\nBuilt to solve a real problem: spending hours manually comparing job requirements to my CV. Now it happens automatically as I browse.",
+      
+      "tech_stack": [
+        "React",
+        "TypeScript", 
+        "Tailwind CSS",
+        "Firefox WebExtension APIs",
+        "Chrome Extension APIs (planned)"
+      ],
+      
+      "features": [
+        "Auto-detection of job postings on major platforms",
+        "CV upload and parsing",
+        "Match score calculation",
+        "Skill gap analysis",
+        "Tailored recommendations",
+        "Clean, accessible UI"
+      ],
+      
+      "metrics": {
+        "releases": 14,
+        "development_time": "3 weeks",
+        "platforms": ["LinkedIn", "Indeed", "Reed"],
+        "users": "Personal use, preparing for public release"
+      },
+      
+      "links": {
+        "github": "https://github.com/charliegdeburiatte-hub/Job-Application-Analyzer",
+        "demo": null,
+        "docs": "Coming soon",
+        "download": "Coming soon"
+      },
+      
+      "portfolio_notes": "Demonstrates: React component architecture, TypeScript type safety, browser extension development, practical problem-solving, consistent release management, professional documentation",
+      
+      "why_built": "I was job searching and manually comparing dozens of job postings to my CV. This automates the entire process and gives me better insights than I could generate manually.",
+      
+      "challenges_solved": [
+        "Cross-platform detection (different HTML structures on each job site)",
+        "Accurate CV parsing and skill extraction",
+        "Real-time analysis without blocking the UI",
+        "Clean UX that doesn't interfere with normal browsing"
+      ],
+      
+      "future_plans": [
+        "Chrome extension version",
+        "Cover letter generation based on match analysis",
+        "Application tracking dashboard",
+        "Integration with ATS systems"
+      ]
+    },
+    
+    {
+      "id": "didactic-octo-bassoon",
+      "title": "Community Support Platform",
+      "version": "0.8 (Alpha)",
+      "status": "experimental",
+      "status_label": "Experimental",
+      "tagline": "Full-stack platform for peer-to-peer community assistance",
+      
+      "description": "A community support platform for adults needing flexible peer-to-peer assistance. Full-stack application with React frontend, Node.js backend, and PostgreSQL database.",
+      
+      "long_description": "Platform designed for community-based support systems where adults can request and offer help. Features a points-based economy, trust system, and comprehensive task management.\n\nBuilt to explore full-stack architecture and complex business logic. Includes realistic demo data and professional-grade system design.",
+      
+      "tech_stack": [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Express",
+        "JWT Authentication",
+        "RESTful API"
+      ],
+      
+      "features": [
+        "User authentication and profiles",
+        "Task posting and claiming system",
+        "Points-based economy",
+        "Trust and reputation tracking",
+        "Real-time notifications",
+        "Admin dashboard",
+        "Comprehensive demo data"
+      ],
+      
+      "metrics": {
+        "development_stage": "Alpha - core features complete",
+        "database_schema": "Fully normalized PostgreSQL",
+        "api_endpoints": "20+ RESTful endpoints",
+        "demo_users": "Realistic test data included"
+      },
+      
+      "links": {
+        "github": "https://github.com/charliegdeburiatte-hub/Hjelply",
+        "demo": null,
+        "docs": "Coming soon"
+      },
+      
+      "portfolio_notes": "Demonstrates: Full-stack development, database design, API architecture, authentication/authorization, complex business logic, state management, professional documentation",
+      
+      "why_built": "Wanted to build something more complex than a CRUD app. This explores multi-user systems, trust mechanisms, and real-world business logic challenges.",
+      
+      "challenges_solved": [
+        "Designing a fair points economy system",
+        "Trust/reputation without gamification abuse",
+        "Secure authentication flow",
+        "Database schema for complex relationships",
+        "Deployment challenges (explored Railway, Render, Vercel)"
+      ],
+      
+      "deployment_notes": "Encountered challenges with various platforms (Railway, Render, Vercel). Working through npm installation and CLI setup issues. Good learning experience in DevOps realities.",
+      
+      "future_plans": [
+        "Successful deployment to production",
+        "Real-time messaging between users",
+        "Geographic filtering for local help",
+        "Mobile-responsive improvements",
+        "Payment integration for premium features"
+      ]
+    },
+    
+    {
+      "id": "interview-analyzer",
+      "title": "AI Interview Analysis Tool",
+      "version": "0.1 (Concept)",
+      "status": "exploring",
+      "status_label": "Exploring",
+      "tagline": "Local AI-powered interview performance feedback",
+      
+      "description": "AI tool that runs locally to analyze interview performance using Whisper for transcription and Llama models for feedback. No cloud dependencies.",
+      
+      "long_description": "Records interview sessions (practice or real), transcribes using OpenAI's Whisper model running locally, then uses Llama models to provide detailed performance feedback on communication, technical accuracy, and presentation.\n\nDesigned to run entirely on local hardware (RTX 5070 Ti) - no data leaves your machine, no subscription costs.",
+      
+      "tech_stack": [
+        "Whisper (local transcription)",
+        "Llama models (local inference)",
+        "Python",
+        "PyTorch",
+        "Audio processing libraries"
+      ],
+      
+      "features": [
+        "Local audio recording and transcription",
+        "Real-time or post-interview analysis",
+        "Communication pattern detection",
+        "Technical accuracy assessment",
+        "Actionable feedback generation",
+        "Complete privacy (local-only processing)"
+      ],
+      
+      "metrics": {
+        "development_stage": "Early exploration",
+        "hardware_requirement": "RTX 5070 Ti or equivalent",
+        "privacy": "100% local, no cloud services"
+      },
+      
+      "links": {
+        "github": null,
+        "demo": null,
+        "docs": null
+      },
+      
+      "portfolio_notes": "Demonstrates: AI/ML interest, practical use of transformer models, local inference optimization, privacy-first design, leveraging powerful hardware for real applications",
+      
+      "why_built": "Practicing for interviews and wanted objective feedback without recording myself for cloud services. This leverages my high-end GPU for something genuinely useful.",
+      
+      "challenges_to_solve": [
+        "Optimizing Whisper for real-time transcription",
+        "Selecting appropriate Llama model size for feedback quality vs speed",
+        "Building intuitive UI for recording and review",
+        "Prompt engineering for constructive feedback",
+        "Audio quality handling (background noise, etc.)"
+      ],
+      
+      "future_plans": [
+        "Build MVP for personal use",
+        "Test with real interview practice sessions",
+        "Refine feedback prompts based on results",
+        "Consider public release if valuable",
+        "Explore video analysis (body language, etc.)"
+      ]
+    }
+  ],
+
+  "skills": {
+    "currently_using": [
+      {
+        "name": "React",
+        "proficiency": "comfortable",
+        "context": "Component architecture, hooks, state management",
+        "projects_used": ["job-analyzer", "didactic-octo-bassoon"]
+      },
+      {
+        "name": "TypeScript",
+        "proficiency": "comfortable",
+        "context": "Type safety, interfaces, generics",
+        "projects_used": ["job-analyzer"]
+      },
+      {
+        "name": "Tailwind CSS",
+        "proficiency": "comfortable",
+        "context": "Utility-first styling, responsive design",
+        "projects_used": ["job-analyzer", "didactic-octo-bassoon"]
+      },
+      {
+        "name": "Node.js",
+        "proficiency": "learning",
+        "context": "Backend development, API creation",
+        "projects_used": ["didactic-octo-bassoon"]
+      },
+      {
+        "name": "PostgreSQL",
+        "proficiency": "learning",
+        "context": "Database design, queries, relationships",
+        "projects_used": ["didactic-octo-bassoon"]
+      },
+      {
+        "name": "Firefox Extension APIs",
+        "proficiency": "comfortable",
+        "context": "WebExtension development, browser integration",
+        "projects_used": ["job-analyzer"]
+      }
+    ],
+    
+    "actively_learning": [
+      {
+        "name": "Transformer Architectures",
+        "context": "Understanding attention mechanisms, model architectures",
+        "goal": "Build AI-powered tools with local models"
+      },
+      {
+        "name": "Whisper",
+        "context": "Speech-to-text transcription, local model deployment",
+        "goal": "Interview analysis tool"
+      },
+      {
+        "name": "Llama Models",
+        "context": "Local inference, prompt engineering, optimization",
+        "goal": "Privacy-first AI applications"
+      },
+      {
+        "name": "PyTorch",
+        "context": "Model loading, inference optimization",
+        "goal": "Run AI models efficiently on local GPU"
+      }
+    ],
+    
+    "exploring": [
+      {
+        "name": "Vector Databases",
+        "context": "Semantic search, embeddings",
+        "interest": "RAG systems for personal knowledge management"
+      },
+      {
+        "name": "RAG Systems",
+        "context": "Retrieval-augmented generation",
+        "interest": "Building smarter, context-aware tools"
+      },
+      {
+        "name": "Real-time AI Processing",
+        "context": "Streaming inference, low-latency applications",
+        "interest": "Interactive AI experiences"
+      }
+    ],
+    
+    "tools_and_workflow": [
+      "Claude Code (primary development assistant)",
+      "Git/GitHub (version control)",
+      "VS Code (code editor)",
+      "Firefox (primary browser, extension testing)",
+      "Linux/Windows (development environment)"
+    ]
+  },
+
+  "interests": {
+    "technical": [
+      "Local AI models (no cloud dependencies)",
+      "Privacy-first applications",
+      "Browser extension development",
+      "Full-stack architecture",
+      "DevOps and deployment challenges"
+    ],
+    
+    "cultural_context": [
+      "Late-2000s / early-2010s tech optimism",
+      "Windows 7 Aero aesthetic principles",
+      "iOS 4-6 design philosophy",
+      "Depth and clarity in interfaces",
+      "Technology as tool, not trend"
+    ],
+    
+    "current_exploration": [
+      "How to run powerful AI models locally",
+      "Building tools for personal productivity",
+      "Learning in public through portfolio projects",
+      "Practical applications of ML/AI",
+      "Creating genuinely useful software"
+    ]
+  },
+
+  "meta": {
+    "portfolio_version": "2.0",
+    "last_updated": "2025-02-11",
+    "site_status": "Active development",
+    "content_freshness": "Updated as projects evolve",
+    "data_format_version": "1.0"
+  }
+}
