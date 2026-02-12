@@ -1,21 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  /* Custom colors */
-  --color-aero-base: #F8FAFB;
-  --color-aero-light: #EEF2F5;
-  --color-aero-blue: #4A9EFF;
-  --color-aero-dark: #2A2F3A;
-  --color-depth-100: #D4DCE6;
-  --color-depth-200: #A8B5C7;
-  --color-depth-300: #7B8FA3;
+  /* Purple theme colors - Black Sabbath inspired */
+  --color-primary: #6B46C1;
+  --color-primary-light: #9F7AEA;
+  --color-primary-dark: #4C1D95;
+  --color-accent: #8B5CF6;
+  --color-bg-base: #0F0A1F;
+  --color-bg-light: #1A1429;
+  --color-bg-card: #231938;
+  --color-text-primary: #E9D5FF;
+  --color-text-secondary: #C4B5FD;
+  --color-text-muted: #A78BFA;
+
+  /* Legacy color names for compatibility */
+  --color-aero-base: #0F0A1F;
+  --color-aero-light: #1A1429;
+  --color-aero-blue: #8B5CF6;
+  --color-aero-dark: #E9D5FF;
+  --color-depth-100: #4C1D95;
+  --color-depth-200: #A78BFA;
+  --color-depth-300: #C4B5FD;
 
   /* Custom shadows */
-  --shadow-aero: 0 2px 8px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.06);
-  --shadow-aero-md: 0 4px 16px rgb(0 0 0 / 0.08), 0 2px 8px rgb(0 0 0 / 0.06);
-  --shadow-aero-lg: 0 12px 32px rgb(0 0 0 / 0.12), 0 4px 16px rgb(0 0 0 / 0.08);
-  --shadow-glow-blue: 0 0 20px rgb(74 158 255 / 0.15);
-  --shadow-glow-blue-hover: 0 0 30px rgb(74 158 255 / 0.25);
+  --shadow-aero: 0 2px 8px rgb(0 0 0 / 0.3), 0 1px 3px rgb(0 0 0 / 0.2);
+  --shadow-aero-md: 0 4px 16px rgb(0 0 0 / 0.4), 0 2px 8px rgb(0 0 0 / 0.3);
+  --shadow-aero-lg: 0 12px 32px rgb(0 0 0 / 0.5), 0 4px 16px rgb(0 0 0 / 0.4);
+  --shadow-glow-blue: 0 0 20px rgb(139 92 246 / 0.3);
+  --shadow-glow-blue-hover: 0 0 30px rgb(139 92 246 / 0.5);
 
   /* Font families */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -24,8 +36,8 @@
 
 @layer base {
   body {
-    background: linear-gradient(to bottom right, var(--color-aero-base), var(--color-aero-light));
-    color: var(--color-aero-dark);
+    background: linear-gradient(to bottom right, var(--color-bg-base), var(--color-bg-light));
+    color: var(--color-text-primary);
     font-family: var(--font-sans);
     line-height: 1.6;
     margin: 0;
@@ -43,7 +55,11 @@
 @layer components {
   /* Glass effect card */
   .glass-card {
-    @apply bg-white/90 backdrop-blur-md border border-white/20 rounded-lg shadow-aero-md;
+    background: rgba(35, 25, 56, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-aero-md);
   }
 
   /* Status badge base */
@@ -69,27 +85,33 @@
 
   /* Tech badge */
   .tech-badge {
-    @apply inline-block px-3 py-1 bg-depth-100 text-aero-dark text-sm rounded-md border border-depth-200;
+    @apply inline-block px-3 py-1 bg-primary-dark/30 text-text-secondary text-sm rounded-md border border-primary/40;
   }
 
   /* Button with glow effect */
   .btn-glow {
-    @apply px-6 py-3 bg-aero-blue text-white rounded-lg font-medium transition-all duration-300;
-    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.25);
+    background: linear-gradient(135deg, #8B5CF6, #6B46C1);
+    color: #E9D5FF;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
   }
 
   .btn-glow:hover {
-    @apply shadow-glow-blue-hover;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
     transform: translateY(-2px);
   }
 
   /* Link hover effect */
   .link-glow {
-    @apply text-aero-blue transition-all duration-300;
+    color: #8B5CF6;
+    transition: all 0.3s ease;
   }
 
   .link-glow:hover {
-    @apply shadow-glow-blue;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
   }
 
   /* Section container */
@@ -99,18 +121,22 @@
 }
 
 @layer utilities {
-  /* Aero glow effect */
+  /* Purple glow effect */
   .glow-aero {
-    box-shadow: 0 0 20px rgba(74, 158, 255, 0.15);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
   }
 
   .glow-aero-strong {
-    box-shadow: 0 0 30px rgba(74, 158, 255, 0.3);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
   }
 
   /* Text gradient */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-aero-blue to-blue-600;
+    background: linear-gradient(135deg, #9F7AEA, #8B5CF6, #6B46C1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 }
 

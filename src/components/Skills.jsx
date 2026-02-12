@@ -1,4 +1,4 @@
-import { Target, BookOpen, Compass } from 'lucide-react';
+import { Target, BookOpen, Award, Wrench } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 
 function SkillItem({ skill, showContext = false }) {
@@ -25,27 +25,52 @@ function Skills() {
     <section id="skills" className="section-container bg-white/30">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-aero-dark">
-          Skills & Tech
+          Skills & Expertise
         </h2>
 
-        {/* Currently using */}
+        {/* Technical Expertise */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">
             <Target className="text-aero-blue" size={24} />
-            <h3 className="text-2xl font-semibold text-aero-dark">Currently using</h3>
+            <h3 className="text-2xl font-semibold text-aero-dark">Technical Skills</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {skills.currently_using.map((skill) => (
-              <SkillItem key={skill.name} skill={skill} showContext={true} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {skills.technical_expertise.map((category, index) => (
+              <div key={index} className="glass-card p-6">
+                <h4 className="font-semibold text-aero-dark mb-4">{category.category}</h4>
+                <div className="space-y-2">
+                  {category.skills.map((skill, idx) => (
+                    <div key={idx} className="text-sm text-depth-300">• {skill}</div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
+
+        {/* Certifications */}
+        {skills.certifications && skills.certifications.length > 0 && (
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <Award className="text-green-500" size={24} />
+              <h3 className="text-2xl font-semibold text-aero-dark">Certifications</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {skills.certifications.map((cert, index) => (
+                <div key={index} className="glass-card p-4">
+                  <h4 className="font-semibold text-aero-dark">{cert.name}</h4>
+                  <p className="text-sm text-depth-300 mt-1">{cert.status} • {cert.year}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Actively learning */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">
             <BookOpen className="text-amber-500" size={24} />
-            <h3 className="text-2xl font-semibold text-aero-dark">Actively learning</h3>
+            <h3 className="text-2xl font-semibold text-aero-dark">Currently Learning</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {skills.actively_learning.map((skill) => (
@@ -54,18 +79,24 @@ function Skills() {
           </div>
         </div>
 
-        {/* Exploring */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <Compass className="text-blue-500" size={24} />
-            <h3 className="text-2xl font-semibold text-aero-dark">Exploring</h3>
+        {/* Soft Skills */}
+        {skills.soft_skills && skills.soft_skills.length > 0 && (
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <Wrench className="text-purple-500" size={24} />
+              <h3 className="text-2xl font-semibold text-aero-dark">Soft Skills</h3>
+            </div>
+            <div className="glass-card p-6">
+              <div className="flex flex-wrap gap-3">
+                {skills.soft_skills.map((skill) => (
+                  <span key={skill} className="tech-badge">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {skills.exploring.map((skill) => (
-              <SkillItem key={skill.name} skill={skill} showContext={true} />
-            ))}
-          </div>
-        </div>
+        )}
 
         {/* Tools and workflow */}
         <div className="glass-card p-6">

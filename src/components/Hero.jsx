@@ -46,7 +46,7 @@ function Hero() {
           <div className="glass-card p-6 inline-block">
             <p className="text-sm text-depth-300 mb-2 font-mono">Latest</p>
             <p className="text-lg font-semibold text-aero-dark">
-              {latestProject.title} <span className="text-aero-blue font-mono text-base">{latestProject.version}</span>
+              {latestProject.title} <span className="text-aero-blue font-mono text-base">{latestProject.status_label}</span>
             </p>
             <p className="text-sm text-depth-200 mt-2">{latestProject.tagline}</p>
           </div>

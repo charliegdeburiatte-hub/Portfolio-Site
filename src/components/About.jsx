@@ -2,8 +2,7 @@ import { Cpu, HardDrive, Zap } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 
 function About() {
-  const { bio, personal } = contentData;
-  const { setup } = personal;
+  const { bio } = contentData;
 
   return (
     <section id="about" className="section-container">
@@ -19,37 +18,18 @@ function About() {
           </p>
         </div>
 
-        {/* Hardware setup */}
-        <div className="glass-card p-6 mb-8">
-          <h3 className="text-xl font-semibold mb-4 text-aero-dark flex items-center gap-2">
-            <Zap className="text-aero-blue" size={24} />
-            Hardware Setup
-          </h3>
-          <p className="text-sm text-depth-200 mb-4">{setup.purpose}</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="flex items-center gap-3">
-              <Cpu className="text-aero-blue" size={20} />
-              <div>
-                <p className="text-xs text-depth-200 font-mono">Processor</p>
-                <p className="text-sm font-semibold">{setup.processor}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <HardDrive className="text-aero-blue" size={20} />
-              <div>
-                <p className="text-xs text-depth-200 font-mono">Memory</p>
-                <p className="text-sm font-semibold">{setup.ram}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Zap className="text-aero-blue" size={20} />
-              <div>
-                <p className="text-xs text-depth-200 font-mono">GPU</p>
-                <p className="text-sm font-semibold">{setup.gpu}</p>
-              </div>
-            </div>
+        {/* What drives me */}
+        {bio.what_drives_me && (
+          <div className="glass-card p-6 mb-8">
+            <h3 className="text-xl font-semibold mb-4 text-aero-dark flex items-center gap-2">
+              <Zap className="text-aero-blue" size={24} />
+              What Drives Me
+            </h3>
+            <p className="text-depth-300 leading-relaxed">
+              {bio.what_drives_me}
+            </p>
           </div>
-        </div>
+        )}
 
         {/* Journey timeline */}
         <div className="glass-card p-6">

@@ -25,7 +25,7 @@ function ProjectCard({ project, featured = false }) {
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
           <h3 className="text-2xl font-bold text-aero-dark mb-2">
-            {title} <span className="text-aero-blue font-mono text-lg">{version}</span>
+            {title} {version && <span className="text-aero-blue font-mono text-lg">{version}</span>}
           </h3>
           <StatusBadge status={status} label={status_label} />
         </div>
@@ -55,52 +55,54 @@ function ProjectCard({ project, featured = false }) {
       )}
 
       {/* Links */}
-      <div className="flex flex-wrap gap-3 mt-6">
-        {links.github && (
-          <a
-            href={links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-glow flex items-center gap-2"
-          >
-            <Github size={18} />
-            <span>View Code</span>
-          </a>
-        )}
-        {links.demo && (
-          <a
-            href={links.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-glow flex items-center gap-2"
-          >
-            <ExternalLink size={18} />
-            <span>Live Demo</span>
-          </a>
-        )}
-        {links.docs && links.docs !== 'Coming soon' && (
-          <a
-            href={links.docs}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 border border-aero-blue text-aero-blue rounded-lg hover:bg-aero-blue/10 transition-all duration-300 flex items-center gap-2"
-          >
-            <FileText size={18} />
-            <span>Docs</span>
-          </a>
-        )}
-        {links.download && links.download !== 'Coming soon' && (
-          <a
-            href={links.download}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 border border-aero-blue text-aero-blue rounded-lg hover:bg-aero-blue/10 transition-all duration-300 flex items-center gap-2"
-          >
-            <Download size={18} />
-            <span>Download</span>
-          </a>
-        )}
-      </div>
+      {links && (
+        <div className="flex flex-wrap gap-3 mt-6">
+          {links.github && (
+            <a
+              href={links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-glow flex items-center gap-2"
+            >
+              <Github size={18} />
+              <span>View Code</span>
+            </a>
+          )}
+          {links.demo && (
+            <a
+              href={links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-glow flex items-center gap-2"
+            >
+              <ExternalLink size={18} />
+              <span>Live Demo</span>
+            </a>
+          )}
+          {links.docs && links.docs !== 'Coming soon' && (
+            <a
+              href={links.docs}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 border border-aero-blue text-aero-blue rounded-lg hover:bg-aero-blue/10 transition-all duration-300 flex items-center gap-2"
+            >
+              <FileText size={18} />
+              <span>Docs</span>
+            </a>
+          )}
+          {links.download && links.download !== 'Coming soon' && (
+            <a
+              href={links.download}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 border border-aero-blue text-aero-blue rounded-lg hover:bg-aero-blue/10 transition-all duration-300 flex items-center gap-2"
+            >
+              <Download size={18} />
+              <span>Download</span>
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }
