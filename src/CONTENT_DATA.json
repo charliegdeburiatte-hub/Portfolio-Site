@@ -1,372 +1,407 @@
 {
   "personal": {
-    "name": "Charlie",
-    "tagline": "Building tools, learning AI, documenting the journey",
+    "name": "Charlie De Buriatte",
+    "title": "IT Support Specialist & Systems Enthusiast",
+    "tagline": "From IT fundamentals to applied AI, built through real projects",
     "status": {
-      "current_focus": "AI-powered development tools",
-      "learning": "Transformer architectures, local AI models",
-      "experience_level": "Entry-level, actively shipping",
-      "time_coding": "Just under a month"
+      "current_focus": "IT Systems & AI-assisted development",
+      "learning": "Network+, AWS, AI application development",
+      "experience_level": "1.5 years IT support experience",
+      "availability": "Open to opportunities"
     },
-    "location": "London, England, GB",
+    "location": "Remote Preferred / Looe, Cornwall",
     "contact": {
       "email": "charlieg.deburiatte@gmail.com",
+      "phone": "07894715845",
       "github": "charliegdeburiatte-hub",
       "linkedin": "https://www.linkedin.com/in/charliedeburiatte-it/"
     },
-    "setup": {
-      "processor": "i9-13900K",
-      "ram": "48GB",
-      "gpu": "RTX 5070 Ti",
-      "purpose": "Built for local AI workloads and development"
+    "open_to": {
+      "job_opportunities": true,
+      "freelance_projects": true,
+      "collaborations": false,
+      "speaking_engagements": false,
+      "mentoring": false
     }
   },
 
   "bio": {
-    "short": "Learning web development for just under a month. Building portfolio projects that solve real problems. Currently focused on AI-powered tools that run locally.",
-    
-    "medium": "I've been learning web development for just under a month, using Claude Code and building portfolio projects that solve real problems instead of toy apps. Currently focused on AI-powered tools that run locally—no cloud dependencies, no subscriptions.\n\nMy setup (i9-13900K, 48GB RAM, RTX 5070 Ti) is built specifically for local AI workloads. I'm exploring practical applications of transformer models, speech recognition, and interview analysis tools.",
-    
-    "full": "I've been learning web development for just under a month, using Claude Code and building portfolio projects that solve real problems. Currently focused on AI-powered tools that run locally—no cloud dependencies, no subscriptions.\n\nPrevious context: [ADD YOUR BACKGROUND HERE]\nCurrent direction: AI/IT, practical applications, learning in public\nSetup: i9-13900K • 48GB RAM • RTX 5070 Ti (built for local AI workloads)\n\nI'm actively job searching and building a portfolio that demonstrates development skills through real-world applications. Every project here exists because I needed it or wanted to explore a technology hands-on.\n\nThe portfolio you're reading is version 2.0. It'll change as I do.",
-    
+    "short": "IT Support Specialist with 1.5 years experience in technical troubleshooting and systems administration. Building expertise through hands-on projects and continuous learning.",
+
+    "medium": "I'm building my career in IT by learning systems deeply and applying that knowledge through real projects. From home lab experimentation to AI-powered tools, I focus on understanding not just how things work, but why they work. My goal is to grow into roles where I can solve real technical problems and keep evolving.",
+
+    "full": "I became genuinely interested in technology in my early teens, starting as a typical user before gradually becoming the person who fixed things. Gaming, building PCs, and experimenting with virtual machines sparked a deeper curiosity about how systems actually work beneath the surface. Over time, that curiosity shifted from using technology to understanding and building it.\n\nAlthough I originally considered paths like healthcare or history, I found myself increasingly drawn to systems, infrastructure, and problem-solving. Building my own environments and troubleshooting real hardware issues, including diagnosing instability linked to Intel's 13th generation platform, strengthened my interest in technical problem-solving and persistence.\n\nMore recently, the rapid evolution of AI reignited that same curiosity. What began as casual experimentation evolved into using AI tools to build practical projects and improve workflows. Today, I'm focused on developing strong IT fundamentals while continuing to explore how modern tools, including AI, can enhance real-world systems and operations.",
+
+    "what_drives_me": "I'm driven by understanding how systems work and improving them over time. I enjoy solving technical problems, especially when the solution isn't immediately obvious. Contributing to the smooth operation of technology, even behind the scenes, is something I find genuinely rewarding.",
+
     "journey_timeline": [
       {
-        "period": "Recent weeks",
-        "milestone": "Started learning web development with Claude Code",
-        "context": "Focus on practical projects over tutorials"
+        "period": "Early Teens",
+        "milestone": "From user to builder",
+        "context": "Gaming, PC building, early experimentation with technology"
+      },
+      {
+        "period": "Sep 2019 - Oct 2020",
+        "milestone": "Telephone Interviewer at IFF Research",
+        "context": "Developed communication and active listening skills through high-volume customer interactions"
+      },
+      {
+        "period": "Sep 2021 - Mar 2022",
+        "milestone": "IT Technician at VantageUAV",
+        "context": "Tier 1-2 technical support for 25+ remote staff, hardware diagnostics, Microsoft 365 support"
+      },
+      {
+        "period": "2023-2024",
+        "milestone": "Continuous Learning & Certifications",
+        "context": "Google IT Support Professional Certificate, CompTIA A+ completion"
       },
       {
         "period": "Current",
-        "milestone": "Shipping production tools (Job Application Analyzer)",
-        "context": "14 releases, real users, active development"
-      },
-      {
-        "period": "Exploring",
-        "milestone": "Local AI applications",
-        "context": "Whisper transcription, Llama models, interview analysis"
-      },
-      {
-        "period": "Next",
-        "milestone": "AI-powered development tools",
-        "context": "Leveraging high-end hardware for local inference"
+        "milestone": "Expanding into AI & Cloud",
+        "context": "Studying Network+, AWS, building AI-assisted tools and home lab environments"
       }
     ]
   },
 
   "projects": [
     {
-      "id": "job-analyzer",
-      "title": "Job Application Analyzer",
-      "version": "1.4",
+      "id": "custom-pc-build",
+      "title": "Custom PC Build & Optimization",
+      "status": "completed",
+      "status_label": "Completed",
+      "tagline": "High-performance workstation built from scratch",
+
+      "description": "Researched, assembled, and configured a custom PC from components. This hands-on project marked the transition from being a technology user to understanding how hardware and software interact at a systems level.",
+
+      "tech_stack": [
+        "PC Hardware Assembly",
+        "BIOS Configuration",
+        "Windows Installation & Optimization",
+        "Driver Management"
+      ],
+
+      "features": [
+        "Component research and compatibility verification",
+        "Complete hardware assembly",
+        "BIOS configuration and optimization",
+        "Operating system installation and setup",
+        "Performance testing and troubleshooting"
+      ],
+
+      "why_built": "To gain hands-on understanding of computer hardware and build a foundation for IT support work.",
+
+      "challenges_solved": [
+        "Component compatibility verification",
+        "Thermal management and airflow optimization",
+        "Driver installation and conflict resolution",
+        "Performance benchmarking and optimization"
+      ]
+    },
+
+    {
+      "id": "intel-platform-diagnostics",
+      "title": "Intel 13th Gen Platform Investigation",
+      "status": "completed",
+      "status_label": "Completed",
+      "tagline": "Deep-dive hardware diagnostics and research project",
+
+      "description": "Identified and investigated persistent system instability issues linked to Intel's 13th generation platform. Navigated conflicting reports and non-standard symptoms through structured research and troubleshooting methodologies.",
+
+      "tech_stack": [
+        "Hardware Diagnostics Tools",
+        "Stress Testing Software",
+        "System Monitoring",
+        "Technical Research"
+      ],
+
+      "why_built": "To resolve persistent stability issues and develop advanced hardware diagnostic skills.",
+
+      "challenges_solved": [
+        "Identifying root cause among conflicting information",
+        "Systematic isolation testing",
+        "Documentation and analysis of non-standard symptoms",
+        "Structured troubleshooting approach"
+      ],
+
+      "impact": "Strengthened analytical thinking and diagnostic methodology for complex hardware issues"
+    },
+
+    {
+      "id": "portfolio-website",
+      "title": "Professional Portfolio Website",
       "status": "active",
-      "status_label": "Active development",
-      "tagline": "Browser extension that analyzes job postings against your CV",
-      
-      "description": "Firefox extension that automatically detects job postings on LinkedIn, Indeed, and Reed, then analyzes match quality against your uploaded CV. Built because I needed it during my job search.",
-      
-      "long_description": "Automatically detects job postings while browsing LinkedIn, Indeed, and Reed. Analyzes requirements against your CV to provide match scores and specific recommendations. Shows which skills you have, which you're missing, and suggestions for how to position your experience.\n\nBuilt to solve a real problem: spending hours manually comparing job requirements to my CV. Now it happens automatically as I browse.",
-      
+      "status_label": "In Development",
+      "tagline": "AI-assisted modern web development",
+
+      "description": "Designed and built a functional portfolio website using AI-assisted development tools. This project demonstrates the ability to learn quickly and apply modern web technologies to create professional, usable applications.",
+
       "tech_stack": [
         "React",
-        "TypeScript", 
         "Tailwind CSS",
-        "Firefox WebExtension APIs",
-        "Chrome Extension APIs (planned)"
+        "Vite",
+        "AI-Assisted Development (Claude)",
+        "Git/GitHub",
+        "Modern JavaScript"
       ],
-      
+
       "features": [
-        "Auto-detection of job postings on major platforms",
-        "CV upload and parsing",
-        "Match score calculation",
-        "Skill gap analysis",
-        "Tailored recommendations",
-        "Clean, accessible UI"
+        "Responsive design",
+        "Component-based architecture",
+        "Content management system",
+        "Contact form integration",
+        "Performance optimization"
       ],
-      
-      "metrics": {
-        "releases": 14,
-        "development_time": "3 weeks",
-        "platforms": ["LinkedIn", "Indeed", "Reed"],
-        "users": "Personal use, preparing for public release"
-      },
-      
-      "links": {
-        "github": "https://github.com/charliegdeburiatte-hub/Job-Application-Analyzer",
-        "demo": null,
-        "docs": "Coming soon",
-        "download": "Coming soon"
-      },
-      
-      "portfolio_notes": "Demonstrates: React component architecture, TypeScript type safety, browser extension development, practical problem-solving, consistent release management, professional documentation",
-      
-      "why_built": "I was job searching and manually comparing dozens of job postings to my CV. This automates the entire process and gives me better insights than I could generate manually.",
-      
+
+      "why_built": "To showcase skills and projects while learning modern web development practices.",
+
       "challenges_solved": [
-        "Cross-platform detection (different HTML structures on each job site)",
-        "Accurate CV parsing and skill extraction",
-        "Real-time analysis without blocking the UI",
-        "Clean UX that doesn't interfere with normal browsing"
+        "Learning React component architecture",
+        "Implementing responsive design patterns",
+        "Content structure and organization",
+        "Deployment and hosting configuration"
       ],
-      
-      "future_plans": [
-        "Chrome extension version",
-        "Cover letter generation based on match analysis",
-        "Application tracking dashboard",
-        "Integration with ATS systems"
-      ]
-    },
-    
-    {
-      "id": "didactic-octo-bassoon",
-      "title": "Community Support Platform",
-      "version": "0.8 (Alpha)",
-      "status": "experimental",
-      "status_label": "Experimental",
-      "tagline": "Full-stack platform for peer-to-peer community assistance",
-      
-      "description": "A community support platform for adults needing flexible peer-to-peer assistance. Full-stack application with React frontend, Node.js backend, and PostgreSQL database.",
-      
-      "long_description": "Platform designed for community-based support systems where adults can request and offer help. Features a points-based economy, trust system, and comprehensive task management.\n\nBuilt to explore full-stack architecture and complex business logic. Includes realistic demo data and professional-grade system design.",
-      
-      "tech_stack": [
-        "React",
-        "Node.js",
-        "PostgreSQL",
-        "Express",
-        "JWT Authentication",
-        "RESTful API"
-      ],
-      
-      "features": [
-        "User authentication and profiles",
-        "Task posting and claiming system",
-        "Points-based economy",
-        "Trust and reputation tracking",
-        "Real-time notifications",
-        "Admin dashboard",
-        "Comprehensive demo data"
-      ],
-      
-      "metrics": {
-        "development_stage": "Alpha - core features complete",
-        "database_schema": "Fully normalized PostgreSQL",
-        "api_endpoints": "20+ RESTful endpoints",
-        "demo_users": "Realistic test data included"
-      },
-      
+
       "links": {
-        "github": "https://github.com/charliegdeburiatte-hub/Hjelply",
-        "demo": null,
-        "docs": "Coming soon"
-      },
-      
-      "portfolio_notes": "Demonstrates: Full-stack development, database design, API architecture, authentication/authorization, complex business logic, state management, professional documentation",
-      
-      "why_built": "Wanted to build something more complex than a CRUD app. This explores multi-user systems, trust mechanisms, and real-world business logic challenges.",
-      
-      "challenges_solved": [
-        "Designing a fair points economy system",
-        "Trust/reputation without gamification abuse",
-        "Secure authentication flow",
-        "Database schema for complex relationships",
-        "Deployment challenges (explored Railway, Render, Vercel)"
-      ],
-      
-      "deployment_notes": "Encountered challenges with various platforms (Railway, Render, Vercel). Working through npm installation and CLI setup issues. Good learning experience in DevOps realities.",
-      
-      "future_plans": [
-        "Successful deployment to production",
-        "Real-time messaging between users",
-        "Geographic filtering for local help",
-        "Mobile-responsive improvements",
-        "Payment integration for premium features"
-      ]
+        "github": "https://github.com/charliegdeburiatte-hub",
+        "demo": null
+      }
     },
-    
+
     {
-      "id": "interview-analyzer",
-      "title": "AI Interview Analysis Tool",
-      "version": "0.1 (Concept)",
-      "status": "exploring",
-      "status_label": "Exploring",
-      "tagline": "Local AI-powered interview performance feedback",
-      
-      "description": "AI tool that runs locally to analyze interview performance using Whisper for transcription and Llama models for feedback. No cloud dependencies.",
-      
-      "long_description": "Records interview sessions (practice or real), transcribes using OpenAI's Whisper model running locally, then uses Llama models to provide detailed performance feedback on communication, technical accuracy, and presentation.\n\nDesigned to run entirely on local hardware (RTX 5070 Ti) - no data leaves your machine, no subscription costs.",
-      
+      "id": "homelab-environment",
+      "title": "Home Lab Infrastructure",
+      "status": "active",
+      "status_label": "Ongoing",
+      "tagline": "Virtual infrastructure for hands-on learning",
+
+      "description": "Built and maintained a home lab environment for experimenting with virtual machines, Windows Server, networking configurations, and system administration.",
+
       "tech_stack": [
-        "Whisper (local transcription)",
-        "Llama models (local inference)",
-        "Python",
-        "PyTorch",
-        "Audio processing libraries"
+        "Virtual Machines (VMware, VirtualBox)",
+        "Windows Server",
+        "Networking Configuration",
+        "System Administration"
       ],
-      
+
       "features": [
-        "Local audio recording and transcription",
-        "Real-time or post-interview analysis",
-        "Communication pattern detection",
-        "Technical accuracy assessment",
-        "Actionable feedback generation",
-        "Complete privacy (local-only processing)"
+        "Multiple VM environments",
+        "Windows Server experimentation",
+        "Network configuration testing",
+        "Service deployment and management"
       ],
-      
-      "metrics": {
-        "development_stage": "Early exploration",
-        "hardware_requirement": "RTX 5070 Ti or equivalent",
-        "privacy": "100% local, no cloud services"
-      },
-      
-      "links": {
-        "github": null,
-        "demo": null,
-        "docs": null
-      },
-      
-      "portfolio_notes": "Demonstrates: AI/ML interest, practical use of transformer models, local inference optimization, privacy-first design, leveraging powerful hardware for real applications",
-      
-      "why_built": "Practicing for interviews and wanted objective feedback without recording myself for cloud services. This leverages my high-end GPU for something genuinely useful.",
-      
-      "challenges_to_solve": [
-        "Optimizing Whisper for real-time transcription",
-        "Selecting appropriate Llama model size for feedback quality vs speed",
-        "Building intuitive UI for recording and review",
-        "Prompt engineering for constructive feedback",
-        "Audio quality handling (background noise, etc.)"
-      ],
-      
-      "future_plans": [
-        "Build MVP for personal use",
-        "Test with real interview practice sessions",
-        "Refine feedback prompts based on results",
-        "Consider public release if valuable",
-        "Explore video analysis (body language, etc.)"
+
+      "why_built": "To gain practical hands-on experience with enterprise IT infrastructure in a safe learning environment.",
+
+      "ongoing_learning": [
+        "Advanced networking concepts",
+        "Server administration best practices",
+        "Virtualization optimization",
+        "Infrastructure as Code concepts"
       ]
     }
   ],
 
   "skills": {
-    "currently_using": [
+    "technical_expertise": [
       {
-        "name": "React",
-        "proficiency": "comfortable",
-        "context": "Component architecture, hooks, state management",
-        "projects_used": ["job-analyzer", "didactic-octo-bassoon"]
+        "category": "Operating Systems & Support",
+        "skills": [
+          "Windows 10/11 Support (Expert)",
+          "Microsoft 365 & Outlook Support",
+          "Tier 1-2 Technical Support",
+          "Remote Troubleshooting"
+        ]
       },
       {
-        "name": "TypeScript",
-        "proficiency": "comfortable",
-        "context": "Type safety, interfaces, generics",
-        "projects_used": ["job-analyzer"]
+        "category": "Hardware & Infrastructure",
+        "skills": [
+          "PC Assembly & Configuration",
+          "Hardware Diagnostics",
+          "Virtual Machine Environments",
+          "Home Lab Experimentation",
+          "Router Configuration"
+        ]
       },
       {
-        "name": "Tailwind CSS",
-        "proficiency": "comfortable",
-        "context": "Utility-first styling, responsive design",
-        "projects_used": ["job-analyzer", "didactic-octo-bassoon"]
+        "category": "Development & Tools",
+        "skills": [
+          "React (Comfortable)",
+          "Browser Extension API",
+          "Node.js Environments",
+          "Git/GitHub",
+          "AI Tools (GPT, Claude)"
+        ]
       },
       {
-        "name": "Node.js",
-        "proficiency": "learning",
-        "context": "Backend development, API creation",
-        "projects_used": ["didactic-octo-bassoon"]
-      },
-      {
-        "name": "PostgreSQL",
-        "proficiency": "learning",
-        "context": "Database design, queries, relationships",
-        "projects_used": ["didactic-octo-bassoon"]
-      },
-      {
-        "name": "Firefox Extension APIs",
-        "proficiency": "comfortable",
-        "context": "WebExtension development, browser integration",
-        "projects_used": ["job-analyzer"]
+        "category": "System Administration",
+        "skills": [
+          "Windows Server Experimentation",
+          "VM Configuration",
+          "Structured Data Concepts",
+          "Technical Research & Problem Analysis"
+        ]
       }
     ],
-    
+
+    "soft_skills": [
+      "Problem-Solving",
+      "Technical Troubleshooting",
+      "Technical Communication",
+      "Customer Service",
+      "Active Listening",
+      "Adaptability",
+      "Attention to Detail",
+      "Ownership",
+      "Time Management",
+      "Rapport Building",
+      "Patience",
+      "Process-Oriented Thinking"
+    ],
+
+    "certifications": [
+      {
+        "name": "Google IT Support Professional Certificate",
+        "status": "Completed",
+        "year": "2023-2024"
+      },
+      {
+        "name": "CompTIA A+",
+        "status": "Completed",
+        "year": "2023-2024"
+      }
+    ],
+
     "actively_learning": [
       {
-        "name": "Transformer Architectures",
-        "context": "Understanding attention mechanisms, model architectures",
-        "goal": "Build AI-powered tools with local models"
+        "name": "Network+ (CompTIA)",
+        "context": "Networking fundamentals and infrastructure",
+        "goal": "Expand infrastructure knowledge"
       },
       {
-        "name": "Whisper",
-        "context": "Speech-to-text transcription, local model deployment",
-        "goal": "Interview analysis tool"
+        "name": "AWS Cloud",
+        "context": "Cloud platforms and services",
+        "goal": "Cloud infrastructure capabilities"
       },
       {
-        "name": "Llama Models",
-        "context": "Local inference, prompt engineering, optimization",
-        "goal": "Privacy-first AI applications"
+        "name": "AI Application Development",
+        "context": "AI-assisted workflows and tool development",
+        "goal": "Build practical AI-powered solutions"
       },
       {
-        "name": "PyTorch",
-        "context": "Model loading, inference optimization",
-        "goal": "Run AI models efficiently on local GPU"
+        "name": "Website Development",
+        "context": "Modern web technologies and frameworks",
+        "goal": "Full-stack development capabilities"
       }
     ],
-    
-    "exploring": [
-      {
-        "name": "Vector Databases",
-        "context": "Semantic search, embeddings",
-        "interest": "RAG systems for personal knowledge management"
-      },
-      {
-        "name": "RAG Systems",
-        "context": "Retrieval-augmented generation",
-        "interest": "Building smarter, context-aware tools"
-      },
-      {
-        "name": "Real-time AI Processing",
-        "context": "Streaming inference, low-latency applications",
-        "interest": "Interactive AI experiences"
-      }
-    ],
-    
+
     "tools_and_workflow": [
-      "Claude Code (primary development assistant)",
-      "Git/GitHub (version control)",
-      "VS Code (code editor)",
-      "Firefox (primary browser, extension testing)",
-      "Linux/Windows (development environment)"
+      "Virtual Machines (VMware, VirtualBox)",
+      "TeamViewer & Remote Support Tools",
+      "Microsoft Teams",
+      "Git/GitHub",
+      "AI Development Tools (Claude, GPT)",
+      "Windows Server Administration",
+      "SCANPST.EXE & Outlook Diagnostics"
     ]
   },
 
+  "work_experience": [
+    {
+      "title": "IT Technician",
+      "company": "VantageUAV",
+      "location": "Remote/Chichester",
+      "period": "Sep 2021 - Mar 2022",
+      "type": "Full-time",
+      "responsibilities": [
+        "Provided Tier 1-2 technical support to 25+ remote staff on Windows 10/11 laptops, resolving hardware issues and OS problems to restore functionality quickly",
+        "Diagnosed and repaired Microsoft Outlook and Microsoft 365, including advanced troubleshooting with SCANPST.EXE tool, reducing email sync downtime for users",
+        "Provided remote assistance via TeamViewer, phone, WhatsApp and Microsoft Teams, guiding users through step-by-step resolutions and verifying issue closure to maintain productivity",
+        "Managed inventory of laptops and peripherals, coordinating hardware swaps and replacements to minimize operational disruptions"
+      ],
+      "technologies": [
+        "Windows 10/11",
+        "Microsoft 365",
+        "Microsoft Outlook",
+        "TeamViewer",
+        "Microsoft Teams",
+        "SCANPST.EXE"
+      ],
+      "achievements": [
+        "Maintained high user satisfaction through responsive remote support",
+        "Minimized downtime through efficient hardware and software troubleshooting",
+        "Developed systematic approach to diagnosing complex Microsoft Outlook issues"
+      ]
+    },
+    {
+      "title": "Telephone Interviewer",
+      "company": "IFF Research",
+      "location": "Remote",
+      "period": "Sep 2019 - Oct 2020",
+      "type": "Full-time",
+      "responsibilities": [
+        "Conducted high-volume structured phone interviews and surveys, ensuring 100% data accuracy while building rapport with diverse respondents",
+        "Honed communication and active listening skills in fast-paced environments, handling up to 50+ calls per shift to meet project deadlines",
+        "Developed problem-solving abilities by adapting to varied respondent needs, enhancing transferable skills for customer-facing IT roles"
+      ],
+      "achievements": [
+        "Consistently met or exceeded call volume targets",
+        "Maintained 100% data accuracy across all survey responses",
+        "Developed strong customer service and communication skills applicable to technical support"
+      ]
+    }
+  ],
+
+  "key_achievements": [
+    {
+      "title": "Built First Custom PC from Scratch",
+      "description": "Researched components, assembled hardware, and configured the system independently. This marked a shift from being a user to understanding how hardware and software interact at a systems level.",
+      "impact": "Foundation for understanding computer hardware and troubleshooting"
+    },
+    {
+      "title": "Intel 13th Gen Platform Investigation",
+      "description": "Identified and investigated persistent instability issues linked to Intel's 13th generation platform. Navigated conflicting reports and non-standard symptoms through research and structured troubleshooting.",
+      "impact": "Strengthened analytical and diagnostic approach to complex hardware issues"
+    },
+    {
+      "title": "AI-Assisted Website Development",
+      "description": "Designed and built a functional website using AI-assisted development tools. Moved from experimentation to producing something usable and structured.",
+      "impact": "Reinforced ability to learn quickly and apply new technologies in practical ways"
+    }
+  ],
+
   "interests": {
     "technical": [
-      "Local AI models (no cloud dependencies)",
-      "Privacy-first applications",
-      "Browser extension development",
-      "Full-stack architecture",
-      "DevOps and deployment challenges"
+      "IT Systems & Infrastructure",
+      "AI-assisted development workflows",
+      "Home lab experimentation",
+      "Hardware diagnostics and optimization",
+      "Cloud platforms (AWS)",
+      "Network infrastructure"
     ],
-    
-    "cultural_context": [
-      "Late-2000s / early-2010s tech optimism",
-      "Windows 7 Aero aesthetic principles",
-      "iOS 4-6 design philosophy",
-      "Depth and clarity in interfaces",
-      "Technology as tool, not trend"
+
+    "personal": [
+      "Gaming (Strategy games)",
+      "Fish keeping",
+      "3D printing",
+      "Theme parks"
     ],
-    
+
     "current_exploration": [
-      "How to run powerful AI models locally",
-      "Building tools for personal productivity",
-      "Learning in public through portfolio projects",
-      "Practical applications of ML/AI",
-      "Creating genuinely useful software"
+      "Practical applications of AI in IT workflows",
+      "Building robust home lab environments",
+      "Cloud infrastructure and services",
+      "Modern web development technologies",
+      "Systems automation and optimization"
     ]
   },
 
   "meta": {
     "portfolio_version": "2.0",
-    "last_updated": "2025-02-11",
-    "site_status": "Active development",
-    "content_freshness": "Updated as projects evolve",
-    "data_format_version": "1.0"
+    "last_updated": "2026-02-11",
+    "site_status": "Active - Content Integration Phase",
+    "content_freshness": "Updated with professional background and experience",
+    "data_format_version": "2.0",
+    "primary_goal": "Secure IT support or systems role",
+    "target_audience": "Recruiters, hiring managers, IT professionals"
   }
 }

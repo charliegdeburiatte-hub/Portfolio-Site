@@ -7,23 +7,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Aero-inspired palette
-        'aero-base': '#F8FAFB',
-        'aero-light': '#EEF2F5',
-        'aero-blue': '#4A9EFF',
-        'aero-dark': '#2A2F3A',
+        // Purple theme - Black Sabbath inspired
+        'primary': '#6B46C1', // Deep purple
+        'primary-light': '#9F7AEA', // Light purple
+        'primary-dark': '#4C1D95', // Very deep purple
+        'accent': '#8B5CF6', // Bright purple accent
+        'bg-base': '#0F0A1F', // Very dark purple-black
+        'bg-light': '#1A1429', // Dark purple background
+        'bg-card': '#231938', // Card background purple
+        'text-primary': '#E9D5FF', // Light purple text
+        'text-secondary': '#C4B5FD', // Medium purple text
+        'text-muted': '#A78BFA', // Muted purple
+
+        // Alternative: Forest Green theme (comment out purple above and uncomment below to switch)
+        // 'primary': '#059669', // Emerald green
+        // 'primary-light': '#10B981', // Light green
+        // 'primary-dark': '#065F46', // Deep forest green
+        // 'accent': '#34D399', // Bright green accent
+        // 'bg-base': '#064E3B', // Very dark green
+        // 'bg-light': '#065F46', // Dark green background
+        // 'bg-card': '#047857', // Card background green
+        // 'text-primary': '#D1FAE5', // Light green text
+        // 'text-secondary': '#A7F3D0', // Medium green text
+        // 'text-muted': '#6EE7B7', // Muted green
+
         'depth': {
-          100: '#D4DCE6',
-          200: '#A8B5C7',
-          300: '#7B8FA3',
+          100: '#4C1D95',
+          200: '#6B46C1',
+          300: '#8B5CF6',
         },
       },
       boxShadow: {
-        'aero': '0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06)',
-        'aero-md': '0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06)',
-        'aero-lg': '0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08)',
-        'glow-blue': '0 0 20px rgba(74, 158, 255, 0.15)',
-        'glow-blue-hover': '0 0 30px rgba(74, 158, 255, 0.25)',
+        'card': '0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2)',
+        'card-md': '0 4px 16px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3)',
+        'card-lg': '0 12px 32px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.4)',
+        'glow-purple': '0 0 20px rgba(139, 92, 246, 0.3)',
+        'glow-purple-hover': '0 0 30px rgba(139, 92, 246, 0.5)',
+        'glow-accent': '0 0 25px rgba(167, 139, 250, 0.4)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
