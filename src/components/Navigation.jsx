@@ -47,7 +47,7 @@ function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-aero' : 'bg-transparent'
+        isScrolled ? 'bg-bg-card/90 backdrop-blur-md shadow-aero border-b border-primary/20' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -55,7 +55,7 @@ function Navigation() {
           {/* Logo/Name */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-xl font-bold text-aero-dark hover:text-aero-blue transition-colors"
+            className="text-xl font-bold text-text-primary hover:text-accent transition-colors"
           >
             Charlie
           </button>
@@ -66,10 +66,10 @@ function Navigation() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-all duration-300 hover:text-aero-blue ${
+                className={`text-sm font-medium transition-all duration-300 hover:text-accent ${
                   activeSection === item.id
-                    ? 'text-aero-blue'
-                    : 'text-depth-300'
+                    ? 'text-accent'
+                    : 'text-text-secondary'
                 }`}
               >
                 {item.label}

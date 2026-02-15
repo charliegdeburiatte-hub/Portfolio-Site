@@ -22,9 +22,9 @@ function Skills() {
   const { skills } = contentData;
 
   return (
-    <section id="skills" className="section-container bg-white/30">
+    <section id="skills" className="section-container">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-aero-dark">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-text-primary">
           Skills & Expertise
         </h2>
 
