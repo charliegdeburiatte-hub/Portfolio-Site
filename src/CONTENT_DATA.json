@@ -65,6 +65,83 @@
 
   "projects": [
     {
+      "id": "job-application-analyzer",
+      "title": "Job Application Analyzer",
+      "version": "2.0.0",
+      "status": "active",
+      "status_label": "Active Development",
+      "tagline": "Privacy-first web app for data-driven job application decisions",
+
+      "description": "A web application that analyzes job postings against your CV using weighted scoring algorithms to provide data-driven application recommendations. Upload your CV once, paste any job description, and get an instant compatibility score (0-100%) with detailed skill analysis.",
+
+      "long_description": "Job Application Analyzer helps job seekers make objective decisions about which positions to apply for. Built with privacy as a priority - all processing happens in your browser with no data sent to servers. The intelligent weighted scoring algorithm treats required skills as 3x more important than preferred skills (reflecting real hiring priorities) and adds experience bonuses up to 20 points.\n\nOriginally developed as a Firefox browser extension, the project pivoted to a web application in v2.0 for universal access and better user experience.",
+
+      "tech_stack": [
+        "React 19",
+        "TypeScript 5.9",
+        "Tailwind CSS 4",
+        "Vite 7",
+        "React Router DOM",
+        "Mammoth.js (DOCX parsing)",
+        "LZ-String (compression)",
+        "Vercel (deployment)"
+      ],
+
+      "features": [
+        "Weighted scoring algorithm (required skills 3x preferred)",
+        "CV persistence in browser localStorage",
+        "Recognizes 200+ technical and soft skills",
+        "100% client-side processing, zero data collection",
+        "Compressed debug strings for testing and validation",
+        "Dark mode with WCAG-compliant contrast",
+        "Instant analysis with no loading screens",
+        "Experience bonus calculation (up to +20 points)"
+      ],
+
+      "metrics": {
+        "version": "2.0.0",
+        "development_time": "~6 weeks",
+        "status": "Active development with continuous improvements",
+        "architecture_pivot": "Firefox extension → Web application"
+      },
+
+      "links": {
+        "github": "https://github.com/charliegdeburiatte-hub/Job-Application-Analyzer",
+        "demo": "https://job-application-analyzer.vercel.app/",
+        "docs": null
+      },
+
+      "why_built": "To solve the problem of objectively evaluating job opportunities. Instead of guessing whether you're qualified, get a data-driven match score based on your actual skills and experience.",
+
+      "challenges_solved": [
+        "Designed weighted scoring system to prevent gaming (can't hit 100% on preferred skills alone)",
+        "Pivoted architecture from browser extension to standalone web application",
+        "Implemented robust DOCX parsing with skill extraction and experience calculation",
+        "Integrated LZ-String compression for 60-80% size reduction in debug exports",
+        "Solved CV persistence across sessions using localStorage",
+        "Fixed critical recommendation threshold bug and 97% score clustering issue"
+      ],
+
+      "results_impact": [
+        "Successfully deployed v2.0 web application on Vercel",
+        "Active development with 10+ commits in February 2026",
+        "Transitioned from Firefox extension to universal web app",
+        "Built compressed debug string system for QA validation",
+        "Modern tech stack using React 19, TypeScript 5.9, Vite 7"
+      ],
+
+      "portfolio_notes": "Demonstrates: Full-stack web development, TypeScript proficiency, algorithm design, privacy-first architecture, problem-solving, iterative development, deployment on Vercel, modern React patterns, state management",
+
+      "future_plans": [
+        "PDF CV support (in addition to DOCX)",
+        "Export analysis to PDF",
+        "Multiple CV profiles (Technical, Management, etc.)",
+        "Analysis history with IndexedDB",
+        "Batch job analysis capability"
+      ]
+    },
+
+    {
       "id": "custom-pc-build",
       "title": "Custom PC Build & Optimization",
       "status": "completed",
