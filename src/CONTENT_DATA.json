@@ -89,19 +89,21 @@
 
       "features": [
         "Weighted scoring algorithm (required skills 3x preferred)",
-        "CV persistence in browser localStorage",
-        "Recognizes 200+ technical and soft skills",
+        "DOCX and PDF CV upload support",
+        "Text CV paste — no file upload needed",
+        "Saved CV profiles for different roles",
+        "Analysis history to track previous results",
+        "PDF export of full analysis results",
+        "Recognises 200+ technical and soft skills",
         "100% client-side processing, zero data collection",
-        "Compressed debug strings for testing and validation",
-        "Dark mode with WCAG-compliant contrast",
-        "Instant analysis with no loading screens",
-        "Experience bonus calculation (up to +20 points)"
+        "Experience bonus calculation (up to +20 points)",
+        "Compressed debug strings for testing and validation"
       ],
 
       "metrics": {
         "version": "2.0.0",
-        "development_time": "~6 weeks",
-        "status": "Active development with continuous improvements",
+        "development_time": "~4 weeks",
+        "status": "Active development — multiple features shipped Feb 2026",
         "architecture_pivot": "Firefox extension → Web application"
       },
 
@@ -133,11 +135,11 @@
       "portfolio_notes": "Demonstrates: Full-stack web development, TypeScript proficiency, algorithm design, privacy-first architecture, problem-solving, iterative development, deployment on Vercel, modern React patterns, state management",
 
       "future_plans": [
-        "PDF CV support (in addition to DOCX)",
-        "Export analysis to PDF",
-        "Multiple CV profiles (Technical, Management, etc.)",
-        "Analysis history with IndexedDB",
-        "Batch job analysis capability"
+        "Batch job analysis (paste multiple jobs, analyse all at once)",
+        "Browser extension for auto-analysis while browsing job sites",
+        "Skill gap learning recommendations",
+        "Cover letter suggestions based on gaps",
+        "AI-powered job description parsing"
       ]
     },
 
