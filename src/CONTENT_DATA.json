@@ -142,6 +142,69 @@
     },
 
     {
+      "id": "hjelply",
+      "title": "Hjelply — Community Support Platform",
+      "status": "paused",
+      "status_label": "Paused Development",
+      "tagline": "Full-stack mutual aid network with points economy and trust progression",
+
+      "description": "A full-stack community platform connecting people who need help with those who can provide it. Built around a points-based economy with escrow, a 5-tier trust progression system, and a complete admin moderation panel. Currently paused to focus on higher-priority projects.",
+
+      "long_description": "Hjelply is a demonstration mutual aid network designed for individuals who need flexible peer-to-peer support. Users can both request and offer help — posting tasks, earning points, and building trust through a structured reputation system.\n\nThe name is a placeholder with a nice ring to it — inspired by the Norwegian word for help ('hjelp'), courtesy of a Norwegian girlfriend. Built to explore the real complexity behind fair exchange systems, user trust, and accessible UI design for a sensitive user group.",
+
+      "tech_stack": [
+        "React 18 & TypeScript",
+        "Tailwind CSS",
+        "React Query",
+        "React Router v6",
+        "Node.js & Express",
+        "PostgreSQL 16",
+        "Redis",
+        "Prisma ORM",
+        "JWT Authentication",
+        "Docker & Docker Compose"
+      ],
+
+      "features": [
+        "Points-based economy with escrow (held until task completion)",
+        "5-tier trust progression system (online-only → home access)",
+        "Task posting, management and matching",
+        "Rating, review and dispute resolution system",
+        "Admin moderation panel",
+        "Emergency and urgent task flagging",
+        "Complete audit logging",
+        "Mobile-responsive across all pages"
+      ],
+
+      "metrics": {
+        "development_time": "~6 weeks active development",
+        "sprints": "4 development sprints",
+        "stack": "Full-stack with separate frontend, backend and database services"
+      },
+
+      "links": {
+        "github": "https://github.com/charliegdeburiatte-hub/Hjelply",
+        "demo": null
+      },
+
+      "why_built": "To explore the complexity of building a real platform — fair economy design, user trust systems, multi-service architecture, and accessible design for a sensitive audience.",
+
+      "challenges_solved": [
+        "Designing a points economy that can't be easily gamed",
+        "Building meaningful trust/reputation progression with real requirements",
+        "Full-stack architecture with separate frontend and backend services",
+        "Complex database schema for users, tasks, points, tiers and auditing",
+        "Containerising the entire stack with Docker Compose",
+        "JWT authentication with secure password hashing",
+        "Mobile responsiveness across admin and user-facing pages"
+      ],
+
+      "why_paused": "Paused to focus on projects more directly relevant to getting into work, primarily the Job Application Analyser. Core functionality is complete.",
+
+      "portfolio_notes": "Demonstrates: Full-stack development, database design, API architecture, authentication, complex business logic, Docker infrastructure, TypeScript across the entire stack"
+    },
+
+    {
       "id": "custom-pc-build",
       "title": "Custom PC Build & Optimization",
       "status": "completed",

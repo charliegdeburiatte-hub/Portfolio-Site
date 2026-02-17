@@ -6,6 +6,8 @@ function StatusBadge({ status, label }) {
     active: 'status-active',
     experimental: 'status-experimental',
     exploring: 'status-exploring',
+    paused: 'status-paused',
+    completed: 'status-completed',
   };
 
   return (
