@@ -72,39 +72,48 @@
       "status_label": "Active Development",
       "tagline": "Privacy-first web app that scores your CV against any job posting",
 
-      "description": "A web application that analyses job postings against your CV using weighted scoring algorithms to provide data-driven application recommendations. Upload your CV once, paste any job description, and get an instant compatibility score (0-100%) with detailed skill analysis.",
+      "description": "A web application that analyses job postings against your CV using weighted scoring algorithms to provide data-driven application recommendations. Upload your CV once, paste any job description, and get an instant compatibility score (0-100%) with detailed skill analysis, application tracking, and CV improvement tools — all running entirely in your browser.",
 
-      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for. Built with privacy as a priority - all processing happens in your browser with no data sent to servers. The intelligent weighted scoring algorithm treats required skills as 3x more important than preferred skills (reflecting real hiring priorities) and adds experience bonuses up to 20 points.\n\nOriginally developed as a Firefox browser extension, the project pivoted to a web application in v2.0 for universal access and better user experience.",
+      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for. Built with privacy as a priority — all processing happens in your browser with no data sent to servers. The intelligent weighted scoring algorithm treats required skills as 3x more important than preferred skills (reflecting real hiring priorities) and adds experience bonuses up to 20 points.\n\nOriginally developed as a Firefox browser extension, the project pivoted to a web application in v2.0 for universal access and better user experience. Since then it has grown into a full job search toolkit: an application tracker with pipeline stages, a recurring skill gap analyser, shareable results links, a PWA for mobile install, and a bookmarklet for one-click analysis from any job listing.",
 
       "tech_stack": [
         "React 19",
-        "TypeScript 5.9",
-        "Tailwind CSS 4",
-        "Vite 7",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Vite",
         "React Router DOM",
+        "Zustand (state management)",
         "Mammoth.js (DOCX parsing)",
+        "PDF.js (PDF parsing)",
         "LZ-String (compression)",
         "Vercel (deployment)"
       ],
 
       "features": [
         "Weighted scoring algorithm (required skills 3x preferred)",
-        "DOCX and PDF CV upload support",
-        "Text CV paste — no file upload needed",
-        "Saved CV profiles for different roles",
-        "Analysis history to track previous results",
-        "PDF export of full analysis results",
-        "Recognises 200+ technical and soft skills",
+        "DOCX and PDF CV upload, or paste text directly",
+        "Skill editor — review, add, or remove extracted skills before analysing",
+        "CV parse preview — see name, roles, and experience years before committing",
+        "Application tracker with pipeline stages: Saved → Applied → Interview → Offer / Rejected",
+        "Notes per job entry, saved automatically to localStorage",
+        "Search and filter history by title, company, or pipeline status",
+        "Export full application history as CSV",
+        "Recurring skill gaps — bar chart of skills missing across recent analyses",
+        "Keyword suggestions — one-click copy of missing skills as bullet points for your CV",
+        "Shareable results links — compressed URL anyone can open to see your full results",
+        "PWA — installable on Android and iOS, opens full-screen, works offline",
+        "Bookmarklet — drag to bookmarks bar, click on any job listing to pre-fill the analyser",
+        "Role fit summary — plain-English explanation of your score",
         "100% client-side processing, zero data collection",
         "Experience bonus calculation (up to +20 points)",
-        "Compressed debug strings for testing and validation"
+        "Dark mode with full responsive mobile layout"
       ],
 
       "metrics": {
         "version": "2.0.0",
-        "development_time": "~4 weeks",
-        "status": "Active development — multiple features shipped Feb 2026",
-        "architecture_pivot": "Firefox extension → Web application"
+        "development_time": "~6 weeks",
+        "status": "v2.0.0 public release — Feb 2026",
+        "architecture_pivot": "Firefox extension → Universal web application"
       },
 
       "links": {
@@ -117,29 +126,32 @@
 
       "challenges_solved": [
         "Designed weighted scoring system to prevent gaming (can't hit 100% on preferred skills alone)",
-        "Pivoted architecture from browser extension to standalone web application",
-        "Implemented robust DOCX parsing with skill extraction and experience calculation",
-        "Integrated LZ-String compression for 60-80% size reduction in debug exports",
-        "Solved CV persistence across sessions using localStorage",
-        "Fixed critical recommendation threshold bug and 97% score clustering issue"
+        "Pivoted architecture from Firefox extension to universal web application",
+        "Implemented robust DOCX and PDF parsing with skill extraction and experience calculation",
+        "Built shareable compressed result links using LZ-String (60-80% size reduction)",
+        "Implemented full PWA with service worker, manifest, and offline support",
+        "Built bookmarklet flow — bypassed React's javascript: URL sanitiser via useRef DOM access",
+        "Solved CV and history persistence across sessions using localStorage",
+        "Fixed critical recommendation threshold bug (100% match was showing 'maybe')",
+        "Designed application tracker with pipeline stages, notes, search, and CSV export",
+        "Built recurring skill gap engine aggregating missing skills across all history entries"
       ],
 
       "results_impact": [
-        "Successfully deployed v2.0 web application on Vercel",
-        "Active development with 10+ commits in February 2026",
-        "Transitioned from Firefox extension to universal web app",
-        "Built compressed debug string system for QA validation",
-        "Modern tech stack using React 19, TypeScript 5.9, Vite 7"
+        "Shipped v2.0.0 public release on Vercel with full feature set stable",
+        "20+ commits shipped across Feb 2026 — 4 major feature stages delivered",
+        "Transitioned from Firefox-only extension to all browsers including mobile",
+        "Full job search toolkit: analysis, tracking, CV improvement, and reach features",
+        "PWA installable on Android and iOS with offline support"
       ],
 
-      "portfolio_notes": "Demonstrates: Full-stack web development, TypeScript proficiency, algorithm design, privacy-first architecture, problem-solving, iterative development, deployment on Vercel, modern React patterns, state management",
+      "portfolio_notes": "Demonstrates: Full-stack web development, TypeScript proficiency, algorithm design, privacy-first architecture, PWA development, state management with Zustand, iterative product development, Vercel deployment, modern React 19 patterns, localStorage persistence, data compression",
 
       "future_plans": [
-        "Batch job analysis (paste multiple jobs, analyse all at once)",
-        "Browser extension for auto-analysis while browsing job sites",
-        "Skill gap learning recommendations",
-        "Cover letter suggestions based on gaps",
-        "AI-powered job description parsing"
+        "Semantic skill matching — 'JS' = 'JavaScript', '3 years Python' = 'Python (advanced)'",
+        "Job URL parsing — paste a LinkedIn/Indeed URL and fetch the job description automatically",
+        "Claude API integration — cover letter generation and CV tailoring suggestions",
+        "Salary banding — extract salary from job description and flag relative to market rate"
       ]
     },
 
@@ -539,7 +551,7 @@
 
   "meta": {
     "portfolio_version": "2.0",
-    "last_updated": "2026-02-11",
+    "last_updated": "2026-02-23",
     "site_status": "Active - Content Integration Phase",
     "content_freshness": "Updated with professional background and experience",
     "data_format_version": "2.0",
