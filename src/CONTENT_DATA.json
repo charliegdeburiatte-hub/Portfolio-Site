@@ -67,14 +67,14 @@
     {
       "id": "job-application-analyzer",
       "title": "Job Application Analyser",
-      "version": "2.0.0",
+      "version": "3.0.0",
       "status": "active",
-      "status_label": "Active Development",
-      "tagline": "Privacy-first web app that scores your CV against any job posting",
+      "status_label": "v3.0.0 Released",
+      "tagline": "Privacy-first web app that scores your CV, then writes your cover letter",
 
-      "description": "A web application that analyses job postings against your CV using weighted scoring algorithms to provide data-driven application recommendations. Upload your CV once, paste any job description, and get an instant compatibility score (0-100%) with detailed skill analysis, application tracking, and CV improvement tools — all running entirely in your browser.",
+      "description": "A web application that analyses job postings against your CV using weighted scoring algorithms, then uses Claude AI to generate a tailored cover letter and targeted CV bullet suggestions. Upload your CV, paste any job description, and get an instant compatibility score plus a ready-to-send cover letter — all running entirely in your browser.",
 
-      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for. Built with privacy as a priority — all processing happens in your browser with no data sent to servers. The intelligent weighted scoring algorithm treats required skills as 3x more important than preferred skills (reflecting real hiring priorities) and adds experience bonuses up to 20 points.\n\nOriginally developed as a Firefox browser extension, the project pivoted to a web application in v2.0 for universal access and better user experience. Since then it has grown into a full job search toolkit: an application tracker with pipeline stages, a recurring skill gap analyser, shareable results links, a PWA for mobile install, and a bookmarklet for one-click analysis from any job listing.",
+      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for and take action faster. Built with privacy as a priority — all processing happens in your browser with no data sent to servers (your API key goes only to Anthropic directly).\n\nThe weighted scoring algorithm treats required skills as 3x more important than preferred skills and includes 12 tool equivalency groups, so knowing Freshdesk counts for Zendesk, Jira experience covers Trello and Asana, and AWS counts towards Azure and GCP roles.\n\nv3.0.0 adds full Claude AI integration: paste a job description, run the analysis, then hit Generate to get a tailored cover letter in your personal voice and structure, plus specific CV bullet points grouped under the exact section they belong in. The first formal GitHub release marks the app as stable and publicly usable end-to-end.",
 
       "tech_stack": [
         "React 19",
@@ -83,6 +83,7 @@
         "Vite",
         "React Router DOM",
         "Zustand (state management)",
+        "Claude API (Anthropic) — cover letters & CV suggestions",
         "Mammoth.js (DOCX parsing)",
         "PDF.js (PDF parsing)",
         "LZ-String (compression)",
@@ -90,30 +91,33 @@
       ],
 
       "features": [
+        "Claude AI cover letter generation — tailored to the role, in your voice, British English, no buzzwords",
+        "Claude AI CV bullet suggestions — grouped by section so you know exactly where to paste them",
+        "Selective AI generation — toggle cover letter and CV suggestions independently",
+        "Copy cover letter to clipboard or download as PDF in one click",
         "Weighted scoring algorithm (required skills 3x preferred)",
+        "12 tool equivalency groups — Freshdesk counts for Zendesk, Jira covers Trello/Asana/Monday, AWS covers Azure/GCP",
+        "ITSM/ITIL equivalency — Service Desk and Helpdesk experience counts for framework labels",
         "DOCX and PDF CV upload, or paste text directly",
         "Skill editor — review, add, or remove extracted skills before analysing",
         "CV parse preview — see name, roles, and experience years before committing",
         "Application tracker with pipeline stages: Saved → Applied → Interview → Offer / Rejected",
-        "Notes per job entry, saved automatically to localStorage",
+        "Notes per job entry, saved automatically",
         "Search and filter history by title, company, or pipeline status",
         "Export full application history as CSV",
         "Recurring skill gaps — bar chart of skills missing across recent analyses",
-        "Keyword suggestions — one-click copy of missing skills as bullet points for your CV",
+        "Keyword suggestions — one-click copy of missing skills as bullet points",
         "Shareable results links — compressed URL anyone can open to see your full results",
         "PWA — installable on Android and iOS, opens full-screen, works offline",
-        "Bookmarklet — drag to bookmarks bar, click on any job listing to pre-fill the analyser",
-        "Role fit summary — plain-English explanation of your score",
-        "100% client-side processing, zero data collection",
-        "Experience bonus calculation (up to +20 points)",
-        "Dark mode with full responsive mobile layout"
+        "Bookmarklet — click on any job page and it sends the text straight to the analyser automatically",
+        "100% client-side processing — API key stored in your browser only, never sent anywhere except Anthropic"
       ],
 
       "metrics": {
-        "version": "2.0.0",
-        "development_time": "~6 weeks",
-        "status": "v2.0.0 public release — Feb 2026",
-        "architecture_pivot": "Firefox extension → Universal web application"
+        "version": "3.0.0",
+        "development_time": "~8 weeks",
+        "status": "v3.0.0 — first formal release, Mar 2026",
+        "architecture_pivot": "Firefox extension → Universal web app → AI-powered job search toolkit"
       },
 
       "links": {
@@ -122,35 +126,34 @@
         "docs": null
       },
 
-      "why_built": "To solve the problem of objectively evaluating job opportunities. Instead of guessing whether you're qualified, get a data-driven match score based on your actual skills and experience. Built because I needed it during my own job search.",
+      "why_built": "To solve the problem of objectively evaluating job opportunities. Instead of guessing whether you're qualified, get a data-driven match score based on your actual skills and experience — then let AI do the heavy lifting on the cover letter. Built because I needed it during my own job search.",
 
       "challenges_solved": [
+        "Integrated Claude API client-side — API key never touches a server, goes directly to Anthropic from the browser",
+        "Designed cover letter prompt to produce natural-sounding output — banned buzzwords, em dashes, and flattery after testing on real applications",
+        "Built tool equivalency engine — 12 groups so transferable skills score correctly without false negatives",
+        "Bypassed React 19's javascript: URL blocking for the bookmarklet using vanilla JS injection",
+        "Bookmarklet auto-grabs job page text — no manual paste needed",
+        "Fixed service worker caching bug that was serving HTML as CSS and causing blank screens",
         "Designed weighted scoring system to prevent gaming (can't hit 100% on preferred skills alone)",
         "Pivoted architecture from Firefox extension to universal web application",
-        "Implemented robust DOCX and PDF parsing with skill extraction and experience calculation",
-        "Built shareable compressed result links using LZ-String (60-80% size reduction)",
-        "Implemented full PWA with service worker, manifest, and offline support",
-        "Built bookmarklet flow — bypassed React's javascript: URL sanitiser via useRef DOM access",
-        "Solved CV and history persistence across sessions using localStorage",
-        "Fixed critical recommendation threshold bug (100% match was showing 'maybe')",
-        "Designed application tracker with pipeline stages, notes, search, and CSV export",
-        "Built recurring skill gap engine aggregating missing skills across all history entries"
+        "Built full PWA with service worker, manifest, and offline support",
+        "Built application tracker with pipeline stages, notes, search, and CSV export"
       ],
 
       "results_impact": [
-        "Shipped v2.0.0 public release on Vercel with full feature set stable",
-        "20+ commits shipped across Feb 2026 — 4 major feature stages delivered",
-        "Transitioned from Firefox-only extension to all browsers including mobile",
-        "Full job search toolkit: analysis, tracking, CV improvement, and reach features",
+        "Shipped first formal GitHub release (v3.0.0) — app marked stable and publicly usable",
+        "End-to-end job application workflow: score → cover letter → CV bullets, all in one tool",
+        "30+ commits across Feb–Mar 2026 — iterated from scoring tool to AI-powered assistant",
+        "Tool equivalency matching fixes false negatives for IT support roles with overlapping tooling",
         "PWA installable on Android and iOS with offline support"
       ],
 
-      "portfolio_notes": "Demonstrates: Full-stack web development, TypeScript proficiency, algorithm design, privacy-first architecture, PWA development, state management with Zustand, iterative product development, Vercel deployment, modern React 19 patterns, localStorage persistence, data compression",
+      "portfolio_notes": "Demonstrates: Claude API integration, prompt engineering, full-stack web development, TypeScript, algorithm design, PWA development, state management with Zustand, iterative product development, Vercel deployment, React 19 patterns, privacy-first architecture",
 
       "future_plans": [
         "Semantic skill matching — 'JS' = 'JavaScript', '3 years Python' = 'Python (advanced)'",
         "Job URL parsing — paste a LinkedIn/Indeed URL and fetch the job description automatically",
-        "Claude API integration — cover letter generation and CV tailoring suggestions",
         "Salary banding — extract salary from job description and flag relative to market rate"
       ]
     },
@@ -551,7 +554,7 @@
 
   "meta": {
     "portfolio_version": "2.0",
-    "last_updated": "2026-02-23",
+    "last_updated": "2026-03-01",
     "site_status": "Active - Content Integration Phase",
     "content_freshness": "Updated with professional background and experience",
     "data_format_version": "2.0",
