@@ -6,7 +6,7 @@ function Hero() {
   const latestProject = contentData.projects[0]; // Job Analyzer
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Ambient background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-aero-blue/10 rounded-full blur-3xl animate-float"></div>

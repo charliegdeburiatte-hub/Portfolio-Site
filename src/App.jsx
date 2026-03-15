@@ -5,6 +5,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import EasterEggs from './components/EasterEggs';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Skills />
       <Contact />
       <Footer />
+      <EasterEggs />
     </div>
   );
 }
