@@ -9,7 +9,6 @@ const KONAMI = [
 ];
 
 const AMBIENT_BUBBLES = [
-  // RCT classics
   "I'm lost!",
   "I need to use the facilities.",
   "This is great value!",
@@ -18,7 +17,6 @@ const AMBIENT_BUBBLES = [
   "I'm hungry.",
   "I'm thirsty.",
   "This ride is excellent!",
-  // Portfolio-specific
   "I should hire this developer.",
   "Built in under a month?",
   "This is great value for a junior developer!",
@@ -41,84 +39,238 @@ const IDLE_BUBBLES = [
   "I wonder where the exit is.",
 ];
 
+const D = '─'.repeat(54);
+
+// Each entry: { text, style, delay }
+// style: 'header' | 'ok' | 'warn' | 'crit' | 'info' | 'dim' | 'blink' | 'highlight'
+// Special: { type: 'ram', delay }
 const BIOS_LINES = [
-  { text: 'CHARLIE SYSTEM BIOS v3.0',                                   style: 'header' },
-  { text: 'Copyright (C) 2026  Charlie de Buriatte' },
-  { text: '' },
-  { text: 'CPU  : Intel Core i9-13900K @ 3.00GHz ........... OK' },
-  { text: 'RAM  : 49152MB ..................................... OK' },
-  { text: 'GPU  : NVIDIA GeForce RTX 5070 Ti .............. FOUND',     style: 'highlight' },
-  { text: '' },
-  { text: 'Initialising local AI subsystems...' },
-  { text: '  Whisper (speech-to-text) .................... LOADED' },
-  { text: '  Llama 3 (local inference) ............... STANDING BY' },
-  { text: '  VRAM: 16GB reserved ........................ READY',        style: 'highlight' },
-  { text: '' },
-  { text: 'BOOT DEVICE: Portfolio v3.0',                                style: 'highlight' },
-  { text: '' },
-  { text: 'Press any key to continue...',                               style: 'blink' },
+  // ── POST ──────────────────────────────────────────────────────────
+  { text: 'CHARLIE SYSTEM BIOS  v3.0.0',                            style: 'header',    delay: 0 },
+  { text: 'American Megatrends Inc.  ©2026',                                            delay: 60 },
+  { text: D,                                                         style: 'dim',       delay: 130 },
+  { text: '',                                                                            delay: 180 },
+  { text: 'Motherboard  : ASUS ROG MAXIMUS Z790 HERO',                                  delay: 280 },
+  { text: 'BIOS Version : 3.0.0  |  Released: 2026/03/15',                              delay: 360 },
+  { text: '',                                                                            delay: 420 },
+  { text: 'Processor    : Intel Core i9-13900K',                                        delay: 520 },
+  { text: '               24 Cores (8P+16E)  |  32 Threads',                            delay: 580 },
+  { text: '               Base: 3.00GHz  |  Boost: 5.80GHz',                            delay: 640 },
+  { text: '               Microcode: 0x0000002E .................. OK', style: 'ok',    delay: 780 },
+  { text: '',                                                                            delay: 860 },
+  { text: 'Memory Test  :',                                                              delay: 960 },
+  { type: 'ram',                                                                         delay: 1060 },
+  { text: '  DIMM_A1    : 24576MB DDR5-6000 CL30 ............... OK', style: 'ok',     delay: 2700 },
+  { text: '  DIMM_B1    : 24576MB DDR5-6000 CL30 ............... OK', style: 'ok',     delay: 2860 },
+  { text: '  Total      : 49152MB ................................ OK', style: 'ok',     delay: 3000 },
+  { text: '',                                                                            delay: 3100 },
+  { text: 'PCI-E Devices:',                                                              delay: 3200 },
+  { text: '  [SLOT 01 x16]  NVIDIA GeForce RTX 5070 Ti ...... FOUND', style: 'highlight', delay: 3360 },
+  { text: '                 VRAM: 16384MB GDDR7',                                        delay: 3440 },
+  { text: '  [SLOT 02  x1]  Intel I225-V 2.5GbE ............. FOUND', style: 'ok',     delay: 3560 },
+  { text: '',                                                                            delay: 3640 },
+  { text: 'Storage      :',                                                              delay: 3740 },
+  { text: '  [M.2_1]  Samsung 990 Pro 2TB NVMe ................. OK', style: 'ok',      delay: 3880 },
+  { text: '  [M.2_2]  Not populated',                                 style: 'dim',     delay: 3980 },
+  { text: '',                                                                            delay: 4060 },
+  { text: 'System Info  :',                                                              delay: 4160 },
+  { text: '  Product  : CharlieWorkstation MK.I',                                        delay: 4240 },
+  { text: '  Serial   : CH-2026-00001',                                                  delay: 4320 },
+  { text: '  UUID     : c4a110de-bur1-4tte-a716-202600000001',                           delay: 4400 },
+  { text: '',                                                                            delay: 4480 },
+  { text: D,                                                         style: 'dim',       delay: 4540 },
+  { text: 'SYSTEM DIAGNOSTICS',                                      style: 'header',    delay: 4600 },
+  { text: D,                                                         style: 'dim',       delay: 4660 },
+  { text: '',                                                                            delay: 4720 },
+  { text: '[ PASS ]  CPU stress test ............................ OK', style: 'ok',      delay: 4860 },
+  { text: '[ PASS ]  GPU compute benchmark ....................... OK', style: 'ok',     delay: 5020 },
+  { text: '[ PASS ]  Memory integrity check ..................... OK', style: 'ok',      delay: 5180 },
+  { text: '[ PASS ]  NVMe read/write ............................ OK', style: 'ok',      delay: 5320 },
+  { text: '[ PASS ]  git commit --sanity-check .................. OK', style: 'ok',     delay: 5460 },
+  { text: '',                                                                            delay: 5560 },
+  { text: '[ WARN ]  social_life.dll ............ NOT FOUND (non-critical)', style: 'warn', delay: 5680 },
+  { text: '[ WARN ]  sleep.sys .................. BYPASSED (recurring)', style: 'warn', delay: 5840 },
+  { text: '[ WARN ]  work_life_balance.config ... FILE MISSING',     style: 'warn',     delay: 5980 },
+  { text: '[ CRIT ]  coffee_level.exe ........... STATUS: CRITICALLY LOW', style: 'crit', delay: 6120 },
+  { text: '[ INFO ]  todo_list.txt .............. 847 items pending', style: 'info',    delay: 6260 },
+  { text: '[ INFO ]  hyperfixation.service ....... RUNNING (normal)', style: 'info',    delay: 6380 },
+  { text: '',                                                                            delay: 6460 },
+  { text: D,                                                         style: 'dim',       delay: 6520 },
+  { text: 'LOADING CHARLIGOS v3.0',                                  style: 'header',    delay: 6580 },
+  { text: D,                                                         style: 'dim',       delay: 6640 },
+  { text: '',                                                                            delay: 6700 },
+  { text: '[  OK  ]  nvidia-rtx-5070ti.ko ........ loaded (CUDA 12.x)', style: 'ok',   delay: 6860 },
+  { text: '[  OK  ]  local_ai_runtime.service .... started',          style: 'ok',      delay: 7020 },
+  { text: '[  OK  ]  whisper.service .............. started (local)',  style: 'ok',     delay: 7160 },
+  { text: '[  OK  ]  llama3.service ............... started (local)',  style: 'ok',     delay: 7300 },
+  { text: '[  OK  ]  git.service ................... started',         style: 'ok',     delay: 7420 },
+  { text: '[  OK  ]  claude_code.service ........... started',         style: 'ok',     delay: 7540 },
+  { text: '[ WARN ]  social_life.service .......... unit not found',  style: 'warn',    delay: 7660 },
+  { text: '[ WARN ]  sleep.target .................. bypassed again', style: 'warn',    delay: 7780 },
+  { text: '',                                                                            delay: 7860 },
+  { text: D,                                                         style: 'dim',       delay: 7920 },
+  { text: 'PORTFOLIO SERVICES',                                       style: 'header',   delay: 7980 },
+  { text: D,                                                         style: 'dim',       delay: 8040 },
+  { text: '',                                                                            delay: 8100 },
+  { text: 'Registering projects...',                                                     delay: 8200 },
+  { text: '[  OK  ]  job-analyzer.service ......... v3.0   19 releases', style: 'ok',  delay: 8380 },
+  { text: '[  OK  ]  julie-portfolio.service ....... v1.0   client work', style: 'ok', delay: 8540 },
+  { text: '[  OK  ]  hjelply.service ............... v0.8   experimental', style: 'ok',delay: 8700 },
+  { text: '[ INIT ]  interview-analyzer.service .... v0.1   standing by', style: 'info', delay: 8840 },
+  { text: '',                                                                            delay: 8940 },
+  { text: 'Loading skill modules...',                                                    delay: 9040 },
+  { text: '  react@18 ............ comfortable .. [████████████] OK',  style: 'ok',    delay: 9200 },
+  { text: '  typescript@5 ........ comfortable .. [████████████] OK',  style: 'ok',    delay: 9340 },
+  { text: '  tailwindcss@3 ....... comfortable .. [████████████] OK',  style: 'ok',    delay: 9480 },
+  { text: '  nodejs@20 ........... learning ..... [████████░░░░] INIT', style: 'info', delay: 9620 },
+  { text: '  postgresql@16 ....... learning ..... [████████░░░░] INIT', style: 'info', delay: 9760 },
+  { text: '  whisper ............. exploring .... [████░░░░░░░░] READY', style: 'highlight', delay: 9900 },
+  { text: '  llama3 .............. exploring .... [████░░░░░░░░] READY', style: 'highlight', delay: 10040 },
+  { text: '  pytorch ............. exploring .... [███░░░░░░░░░] INIT', style: 'info', delay: 10180 },
+  { text: '',                                                                            delay: 10280 },
+  { text: 'All systems nominal.  Portfolio v3.0 is ready.',           style: 'highlight', delay: 10420 },
+  { text: '',                                                                            delay: 10520 },
 ];
 
-const BIOS_DELAYS = [0, 80, 160, 320, 480, 640, 760, 960, 1100, 1250, 1400, 1560, 1760, 1900, 2300];
+const BOOT_OPTIONS = [
+  { key: 'ENTER', label: 'Portfolio v3.0',   note: '(recommended)',  action: 'boot' },
+  { key: '2',     label: 'Safe Mode',         note: '(limited UI)',   action: 'safe' },
+  { key: '3',     label: 'BIOS Setup',        note: '(you\'re here)', action: 'setup' },
+  { key: 'ESC',   label: 'Emergency Shell',   note: '(good luck)',    action: 'shell' },
+];
 
-// ─── ThoughtBubble ────────────────────────────────────────────────────────────
+// ─── RamCounter ───────────────────────────────────────────────────────────────
 
-function ThoughtBubble({ id, message, x, y, onRemove }) {
-  const [opacity, setOpacity] = useState(0);
+function RamCounter() {
+  const MAX = 49152;
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const fadeIn  = setTimeout(() => setOpacity(1), 30);
-    const fadeOut = setTimeout(() => setOpacity(0), 3400);
-    const remove  = setTimeout(() => onRemove(id), 3900);
-    return () => { clearTimeout(fadeIn); clearTimeout(fadeOut); clearTimeout(remove); };
-  }, [id, onRemove]);
+    const duration = 1500;
+    const interval = 16;
+    const increment = MAX / (duration / interval);
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current = Math.min(current + increment, MAX);
+      setCount(Math.floor(current));
+      if (current >= MAX) clearInterval(timer);
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const BAR_LEN = 22;
+  const filled = Math.floor((count / MAX) * BAR_LEN);
+  const bar    = '█'.repeat(filled) + '░'.repeat(BAR_LEN - filled);
+  const done   = count >= MAX;
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        left: x,
-        top: y,
-        zIndex: 9998,
-        pointerEvents: 'none',
-        opacity,
-        transition: 'opacity 0.4s ease',
-        transform: 'translate(-50%, calc(-100% - 14px))',
-      }}
-    >
-      <div style={{ position: 'relative', display: 'inline-block' }}>
+    <div style={{ color: done ? '#80ff80' : '#ffcc00', minHeight: '1.75em' }}>
+      {`  [${bar}]  ${String(count).padStart(5)}MB / ${MAX}MB${done ? ' ......... OK' : ''}`}
+    </div>
+  );
+}
+
+// ─── BootMenu ─────────────────────────────────────────────────────────────────
+
+function BootMenu({ onDismiss }) {
+  const [selected, setSelected] = useState(0);
+  const [message,  setMessage]  = useState(null);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (message) { onDismiss(); return; }
+
+      if (e.key === 'ArrowUp')   { setSelected(s => (s - 1 + BOOT_OPTIONS.length) % BOOT_OPTIONS.length); return; }
+      if (e.key === 'ArrowDown') { setSelected(s => (s + 1) % BOOT_OPTIONS.length); return; }
+
+      const idx = BOOT_OPTIONS.findIndex(o =>
+        o.key === 'ENTER' ? e.key === 'Enter' : e.key === o.key
+      );
+      const target = idx >= 0 ? BOOT_OPTIONS[idx] : null;
+      if (!target && e.key !== 'Escape') return;
+
+      const action = target ? target.action : 'shell';
+
+      if (action === 'boot') { onDismiss(); return; }
+      if (action === 'safe')  setMessage('Safe Mode not available.\nPortfolio is already minimal.');
+      if (action === 'setup') setMessage('You are already in BIOS Setup.\nThis is as deep as it goes.');
+      if (action === 'shell') setMessage('$ _\n\nNo. Go look at the portfolio.\n\nPress any key to boot normally.');
+    };
+
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [message, onDismiss]);
+
+  const W = '═'.repeat(52);
+
+  return (
+    <div style={{
+      position: 'absolute', inset: 0,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: '#000',
+    }}>
+      {message ? (
         <div style={{
-          background: 'white',
-          border: '2px solid #222',
-          borderRadius: '6px',
-          padding: '7px 13px',
-          fontSize: '13px',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
-          color: '#111',
-          whiteSpace: 'nowrap',
-          maxWidth: '260px',
-          boxShadow: '3px 3px 0 rgba(0,0,0,0.2)',
-          lineHeight: 1.4,
+          fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+          fontSize: '14px',
+          color: '#ffcc00',
+          textAlign: 'center',
+          lineHeight: 2,
+          whiteSpace: 'pre',
         }}>
           {message}
+          <div style={{ color: '#555', marginTop: '16px', fontSize: '12px' }}>
+            Press any key...
+          </div>
         </div>
-        {/* Tail outer */}
+      ) : (
         <div style={{
-          position: 'absolute', bottom: '-11px', left: '18px',
-          width: 0, height: 0,
-          borderLeft: '9px solid transparent',
-          borderRight: '9px solid transparent',
-          borderTop: '10px solid #222',
-        }} />
-        {/* Tail inner */}
-        <div style={{
-          position: 'absolute', bottom: '-8px', left: '20px',
-          width: 0, height: 0,
-          borderLeft: '7px solid transparent',
-          borderRight: '7px solid transparent',
-          borderTop: '8px solid white',
-        }} />
-      </div>
+          fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+          fontSize: '14px',
+          color: '#999',
+          lineHeight: 1.9,
+        }}>
+          <div style={{ color: '#555' }}>{`╔${W}╗`}</div>
+          <div style={{ color: '#555' }}>
+            {'║'}<span style={{ color: '#fff', fontWeight: 'bold' }}>
+              {'                    BOOT MENU                      '}
+            </span>{'║'}
+          </div>
+          <div style={{ color: '#555' }}>{`╠${W}╣`}</div>
+          <div style={{ color: '#555' }}>{'║' + ' '.repeat(52) + '║'}</div>
+
+          {BOOT_OPTIONS.map((opt, i) => {
+            const isSelected = i === selected;
+            return (
+              <div key={opt.key} style={{ color: '#555' }}>
+                {'║  '}
+                <span style={{
+                  color: isSelected ? '#000' : '#ccc',
+                  background: isSelected ? '#80ff80' : 'transparent',
+                  fontWeight: isSelected ? 'bold' : 'normal',
+                }}>
+                  {isSelected ? '►' : ' '}
+                  {` [${opt.key.padEnd(5)}]  ${opt.label.padEnd(24)}${opt.note.padEnd(16)}`}
+                </span>
+                {'║'}
+              </div>
+            );
+          })}
+
+          <div style={{ color: '#555' }}>{'║' + ' '.repeat(52) + '║'}</div>
+          <div style={{ color: '#555' }}>{`╠${W}╣`}</div>
+          <div style={{ color: '#555' }}>
+            {'║'}
+            <span style={{ color: '#777', fontSize: '12px' }}>
+              {'  ↑↓ to select   ENTER to boot   ESC for shell          '}
+            </span>
+            {'║'}
+          </div>
+          <div style={{ color: '#555' }}>{`╚${W}╝`}</div>
+        </div>
+      )}
     </div>
   );
 }
@@ -127,53 +279,82 @@ function ThoughtBubble({ id, message, x, y, onRemove }) {
 
 function BiosScreen({ onDismiss }) {
   const [visibleCount, setVisibleCount] = useState(0);
+  const [showMenu,     setShowMenu]     = useState(false);
+  const contentRef = useRef(null);
 
+  // Reveal lines one by one
   useEffect(() => {
-    const timers = BIOS_DELAYS.map((delay, i) =>
-      setTimeout(() => setVisibleCount(i + 1), delay)
+    const timers = BIOS_LINES.map((line, i) =>
+      setTimeout(() => {
+        setVisibleCount(i + 1);
+      }, line.delay)
     );
-    return () => timers.forEach(clearTimeout);
+    // Show boot menu 800ms after last line
+    const menuTimer = setTimeout(
+      () => setShowMenu(true),
+      BIOS_LINES[BIOS_LINES.length - 1].delay + 800
+    );
+    return () => { timers.forEach(clearTimeout); clearTimeout(menuTimer); };
   }, []);
 
+  // Auto-scroll to bottom as lines appear
   useEffect(() => {
-    const dismiss = () => onDismiss();
-    window.addEventListener('keydown', dismiss);
-    window.addEventListener('click', dismiss);
-    return () => {
-      window.removeEventListener('keydown', dismiss);
-      window.removeEventListener('click', dismiss);
-    };
-  }, [onDismiss]);
+    if (contentRef.current) {
+      contentRef.current.scrollTop = contentRef.current.scrollHeight;
+    }
+  }, [visibleCount]);
+
+  const styleFor = (s) => {
+    switch (s) {
+      case 'header':    return { color: '#fff', fontWeight: 'bold' };
+      case 'ok':        return { color: '#80ff80' };
+      case 'highlight': return { color: '#80ff80', fontWeight: 'bold' };
+      case 'warn':      return { color: '#ffcc00' };
+      case 'crit':      return { color: '#ff6060', fontWeight: 'bold' };
+      case 'info':      return { color: '#00ccff' };
+      case 'dim':       return { color: '#444' };
+      default:          return { color: '#999' };
+    }
+  };
 
   return (
     <div style={{
       position: 'fixed', inset: 0,
       background: '#000',
       zIndex: 10000,
-      padding: '48px 64px',
-      cursor: 'pointer',
       overflow: 'hidden',
+      cursor: showMenu ? 'default' : 'pointer',
     }}>
-      <div style={{
-        fontFamily: "'JetBrains Mono', 'Courier New', monospace",
-        fontSize: '14px',
-        lineHeight: 1.75,
-      }}>
-        {BIOS_LINES.slice(0, visibleCount).map((line, i) => {
-          let color = '#999';
-          let fontWeight = 'normal';
-          if (line.style === 'header')    { color = '#fff'; fontWeight = 'bold'; }
-          if (line.style === 'highlight') { color = '#80ff80'; }
-          return (
-            <div key={i} style={{ color, fontWeight, minHeight: '1.75em' }}>
-              {line.text || '\u00A0'}
-              {line.style === 'blink' && i === visibleCount - 1 && (
-                <span style={{ animation: 'bios-blink 1s step-end infinite' }}>█</span>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      {/* Scrolling log */}
+      {!showMenu && (
+        <div
+          ref={contentRef}
+          style={{
+            position: 'absolute', inset: 0,
+            padding: '32px 48px',
+            overflowY: 'auto',
+            fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+            fontSize: '13px',
+            lineHeight: 1.75,
+            scrollbarWidth: 'none',
+          }}
+        >
+          {BIOS_LINES.slice(0, visibleCount).map((line, i) => {
+            if (line.type === 'ram') return <RamCounter key={i} />;
+            return (
+              <div key={i} style={{ ...styleFor(line.style), minHeight: '1.75em' }}>
+                {line.text || '\u00A0'}
+                {line.style === 'blink' && i === visibleCount - 1 && (
+                  <span style={{ animation: 'bios-blink 1s step-end infinite' }}>█</span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Boot menu overlay */}
+      {showMenu && <BootMenu onDismiss={onDismiss} />}
     </div>
   );
 }
@@ -184,16 +365,12 @@ function FusEffect({ onDone }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Shake the page
     document.documentElement.classList.add('fus-shake');
     const removeShake = setTimeout(() => document.documentElement.classList.remove('fus-shake'), 450);
-    // Fade out the overlay
-    const fadeOut = setTimeout(() => setVisible(false), 800);
-    const done    = setTimeout(onDone, 1000);
+    const fadeOut     = setTimeout(() => setVisible(false), 800);
+    const done        = setTimeout(onDone, 1000);
     return () => {
-      clearTimeout(removeShake);
-      clearTimeout(fadeOut);
-      clearTimeout(done);
+      clearTimeout(removeShake); clearTimeout(fadeOut); clearTimeout(done);
       document.documentElement.classList.remove('fus-shake');
     };
   }, [onDone]);
@@ -201,12 +378,7 @@ function FusEffect({ onDone }) {
   if (!visible) return null;
 
   return (
-    <div style={{
-      position: 'fixed', inset: 0,
-      zIndex: 9996,
-      pointerEvents: 'none',
-    }}>
-      {/* Ring 1 */}
+    <div style={{ position: 'fixed', inset: 0, zIndex: 9996, pointerEvents: 'none' }}>
       <div style={{
         position: 'absolute', top: '50%', left: '50%',
         width: '100px', height: '100px',
@@ -214,15 +386,13 @@ function FusEffect({ onDone }) {
         borderRadius: '50%',
         animation: 'fus-ring 0.9s ease-out forwards',
       }} />
-      {/* Ring 2 (offset) */}
       <div style={{
         position: 'absolute', top: '50%', left: '50%',
         width: '100px', height: '100px',
-        border: '2px solid rgba(255, 255, 255, 0.5)',
+        border: '2px solid rgba(255,255,255,0.5)',
         borderRadius: '50%',
         animation: 'fus-ring 0.9s ease-out 0.07s forwards',
       }} />
-      {/* Text */}
       <div style={{
         position: 'absolute', top: '50%', left: '50%',
         fontFamily: 'Inter, system-ui, sans-serif',
@@ -266,18 +436,12 @@ function ParkClosing() {
     }}>
       <span style={{
         fontFamily: "'JetBrains Mono', monospace",
-        fontSize: '10px',
-        color: 'rgba(139, 92, 246, 0.65)',
-        letterSpacing: '2px',
-        textTransform: 'uppercase',
-        flexShrink: 0,
-      }}>
-        📢 PA
-      </span>
+        fontSize: '10px', color: 'rgba(139, 92, 246, 0.65)',
+        letterSpacing: '2px', textTransform: 'uppercase', flexShrink: 0,
+      }}>📢 PA</span>
       <span style={{
         fontFamily: 'system-ui, -apple-system, sans-serif',
-        fontSize: '13px',
-        color: 'rgba(196, 181, 253, 0.75)',
+        fontSize: '13px', color: 'rgba(196, 181, 253, 0.75)',
       }}>
         This park will be closing soon. Please make your way to the exit. Thank you for visiting.
       </span>
@@ -289,9 +453,53 @@ function ParkClosing() {
           fontSize: '18px', lineHeight: 1, flexShrink: 0, padding: '0 4px',
         }}
         aria-label="Dismiss"
-      >
-        ×
-      </button>
+      >×</button>
+    </div>
+  );
+}
+
+// ─── ThoughtBubble ────────────────────────────────────────────────────────────
+
+function ThoughtBubble({ id, message, x, y, onRemove }) {
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    const fadeIn  = setTimeout(() => setOpacity(1), 30);
+    const fadeOut = setTimeout(() => setOpacity(0), 3400);
+    const remove  = setTimeout(() => onRemove(id), 3900);
+    return () => { clearTimeout(fadeIn); clearTimeout(fadeOut); clearTimeout(remove); };
+  }, [id, onRemove]);
+
+  return (
+    <div style={{
+      position: 'fixed', left: x, top: y,
+      zIndex: 9998, pointerEvents: 'none',
+      opacity, transition: 'opacity 0.4s ease',
+      transform: 'translate(-50%, calc(-100% - 14px))',
+    }}>
+      <div style={{ position: 'relative', display: 'inline-block' }}>
+        <div style={{
+          background: 'white', border: '2px solid #222',
+          borderRadius: '6px', padding: '7px 13px',
+          fontSize: '13px', fontFamily: 'system-ui, -apple-system, sans-serif',
+          color: '#111', whiteSpace: 'nowrap', maxWidth: '260px',
+          boxShadow: '3px 3px 0 rgba(0,0,0,0.2)', lineHeight: 1.4,
+        }}>
+          {message}
+        </div>
+        <div style={{
+          position: 'absolute', bottom: '-11px', left: '18px',
+          width: 0, height: 0,
+          borderLeft: '9px solid transparent', borderRight: '9px solid transparent',
+          borderTop: '10px solid #222',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: '-8px', left: '20px',
+          width: 0, height: 0,
+          borderLeft: '7px solid transparent', borderRight: '7px solid transparent',
+          borderTop: '8px solid white',
+        }} />
+      </div>
     </div>
   );
 }
@@ -311,7 +519,6 @@ export default function EasterEggs() {
   const fusCooldown        = useRef(false);
   const fastScrollCooldown = useRef(false);
 
-  // ── Spawn a thought bubble ──────────────────────────────────────────────────
   const spawnBubble = useCallback((message) => {
     const id = ++bubbleId.current;
     const margin = 140;
@@ -324,13 +531,12 @@ export default function EasterEggs() {
     setBubbles(prev => prev.filter(b => b.id !== id));
   }, []);
 
-  // ── Ambient bubbles — every 2–4 minutes ────────────────────────────────────
+  // Ambient bubbles — every 2–4 minutes
   useEffect(() => {
     const schedule = () => {
-      const delay = 120000 + Math.random() * 120000; // 2–4 min
+      const delay = 120000 + Math.random() * 120000;
       bubbleTimer.current = setTimeout(() => {
-        const msg = AMBIENT_BUBBLES[Math.floor(Math.random() * AMBIENT_BUBBLES.length)];
-        spawnBubble(msg);
+        spawnBubble(AMBIENT_BUBBLES[Math.floor(Math.random() * AMBIENT_BUBBLES.length)]);
         schedule();
       }, delay);
     };
@@ -338,12 +544,11 @@ export default function EasterEggs() {
     return () => clearTimeout(bubbleTimer.current);
   }, [spawnBubble]);
 
-  // ── Idle bubble — after 60s of no interaction ───────────────────────────────
+  // Idle bubble — 60s of no interaction
   const resetIdle = useCallback(() => {
     clearTimeout(idleTimer.current);
     idleTimer.current = setTimeout(() => {
-      const msg = IDLE_BUBBLES[Math.floor(Math.random() * IDLE_BUBBLES.length)];
-      spawnBubble(msg);
+      spawnBubble(IDLE_BUBBLES[Math.floor(Math.random() * IDLE_BUBBLES.length)]);
     }, 60000);
   }, [spawnBubble]);
 
@@ -357,10 +562,9 @@ export default function EasterEggs() {
     };
   }, [resetIdle]);
 
-  // ── Fast-scroll bubble (with cooldown) ─────────────────────────────────────
+  // Fast-scroll bubble
   useEffect(() => {
-    let lastY = window.scrollY;
-    let lastT = Date.now();
+    let lastY = window.scrollY, lastT = Date.now();
     const onScroll = () => {
       const now = Date.now();
       const dy  = Math.abs(window.scrollY - lastY);
@@ -370,14 +574,13 @@ export default function EasterEggs() {
         spawnBubble('I feel sick!');
         setTimeout(() => { fastScrollCooldown.current = false; }, 10000);
       }
-      lastY = window.scrollY;
-      lastT = now;
+      lastY = window.scrollY; lastT = now;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [spawnBubble]);
 
-  // ── Konami Code ─────────────────────────────────────────────────────────────
+  // Konami Code
   useEffect(() => {
     const onKey = (e) => {
       konamiProgress.current.push(e.key);
@@ -391,7 +594,7 @@ export default function EasterEggs() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  // ── FUS RO DAH ──────────────────────────────────────────────────────────────
+  // FUS RO DAH
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
