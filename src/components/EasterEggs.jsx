@@ -11,13 +11,13 @@ const KONAMI = [
 const AMBIENT_BUBBLES = [
   // RCT classics
   "I'm lost!",
-  "I feel sick!",
   "I need to use the facilities.",
   "This is great value!",
   "This is too intense for me!",
   "I've been on this ride before.",
   "I'm hungry.",
   "I'm thirsty.",
+  "This ride is excellent!",
   // Portfolio-specific
   "I should hire this developer.",
   "Built in under a month?",
@@ -30,7 +30,6 @@ const AMBIENT_BUBBLES = [
   "This person clearly loves what they do.",
   "19 releases. In two months.",
   "I'm telling all my colleagues about this.",
-  "This ride is excellent!",
 ];
 
 const IDLE_BUBBLES = [
@@ -40,13 +39,6 @@ const IDLE_BUBBLES = [
   "I need to use the facilities.",
   "Is this ride broken?",
   "I wonder where the exit is.",
-];
-
-const AGE_STAGES = [
-  { id: 'projects', name: 'Feudal Age',    sub: 'Building tools. Shipping code.' },
-  { id: 'about',    name: 'Castle Age',    sub: 'The story so far.' },
-  { id: 'skills',   name: 'Imperial Age',  sub: 'Full arsenal unlocked.' },
-  { id: 'contact',  name: 'Post-Imperial', sub: 'Send a raven.' },
 ];
 
 const BIOS_LINES = [
@@ -95,7 +87,6 @@ function ThoughtBubble({ id, message, x, y, onRemove }) {
       }}
     >
       <div style={{ position: 'relative', display: 'inline-block' }}>
-        {/* Bubble body */}
         <div style={{
           background: 'white',
           border: '2px solid #222',
@@ -111,91 +102,22 @@ function ThoughtBubble({ id, message, x, y, onRemove }) {
         }}>
           {message}
         </div>
-        {/* Tail outer (border colour) */}
+        {/* Tail outer */}
         <div style={{
-          position: 'absolute',
-          bottom: '-11px',
-          left: '18px',
+          position: 'absolute', bottom: '-11px', left: '18px',
           width: 0, height: 0,
           borderLeft: '9px solid transparent',
           borderRight: '9px solid transparent',
           borderTop: '10px solid #222',
         }} />
-        {/* Tail inner (fill colour) */}
+        {/* Tail inner */}
         <div style={{
-          position: 'absolute',
-          bottom: '-8px',
-          left: '20px',
+          position: 'absolute', bottom: '-8px', left: '20px',
           width: 0, height: 0,
           borderLeft: '7px solid transparent',
           borderRight: '7px solid transparent',
           borderTop: '8px solid white',
         }} />
-      </div>
-    </div>
-  );
-}
-
-// ─── AgeNotification ─────────────────────────────────────────────────────────
-
-function AgeNotification({ stage, onDone }) {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const show = setTimeout(() => setVisible(true), 50);
-    const hide = setTimeout(() => setVisible(false), 2800);
-    const done = setTimeout(onDone, 3300);
-    return () => { clearTimeout(show); clearTimeout(hide); clearTimeout(done); };
-  }, [onDone]);
-
-  return (
-    <div style={{
-      position: 'fixed',
-      top: '50%',
-      left: '50%',
-      transform: `translate(-50%, -50%) scale(${visible ? 1 : 0.85})`,
-      zIndex: 9997,
-      pointerEvents: 'none',
-      opacity: visible ? 1 : 0,
-      transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
-      textAlign: 'center',
-    }}>
-      <div style={{
-        background: 'rgba(8, 6, 18, 0.94)',
-        border: '1px solid rgba(212, 175, 55, 0.45)',
-        borderRadius: '4px',
-        padding: '22px 48px',
-        boxShadow: '0 0 40px rgba(212, 175, 55, 0.15), 0 8px 32px rgba(0,0,0,0.7)',
-      }}>
-        <div style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: '10px',
-          color: 'rgba(212, 175, 55, 0.6)',
-          letterSpacing: '3px',
-          textTransform: 'uppercase',
-          marginBottom: '8px',
-        }}>
-          You have advanced to the
-        </div>
-        <div style={{
-          fontFamily: 'Inter, system-ui, sans-serif',
-          fontSize: '30px',
-          fontWeight: '700',
-          color: '#D4AF37',
-          letterSpacing: '1px',
-          textShadow: '0 0 24px rgba(212, 175, 55, 0.5)',
-        }}>
-          {stage.name}
-        </div>
-        <div style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: '11px',
-          color: 'rgba(212, 175, 55, 0.45)',
-          marginTop: '8px',
-          fontStyle: 'italic',
-        }}>
-          {stage.sub}
-        </div>
       </div>
     </div>
   );
@@ -225,8 +147,7 @@ function BiosScreen({ onDismiss }) {
 
   return (
     <div style={{
-      position: 'fixed',
-      inset: 0,
+      position: 'fixed', inset: 0,
       background: '#000',
       zIndex: 10000,
       padding: '48px 64px',
@@ -243,7 +164,6 @@ function BiosScreen({ onDismiss }) {
           let fontWeight = 'normal';
           if (line.style === 'header')    { color = '#fff'; fontWeight = 'bold'; }
           if (line.style === 'highlight') { color = '#80ff80'; }
-
           return (
             <div key={i} style={{ color, fontWeight, minHeight: '1.75em' }}>
               {line.text || '\u00A0'}
@@ -254,7 +174,6 @@ function BiosScreen({ onDismiss }) {
           );
         })}
       </div>
-      <style>{`@keyframes bios-blink { 50% { opacity: 0; } }`}</style>
     </div>
   );
 }
@@ -262,83 +181,62 @@ function BiosScreen({ onDismiss }) {
 // ─── FusEffect ────────────────────────────────────────────────────────────────
 
 function FusEffect({ onDone }) {
-  const [phase, setPhase] = useState('flash');
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const toWave = setTimeout(() => setPhase('wave'), 80);
-    const toDone = setTimeout(() => { setPhase('done'); onDone(); }, 1000);
-    return () => { clearTimeout(toWave); clearTimeout(toDone); };
+    // Shake the page
+    document.documentElement.classList.add('fus-shake');
+    const removeShake = setTimeout(() => document.documentElement.classList.remove('fus-shake'), 450);
+    // Fade out the overlay
+    const fadeOut = setTimeout(() => setVisible(false), 800);
+    const done    = setTimeout(onDone, 1000);
+    return () => {
+      clearTimeout(removeShake);
+      clearTimeout(fadeOut);
+      clearTimeout(done);
+      document.documentElement.classList.remove('fus-shake');
+    };
   }, [onDone]);
 
-  if (phase === 'done') return null;
+  if (!visible) return null;
 
   return (
-    <>
+    <div style={{
+      position: 'fixed', inset: 0,
+      zIndex: 9996,
+      pointerEvents: 'none',
+    }}>
+      {/* Ring 1 */}
       <div style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 9996,
-        pointerEvents: 'none',
-        overflow: 'hidden',
+        position: 'absolute', top: '50%', left: '50%',
+        width: '100px', height: '100px',
+        border: '4px solid rgba(139, 92, 246, 0.95)',
+        borderRadius: '50%',
+        animation: 'fus-ring 0.9s ease-out forwards',
+      }} />
+      {/* Ring 2 (offset) */}
+      <div style={{
+        position: 'absolute', top: '50%', left: '50%',
+        width: '100px', height: '100px',
+        border: '2px solid rgba(255, 255, 255, 0.5)',
+        borderRadius: '50%',
+        animation: 'fus-ring 0.9s ease-out 0.07s forwards',
+      }} />
+      {/* Text */}
+      <div style={{
+        position: 'absolute', top: '50%', left: '50%',
+        fontFamily: 'Inter, system-ui, sans-serif',
+        fontSize: 'clamp(40px, 8vw, 80px)',
+        fontWeight: '900',
+        color: 'white',
+        textShadow: '0 0 40px rgba(139,92,246,1), 0 0 80px rgba(139,92,246,0.6)',
+        letterSpacing: '10px',
+        whiteSpace: 'nowrap',
+        animation: 'fus-text 0.9s ease-out forwards',
       }}>
-        {/* Screen flash */}
-        {phase === 'flash' && (
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.12)' }} />
-        )}
-
-        {/* Shockwave rings */}
-        {phase === 'wave' && (
-          <>
-            <div style={{
-              position: 'absolute', top: '50%', left: '50%',
-              width: '80px', height: '80px',
-              border: '3px solid rgba(139, 92, 246, 0.9)',
-              borderRadius: '50%',
-              animation: 'fus-ring 0.9s ease-out forwards',
-            }} />
-            <div style={{
-              position: 'absolute', top: '50%', left: '50%',
-              width: '80px', height: '80px',
-              border: '2px solid rgba(255,255,255,0.35)',
-              borderRadius: '50%',
-              animation: 'fus-ring 0.9s ease-out 0.08s forwards',
-            }} />
-          </>
-        )}
-
-        {/* Text */}
-        {phase === 'wave' && (
-          <div style={{
-            position: 'absolute', top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-            fontFamily: 'Inter, system-ui, sans-serif',
-            fontSize: 'clamp(36px, 7vw, 72px)',
-            fontWeight: '900',
-            color: 'white',
-            textShadow: '0 0 30px rgba(139,92,246,0.9), 0 0 60px rgba(139,92,246,0.5)',
-            letterSpacing: '10px',
-            animation: 'fus-text 0.9s ease-out forwards',
-            whiteSpace: 'nowrap',
-            pointerEvents: 'none',
-          }}>
-            FUS RO DAH!
-          </div>
-        )}
+        FUS RO DAH!
       </div>
-
-      <style>{`
-        @keyframes fus-ring {
-          from { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-          to   { transform: translate(-50%, -50%) scale(28); opacity: 0; }
-        }
-        @keyframes fus-text {
-          0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
-          15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
-          65%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-          100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); }
-        }
-      `}</style>
-    </>
+    </div>
   );
 }
 
@@ -359,17 +257,12 @@ function ParkClosing() {
 
   return (
     <div style={{
-      position: 'fixed',
-      bottom: 0,
-      left: 0,
-      right: 0,
+      position: 'fixed', bottom: 0, left: 0, right: 0,
       zIndex: 9995,
       background: 'rgba(8, 6, 18, 0.96)',
       borderTop: '1px solid rgba(139, 92, 246, 0.25)',
       padding: '10px 20px',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '14px',
+      display: 'flex', alignItems: 'center', gap: '14px',
     }}>
       <span style={{
         fontFamily: "'JetBrains Mono', monospace",
@@ -391,15 +284,9 @@ function ParkClosing() {
       <button
         onClick={() => setVisible(false)}
         style={{
-          marginLeft: 'auto',
-          background: 'none',
-          border: 'none',
-          color: 'rgba(139, 92, 246, 0.45)',
-          cursor: 'pointer',
-          fontSize: '18px',
-          lineHeight: 1,
-          flexShrink: 0,
-          padding: '0 4px',
+          marginLeft: 'auto', background: 'none', border: 'none',
+          color: 'rgba(139, 92, 246, 0.45)', cursor: 'pointer',
+          fontSize: '18px', lineHeight: 1, flexShrink: 0, padding: '0 4px',
         }}
         aria-label="Dismiss"
       >
@@ -415,55 +302,49 @@ export default function EasterEggs() {
   const [biosVisible, setBiosVisible] = useState(false);
   const [fusVisible,  setFusVisible]  = useState(false);
   const [bubbles,     setBubbles]     = useState([]);
-  const [ageStage,    setAgeStage]    = useState(null);
 
-  const konamiProgress = useRef([]);
-  const fusBuffer      = useRef('');
-  const idleTimer      = useRef(null);
-  const bubbleTimer    = useRef(null);
-  const seenAges       = useRef(new Set());
-  const bubbleId       = useRef(0);
-  const fusCooldown    = useRef(false);
+  const konamiProgress     = useRef([]);
+  const fusBuffer          = useRef('');
+  const idleTimer          = useRef(null);
+  const bubbleTimer        = useRef(null);
+  const bubbleId           = useRef(0);
+  const fusCooldown        = useRef(false);
   const fastScrollCooldown = useRef(false);
 
   // ── Spawn a thought bubble ──────────────────────────────────────────────────
   const spawnBubble = useCallback((message) => {
     const id = ++bubbleId.current;
-    const margin = 120;
+    const margin = 140;
     const x = margin + Math.random() * (window.innerWidth  - margin * 2);
     const y = margin + Math.random() * (window.innerHeight - margin * 2);
-    setBubbles(prev => [...prev.slice(-2), { id, message, x, y }]); // cap at 3
+    setBubbles(prev => [...prev.slice(-2), { id, message, x, y }]);
   }, []);
 
   const removeBubble = useCallback((id) => {
     setBubbles(prev => prev.filter(b => b.id !== id));
   }, []);
 
-  // ── Ambient bubbles (random interval) ──────────────────────────────────────
+  // ── Ambient bubbles — every 2–4 minutes ────────────────────────────────────
   useEffect(() => {
     const schedule = () => {
-      const delay = 18000 + Math.random() * 22000; // 18–40 s
+      const delay = 120000 + Math.random() * 120000; // 2–4 min
       bubbleTimer.current = setTimeout(() => {
         const msg = AMBIENT_BUBBLES[Math.floor(Math.random() * AMBIENT_BUBBLES.length)];
         spawnBubble(msg);
         schedule();
       }, delay);
     };
-    // First bubble after 20 s so it doesn't feel instant
-    bubbleTimer.current = setTimeout(() => {
-      schedule();
-      spawnBubble(AMBIENT_BUBBLES[Math.floor(Math.random() * AMBIENT_BUBBLES.length)]);
-    }, 20000);
+    schedule();
     return () => clearTimeout(bubbleTimer.current);
   }, [spawnBubble]);
 
-  // ── Idle bubble ─────────────────────────────────────────────────────────────
+  // ── Idle bubble — after 60s of no interaction ───────────────────────────────
   const resetIdle = useCallback(() => {
     clearTimeout(idleTimer.current);
     idleTimer.current = setTimeout(() => {
       const msg = IDLE_BUBBLES[Math.floor(Math.random() * IDLE_BUBBLES.length)];
       spawnBubble(msg);
-    }, 45000);
+    }, 60000);
   }, [spawnBubble]);
 
   useEffect(() => {
@@ -476,11 +357,10 @@ export default function EasterEggs() {
     };
   }, [resetIdle]);
 
-  // ── Fast-scroll bubble ──────────────────────────────────────────────────────
+  // ── Fast-scroll bubble (with cooldown) ─────────────────────────────────────
   useEffect(() => {
     let lastY = window.scrollY;
     let lastT = Date.now();
-
     const onScroll = () => {
       const now = Date.now();
       const dy  = Math.abs(window.scrollY - lastY);
@@ -488,12 +368,11 @@ export default function EasterEggs() {
       if (dt > 0 && dy / dt > 3 && !fastScrollCooldown.current) {
         fastScrollCooldown.current = true;
         spawnBubble('I feel sick!');
-        setTimeout(() => { fastScrollCooldown.current = false; }, 6000);
+        setTimeout(() => { fastScrollCooldown.current = false; }, 10000);
       }
       lastY = window.scrollY;
       lastT = now;
     };
-
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [spawnBubble]);
@@ -529,39 +408,15 @@ export default function EasterEggs() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  // ── Age Advancement ─────────────────────────────────────────────────────────
-  useEffect(() => {
-    const observers = AGE_STAGES.map(stage => {
-      const el = document.getElementById(stage.id);
-      if (!el) return null;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !seenAges.current.has(stage.id)) {
-            seenAges.current.add(stage.id);
-            setAgeStage(stage);
-          }
-        },
-        { threshold: 0.35 }
-      );
-      obs.observe(el);
-      return obs;
-    });
-    return () => observers.forEach(obs => obs?.disconnect());
-  }, []);
-
   return (
     <>
       {biosVisible && <BiosScreen onDismiss={() => setBiosVisible(false)} />}
       {fusVisible  && <FusEffect  onDone={() => setFusVisible(false)} />}
-      {ageStage    && <AgeNotification stage={ageStage} onDone={() => setAgeStage(null)} />}
       <ParkClosing />
       {bubbles.map(b => (
         <ThoughtBubble
-          key={b.id}
-          id={b.id}
-          message={b.message}
-          x={b.x}
-          y={b.y}
+          key={b.id} id={b.id}
+          message={b.message} x={b.x} y={b.y}
           onRemove={removeBubble}
         />
       ))}
