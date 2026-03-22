@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import CVModal from './CVModal';
 
 function Navigation() {
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [cvOpen, setCvOpen] = useState(false);
 
   const navItems = [
     { id: 'projects', label: 'Projects' },
@@ -45,6 +47,7 @@ function Navigation() {
   };
 
   return (
+    <>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-bg-card/90 backdrop-blur-md shadow-aero border-b border-primary/20' : 'bg-transparent'
@@ -61,7 +64,7 @@ function Navigation() {
           </button>
 
           {/* Nav items */}
-          <div className="flex gap-8">
+          <div className="flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -75,10 +78,25 @@ function Navigation() {
                 {item.label}
               </button>
             ))}
+            <button
+              onClick={() => setCvOpen(true)}
+              className="text-sm font-medium px-3 py-1 rounded-lg transition-all duration-200"
+              style={{
+                background: 'rgba(96, 165, 250, 0.1)',
+                border: '1px solid rgba(96, 165, 250, 0.25)',
+                color: '#93c5fd',
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(96, 165, 250, 0.2)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(96, 165, 250, 0.1)'}
+            >
+              CV
+            </button>
           </div>
         </div>
       </div>
     </nav>
+    {cvOpen && <CVModal onClose={() => setCvOpen(false)} />}
+  </>
   );
 }
 
