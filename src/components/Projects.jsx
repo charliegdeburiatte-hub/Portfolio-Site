@@ -18,37 +18,6 @@ function StatusBadge({ status, label }) {
   );
 }
 
-const QUEUE_LABELS = {
-  active:       'Current wait: 0 mins',
-  experimental: 'Est. wait: ??? mins',
-  exploring:    'Not yet open to the public',
-  completed:    'VIP access granted',
-};
-
-function QueueBadge({ status }) {
-  const label = QUEUE_LABELS[status] ?? 'Current wait: 0 mins';
-  return (
-    <div style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '6px',
-      background: '#F5A623',
-      color: '#1a1000',
-      border: '2px solid #C47D0A',
-      borderRadius: '4px',
-      padding: '3px 10px',
-      fontSize: '11px',
-      fontFamily: "'JetBrains Mono', monospace",
-      fontWeight: '700',
-      letterSpacing: '0.5px',
-      boxShadow: '2px 2px 0 rgba(0,0,0,0.3)',
-      whiteSpace: 'nowrap',
-    }}>
-      🎢 {label}
-    </div>
-  );
-}
-
 function ProjectCard({ project, featured = false }) {
   const { title, version, status, status_label, tagline, description, tech_stack, metrics, links } = project;
 
@@ -86,11 +55,6 @@ function ProjectCard({ project, featured = false }) {
           {metrics.platforms && <span>• {metrics.platforms.length} platforms</span>}
         </div>
       )}
-
-      {/* Queue time badge */}
-      <div className="mb-4">
-        <QueueBadge status={status} />
-      </div>
 
       {/* Links */}
       {links && (

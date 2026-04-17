@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -6,37 +6,6 @@ const KONAMI = [
   'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
   'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight',
   'b','a',
-];
-
-const AMBIENT_BUBBLES = [
-  "I'm lost!",
-  "I need to use the facilities.",
-  "This is great value!",
-  "This is too intense for me!",
-  "I've been on this ride before.",
-  "I'm hungry.",
-  "I'm thirsty.",
-  "This ride is excellent!",
-  "I should hire this developer.",
-  "Built in under a month?",
-  "This is great value for a junior developer!",
-  "Where do I send an offer?",
-  "The attention to detail is remarkable.",
-  "I can't believe this is entry-level work!",
-  "bookmarked.",
-  "...I think I've found my next hire.",
-  "This person clearly loves what they do.",
-  "19 releases. In two months.",
-  "I'm telling all my colleagues about this.",
-];
-
-const IDLE_BUBBLES = [
-  "I'm lost!",
-  "Hello? Is anyone there?",
-  "I've been waiting here for a while...",
-  "I need to use the facilities.",
-  "Is this ride broken?",
-  "I wonder where the exit is.",
 ];
 
 const D = '─'.repeat(54);
@@ -114,9 +83,9 @@ const BIOS_LINES = [
   { text: '',                                                                            delay: 8100 },
   { text: 'Registering projects...',                                                     delay: 8200 },
   { text: '[  OK  ]  job-analyzer.service ......... v3.0   19 releases', style: 'ok',  delay: 8380 },
-  { text: '[  OK  ]  julie-portfolio.service ....... v1.0   client work', style: 'ok', delay: 8540 },
-  { text: '[  OK  ]  hjelply.service ............... v0.8   experimental', style: 'ok',delay: 8700 },
-  { text: '[ INIT ]  interview-analyzer.service .... v0.1   standing by', style: 'info', delay: 8840 },
+  { text: '[  OK  ]  freddo-index.service .......... v0.1   live',     style: 'ok',    delay: 8540 },
+  { text: '[  OK  ]  interview-help.service ......... v1.0   shipped', style: 'ok',    delay: 8700 },
+  { text: '[  OK  ]  hjelply.service ............... v0.8   experimental', style: 'ok',delay: 8840 },
   { text: '',                                                                            delay: 8940 },
   { text: 'Loading skill modules...',                                                    delay: 9040 },
   { text: '  react@18 ............ comfortable .. [████████████] OK',  style: 'ok',    delay: 9200 },
@@ -410,177 +379,17 @@ function FusEffect({ onDone }) {
   );
 }
 
-// ─── ParkClosing ─────────────────────────────────────────────────────────────
-
-function ParkClosing() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const h = new Date().getHours();
-    if (h >= 22 || h < 4) {
-      const t = setTimeout(() => setVisible(true), 3000);
-      return () => clearTimeout(t);
-    }
-  }, []);
-
-  if (!visible) return null;
-
-  return (
-    <div style={{
-      position: 'fixed', bottom: 0, left: 0, right: 0,
-      zIndex: 9995,
-      background: 'rgba(8, 6, 18, 0.96)',
-      borderTop: '1px solid rgba(139, 92, 246, 0.25)',
-      padding: '10px 20px',
-      display: 'flex', alignItems: 'center', gap: '14px',
-    }}>
-      <span style={{
-        fontFamily: "'JetBrains Mono', monospace",
-        fontSize: '10px', color: 'rgba(139, 92, 246, 0.65)',
-        letterSpacing: '2px', textTransform: 'uppercase', flexShrink: 0,
-      }}>📢 PA</span>
-      <span style={{
-        fontFamily: 'system-ui, -apple-system, sans-serif',
-        fontSize: '13px', color: 'rgba(196, 181, 253, 0.75)',
-      }}>
-        This park will be closing soon. Please make your way to the exit. Thank you for visiting.
-      </span>
-      <button
-        onClick={() => setVisible(false)}
-        style={{
-          marginLeft: 'auto', background: 'none', border: 'none',
-          color: 'rgba(139, 92, 246, 0.45)', cursor: 'pointer',
-          fontSize: '18px', lineHeight: 1, flexShrink: 0, padding: '0 4px',
-        }}
-        aria-label="Dismiss"
-      >×</button>
-    </div>
-  );
-}
-
-// ─── ThoughtBubble ────────────────────────────────────────────────────────────
-
-function ThoughtBubble({ id, message, x, y, onRemove }) {
-  const [opacity, setOpacity] = useState(0);
-
-  useEffect(() => {
-    const fadeIn  = setTimeout(() => setOpacity(1), 30);
-    const fadeOut = setTimeout(() => setOpacity(0), 3400);
-    const remove  = setTimeout(() => onRemove(id), 3900);
-    return () => { clearTimeout(fadeIn); clearTimeout(fadeOut); clearTimeout(remove); };
-  }, [id, onRemove]);
-
-  return (
-    <div style={{
-      position: 'fixed', left: x, top: y,
-      zIndex: 9998, pointerEvents: 'none',
-      opacity, transition: 'opacity 0.4s ease',
-      transform: 'translate(-50%, calc(-100% - 14px))',
-    }}>
-      <div style={{ position: 'relative', display: 'inline-block' }}>
-        <div style={{
-          background: 'white', border: '2px solid #222',
-          borderRadius: '6px', padding: '7px 13px',
-          fontSize: '13px', fontFamily: 'system-ui, -apple-system, sans-serif',
-          color: '#111', whiteSpace: 'nowrap', maxWidth: '260px',
-          boxShadow: '3px 3px 0 rgba(0,0,0,0.2)', lineHeight: 1.4,
-        }}>
-          {message}
-        </div>
-        <div style={{
-          position: 'absolute', bottom: '-11px', left: '18px',
-          width: 0, height: 0,
-          borderLeft: '9px solid transparent', borderRight: '9px solid transparent',
-          borderTop: '10px solid #222',
-        }} />
-        <div style={{
-          position: 'absolute', bottom: '-8px', left: '20px',
-          width: 0, height: 0,
-          borderLeft: '7px solid transparent', borderRight: '7px solid transparent',
-          borderTop: '8px solid white',
-        }} />
-      </div>
-    </div>
-  );
-}
-
 // ─── EasterEggs (main) ───────────────────────────────────────────────────────
 
 export default function EasterEggs() {
   const [biosVisible, setBiosVisible] = useState(false);
   const [fusVisible,  setFusVisible]  = useState(false);
-  const [bubbles,     setBubbles]     = useState([]);
 
-  const konamiProgress     = useRef([]);
-  const fusBuffer          = useRef('');
-  const idleTimer          = useRef(null);
-  const bubbleTimer        = useRef(null);
-  const bubbleId           = useRef(0);
-  const fusCooldown        = useRef(false);
-  const fastScrollCooldown = useRef(false);
+  const konamiProgress = useRef([]);
+  const fusBuffer      = useRef('');
+  const fusCooldown    = useRef(false);
 
-  const spawnBubble = useCallback((message) => {
-    const id = ++bubbleId.current;
-    const margin = 140;
-    const x = margin + Math.random() * (window.innerWidth  - margin * 2);
-    const y = margin + Math.random() * (window.innerHeight - margin * 2);
-    setBubbles(prev => [...prev.slice(-2), { id, message, x, y }]);
-  }, []);
-
-  const removeBubble = useCallback((id) => {
-    setBubbles(prev => prev.filter(b => b.id !== id));
-  }, []);
-
-  // Ambient bubbles — every 2–4 minutes
-  useEffect(() => {
-    const schedule = () => {
-      const delay = 120000 + Math.random() * 120000;
-      bubbleTimer.current = setTimeout(() => {
-        spawnBubble(AMBIENT_BUBBLES[Math.floor(Math.random() * AMBIENT_BUBBLES.length)]);
-        schedule();
-      }, delay);
-    };
-    schedule();
-    return () => clearTimeout(bubbleTimer.current);
-  }, [spawnBubble]);
-
-  // Idle bubble — 60s of no interaction
-  const resetIdle = useCallback(() => {
-    clearTimeout(idleTimer.current);
-    idleTimer.current = setTimeout(() => {
-      spawnBubble(IDLE_BUBBLES[Math.floor(Math.random() * IDLE_BUBBLES.length)]);
-    }, 60000);
-  }, [spawnBubble]);
-
-  useEffect(() => {
-    resetIdle();
-    const events = ['mousemove', 'click', 'keydown', 'scroll', 'touchstart'];
-    events.forEach(e => window.addEventListener(e, resetIdle, { passive: true }));
-    return () => {
-      clearTimeout(idleTimer.current);
-      events.forEach(e => window.removeEventListener(e, resetIdle));
-    };
-  }, [resetIdle]);
-
-  // Fast-scroll bubble
-  useEffect(() => {
-    let lastY = window.scrollY, lastT = Date.now();
-    const onScroll = () => {
-      const now = Date.now();
-      const dy  = Math.abs(window.scrollY - lastY);
-      const dt  = now - lastT;
-      if (dt > 0 && dy / dt > 3 && !fastScrollCooldown.current) {
-        fastScrollCooldown.current = true;
-        spawnBubble('I feel sick!');
-        setTimeout(() => { fastScrollCooldown.current = false; }, 10000);
-      }
-      lastY = window.scrollY; lastT = now;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [spawnBubble]);
-
-  // Konami Code
+  // Konami Code → BIOS
   useEffect(() => {
     const onKey = (e) => {
       konamiProgress.current.push(e.key);
@@ -615,14 +424,6 @@ export default function EasterEggs() {
     <>
       {biosVisible && <BiosScreen onDismiss={() => setBiosVisible(false)} />}
       {fusVisible  && <FusEffect  onDone={() => setFusVisible(false)} />}
-      <ParkClosing />
-      {bubbles.map(b => (
-        <ThoughtBubble
-          key={b.id} id={b.id}
-          message={b.message} x={b.x} y={b.y}
-          onRemove={removeBubble}
-        />
-      ))}
     </>
   );
 }
