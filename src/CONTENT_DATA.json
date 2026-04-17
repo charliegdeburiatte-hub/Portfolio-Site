@@ -240,13 +240,13 @@
     },
 
     {
-      "id": "julie-christensen-portfolio",
-      "title": "Julie Christensen — Freelance Portfolio",
+      "id": "freelance-portfolio-client",
+      "title": "Client Portfolio Site",
       "status": "active",
       "status_label": "Live — First Freelance Project",
-      "tagline": "First paid client project — portfolio site for a video editor based in Norway",
+      "tagline": "First paid client project — portfolio site for a freelance video editor",
 
-      "description": "A client portfolio website built for Julie Christensen, a freelance video editor based in Norway. Next.js frontend with Sanity CMS as the content backend, giving the client full control to update her showreel and project pages without touching code. Live and in active use.",
+      "description": "A portfolio website built for a freelance video editor client. Next.js frontend with Sanity CMS as the content backend, giving the client full control to update their showreel and project pages without touching code. Live and in active use. (Private client — site not linked.)",
 
       "tech_stack": [
         "Next.js 16",
@@ -264,15 +264,10 @@
         "status": "First paid freelance delivery"
       },
 
-      "links": {
-        "github": "https://github.com/charliegdeburiatte-hub/julie-christensen-portfolio",
-        "demo": "https://julie-christensen-portfolio.vercel.app"
-      },
-
       "why_built": "First paid freelance project — a real client with real requirements. Built to prove the ability to deliver professional work beyond personal side projects.",
 
       "challenges_solved": [
-        "Integrated Sanity CMS so the client fully owns her own content updates post-launch",
+        "Integrated Sanity CMS so the client fully owns their content updates post-launch",
         "Animated showcase pages and transitions with Framer Motion",
         "E2E test suite with Playwright to catch visual regressions across deployments",
         "Next.js 16 App Router structure with Sanity image pipeline and CDN delivery"
