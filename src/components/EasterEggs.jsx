@@ -328,112 +328,11 @@ function BiosScreen({ onDismiss }) {
   );
 }
 
-// ─── FusEffect ────────────────────────────────────────────────────────────────
-
-const WORDS = [
-  { text: 'FUS',  delay: 0,    duration: 1100 },
-  { text: 'RO',   delay: 280,  duration: 1100 },
-  { text: 'DAH!', delay: 560,  duration: 1200 },
-];
-
-const RINGS = [
-  { delay: 0,   size: 80,  color: 'rgba(255,255,255,0.9)',       duration: 0.9 },
-  { delay: 60,  size: 80,  color: 'rgba(139,92,246,0.85)',       duration: 1.0 },
-  { delay: 280, size: 80,  color: 'rgba(255,255,255,0.7)',       duration: 0.9 },
-  { delay: 340, size: 80,  color: 'rgba(139,92,246,0.7)',        duration: 1.0 },
-  { delay: 560, size: 120, color: 'rgba(255,255,255,0.95)',      duration: 1.1 },
-  { delay: 620, size: 120, color: 'rgba(139,92,246,0.9)',        duration: 1.2 },
-  { delay: 680, size: 120, color: 'rgba(196,181,253,0.6)',       duration: 1.3 },
-];
-
-function FusEffect({ onDone }) {
-  const [phase, setPhase] = useState('active'); // 'active' | 'gone'
-
-  useEffect(() => {
-    // Shake fires at DAH
-    const shakeTimer = setTimeout(() => {
-      document.documentElement.classList.add('fus-shake');
-      setTimeout(() => document.documentElement.classList.remove('fus-shake'), 700);
-    }, 560);
-
-    const doneTimer = setTimeout(() => {
-      setPhase('gone');
-      onDone();
-    }, 1900);
-
-    return () => {
-      clearTimeout(shakeTimer);
-      clearTimeout(doneTimer);
-      document.documentElement.classList.remove('fus-shake');
-    };
-  }, [onDone]);
-
-  if (phase === 'gone') return null;
-
-  return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 9996, pointerEvents: 'none' }}>
-
-      {/* Screen flash */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'white',
-        animation: 'fus-flash 0.35s ease-out forwards',
-      }} />
-
-      {/* Shockwave bars */}
-      {[0, 280, 560].map((delay, i) => (
-        <div key={i} style={{
-          position: 'absolute',
-          top: `${30 + i * 20}%`,
-          left: 0, right: 0,
-          height: `${3 - i}px`,
-          background: `rgba(${i === 2 ? '255,255,255' : '139,92,246'},${0.9 - i * 0.15})`,
-          boxShadow: `0 0 12px 4px rgba(139,92,246,0.6)`,
-          animation: `fus-shockwave 0.55s ease-out ${delay}ms forwards`,
-        }} />
-      ))}
-
-      {/* Rings */}
-      {RINGS.map((r, i) => (
-        <div key={i} style={{
-          position: 'absolute', top: '50%', left: '50%',
-          width: `${r.size}px`, height: `${r.size}px`,
-          border: `${i % 2 === 0 ? 3 : 2}px solid ${r.color}`,
-          borderRadius: '50%',
-          animation: `fus-ring ${r.duration}s ease-out ${r.delay}ms forwards`,
-          opacity: 0,
-        }} />
-      ))}
-
-      {/* Words — staggered */}
-      {WORDS.map((w) => (
-        <div key={w.text} style={{
-          position: 'absolute', top: '50%', left: '50%',
-          fontFamily: 'Inter, system-ui, sans-serif',
-          fontSize: 'clamp(56px, 11vw, 120px)',
-          fontWeight: '900',
-          color: 'white',
-          textShadow: '0 0 30px rgba(139,92,246,1), 0 0 60px rgba(139,92,246,0.7), 0 0 100px rgba(139,92,246,0.4)',
-          letterSpacing: '8px',
-          whiteSpace: 'nowrap',
-          animation: `fus-word ${w.duration}ms cubic-bezier(0.22,1,0.36,1) ${w.delay}ms both`,
-        }}>
-          {w.text}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 // ─── EasterEggs (main) ───────────────────────────────────────────────────────
 
 export default function EasterEggs() {
   const [biosVisible, setBiosVisible] = useState(false);
-  const [fusVisible,  setFusVisible]  = useState(false);
-
   const konamiProgress = useRef([]);
-  const fusBuffer      = useRef('');
-  const fusCooldown    = useRef(false);
 
   // Konami Code → BIOS
   useEffect(() => {
@@ -449,27 +348,5 @@ export default function EasterEggs() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  // FUS RO DAH
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      if (fusCooldown.current) return;
-      fusBuffer.current = (fusBuffer.current + e.key.toUpperCase()).slice(-9);
-      if (fusBuffer.current.includes('FUSRODAH')) {
-        fusBuffer.current = '';
-        fusCooldown.current = true;
-        setFusVisible(true);
-        setTimeout(() => { fusCooldown.current = false; }, 3000);
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
-  return (
-    <>
-      {biosVisible && <BiosScreen onDismiss={() => setBiosVisible(false)} />}
-      {fusVisible  && <FusEffect  onDone={() => setFusVisible(false)} />}
-    </>
-  );
+  return biosVisible ? <BiosScreen onDismiss={() => setBiosVisible(false)} /> : null;
 }

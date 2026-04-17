@@ -160,40 +160,6 @@
   }
 }
 
-/* FUS RO DAH animations */
-@keyframes fus-ring {
-  from { transform: translate(-50%, -50%) scale(0); opacity: 0.9; }
-  to   { transform: translate(-50%, -50%) scale(40); opacity: 0; }
-}
-@keyframes fus-flash {
-  0%   { opacity: 0.7; }
-  100% { opacity: 0; }
-}
-@keyframes fus-word {
-  0%   { opacity: 0; transform: translate(-50%, -50%) scale(2.5); filter: blur(8px); }
-  35%  { opacity: 1; transform: translate(-50%, -50%) scale(0.92); filter: blur(0); }
-  70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
-}
-@keyframes fus-shockwave {
-  from { transform: translateX(-100%); opacity: 1; }
-  to   { transform: translateX(200%);  opacity: 0; }
-}
-@keyframes fus-shake {
-  0%,100% { transform: translate(0, 0) rotate(0); }
-  10%     { transform: translate(-18px, -8px) rotate(-1.2deg); }
-  20%     { transform: translate(18px,  6px) rotate(1.2deg); }
-  30%     { transform: translate(-14px, 10px) rotate(-0.8deg); }
-  40%     { transform: translate(14px, -8px) rotate(0.8deg); }
-  50%     { transform: translate(-10px, 4px) rotate(-0.4deg); }
-  60%     { transform: translate(10px, -4px) rotate(0.4deg); }
-  70%     { transform: translate(-6px, 2px); }
-  80%     { transform: translate(6px, -2px); }
-  90%     { transform: translate(-3px, 0); }
-}
-.fus-shake {
-  animation: fus-shake 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
 
 /* BIOS blink */
 @keyframes bios-blink {
