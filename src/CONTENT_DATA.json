@@ -159,6 +159,129 @@
     },
 
     {
+      "id": "freddo-index",
+      "title": "The Freddo Index",
+      "status": "active",
+      "status_label": "Live",
+      "tagline": "A live economic dashboard that tracks the cost of living in the only unit that matters",
+
+      "description": "A satirical-but-serious economic dashboard measuring the cost of living in Freddos — the only unit that matters. Live data from a Supabase backend, Recharts visualisations, and a full data pipeline tracking price changes over time. By Royal Appointment. 10p was a fair price.",
+
+      "tech_stack": [
+        "React 18",
+        "Vite",
+        "Tailwind CSS",
+        "Recharts",
+        "Supabase",
+        "React Router v6",
+        "Vercel"
+      ],
+
+      "metrics": {
+        "development_time": "~2 weeks"
+      },
+
+      "links": {
+        "github": "https://github.com/charliegdeburiatte-hub/freddo-index",
+        "demo": "https://freddo-index.vercel.app"
+      },
+
+      "why_built": "To build something fun and data-driven while practising React, charting libraries, and Supabase as a live backend.",
+
+      "challenges_solved": [
+        "Live data pipeline from Supabase to frontend charts",
+        "Price-to-Freddo conversion logic across multiple product categories",
+        "Interactive Recharts visualisations with real time-series data"
+      ]
+    },
+
+    {
+      "id": "interview-help",
+      "title": "Interview Help",
+      "version": "1.0.0",
+      "status": "active",
+      "status_label": "v1.0.0 Released",
+      "tagline": "Local-first desktop app for interview prep — AI feedback, no cloud, no accounts",
+
+      "description": "A desktop application that generates practice interview questions, records and transcribes your spoken answers via Whisper, then gives you AI feedback using a local LLM via Ollama. Everything runs on your own machine — no accounts, no subscriptions, no data leaving your PC.",
+
+      "tech_stack": [
+        "Electron",
+        "React",
+        "Vite",
+        "Ollama (Mistral — local LLM)",
+        "Whisper (local transcription, bundled)",
+        "SQLite (better-sqlite3)",
+        "electron-builder",
+        "electron-updater"
+      ],
+
+      "metrics": {
+        "version": "1.0.0",
+        "development_time": "~3 weeks"
+      },
+
+      "links": {
+        "github": "https://github.com/charliegdeburiatte-hub/interview-help",
+        "demo": null
+      },
+
+      "why_built": "Built to practice for job interviews without relying on cloud services — audio stays on device, AI runs locally, session history stored in SQLite.",
+
+      "challenges_solved": [
+        "Bundled Whisper with Electron for local audio transcription — no cloud API needed",
+        "Streamed LLM feedback from local Ollama instance into the UI in real time",
+        "Session persistence and history with SQLite via better-sqlite3",
+        "Windows installer and portable zip packaging with electron-builder",
+        "Auto-update flow via electron-updater checking GitHub Releases on launch"
+      ],
+
+      "portfolio_notes": "Demonstrates: Electron desktop app development, local AI integration (Ollama + Whisper), privacy-first architecture, packaging and distribution, SQLite data layer, React within a desktop context"
+    },
+
+    {
+      "id": "julie-christensen-portfolio",
+      "title": "Julie Christensen — Freelance Portfolio",
+      "status": "active",
+      "status_label": "Live — First Freelance Project",
+      "tagline": "First paid client project — portfolio site for a video editor based in Norway",
+
+      "description": "A client portfolio website built for Julie Christensen, a freelance video editor based in Norway. Next.js frontend with Sanity CMS as the content backend, giving the client full control to update her showreel and project pages without touching code. Live and in active use.",
+
+      "tech_stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Sanity CMS",
+        "Framer Motion",
+        "Styled Components",
+        "Playwright (E2E tests)",
+        "Vercel"
+      ],
+
+      "metrics": {
+        "development_time": "~3 weeks",
+        "status": "First paid freelance delivery"
+      },
+
+      "links": {
+        "github": "https://github.com/charliegdeburiatte-hub/julie-christensen-portfolio",
+        "demo": "https://julie-christensen-portfolio.vercel.app"
+      },
+
+      "why_built": "First paid freelance project — a real client with real requirements. Built to prove the ability to deliver professional work beyond personal side projects.",
+
+      "challenges_solved": [
+        "Integrated Sanity CMS so the client fully owns her own content updates post-launch",
+        "Animated showcase pages and transitions with Framer Motion",
+        "E2E test suite with Playwright to catch visual regressions across deployments",
+        "Next.js 16 App Router structure with Sanity image pipeline and CDN delivery"
+      ],
+
+      "portfolio_notes": "Demonstrates: client delivery, CMS integration, Next.js App Router, TypeScript, animation, E2E testing, real-world freelance workflow"
+    },
+
+    {
       "id": "hjelply",
       "title": "Hjelply — Community Support Platform",
       "status": "paused",
@@ -554,7 +677,7 @@
 
   "meta": {
     "portfolio_version": "2.0",
-    "last_updated": "2026-03-01",
+    "last_updated": "2026-04-17",
     "site_status": "Active - Content Integration Phase",
     "content_freshness": "Updated with professional background and experience",
     "data_format_version": "2.0",
