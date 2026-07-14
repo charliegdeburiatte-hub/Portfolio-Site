@@ -1,43 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  /* Purple theme colors - Black Sabbath inspired */
-  --color-primary: #6B46C1;
-  --color-primary-light: #9F7AEA;
-  --color-primary-dark: #4C1D95;
-  --color-accent: #8B5CF6;
-  --color-bg-base: #0F0A1F;
-  --color-bg-light: #1A1429;
-  --color-bg-card: #231938;
-  --color-text-primary: #E9D5FF;
-  --color-text-secondary: #C4B5FD;
-  --color-text-muted: #A78BFA;
+  /* Beige — the quiet base, everywhere */
+  --color-bg: #F7F2E7;
+  --color-surface: #FFFCF5;
+  --color-card: #EFE8D6;
+  --color-border: #DED2B0;
 
-  /* Legacy color names for compatibility */
-  --color-aero-base: #0F0A1F;
-  --color-aero-light: #1A1429;
-  --color-aero-blue: #8B5CF6;
-  --color-aero-dark: #E9D5FF;
-  --color-depth-100: #4C1D95;
-  --color-depth-200: #A78BFA;
-  --color-depth-300: #C4B5FD;
+  /* Ink — warm near-black, not pure black */
+  --color-ink: #24211A;
+  --color-ink-muted: #6B6455;
+  --color-ink-faint: #9A9280;
 
-  /* Custom shadows */
-  --shadow-aero: 0 2px 8px rgb(0 0 0 / 0.3), 0 1px 3px rgb(0 0 0 / 0.2);
-  --shadow-aero-md: 0 4px 16px rgb(0 0 0 / 0.4), 0 2px 8px rgb(0 0 0 / 0.3);
-  --shadow-aero-lg: 0 12px 32px rgb(0 0 0 / 0.5), 0 4px 16px rgb(0 0 0 / 0.4);
-  --shadow-glow-blue: 0 0 20px rgb(139 92 246 / 0.3);
-  --shadow-glow-blue-hover: 0 0 30px rgb(139 92 246 / 0.5);
+  /* Plum — low-volume structural accent, appears often but stays quiet */
+  --color-plum: #55396F;
+  --color-plum-light: #7A5A96;
+  --color-plum-tint: #EDE3F2;
 
-  /* Font families */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Pine — the rare, earned accent. Spent on: the one loud project card,
+     the two motion beats, and nothing else. */
+  --color-pine: #1F5C42;
+  --color-pine-bright: #2F8C5E;
+  --color-pine-tint: #E3EFE6;
+  --color-cream: #F7F2E7;
+
+  /* Rust — functional error state only, not part of the accent budget */
+  --color-rust: #A6432E;
+
+  --shadow-quiet: 0 1px 2px rgb(36 33 26 / 0.04), 0 3px 10px rgb(36 33 26 / 0.05);
+  --shadow-quiet-md: 0 6px 20px rgb(36 33 26 / 0.07), 0 2px 6px rgb(36 33 26 / 0.05);
+  --shadow-loud: 0 28px 64px rgb(31 92 66 / 0.24), 0 10px 28px rgb(31 92 66 / 0.16);
+
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
 @layer base {
   body {
-    background: linear-gradient(to bottom right, var(--color-bg-base), var(--color-bg-light));
-    color: var(--color-text-primary);
+    background: var(--color-bg);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     line-height: 1.6;
     margin: 0;
@@ -48,138 +54,146 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-weight: 700;
   }
 }
 
 @layer components {
-  /* Glass effect card */
-  .glass-card {
-    background: rgba(35, 25, 56, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow-aero-md);
+  /* Quiet card — the default surface for everything */
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-quiet);
   }
 
-  /* Status badge base */
-  .status-badge {
-    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-mono;
+  /* The one loud, resolved thing on the site. Used once, on the featured project. */
+  .card-loud {
+    background:
+      radial-gradient(140% 100% at 100% 0%, rgb(47 140 94 / 0.55) 0%, transparent 55%),
+      var(--color-pine);
+    border: 1px solid rgb(47 140 94 / 0.5);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-loud);
+    color: var(--color-cream);
   }
 
-  /* Status variants */
-  .status-active {
-    background: rgba(76, 29, 149, 0.2);
-    color: #C4B5FD;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+  .badge {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs;
+    font-family: var(--font-mono);
+    background: var(--color-card);
+    color: var(--color-ink-muted);
+    border: 1px solid var(--color-border);
   }
 
-  .status-experimental {
-    background: rgba(76, 29, 149, 0.2);
-    color: #C4B5FD;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+  .badge-live {
+    background: var(--color-pine-tint);
+    color: var(--color-pine);
+    border-color: rgb(31 92 66 / 0.25);
   }
 
-  .status-exploring {
-    background: rgba(76, 29, 149, 0.2);
-    color: #C4B5FD;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+  .tag {
+    @apply inline-block px-2.5 py-1 rounded-md text-xs;
+    font-family: var(--font-mono);
+    color: var(--color-plum);
+    background: var(--color-plum-tint);
+    border: 1px solid rgb(85 57 111 / 0.15);
   }
 
-  .status-paused {
-    background: rgba(76, 29, 149, 0.2);
-    color: #C4B5FD;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+  .tag-on-loud {
+    @apply inline-block px-2.5 py-1 rounded-md text-xs;
+    font-family: var(--font-mono);
+    color: var(--color-cream);
+    background: rgb(247 242 231 / 0.14);
+    border: 1px solid rgb(247 242 231 / 0.28);
   }
 
-  .status-completed {
-    background: rgba(6, 78, 59, 0.2);
-    color: #6EE7B7;
-    border: 1px solid rgba(52, 211, 153, 0.3);
-    box-shadow: 0 0 15px rgba(52, 211, 153, 0.1);
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium;
+    background: var(--color-plum);
+    color: var(--color-cream);
+    transition: background-color 0.15s ease;
+  }
+  .btn-primary:hover {
+    background: var(--color-plum-light);
   }
 
-  /* Tech badge */
-  .tech-badge {
-    @apply inline-block px-3 py-1 bg-primary-dark/30 text-text-secondary text-sm rounded-md border border-primary/40;
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium;
+    background: transparent;
+    color: var(--color-plum);
+    border: 1px solid var(--color-plum);
+    transition: background-color 0.15s ease;
+  }
+  .btn-secondary:hover {
+    background: var(--color-plum-tint);
   }
 
-  /* Button with glow effect */
-  .btn-glow {
-    background: linear-gradient(135deg, #8B5CF6, #6B46C1);
-    color: #E9D5FF;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+  .btn-primary-on-loud {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium;
+    background: var(--color-cream);
+    color: var(--color-pine);
+    transition: background-color 0.15s ease;
+  }
+  .btn-primary-on-loud:hover {
+    background: rgb(247 242 231 / 0.85);
   }
 
-  .btn-glow:hover {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
-    transform: translateY(-2px);
+  .link-quiet {
+    color: var(--color-plum);
+    transition: color 0.15s ease;
+  }
+  .link-quiet:hover {
+    color: var(--color-plum-light);
   }
 
-  /* Link hover effect */
-  .link-glow {
-    color: #8B5CF6;
-    transition: all 0.3s ease;
-  }
-
-  .link-glow:hover {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-  }
-
-  /* Section container */
   .section-container {
-    @apply max-w-7xl mx-auto px-6 py-16 md:py-24;
+    @apply max-w-6xl mx-auto px-6 py-20 md:py-28;
   }
 }
 
-@layer utilities {
-  /* Purple glow effect */
-  .glow-aero {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-  }
+/* ─── Motion: exactly two moments, nowhere else ───────────────────────── */
 
-  .glow-aero-strong {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
-  }
-
-  /* Text gradient */
-  .text-gradient {
-    background: linear-gradient(135deg, #9F7AEA, #8B5CF6, #6B46C1);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
+/* Moment 1 — on load, the hero settles then resolves with one beat of pine */
+@keyframes settle-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes accent-sweep {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
 
-/* BIOS blink */
+.settle-in {
+  animation: settle-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.accent-sweep {
+  transform-origin: left;
+  animation: accent-sweep 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Moment 2 — the featured project resolves into its loud state as it's
+   scrolled into view. The pine wash is the transition, not a slide. */
+.reveal-quiet {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-quiet-md);
+  transition: background 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease, color 0.6s ease;
+}
+
+.reveal-loud {
+  background:
+    radial-gradient(140% 100% at 100% 0%, rgb(47 140 94 / 0.55) 0%, transparent 55%),
+    var(--color-pine);
+  box-shadow: var(--shadow-loud);
+  color: var(--color-cream);
+}
+
+/* BIOS blink — untouched, belongs to the Konami easter egg */
 @keyframes bios-blink {
   50% { opacity: 0; }
-}
-
-/* Custom animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
 }
 
 /* Respect reduced motion */

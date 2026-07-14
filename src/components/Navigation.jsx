@@ -15,10 +15,8 @@ function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show background after scrolling
       setIsScrolled(window.scrollY > 50);
 
-      // Determine active section
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 100;
 
@@ -48,55 +46,44 @@ function Navigation() {
 
   return (
     <>
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-bg-card/90 backdrop-blur-md shadow-aero border-b border-primary/20' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          {/* Logo/Name */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-xl font-bold text-text-primary hover:text-accent transition-colors"
-          >
-            Charlie
-          </button>
-
-          {/* Nav items */}
-          <div className="flex items-center gap-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-all duration-300 hover:text-accent ${
-                  activeSection === item.id
-                    ? 'text-accent'
-                    : 'text-text-secondary'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+          isScrolled ? 'bg-surface/90 backdrop-blur-md border-b border-border' : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
             <button
-              onClick={() => setCvOpen(true)}
-              className="text-sm font-medium px-3 py-1 rounded-lg transition-all duration-200"
-              style={{
-                background: 'rgba(96, 165, 250, 0.1)',
-                border: '1px solid rgba(96, 165, 250, 0.25)',
-                color: '#93c5fd',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(96, 165, 250, 0.2)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'rgba(96, 165, 250, 0.1)'}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="font-display text-lg font-bold text-ink hover:text-plum transition-colors"
             >
-              CV
+              Charlie
             </button>
+
+            <div className="flex items-center gap-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm font-medium transition-colors duration-200 hover:text-plum ${
+                    activeSection === item.id ? 'text-plum' : 'text-ink-muted'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <button
+                onClick={() => setCvOpen(true)}
+                className="btn-secondary !px-3 !py-1 text-sm font-mono"
+              >
+                CV
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-    {cvOpen && <CVModal onClose={() => setCvOpen(false)} />}
-  </>
+      </nav>
+      {cvOpen && <CVModal onClose={() => setCvOpen(false)} />}
+    </>
   );
 }
 
