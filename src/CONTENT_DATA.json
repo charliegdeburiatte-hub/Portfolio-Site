@@ -24,26 +24,21 @@
       "mentoring": false
     }
   },
-
   "bio": {
     "short": "IT Support Specialist with 1.5 years experience in technical troubleshooting and systems administration. Building expertise through hands-on projects and continuous learning.",
-
-    "medium": "I'm building my career in IT by learning systems deeply and applying that knowledge through real projects. From home lab experimentation to AI-powered tools, I focus on understanding not just how things work, but why they work. My goal is to grow into roles where I can solve real technical problems and keep evolving.",
-
+    "medium": "I'm building my career in IT by learning how systems work and putting that into real projects, from home lab experiments to AI-powered tools. I want to know why something works as well as how. My goal is a role where I get real technical problems to solve and keep learning.",
     "full": "I became genuinely interested in technology in my early teens, starting as a typical user before gradually becoming the person who fixed things. Gaming, building PCs, and experimenting with virtual machines sparked a deeper curiosity about how systems actually work beneath the surface. Over time, that curiosity shifted from using technology to understanding and building it.\n\nAlthough I originally considered paths like healthcare or history, I found myself increasingly drawn to systems, infrastructure, and problem-solving. Building my own environments and troubleshooting real hardware issues, including diagnosing instability linked to Intel's 13th generation platform, strengthened my interest in technical problem-solving and persistence.\n\nMore recently, the rapid evolution of AI reignited that same curiosity. What began as casual experimentation evolved into using AI tools to build practical projects and improve workflows. Today, I'm focused on developing strong IT fundamentals while continuing to explore how modern tools, including AI, can enhance real-world systems and operations.",
-
-    "what_drives_me": "I'm driven by understanding how systems work and improving them over time. I enjoy solving technical problems, especially when the solution isn't immediately obvious. Contributing to the smooth operation of technology, even behind the scenes, is something I find genuinely rewarding.",
-
+    "what_drives_me": "I like working out how systems work and making them better over time. My favourite problems are the ones where the answer isn't obvious. Keeping technology running smoothly behind the scenes is work I genuinely enjoy.",
     "journey_timeline": [
       {
         "period": "Early Teens",
         "milestone": "From user to builder",
-        "context": "Gaming, PC building, early experimentation with technology"
+        "context": "Gaming, building PCs and messing about with tech"
       },
       {
         "period": "Sep 2019 - Oct 2020",
         "milestone": "Telephone Interviewer at IFF Research",
-        "context": "Developed communication and active listening skills through high-volume customer interactions"
+        "context": "Lots of calls every shift, which built my communication and listening skills"
       },
       {
         "period": "Sep 2021 - Mar 2022",
@@ -52,30 +47,26 @@
       },
       {
         "period": "2023-2024",
-        "milestone": "Continuous Learning & Certifications",
-        "context": "Google IT Support Professional Certificate, CompTIA A+ completion"
+        "milestone": "Courses and certifications",
+        "context": "Completed the Google IT Support Professional Certificate and CompTIA A+"
       },
       {
         "period": "Current",
-        "milestone": "Expanding into AI & Cloud",
-        "context": "Studying Network+, AWS, building AI-assisted tools and home lab environments"
+        "milestone": "Moving into AI and cloud",
+        "context": "Studying Network+ and AWS, building AI-assisted tools and running a home lab"
       }
     ]
   },
-
   "projects": [
     {
       "id": "job-application-analyzer",
       "title": "Job Application Analyser",
       "version": "3.0.0",
       "status": "active",
-      "status_label": "v3.0.0 Released",
+      "status_label": "v3.0.0 released",
       "tagline": "Privacy-first web app that scores your CV, then writes your cover letter",
-
-      "description": "A web application that analyses job postings against your CV using weighted scoring algorithms, then uses Claude AI to generate a tailored cover letter and targeted CV bullet suggestions. Upload your CV, paste any job description, and get an instant compatibility score plus a ready-to-send cover letter — all running entirely in your browser.",
-
+      "description": "Upload your CV, paste in any job description and you get an instant match score from weighted scoring algorithms. Then Claude AI writes a tailored cover letter ready to send, plus CV bullet suggestions aimed at that job. It all runs entirely in your browser.",
       "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for and take action faster. Built with privacy as a priority — all processing happens in your browser with no data sent to servers (your API key goes only to Anthropic directly).\n\nThe weighted scoring algorithm treats required skills as 3x more important than preferred skills and includes 12 tool equivalency groups, so knowing Freshdesk counts for Zendesk, Jira experience covers Trello and Asana, and AWS counts towards Azure and GCP roles.\n\nv3.0.0 adds full Claude AI integration: paste a job description, run the analysis, then hit Generate to get a tailored cover letter in your personal voice and structure, plus specific CV bullet points grouped under the exact section they belong in. The first formal GitHub release marks the app as stable and publicly usable end-to-end.",
-
       "tech_stack": [
         "React 19",
         "TypeScript",
@@ -83,13 +74,12 @@
         "Vite",
         "React Router DOM",
         "Zustand (state management)",
-        "Claude API (Anthropic) — cover letters & CV suggestions",
+        "Claude API (Anthropic): cover letters & CV suggestions",
         "Mammoth.js (DOCX parsing)",
         "PDF.js (PDF parsing)",
         "LZ-String (compression)",
         "Vercel (deployment)"
       ],
-
       "features": [
         "Claude AI cover letter generation — tailored to the role, in your voice, British English, no buzzwords",
         "Claude AI CV bullet suggestions — grouped by section so you know exactly where to paste them",
@@ -112,22 +102,18 @@
         "Bookmarklet — click on any job page and it sends the text straight to the analyser automatically",
         "100% client-side processing — API key stored in your browser only, never sent anywhere except Anthropic"
       ],
-
       "metrics": {
         "version": "3.0.0",
         "development_time": "~8 weeks",
         "status": "v3.0.0 — first formal release, Mar 2026",
         "architecture_pivot": "Firefox extension → Universal web app → AI-powered job search toolkit"
       },
-
       "links": {
         "github": "https://github.com/charliegdeburiatte-hub/Job-Application-Analyzer",
         "demo": "https://job-application-analyzer.vercel.app/",
         "docs": null
       },
-
-      "why_built": "To solve the problem of objectively evaluating job opportunities. Instead of guessing whether you're qualified, get a data-driven match score based on your actual skills and experience — then let AI do the heavy lifting on the cover letter. Built because I needed it during my own job search.",
-
+      "why_built": "I needed it for my own job search. I wanted an objective answer on whether I was qualified for a job instead of guessing, so it scores your actual skills and experience against the job. Then the AI does the heavy lifting on the cover letter.",
       "challenges_solved": [
         "Integrated Claude API client-side — API key never touches a server, goes directly to Anthropic from the browser",
         "Designed cover letter prompt to produce natural-sounding output — banned buzzwords, em dashes, and flattery after testing on real applications",
@@ -140,7 +126,6 @@
         "Built full PWA with service worker, manifest, and offline support",
         "Built application tracker with pipeline stages, notes, search, and CSV export"
       ],
-
       "results_impact": [
         "Shipped first formal GitHub release (v3.0.0) — app marked stable and publicly usable",
         "End-to-end job application workflow: score → cover letter → CV bullets, all in one tool",
@@ -148,25 +133,20 @@
         "Tool equivalency matching fixes false negatives for IT support roles with overlapping tooling",
         "PWA installable on Android and iOS with offline support"
       ],
-
       "portfolio_notes": "Demonstrates: Claude API integration, prompt engineering, full-stack web development, TypeScript, algorithm design, PWA development, state management with Zustand, iterative product development, Vercel deployment, React 19 patterns, privacy-first architecture",
-
       "future_plans": [
         "Semantic skill matching — 'JS' = 'JavaScript', '3 years Python' = 'Python (advanced)'",
         "Job URL parsing — paste a LinkedIn/Indeed URL and fetch the job description automatically",
         "Salary banding — extract salary from job description and flag relative to market rate"
       ]
     },
-
     {
       "id": "freddo-index",
       "title": "The Freddo Index",
       "status": "active",
       "status_label": "Live",
       "tagline": "A live economic dashboard that tracks the cost of living in the only unit that matters",
-
-      "description": "A satirical-but-serious economic dashboard measuring the cost of living in Freddos — the only unit that matters. Live data from a Supabase backend, Recharts visualisations, and a full data pipeline tracking price changes over time. By Royal Appointment. 10p was a fair price.",
-
+      "description": "A satirical but serious economic dashboard that measures the cost of living in Freddos, the only unit that matters. Live data comes from a Supabase backend, with Recharts visualisations and a full data pipeline tracking price changes over time. By Royal Appointment. 10p was a fair price.",
       "tech_stack": [
         "React 18",
         "Vite",
@@ -176,58 +156,47 @@
         "React Router v6",
         "Vercel"
       ],
-
       "metrics": {
         "development_time": "~2 weeks"
       },
-
       "links": {
         "github": "https://github.com/charliegdeburiatte-hub/freddo-index",
         "demo": "https://freddo-index.vercel.app"
       },
-
       "why_built": "To build something fun and data-driven while practising React, charting libraries, and Supabase as a live backend.",
-
       "challenges_solved": [
         "Live data pipeline from Supabase to frontend charts",
         "Price-to-Freddo conversion logic across multiple product categories",
         "Interactive Recharts visualisations with real time-series data"
       ]
     },
-
     {
       "id": "interview-help",
       "title": "Interview Help",
       "version": "1.0.0",
       "status": "active",
-      "status_label": "v1.0.0 Released",
-      "tagline": "Local-first desktop app for interview prep — AI feedback, no cloud, no accounts",
-
-      "description": "A desktop application that generates practice interview questions, records and transcribes your spoken answers via Whisper, then gives you AI feedback using a local LLM via Ollama. Everything runs on your own machine — no accounts, no subscriptions, no data leaving your PC.",
-
+      "status_label": "v1.0.0 released",
+      "tagline": "Local-first desktop app for interview prep, with AI feedback and no cloud or accounts",
+      "description": "A desktop application that generates practice interview questions, records and transcribes your spoken answers via Whisper, then gives you AI feedback using a local LLM via Ollama. Everything runs on your own machine: no accounts, no subscriptions, and no data leaves your PC.",
       "tech_stack": [
         "Electron",
         "React",
         "Vite",
-        "Ollama (Mistral — local LLM)",
+        "Ollama (Mistral, local LLM)",
         "Whisper (local transcription, bundled)",
         "SQLite (better-sqlite3)",
         "electron-builder",
         "electron-updater"
       ],
-
       "metrics": {
         "version": "1.0.0",
         "development_time": "~3 weeks"
       },
-
       "links": {
         "github": "https://github.com/charliegdeburiatte-hub/interview-help",
         "demo": null
       },
-
       "why_built": "Built to practice for job interviews without relying on cloud services — audio stays on device, AI runs locally, session history stored in SQLite.",
-
       "challenges_solved": [
         "Bundled Whisper with Electron for local audio transcription — no cloud API needed",
         "Streamed LLM feedback from local Ollama instance into the UI in real time",
@@ -235,19 +204,15 @@
         "Windows installer and portable zip packaging with electron-builder",
         "Auto-update flow via electron-updater checking GitHub Releases on launch"
       ],
-
       "portfolio_notes": "Demonstrates: Electron desktop app development, local AI integration (Ollama + Whisper), privacy-first architecture, packaging and distribution, SQLite data layer, React within a desktop context"
     },
-
     {
       "id": "freelance-portfolio-client",
       "title": "Client Portfolio Site",
       "status": "active",
-      "status_label": "Live — First Freelance Project",
-      "tagline": "First paid client project — portfolio site for a freelance video editor",
-
-      "description": "A portfolio website built for a freelance video editor client. Next.js frontend with Sanity CMS as the content backend, giving the client full control to update their showreel and project pages without touching code. Live and in active use. (Private client — site not linked.)",
-
+      "status_label": "Live, first freelance project",
+      "tagline": "My first paid client project: a portfolio site for a freelance video editor",
+      "description": "A portfolio site for a freelance video editor. It's Next.js on the front end with Sanity CMS behind it, so the client has full control over their showreel and project pages without touching code. It's live and in active use. (Private client, so the site isn't linked.)",
       "tech_stack": [
         "Next.js 16",
         "React 19",
@@ -258,35 +223,27 @@
         "Playwright (E2E tests)",
         "Vercel"
       ],
-
       "metrics": {
         "development_time": "~3 weeks",
         "status": "First paid freelance delivery"
       },
-
       "why_built": "First paid freelance project — a real client with real requirements. Built to prove the ability to deliver professional work beyond personal side projects.",
-
       "challenges_solved": [
         "Integrated Sanity CMS so the client fully owns their content updates post-launch",
         "Animated showcase pages and transitions with Framer Motion",
         "E2E test suite with Playwright to catch visual regressions across deployments",
         "Next.js 16 App Router structure with Sanity image pipeline and CDN delivery"
       ],
-
       "portfolio_notes": "Demonstrates: client delivery, CMS integration, Next.js App Router, TypeScript, animation, E2E testing, real-world freelance workflow"
     },
-
     {
       "id": "hjelply",
-      "title": "Hjelply — Community Support Platform",
+      "title": "Hjelply: Community Support Platform",
       "status": "paused",
-      "status_label": "Paused Development",
+      "status_label": "Paused",
       "tagline": "Full-stack mutual aid network with points economy and trust progression",
-
-      "description": "A full-stack community platform connecting people who need help with those who can provide it. Built around a points-based economy with escrow, a 5-tier trust progression system, and a complete admin moderation panel. Currently paused to focus on higher-priority projects.",
-
+      "description": "A full-stack community platform that connects people who need help with people who can give it. It runs on a points-based economy with escrow, a 5-tier trust progression system and a complete admin moderation panel. Paused for now while I focus on higher-priority projects.",
       "long_description": "Hjelply is a demonstration mutual aid network designed for individuals who need flexible peer-to-peer support. Users can both request and offer help — posting tasks, earning points, and building trust through a structured reputation system.\n\nThe name is a placeholder with a nice ring to it — inspired by the Norwegian word for help ('hjelp'), courtesy of a Norwegian girlfriend. Built to explore the real complexity behind fair exchange systems, user trust, and accessible UI design for a sensitive user group.",
-
       "tech_stack": [
         "React 18 & TypeScript",
         "Tailwind CSS",
@@ -299,7 +256,6 @@
         "JWT Authentication",
         "Docker & Docker Compose"
       ],
-
       "features": [
         "Points-based economy with escrow (held until task completion)",
         "5-tier trust progression system (online-only → home access)",
@@ -310,20 +266,16 @@
         "Complete audit logging",
         "Mobile-responsive across all pages"
       ],
-
       "metrics": {
         "development_time": "~6 weeks active development",
         "sprints": "4 development sprints",
         "stack": "Full-stack with separate frontend, backend and database services"
       },
-
       "links": {
         "github": "https://github.com/charliegdeburiatte-hub/Hjelply",
         "demo": null
       },
-
       "why_built": "To explore the complexity of building a real platform — fair economy design, user trust systems, multi-service architecture, and accessible design for a sensitive audience.",
-
       "challenges_solved": [
         "Designing a points economy that can't be easily gamed",
         "Building meaningful trust/reputation progression with real requirements",
@@ -333,28 +285,22 @@
         "JWT authentication with secure password hashing",
         "Mobile responsiveness across admin and user-facing pages"
       ],
-
       "why_paused": "Paused to focus on projects more directly relevant to getting into work, primarily the Job Application Analyser. Core functionality is complete.",
-
       "portfolio_notes": "Demonstrates: Full-stack development, database design, API architecture, authentication, complex business logic, Docker infrastructure, TypeScript across the entire stack"
     },
-
     {
       "id": "custom-pc-build",
-      "title": "Custom PC Build & Optimization",
+      "title": "Custom PC Build & Optimisation",
       "status": "completed",
       "status_label": "Completed",
       "tagline": "High-performance workstation built from scratch",
-
-      "description": "Researched, assembled, and configured a custom PC from components. This hands-on project marked the transition from being a technology user to understanding how hardware and software interact at a systems level.",
-
+      "description": "Researched the parts, then assembled and configured the PC myself. This is where I went from just using technology to understanding how hardware and software work together at a systems level.",
       "tech_stack": [
         "PC Hardware Assembly",
         "BIOS Configuration",
-        "Windows Installation & Optimization",
+        "Windows Installation & Optimisation",
         "Driver Management"
       ],
-
       "features": [
         "Component research and compatibility verification",
         "Complete hardware assembly",
@@ -362,9 +308,7 @@
         "Operating system installation and setup",
         "Performance testing and troubleshooting"
       ],
-
       "why_built": "To gain hands-on understanding of computer hardware and build a foundation for IT support work.",
-
       "challenges_solved": [
         "Component compatibility verification",
         "Thermal management and airflow optimization",
@@ -372,44 +316,35 @@
         "Performance benchmarking and optimization"
       ]
     },
-
     {
       "id": "intel-platform-diagnostics",
       "title": "Intel 13th Gen Platform Investigation",
       "status": "completed",
       "status_label": "Completed",
-      "tagline": "Deep-dive hardware diagnostics and research project",
-
-      "description": "Identified and investigated persistent system instability issues linked to Intel's 13th generation platform. Navigated conflicting reports and non-standard symptoms through structured research and troubleshooting methodologies.",
-
+      "tagline": "Hardware diagnostics and research project",
+      "description": "Tracked down persistent system instability linked to Intel's 13th generation platform. The reports contradicted each other and the symptoms weren't the usual ones, so I worked through it with structured research and troubleshooting.",
       "tech_stack": [
         "Hardware Diagnostics Tools",
         "Stress Testing Software",
         "System Monitoring",
         "Technical Research"
       ],
-
       "why_built": "To resolve persistent stability issues and develop advanced hardware diagnostic skills.",
-
       "challenges_solved": [
         "Identifying root cause among conflicting information",
         "Systematic isolation testing",
         "Documentation and analysis of non-standard symptoms",
         "Structured troubleshooting approach"
       ],
-
       "impact": "Strengthened analytical thinking and diagnostic methodology for complex hardware issues"
     },
-
     {
       "id": "portfolio-website",
       "title": "Professional Portfolio Website",
       "status": "active",
       "status_label": "In Development",
       "tagline": "AI-assisted modern web development",
-
       "description": "Designed and built a functional portfolio website using AI-assisted development tools. This project demonstrates the ability to learn quickly and apply modern web technologies to create professional, usable applications.",
-
       "tech_stack": [
         "React",
         "Tailwind CSS",
@@ -418,7 +353,6 @@
         "Git/GitHub",
         "Modern JavaScript"
       ],
-
       "features": [
         "Responsive design",
         "Component-based architecture",
@@ -426,47 +360,38 @@
         "Contact form integration",
         "Performance optimization"
       ],
-
       "why_built": "To showcase skills and projects while learning modern web development practices.",
-
       "challenges_solved": [
         "Learning React component architecture",
         "Implementing responsive design patterns",
         "Content structure and organization",
         "Deployment and hosting configuration"
       ],
-
       "links": {
         "github": "https://github.com/charliegdeburiatte-hub",
         "demo": null
       }
     },
-
     {
       "id": "homelab-environment",
       "title": "Home Lab Infrastructure",
       "status": "active",
       "status_label": "Ongoing",
       "tagline": "Virtual infrastructure for hands-on learning",
-
-      "description": "Built and maintained a home lab environment for experimenting with virtual machines, Windows Server, networking configurations, and system administration.",
-
+      "description": "A home lab I built and maintain for experimenting with virtual machines, Windows Server, networking and system administration.",
       "tech_stack": [
         "Virtual Machines (VMware, VirtualBox)",
         "Windows Server",
         "Networking Configuration",
         "System Administration"
       ],
-
       "features": [
         "Multiple VM environments",
         "Windows Server experimentation",
         "Network configuration testing",
         "Service deployment and management"
       ],
-
       "why_built": "To gain practical hands-on experience with enterprise IT infrastructure in a safe learning environment.",
-
       "ongoing_learning": [
         "Advanced networking concepts",
         "Server administration best practices",
@@ -475,7 +400,6 @@
       ]
     }
   ],
-
   "skills": {
     "technical_expertise": [
       {
@@ -517,7 +441,6 @@
         ]
       }
     ],
-
     "soft_skills": [
       "Problem-Solving",
       "Technical Troubleshooting",
@@ -532,7 +455,6 @@
       "Patience",
       "Process-Oriented Thinking"
     ],
-
     "certifications": [
       {
         "name": "Google IT Support Professional Certificate",
@@ -545,7 +467,6 @@
         "year": "2023-2024"
       }
     ],
-
     "actively_learning": [
       {
         "name": "Network+ (CompTIA)",
@@ -568,7 +489,6 @@
         "goal": "Full-stack development capabilities"
       }
     ],
-
     "tools_and_workflow": [
       "Virtual Machines (VMware, VirtualBox)",
       "TeamViewer & Remote Support Tools",
@@ -579,7 +499,6 @@
       "SCANPST.EXE & Outlook Diagnostics"
     ]
   },
-
   "work_experience": [
     {
       "title": "IT Technician",
@@ -588,10 +507,10 @@
       "period": "Sep 2021 - Mar 2022",
       "type": "Full-time",
       "responsibilities": [
-        "Provided Tier 1-2 technical support to 25+ remote staff on Windows 10/11 laptops, resolving hardware issues and OS problems to restore functionality quickly",
-        "Diagnosed and repaired Microsoft Outlook and Microsoft 365, including advanced troubleshooting with SCANPST.EXE tool, reducing email sync downtime for users",
-        "Provided remote assistance via TeamViewer, phone, WhatsApp and Microsoft Teams, guiding users through step-by-step resolutions and verifying issue closure to maintain productivity",
-        "Managed inventory of laptops and peripherals, coordinating hardware swaps and replacements to minimize operational disruptions"
+        "Tier 1-2 support for 25+ remote staff on Windows 10/11 laptops, fixing hardware and OS problems and getting people working again quickly",
+        "Diagnosed and fixed Outlook and Microsoft 365 problems, including deeper repairs with SCANPST.EXE, so people lost less time to email sync issues",
+        "Helped people remotely over TeamViewer, phone, WhatsApp and Microsoft Teams, talking them through each fix step by step and checking it was sorted before closing it",
+        "Managed the stock of laptops and peripherals and arranged hardware swaps and replacements to keep disruption to a minimum"
       ],
       "technologies": [
         "Windows 10/11",
@@ -625,7 +544,6 @@
       ]
     }
   ],
-
   "key_achievements": [
     {
       "title": "Built First Custom PC from Scratch",
@@ -643,7 +561,6 @@
       "impact": "Reinforced ability to learn quickly and apply new technologies in practical ways"
     }
   ],
-
   "interests": {
     "technical": [
       "IT Systems & Infrastructure",
@@ -653,14 +570,12 @@
       "Cloud platforms (AWS)",
       "Network infrastructure"
     ],
-
     "personal": [
       "Gaming (Strategy games)",
       "Fish keeping",
       "3D printing",
       "Theme parks"
     ],
-
     "current_exploration": [
       "Practical applications of AI in IT workflows",
       "Building robust home lab environments",
@@ -669,7 +584,6 @@
       "Systems automation and optimization"
     ]
   },
-
   "meta": {
     "portfolio_version": "2.0",
     "last_updated": "2026-04-17",

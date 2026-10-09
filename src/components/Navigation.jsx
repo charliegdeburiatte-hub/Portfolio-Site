@@ -1,89 +1,115 @@
-import { useState, useEffect } from 'react';
-import CVModal from './CVModal';
+import { useEffect, useRef, useState } from 'react';
+import { FileText, Menu, X } from 'lucide-react';
 
-function Navigation() {
-  const [activeSection, setActiveSection] = useState('');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [cvOpen, setCvOpen] = useState(false);
+const sections = [
+  { id: 'projects', label: 'Projects' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+];
 
-  const navItems = [
-    { id: 'projects', label: 'Projects' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' },
-  ];
+function Navigation({ onOpenCV }) {
+  const [active, setActive] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
+  // Highlight the section currently in view
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            setActiveSection(section.id);
-            break;
-          }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
         }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    for (const { id } of sections) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // Close the phone menu on Escape or a tap outside it
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false); };
+    const onDown = (e) => { if (!menuRef.current?.contains(e.target)) setMenuOpen(false); };
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('pointerdown', onDown);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('pointerdown', onDown);
+    };
+  }, [menuOpen]);
+
+  const linkClass = (id) =>
+    `inline-flex items-center min-h-11 px-3 rounded-full text-[0.9375rem] font-medium no-underline transition-colors ${
+      active === id ? 'bg-white/70 text-ink shadow-[inset_0_1px_0_white]' : 'text-ink hover:bg-white/45'
+    }`;
 
   return (
-    <>
+    <header ref={menuRef} className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-5">
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          isScrolled ? 'bg-surface/90 backdrop-blur-md border-b border-border' : 'bg-transparent'
-        }`}
+        aria-label="Main"
+        className="glass glass-chrome mx-auto flex max-w-5xl items-center gap-1 rounded-full py-1.5 pl-4 pr-1.5"
       >
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="font-display text-lg font-bold text-ink hover:text-plum transition-colors"
-            >
-              Charlie
-            </button>
+        <a href="#top" className="mr-auto min-h-11 inline-flex items-center font-semibold text-ink no-underline tracking-tight">
+          <span className="sm:hidden">Charlie</span>
+          <span className="hidden sm:inline">Charlie De Buriatte</span>
+        </a>
 
-            <div className="flex items-center gap-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-sm font-medium transition-colors duration-200 hover:text-plum ${
-                    activeSection === item.id ? 'text-plum' : 'text-ink-muted'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-              <button
-                onClick={() => setCvOpen(true)}
-                className="btn-secondary !px-3 !py-1 text-sm font-mono"
-              >
-                CV
-              </button>
-            </div>
-          </div>
-        </div>
+        <a href="#projects" className={`${linkClass('projects')} md:hidden`} aria-current={active === 'projects' ? 'true' : undefined}>
+          Projects
+        </a>
+
+        <ul className="hidden md:flex items-center gap-0.5 m-0 p-0 list-none">
+          {sections.map(({ id, label }) => (
+            <li key={id}>
+              <a href={`#${id}`} className={linkClass(id)} aria-current={active === id ? 'true' : undefined}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <button type="button" onClick={onOpenCV} className="btn btn-gloss btn-sm ml-1">
+          <FileText size={16} aria-hidden="true" />
+          CV
+        </button>
+
+        <button
+          type="button"
+          className="md:hidden inline-grid place-items-center size-11 rounded-full text-ink hover:bg-white/45"
+          aria-expanded={menuOpen}
+          aria-controls="nav-menu"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+        </button>
+
       </nav>
-      {cvOpen && <CVModal onClose={() => setCvOpen(false)} />}
-    </>
+
+      {menuOpen && (
+        <ul
+          id="nav-menu"
+          className="glass glass-blur md:hidden absolute right-3 top-[calc(100%+0.25rem)] sm:right-5 m-0 w-56 list-none rounded-3xl p-2 settle"
+        >
+          {sections.slice(1).map(({ id, label }) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className="flex min-h-11 items-center rounded-2xl px-4 font-medium text-ink no-underline hover:bg-white/60"
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </header>
   );
 }
 

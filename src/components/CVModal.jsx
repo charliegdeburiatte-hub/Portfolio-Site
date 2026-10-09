@@ -1,75 +1,56 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { Download, ExternalLink, X } from 'lucide-react';
 
-function CVModal({ onClose }) {
-  useEffect(() => {
-    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [onClose]);
+// The CV opens as an Aero window. A native <dialog> gives focus trapping,
+// Escape to close and an inert page behind it for free.
+function CVModal({ open, onClose }) {
+  const ref = useRef(null);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, []);
+    const dialog = ref.current;
+    if (!dialog) return;
+    if (open && !dialog.open) dialog.showModal();
+    if (!open && dialog.open) dialog.close();
+  }, [open]);
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(36, 33, 26, 0.6)', backdropFilter: 'blur(6px)' }}
-      onClick={onClose}
+    <dialog
+      ref={ref}
+      aria-labelledby="cv-title"
+      onClose={onClose}
+      onClick={(e) => { if (e.target === ref.current) onClose(); }}
+      className="cv-dialog m-auto h-[min(92svh,60rem)] w-[min(100%-1.5rem,56rem)] max-w-none max-h-none overflow-visible border-0 bg-transparent p-0 backdrop:bg-[rgb(4_30_42/0.6)] backdrop:backdrop-blur-[6px]"
     >
-      <div
-        className="relative w-full max-w-4xl h-[90vh] rounded-2xl flex flex-col overflow-hidden"
-        style={{
-          background: 'var(--color-surface)',
-          border: '1px solid var(--color-border)',
-          boxShadow: 'var(--shadow-loud)',
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div
-          className="flex items-center justify-between px-6 py-4 flex-shrink-0"
-          style={{ borderBottom: '1px solid var(--color-border)' }}
-        >
-          <div>
-            <span className="text-ink font-semibold font-display">Charlie De Buriatte</span>
-            <span className="ml-3 tag">CV.pdf</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="/cv.pdf"
-              download="Charlie_De_Buriatte_CV.pdf"
-              className="btn-primary !px-4 !py-1.5 text-sm"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Download
-            </a>
-            <button
-              onClick={onClose}
-              className="flex items-center justify-center w-8 h-8 rounded-lg text-ink-muted transition-colors duration-150"
-              style={{ background: 'var(--color-card)', border: '1px solid var(--color-border)' }}
-              aria-label="Close CV"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
-          </div>
+      <div className="aero flex h-full flex-col">
+        <div className="aero-titlebar">
+          <h2 id="cv-title" className="aero-title m-0 mr-auto">Charlie De Buriatte: CV</h2>
+          <button type="button" className="aero-close" onClick={onClose} aria-label="Close CV">
+            <X size={18} strokeWidth={2.75} aria-hidden="true" />
+          </button>
         </div>
 
-        <iframe
-          src="/cv.pdf"
-          className="flex-1 w-full"
-          title="Charlie De Buriatte — CV"
-          style={{ border: 'none', background: 'var(--color-card)' }}
-        />
+        <div className="relative flex flex-wrap items-center gap-2 pb-2">
+          <a className="btn btn-gloss btn-sm" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">
+            <Download size={16} aria-hidden="true" />
+            Download PDF
+          </a>
+          <a className="btn btn-metal btn-sm" href="/Charlie_De_Buriatte_CV.docx" download>
+            <Download size={16} aria-hidden="true" />
+            Download Word
+          </a>
+          <a className="ml-auto inline-flex min-h-11 items-center gap-1.5 px-2 text-[0.9375rem] font-medium" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+            Open in new tab
+            <ExternalLink size={14} aria-hidden="true" />
+          </a>
+        </div>
+
+        <div className="aero-client relative flex-1 overflow-hidden">
+          {open && (
+            <iframe src="/cv.pdf" title="Charlie De Buriatte CV (PDF)" className="absolute inset-0 size-full border-0" />
+          )}
+        </div>
       </div>
-    </div>
+    </dialog>
   );
 }
 

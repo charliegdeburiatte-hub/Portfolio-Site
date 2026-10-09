@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Impeccable working files (screenshots, live mode, decision pages)
+.impeccable/review/
+.impeccable/live/
+.impeccable/questions/
+.impeccable/config.local.json

@@ -1,26 +1,47 @@
+import { useState } from 'react';
 import contentData from '../CONTENT_DATA.json';
 
-function Footer() {
-  const { meta, personal } = contentData;
+const readGlass = () => {
+  try { return localStorage.getItem('glass') !== 'off'; } catch { return true; }
+};
+
+// A real switch: turns every translucent surface solid, for anyone who
+// finds the glass harder to read. The choice is remembered on this device.
+function GlassSwitch() {
+  const [on, setOn] = useState(readGlass);
+
+  const toggle = () => {
+    const next = !on;
+    setOn(next);
+    document.documentElement.dataset.glass = next ? 'on' : 'off';
+    try { localStorage.setItem('glass', next ? 'on' : 'off'); } catch { /* storage blocked: still applies for this visit */ }
+  };
 
   return (
-    <footer className="bg-card border-t border-border py-8">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-ink-muted">
-          <div className="font-mono">
-            <span className="text-plum">Portfolio v{meta.portfolio_version}</span>
-            <span className="mx-2 text-ink-faint">&middot;</span>
-            <span>Last updated {meta.last_updated}</span>
-            <span className="mx-2 text-ink-faint">&middot;</span>
-            <span>{meta.site_status}</span>
-          </div>
+    <button
+      type="button"
+      role="switch"
+      aria-checked={on}
+      onClick={toggle}
+      className="inline-flex min-h-11 items-center gap-3 font-medium text-on-field"
+    >
+      Glass effects
+      <span className={`ios-switch ${on ? 'is-on' : ''}`} aria-hidden="true">
+        <span className="ios-switch-knob" />
+      </span>
+    </button>
+  );
+}
 
-          <p>{personal.location}</p>
+function Footer() {
+  const { personal } = contentData;
 
-          <div className="font-mono text-xs text-ink-faint">
-            Built with React + Tailwind CSS
-          </div>
-        </div>
+  return (
+    <footer className="focus-light px-4 pb-10 pt-6 sm:px-6">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 border-t border-white/15 pt-6 text-[0.9375rem] text-on-field-soft sm:flex-row sm:justify-between">
+        <p className="m-0">© {new Date().getFullYear()} {personal.name} · {personal.location}</p>
+        <GlassSwitch />
+        <p className="m-0">Built with React + Tailwind CSS</p>
       </div>
     </footer>
   );
