@@ -6,7 +6,7 @@ import { AnalyserIcon } from './AnalyserIcon';
 // Shown on the page; the full stack stays in CONTENT_DATA.json
 const FLAGSHIP_TAGS = ['React 19', 'TypeScript', 'Claude API (Anthropic)', 'PDF.js (PDF parsing)', 'Vercel (deployment)'];
 
-const IT_PROJECTS = ['intel-platform-diagnostics', 'custom-pc-build'];
+const IT_PROJECTS = ['homelab-environment', 'intel-platform-diagnostics', 'custom-pc-build'];
 const SOFTWARE_PROJECTS = ['freddo-index', 'interview-help', 'freelance-portfolio-client', 'hjelply'];
 
 const byId = (id) => contentData.projects.find((p) => p.id === id);
@@ -80,21 +80,22 @@ function ProjectWindow({ project }) {
 
 // Full-width window for a project with a list of what was actually done
 function WideProjectWindow({ project }) {
-  const { id, title, status, status_label, tagline, description, highlights, why_built, tech_stack } = project;
+  const { id, title, status, status_label, tagline, description, highlights, tech_stack } = project;
+  const List = project.highlights_ordered ? 'ol' : 'ul';
   return (
     <AeroWindow id={id} title={title} badge={<StatusBadge status={status} label={status_label} />}>
       <div className="grid gap-6 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:gap-8">
         <div>
           <p className="m-0 text-[1.1875rem] font-semibold leading-snug text-ink">{tagline}</p>
           <p className="mt-3 mb-0 max-w-[68ch] text-ink-soft">{description}</p>
-          <h4 className="mt-5 mb-0 text-[0.9375rem] font-semibold text-ink">What I've set up</h4>
-          <ul className="mt-2 mb-0 max-w-[68ch] pl-5 text-ink-soft">
+          <h4 className="mt-5 mb-0 text-[0.9375rem] font-semibold text-ink">{project.highlights_title}</h4>
+          <List className={`mt-2 mb-0 max-w-[68ch] pl-5 text-ink-soft ${List === 'ol' ? 'list-decimal marker:font-semibold marker:text-field' : ''}`}>
             {highlights.map((h) => <li key={h} className="mb-1.5">{h}</li>)}
-          </ul>
+          </List>
         </div>
         <div className="border-t border-field/15 pt-5 md:border-t-0 md:border-l md:pt-0 md:pl-8">
-          <h4 className="m-0 text-[0.9375rem] font-semibold text-ink">Why I built it</h4>
-          <p className="mt-1 mb-4 text-[0.9375rem] text-ink-soft">{why_built}</p>
+          <h4 className="m-0 text-[0.9375rem] font-semibold text-ink">{project.side_title ?? 'Why I built it'}</h4>
+          <p className="mt-1 mb-4 text-[0.9375rem] text-ink-soft">{project.side_text ?? project.why_built}</p>
           <TagList tags={tech_stack} />
         </div>
       </div>
@@ -102,13 +103,14 @@ function WideProjectWindow({ project }) {
   );
 }
 
-function Group({ id, title, ids, cols, lead, first }) {
+function Group({ id, title, ids, cols, lead, first, card = ProjectWindow }) {
+  const Card = card;
   return (
     <section aria-labelledby={id} className={first ? '' : 'mt-12'}>
       <h3 id={id} className="spine-node m-0 mb-4 text-[1.25rem] font-semibold text-on-field">{title}</h3>
       {lead && <div className="mb-5">{lead}</div>}
       <div className={`grid gap-5 ${cols}`}>
-        {ids.map((pid) => <ProjectWindow key={pid} project={byId(pid)} />)}
+        {ids.map((pid) => <Card key={pid} project={byId(pid)} />)}
       </div>
     </section>
   );
@@ -118,7 +120,7 @@ function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-title" className="page-section">
       <SectionHeading id="projects-title" title="Projects" intro="Building tools that solve real problems, learning AI as I go" />
-      <Group id="projects-it" title="IT and infrastructure" ids={IT_PROJECTS} cols="md:grid-cols-2" lead={<WideProjectWindow project={byId('homelab-environment')} />} first />
+      <Group id="projects-it" title="IT and infrastructure" ids={IT_PROJECTS} cols="" card={WideProjectWindow} first />
       <Group id="projects-software" title="Software" ids={SOFTWARE_PROJECTS} cols="md:grid-cols-2" lead={<Flagship />} />
     </section>
   );

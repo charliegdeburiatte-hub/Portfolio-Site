@@ -306,12 +306,13 @@
         "Windows Installation & Optimisation",
         "Driver Management"
       ],
-      "features": [
-        "Component research and compatibility verification",
-        "Complete hardware assembly",
-        "BIOS configuration and optimization",
-        "Operating system installation and setup",
-        "Performance testing and troubleshooting"
+      "highlights_title": "What I did",
+      "highlights": [
+        "Researched the components and checked they were compatible",
+        "Assembled the hardware",
+        "Configured and tuned the BIOS",
+        "Installed and set up the operating system",
+        "Tested performance and troubleshot problems"
       ],
       "why_built": "To gain hands-on understanding of computer hardware and build a foundation for IT support work.",
       "challenges_solved": [
@@ -326,13 +327,27 @@
       "title": "Intel 13th Gen Platform Investigation",
       "status": "completed",
       "status_label": "Completed",
-      "tagline": "Hardware diagnostics and research project",
-      "description": "Tracked down persistent system instability linked to Intel's 13th generation platform. The reports contradicted each other and the symptoms weren't the usual ones, so I worked through it with structured research and troubleshooting.",
+      "tagline": "Stutters, crashes and random blue screens that everything said was the graphics card. It wasn't.",
+      "description": "Games started stuttering badly and crashing, and I was getting blue screens with a different error every time. It turned out to be the Intel 13th gen instability problem, fixed by a microcode update in the motherboard BIOS.",
+      "highlights_title": "How I worked it out",
+      "highlights_ordered": true,
+      "highlights": [
+        "Assumed it was the graphics card. Updated the drivers, then wiped them with DDU and reinstalled, then reseated the card. No change",
+        "Swapped in my old GTX 1070 Ti. Same problem, so the GPU was ruled out",
+        "The blue screens never showed the same error twice. Researching that turned up reports of an Intel 13th gen microcode fault, but I put it down to a few unlucky CPUs and moved on",
+        "Checked temperatures and the cooler mount in case the CPU was overheating. While monitoring, I noticed the CPU voltage didn't look right",
+        "Started crashing in Disney Dreamlight Valley too, so it wasn't one game. Went back to the 13th gen reports and my symptoms matched",
+        "Checked MSI's BIOS page almost hourly for the fix and installed it as soon as it came out"
+      ],
+      "side_title": "Result",
+      "side_text": "Stable since the BIOS update went on.",
       "tech_stack": [
-        "Hardware Diagnostics Tools",
-        "Stress Testing Software",
-        "System Monitoring",
-        "Technical Research"
+        "Driver updates",
+        "DDU (Display Driver Uninstaller)",
+        "Hardware swap testing",
+        "Temperature & voltage monitoring",
+        "BSOD diagnosis",
+        "BIOS & microcode update"
       ],
       "why_built": "To resolve persistent stability issues and develop advanced hardware diagnostic skills.",
       "challenges_solved": [
@@ -384,6 +399,7 @@
       "status_label": "Ongoing",
       "tagline": "A small Windows domain and service desk I run on my own PC",
       "description": "A virtual lab where I practise the work an IT support job actually involves: Windows Server, Windows 10/11 and Linux VMs, plus a practice service desk.",
+      "highlights_title": "What I've set up",
       "highlights": [
         "Set up Active Directory Domain Services with DNS on a Windows Server 2025 VM",
         "Used Group Policy for password and account management",
