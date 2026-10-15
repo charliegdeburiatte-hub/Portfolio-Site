@@ -46,8 +46,8 @@ function Hero({ onOpenCV }) {
 
       <ul className="mx-auto mt-8 [@media(max-height:760px)]:mt-6 mb-0 grid w-full max-w-4xl list-none gap-3 p-0 sm:grid-cols-3" aria-label="At a glance">
         <Widget icon={BriefcaseBusiness} title="Open to IT support roles" detail="Remote preferred · Looe, Cornwall" delay="120ms" />
-        <Widget icon={BadgeCheck} title={aPlus.name} detail={google.name} delay="180ms" />
-        <Widget icon={Headset} title={status.experience_level} detail="Tier 1-2 support at VantageUAV" delay="240ms" />
+        <Widget icon={BadgeCheck} title={google.name} detail={`${aPlus.name}: ${aPlus.status.toLowerCase()}`} delay="180ms" />
+        <Widget icon={Headset} title={status.experience_level} detail="At VantageUAV, plus a home lab since 2022" delay="240ms" />
       </ul>
 
       <article

@@ -1,9 +1,9 @@
-import { Briefcase, Gamepad2, GraduationCap, Headset, Phone, Sparkles } from 'lucide-react';
+import { Briefcase, Gamepad2, GraduationCap, Headset, Phone, Server, Sparkles } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 import { SectionHeading } from './ui';
 
 // Journey as a notification history, newest first
-const ICONS = [Sparkles, GraduationCap, Headset, Phone, Gamepad2];
+const ICONS = [Sparkles, GraduationCap, Server, Headset, Phone, Gamepad2];
 
 function About() {
   const { bio, work_experience } = contentData;

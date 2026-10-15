@@ -6,7 +6,7 @@
     "status": {
       "current_focus": "IT Systems & AI-assisted development",
       "learning": "Network+, AWS, AI application development",
-      "experience_level": "1.5 years IT support experience",
+      "experience_level": "Tier 1-2 IT support",
       "availability": "Open to opportunities"
     },
     "location": "Remote Preferred / Looe, Cornwall",
@@ -25,7 +25,7 @@
     }
   },
   "bio": {
-    "short": "IT Support Specialist with 1.5 years experience in technical troubleshooting and systems administration. Building expertise through hands-on projects and continuous learning.",
+    "short": "IT Support Specialist with Tier 1-2 support experience at VantageUAV and a home lab I keep building on. Building expertise through hands-on projects and continuous learning.",
     "medium": "I'm building my career in IT by learning how systems work and putting that into real projects, from home lab experiments to AI-powered tools. I want to know why something works as well as how. My goal is a role where I get real technical problems to solve and keep learning.",
     "full": "I became genuinely interested in technology in my early teens, starting as a typical user before gradually becoming the person who fixed things. Gaming, building PCs, and experimenting with virtual machines sparked a deeper curiosity about how systems actually work beneath the surface. Over time, that curiosity shifted from using technology to understanding and building it.\n\nAlthough I originally considered paths like healthcare or history, I found myself increasingly drawn to systems, infrastructure, and problem-solving. Building my own environments and troubleshooting real hardware issues, including diagnosing instability linked to Intel's 13th generation platform, strengthened my interest in technical problem-solving and persistence.\n\nMore recently, the rapid evolution of AI reignited that same curiosity. What began as casual experimentation evolved into using AI tools to build practical projects and improve workflows. Today, I'm focused on developing strong IT fundamentals while continuing to explore how modern tools, including AI, can enhance real-world systems and operations.",
     "what_drives_me": "I like working out how systems work and making them better over time. My favourite problems are the ones where the answer isn't obvious. Keeping technology running smoothly behind the scenes is work I genuinely enjoy.",
@@ -46,9 +46,14 @@
         "context": "Tier 1-2 technical support for 25+ remote staff, hardware diagnostics, Microsoft 365 support"
       },
       {
-        "period": "2023-2024",
-        "milestone": "Courses and certifications",
-        "context": "Completed the Google IT Support Professional Certificate and CompTIA A+"
+        "period": "2022 - Present",
+        "milestone": "Home lab and independent support",
+        "context": "Built virtual labs for Windows Server, Windows 10/11 and Linux, and sorted out PCs, Wi-Fi and printers for friends and family"
+      },
+      {
+        "period": "2025",
+        "milestone": "Google IT Support Professional Certificate",
+        "context": "Completed the certificate, then studied CompTIA A+ to exam ready"
       },
       {
         "period": "Current",
@@ -66,7 +71,7 @@
       "status_label": "v3.0.0 released",
       "tagline": "Privacy-first web app that scores your CV, then writes your cover letter",
       "description": "Upload your CV, paste in any job description and you get an instant match score from weighted scoring algorithms. Then Claude AI writes a tailored cover letter ready to send, plus CV bullet suggestions aimed at that job. It all runs entirely in your browser.",
-      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for and take action faster. Built with privacy as a priority — all processing happens in your browser with no data sent to servers (your API key goes only to Anthropic directly).\n\nThe weighted scoring algorithm treats required skills as 3x more important than preferred skills and includes 12 tool equivalency groups, so knowing Freshdesk counts for Zendesk, Jira experience covers Trello and Asana, and AWS counts towards Azure and GCP roles.\n\nv3.0.0 adds full Claude AI integration: paste a job description, run the analysis, then hit Generate to get a tailored cover letter in your personal voice and structure, plus specific CV bullet points grouped under the exact section they belong in. The first formal GitHub release marks the app as stable and publicly usable end-to-end.",
+      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for and take action faster. Built with privacy as a priority: all processing happens in your browser with no data sent to servers (your API key goes only to Anthropic directly).\n\nThe weighted scoring algorithm treats required skills as 3x more important than preferred skills and includes 12 tool equivalency groups, so knowing Freshdesk counts for Zendesk, Jira experience covers Trello and Asana, and AWS counts towards Azure and GCP roles.\n\nv3.0.0 adds full Claude AI integration: paste a job description, run the analysis, then hit Generate to get a tailored cover letter in your personal voice and structure, plus specific CV bullet points grouped under the exact section they belong in. The first formal GitHub release marks the app as stable and publicly usable end-to-end.",
       "tech_stack": [
         "React 19",
         "TypeScript",
@@ -81,31 +86,31 @@
         "Vercel (deployment)"
       ],
       "features": [
-        "Claude AI cover letter generation — tailored to the role, in your voice, British English, no buzzwords",
-        "Claude AI CV bullet suggestions — grouped by section so you know exactly where to paste them",
-        "Selective AI generation — toggle cover letter and CV suggestions independently",
+        "Claude AI cover letter generation: tailored to the role, in your voice, British English, no buzzwords",
+        "Claude AI CV bullet suggestions: grouped by section so you know exactly where to paste them",
+        "Selective AI generation: toggle cover letter and CV suggestions independently",
         "Copy cover letter to clipboard or download as PDF in one click",
         "Weighted scoring algorithm (required skills 3x preferred)",
-        "12 tool equivalency groups — Freshdesk counts for Zendesk, Jira covers Trello/Asana/Monday, AWS covers Azure/GCP",
-        "ITSM/ITIL equivalency — Service Desk and Helpdesk experience counts for framework labels",
+        "12 tool equivalency groups: Freshdesk counts for Zendesk, Jira covers Trello/Asana/Monday, AWS covers Azure/GCP",
+        "ITSM/ITIL equivalency: Service Desk and Helpdesk experience counts for framework labels",
         "DOCX and PDF CV upload, or paste text directly",
-        "Skill editor — review, add, or remove extracted skills before analysing",
-        "CV parse preview — see name, roles, and experience years before committing",
+        "Skill editor: review, add, or remove extracted skills before analysing",
+        "CV parse preview: see name, roles, and experience years before committing",
         "Application tracker with pipeline stages: Saved → Applied → Interview → Offer / Rejected",
         "Notes per job entry, saved automatically",
         "Search and filter history by title, company, or pipeline status",
         "Export full application history as CSV",
-        "Recurring skill gaps — bar chart of skills missing across recent analyses",
-        "Keyword suggestions — one-click copy of missing skills as bullet points",
-        "Shareable results links — compressed URL anyone can open to see your full results",
-        "PWA — installable on Android and iOS, opens full-screen, works offline",
-        "Bookmarklet — click on any job page and it sends the text straight to the analyser automatically",
-        "100% client-side processing — API key stored in your browser only, never sent anywhere except Anthropic"
+        "Recurring skill gaps: bar chart of skills missing across recent analyses",
+        "Keyword suggestions: one-click copy of missing skills as bullet points",
+        "Shareable results links: compressed URL anyone can open to see your full results",
+        "PWA: installable on Android and iOS, opens full-screen, works offline",
+        "Bookmarklet: click on any job page and it sends the text straight to the analyser automatically",
+        "100% client-side processing: API key stored in your browser only, never sent anywhere except Anthropic"
       ],
       "metrics": {
         "version": "3.0.0",
         "development_time": "~8 weeks",
-        "status": "v3.0.0 — first formal release, Mar 2026",
+        "status": "v3.0.0, first formal release, Mar 2026",
         "architecture_pivot": "Firefox extension → Universal web app → AI-powered job search toolkit"
       },
       "links": {
@@ -115,11 +120,11 @@
       },
       "why_built": "I needed it for my own job search. I wanted an objective answer on whether I was qualified for a job instead of guessing, so it scores your actual skills and experience against the job. Then the AI does the heavy lifting on the cover letter.",
       "challenges_solved": [
-        "Integrated Claude API client-side — API key never touches a server, goes directly to Anthropic from the browser",
-        "Designed cover letter prompt to produce natural-sounding output — banned buzzwords, em dashes, and flattery after testing on real applications",
-        "Built tool equivalency engine — 12 groups so transferable skills score correctly without false negatives",
+        "Integrated Claude API client-side: API key never touches a server, goes directly to Anthropic from the browser",
+        "Designed cover letter prompt to produce natural-sounding output: banned buzzwords, em dashes, and flattery after testing on real applications",
+        "Built tool equivalency engine: 12 groups so transferable skills score correctly without false negatives",
         "Bypassed React 19's javascript: URL blocking for the bookmarklet using vanilla JS injection",
-        "Bookmarklet auto-grabs job page text — no manual paste needed",
+        "Bookmarklet auto-grabs job page text: no manual paste needed",
         "Fixed service worker caching bug that was serving HTML as CSS and causing blank screens",
         "Designed weighted scoring system to prevent gaming (can't hit 100% on preferred skills alone)",
         "Pivoted architecture from Firefox extension to universal web application",
@@ -127,17 +132,17 @@
         "Built application tracker with pipeline stages, notes, search, and CSV export"
       ],
       "results_impact": [
-        "Shipped first formal GitHub release (v3.0.0) — app marked stable and publicly usable",
+        "Shipped first formal GitHub release (v3.0.0): app marked stable and publicly usable",
         "End-to-end job application workflow: score → cover letter → CV bullets, all in one tool",
-        "30+ commits across Feb–Mar 2026 — iterated from scoring tool to AI-powered assistant",
+        "30+ commits across Feb–Mar 2026: iterated from scoring tool to AI-powered assistant",
         "Tool equivalency matching fixes false negatives for IT support roles with overlapping tooling",
         "PWA installable on Android and iOS with offline support"
       ],
       "portfolio_notes": "Demonstrates: Claude API integration, prompt engineering, full-stack web development, TypeScript, algorithm design, PWA development, state management with Zustand, iterative product development, Vercel deployment, React 19 patterns, privacy-first architecture",
       "future_plans": [
-        "Semantic skill matching — 'JS' = 'JavaScript', '3 years Python' = 'Python (advanced)'",
-        "Job URL parsing — paste a LinkedIn/Indeed URL and fetch the job description automatically",
-        "Salary banding — extract salary from job description and flag relative to market rate"
+        "Semantic skill matching: 'JS' = 'JavaScript', '3 years Python' = 'Python (advanced)'",
+        "Job URL parsing: paste a LinkedIn/Indeed URL and fetch the job description automatically",
+        "Salary banding: extract salary from job description and flag relative to market rate"
       ]
     },
     {
@@ -196,9 +201,9 @@
         "github": "https://github.com/charliegdeburiatte-hub/interview-help",
         "demo": null
       },
-      "why_built": "Built to practice for job interviews without relying on cloud services — audio stays on device, AI runs locally, session history stored in SQLite.",
+      "why_built": "Built to practice for job interviews without relying on cloud services: audio stays on device, AI runs locally, session history stored in SQLite.",
       "challenges_solved": [
-        "Bundled Whisper with Electron for local audio transcription — no cloud API needed",
+        "Bundled Whisper with Electron for local audio transcription: no cloud API needed",
         "Streamed LLM feedback from local Ollama instance into the UI in real time",
         "Session persistence and history with SQLite via better-sqlite3",
         "Windows installer and portable zip packaging with electron-builder",
@@ -227,7 +232,7 @@
         "development_time": "~3 weeks",
         "status": "First paid freelance delivery"
       },
-      "why_built": "First paid freelance project — a real client with real requirements. Built to prove the ability to deliver professional work beyond personal side projects.",
+      "why_built": "First paid freelance project: a real client with real requirements. Built to prove the ability to deliver professional work beyond personal side projects.",
       "challenges_solved": [
         "Integrated Sanity CMS so the client fully owns their content updates post-launch",
         "Animated showcase pages and transitions with Framer Motion",
@@ -243,7 +248,7 @@
       "status_label": "Paused",
       "tagline": "Full-stack mutual aid network with points economy and trust progression",
       "description": "A full-stack community platform that connects people who need help with people who can give it. It runs on a points-based economy with escrow, a 5-tier trust progression system and a complete admin moderation panel. Paused for now while I focus on higher-priority projects.",
-      "long_description": "Hjelply is a demonstration mutual aid network designed for individuals who need flexible peer-to-peer support. Users can both request and offer help — posting tasks, earning points, and building trust through a structured reputation system.\n\nThe name is a placeholder with a nice ring to it — inspired by the Norwegian word for help ('hjelp'), courtesy of a Norwegian girlfriend. Built to explore the real complexity behind fair exchange systems, user trust, and accessible UI design for a sensitive user group.",
+      "long_description": "Hjelply is a demonstration mutual aid network designed for individuals who need flexible peer-to-peer support. Users can both request and offer help: posting tasks, earning points, and building trust through a structured reputation system.\n\nThe name is a placeholder with a nice ring to it, inspired by the Norwegian word for help ('hjelp'), courtesy of a Norwegian girlfriend. Built to explore the real complexity behind fair exchange systems, user trust, and accessible UI design for a sensitive user group.",
       "tech_stack": [
         "React 18 & TypeScript",
         "Tailwind CSS",
@@ -275,7 +280,7 @@
         "github": "https://github.com/charliegdeburiatte-hub/Hjelply",
         "demo": null
       },
-      "why_built": "To explore the complexity of building a real platform — fair economy design, user trust systems, multi-service architecture, and accessible design for a sensitive audience.",
+      "why_built": "To explore the complexity of building a real platform: fair economy design, user trust systems, multi-service architecture, and accessible design for a sensitive audience.",
       "challenges_solved": [
         "Designing a points economy that can't be easily gamed",
         "Building meaningful trust/reputation progression with real requirements",
@@ -377,13 +382,25 @@
       "title": "Home Lab Infrastructure",
       "status": "active",
       "status_label": "Ongoing",
-      "tagline": "Virtual infrastructure for hands-on learning",
-      "description": "A home lab I built and maintain for experimenting with virtual machines, Windows Server, networking and system administration.",
+      "tagline": "A small Windows domain and service desk I run on my own PC",
+      "description": "A virtual lab where I practise the work an IT support job actually involves: Windows Server, Windows 10/11 and Linux VMs, plus a practice service desk.",
+      "highlights": [
+        "Set up Active Directory Domain Services with DNS on a Windows Server 2025 VM",
+        "Used Group Policy for password and account management",
+        "Ran a practice service desk in Freshdesk, taking tickets from creation to closure with prioritisation and internal notes",
+        "Diagnosed IP, DNS and firewall problems",
+        "Wrote basic PowerShell and Bash scripts to speed up routine tasks"
+      ],
       "tech_stack": [
-        "Virtual Machines (VMware, VirtualBox)",
-        "Windows Server",
-        "Networking Configuration",
-        "System Administration"
+        "Windows Server 2025",
+        "Active Directory",
+        "Group Policy",
+        "DNS",
+        "Freshdesk",
+        "PowerShell",
+        "Bash",
+        "VMware & VirtualBox",
+        "Linux"
       ],
       "features": [
         "Multiple VM environments",
@@ -391,7 +408,7 @@
         "Network configuration testing",
         "Service deployment and management"
       ],
-      "why_built": "To gain practical hands-on experience with enterprise IT infrastructure in a safe learning environment.",
+      "why_built": "To get hands-on with the tools an IT support job uses every day, somewhere I can break things without breaking anyone's work.",
       "ongoing_learning": [
         "Advanced networking concepts",
         "Server administration best practices",
@@ -459,12 +476,11 @@
       {
         "name": "Google IT Support Professional Certificate",
         "status": "Completed",
-        "year": "2023-2024"
+        "year": "2025"
       },
       {
         "name": "CompTIA A+",
-        "status": "Completed",
-        "year": "2023-2024"
+        "status": "Exam ready, not yet taken"
       }
     ],
     "actively_learning": [

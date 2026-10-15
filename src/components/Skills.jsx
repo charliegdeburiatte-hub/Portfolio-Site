@@ -34,7 +34,7 @@ function Skills() {
       <div className="gap-6 md:columns-2">
         <Group label="Certifications">
           {skills.certifications.map((c) => (
-            <Row key={c.name} title={c.name} value={`${c.status} · ${c.year}`} />
+            <Row key={c.name} title={c.name} value={c.year ? `${c.status} · ${c.year}` : c.status} />
           ))}
         </Group>
 
