@@ -5,6 +5,15 @@ import { AnalyserIcon } from './AnalyserIcon';
 
 // Shown on the page; the full stack stays in CONTENT_DATA.json
 const FLAGSHIP_TAGS = ['React 19', 'TypeScript', 'Claude API (Anthropic)', 'PDF.js (PDF parsing)', 'Vercel (deployment)'];
+const SHOWN_TAGS = {
+  'homelab-environment': ['Windows Server 2025', 'Active Directory', 'Group Policy', 'Freshdesk', 'PowerShell'],
+  'intel-platform-diagnostics': ['DDU', 'Hardware swap testing', 'Voltage monitoring', 'BSOD diagnosis', 'BIOS & microcode update'],
+  'freddo-index': ['React', 'Vite', 'Recharts', 'Supabase'],
+  'interview-help': ['Electron', 'React', 'Ollama (local LLM)', 'Whisper (local)', 'SQLite'],
+  'freelance-portfolio-client': ['Next.js 16', 'TypeScript', 'Sanity CMS', 'Playwright (E2E tests)'],
+  hjelply: ['React & TypeScript', 'Node.js & Express', 'PostgreSQL', 'Docker'],
+};
+const tagsFor = (p) => SHOWN_TAGS[p.id] ?? p.tech_stack;
 
 const IT_PROJECTS = ['homelab-environment', 'intel-platform-diagnostics', 'custom-pc-build'];
 const SOFTWARE_PROJECTS = ['freddo-index', 'interview-help', 'freelance-portfolio-client', 'hjelply'];
@@ -67,12 +76,12 @@ function Flagship() {
 }
 
 function ProjectWindow({ project }) {
-  const { id, title, status, status_label, tagline, description, tech_stack, links } = project;
+  const { id, title, status, status_label, tagline, description, links } = project;
   return (
     <AeroWindow id={id} title={title} badge={<StatusBadge status={status} label={status_label} />}>
       <p className="m-0 font-semibold leading-snug text-ink">{tagline}</p>
       <p className="mt-2 mb-4 text-[0.9375rem] text-ink-soft">{description}</p>
-      <TagList tags={tech_stack} />
+      <TagList tags={tagsFor(project)} />
       <ProjectLinks links={links} />
     </AeroWindow>
   );
@@ -80,7 +89,7 @@ function ProjectWindow({ project }) {
 
 // Full-width window for a project with a list of what was actually done
 function WideProjectWindow({ project }) {
-  const { id, title, status, status_label, tagline, description, highlights, tech_stack } = project;
+  const { id, title, status, status_label, tagline, description, highlights } = project;
   const List = project.highlights_ordered ? 'ol' : 'ul';
   return (
     <AeroWindow id={id} title={title} badge={<StatusBadge status={status} label={status_label} />}>
@@ -96,7 +105,7 @@ function WideProjectWindow({ project }) {
         <div className="border-t border-field/15 pt-5 md:border-t-0 md:border-l md:pt-0 md:pl-8">
           <h4 className="m-0 text-[0.9375rem] font-semibold text-ink">{project.side_title ?? 'Why I built it'}</h4>
           <p className="mt-1 mb-4 text-[0.9375rem] text-ink-soft">{project.side_text ?? project.why_built}</p>
-          <TagList tags={tech_stack} />
+          <TagList tags={tagsFor(project)} />
         </div>
       </div>
     </AeroWindow>
@@ -119,7 +128,7 @@ function Group({ id, title, ids, cols, lead, first, card = ProjectWindow }) {
 function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-title" className="page-section">
-      <SectionHeading id="projects-title" title="Projects" intro="Building tools that solve real problems, learning AI as I go" />
+      <SectionHeading id="projects-title" title="Projects" intro="Lab work, real faults fixed, and the tools I've built along the way" />
       <Group id="projects-it" title="IT and infrastructure" ids={IT_PROJECTS} cols="" card={WideProjectWindow} first />
       <Group id="projects-software" title="Software" ids={SOFTWARE_PROJECTS} cols="md:grid-cols-2" lead={<Flagship />} />
     </section>

@@ -1,9 +1,9 @@
-import { Briefcase, Gamepad2, GraduationCap, Headset, Phone, Server, Sparkles } from 'lucide-react';
+import { BookOpen, Briefcase, Gamepad2, GraduationCap, Headset, Phone, Server } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 import { SectionHeading } from './ui';
 
 // Journey as a notification history, newest first
-const ICONS = [Sparkles, GraduationCap, Server, Headset, Phone, Gamepad2];
+const ICONS = [BookOpen, GraduationCap, Server, Headset, Phone, Gamepad2];
 
 function About() {
   const { bio, work_experience } = contentData;
@@ -15,7 +15,7 @@ function About() {
       <SectionHeading id="about-title" title="About" />
 
       <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-        <div className="glass rounded-[32px] p-6 sm:p-8">
+        <div className="glass rounded-[32px] p-6 sm:p-8 lg:sticky lg:top-[calc(var(--nav-h)+1.5rem)]">
           <p className="m-0 text-[1.1875rem] leading-relaxed text-ink">{bio.medium}</p>
           <h3 className="mt-6 mb-1 text-[1.0625rem] font-semibold text-ink">What drives me</h3>
           <p className="m-0 max-w-[68ch] text-ink-soft">{bio.what_drives_me}</p>
@@ -38,16 +38,12 @@ function About() {
                         <p className="m-0 font-semibold leading-snug text-ink">{item.milestone}</p>
                         <p className="m-0 text-[0.875rem] text-ink-soft">{item.period}</p>
                       </div>
-                      <p className="m-0 mt-0.5 text-[0.9375rem] text-ink-soft">{item.context}</p>
-                      {isVantage && vantage && (
-                        <details className="group mt-2">
-                          <summary className="inline-flex min-h-11 cursor-pointer items-center font-medium text-link">
-                            What I did there
-                          </summary>
-                          <ul className="mt-1 mb-1 pl-5 text-[0.9375rem] text-ink-soft">
-                            {vantage.responsibilities.map((r) => <li key={r} className="mb-1.5">{r}</li>)}
-                          </ul>
-                        </details>
+                      {isVantage && vantage ? (
+                        <ul className="mt-1.5 mb-0 list-disc pl-5 text-[0.9375rem] text-ink-soft marker:text-field" aria-label="What I did at VantageUAV">
+                          {vantage.responsibilities.map((r) => <li key={r} className="mb-1.5">{r}</li>)}
+                        </ul>
+                      ) : (
+                        <p className="m-0 mt-0.5 text-[0.9375rem] text-ink-soft">{item.context}</p>
                       )}
                     </div>
                   </div>

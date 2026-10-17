@@ -1,8 +1,12 @@
 import { useEffect, useRef } from 'react';
-import { Download, ExternalLink, X } from 'lucide-react';
+import { Download, ExternalLink, FileText, X } from 'lucide-react';
 
 // The CV opens as an Aero window. A native <dialog> gives focus trapping,
 // Escape to close and an inert page behind it for free.
+// Android Chrome has no inline PDF viewer and leaves the iframe blank,
+// so browsers that report none get a download panel instead.
+const canShowPdf = typeof navigator === 'undefined' || navigator.pdfViewerEnabled !== false;
+
 function CVModal({ open, onClose }) {
   const ref = useRef(null);
 
@@ -45,8 +49,19 @@ function CVModal({ open, onClose }) {
         </div>
 
         <div className="aero-client relative flex-1 overflow-hidden">
-          {open && (
+          {open && canShowPdf && (
             <iframe src="/cv.pdf" title="Charlie De Buriatte CV (PDF)" className="absolute inset-0 size-full border-0" />
+          )}
+          {open && !canShowPdf && (
+            <div className="grid h-full place-content-center justify-items-center gap-4 p-6 text-center">
+              <FileText size={40} className="text-field" aria-hidden="true" />
+              <p className="m-0 max-w-[32ch] text-ink-soft">This browser can't show PDFs inside the page. Open the CV in a new tab, or use the download buttons above.</p>
+              <a className="btn btn-gloss" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+                <ExternalLink size={18} aria-hidden="true" />
+                Open CV
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+            </div>
           )}
         </div>
       </div>

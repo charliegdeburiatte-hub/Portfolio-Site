@@ -2,14 +2,14 @@
   "personal": {
     "name": "Charlie De Buriatte",
     "title": "IT Support Specialist & Systems Enthusiast",
-    "tagline": "From IT fundamentals to applied AI, built through real projects",
+    "tagline": "Hands-on IT support, a home lab I keep building on, and real faults fixed step by step",
     "status": {
       "current_focus": "IT Systems & AI-assisted development",
       "learning": "Network+, AWS, AI application development",
       "experience_level": "Tier 1-2 IT support",
       "availability": "Open to opportunities"
     },
-    "location": "Remote Preferred / Looe, Cornwall",
+    "location": "Looe, Cornwall",
     "contact": {
       "email": "charlieg.deburiatte@gmail.com",
       "phone": "07894715845",
@@ -57,8 +57,8 @@
       },
       {
         "period": "Current",
-        "milestone": "Moving into AI and cloud",
-        "context": "Studying Network+ and AWS, building AI-assisted tools and running a home lab"
+        "milestone": "Studying Network+ and AWS",
+        "context": "Running a home lab alongside, and building tools when they solve a real problem"
       }
     ]
   },
@@ -70,8 +70,8 @@
       "status": "active",
       "status_label": "v3.0.0 released",
       "tagline": "Privacy-first web app that scores your CV, then writes your cover letter",
-      "description": "Upload your CV, paste in any job description and you get an instant match score from weighted scoring algorithms. Then Claude AI writes a tailored cover letter ready to send, plus CV bullet suggestions aimed at that job. It all runs entirely in your browser.",
-      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for and take action faster. Built with privacy as a priority: all processing happens in your browser with no data sent to servers (your API key goes only to Anthropic directly).\n\nThe weighted scoring algorithm treats required skills as 3x more important than preferred skills and includes 12 tool equivalency groups, so knowing Freshdesk counts for Zendesk, Jira experience covers Trello and Asana, and AWS counts towards Azure and GCP roles.\n\nv3.0.0 adds full Claude AI integration: paste a job description, run the analysis, then hit Generate to get a tailored cover letter in your personal voice and structure, plus specific CV bullet points grouped under the exact section they belong in. The first formal GitHub release marks the app as stable and publicly usable end-to-end.",
+      "description": "Upload your CV, paste in any job description and you get an instant match score from weighted scoring algorithms. Then Claude AI writes a tailored cover letter ready to send, plus CV bullet suggestions aimed at that job. Scoring runs in your browser. Only the cover letter step sends text to Anthropic, using your own API key.",
+      "long_description": "Job Application Analyser helps job seekers make objective decisions about which positions to apply for and take action faster. Built with privacy as a priority: scoring happens in your browser and there is no backend storing anything. When you generate a cover letter, your CV and the job text go straight to Anthropic using your own API key.\n\nThe weighted scoring algorithm treats required skills as 3x more important than preferred skills and includes 12 tool equivalency groups, so knowing Freshdesk counts for Zendesk, Jira experience covers Trello and Asana, and AWS counts towards Azure and GCP roles.\n\nv3.0.0 adds full Claude AI integration: paste a job description, run the analysis, then hit Generate to get a tailored cover letter in your personal voice and structure, plus specific CV bullet points grouped under the exact section they belong in. The first formal GitHub release marks the app as stable and publicly usable end-to-end.",
       "tech_stack": [
         "React 19",
         "TypeScript",
@@ -105,7 +105,7 @@
         "Shareable results links: compressed URL anyone can open to see your full results",
         "PWA: installable on Android and iOS, opens full-screen, works offline",
         "Bookmarklet: click on any job page and it sends the text straight to the analyser automatically",
-        "100% client-side processing: API key stored in your browser only, never sent anywhere except Anthropic"
+        "No backend: scoring runs in the browser, and the API key stays in your browser and goes only to Anthropic"
       ],
       "metrics": {
         "version": "3.0.0",
@@ -166,7 +166,7 @@
       },
       "links": {
         "github": "https://github.com/charliegdeburiatte-hub/freddo-index",
-        "demo": "https://freddo-index.vercel.app"
+        "demo": null
       },
       "why_built": "To build something fun and data-driven while practising React, charting libraries, and Supabase as a live backend.",
       "challenges_solved": [
@@ -436,41 +436,40 @@
   "skills": {
     "technical_expertise": [
       {
-        "category": "Operating Systems & Support",
+        "category": "Support & service desk",
         "skills": [
-          "Windows 10/11 Support (Expert)",
-          "Microsoft 365 & Outlook Support",
-          "Tier 1-2 Technical Support",
-          "Remote Troubleshooting"
+          "Technical support (Tier 1-2)",
+          "Ticketing and workflow (Freshdesk)",
+          "ITSM fundamentals and documentation",
+          "Microsoft 365 and Outlook repair (SCANPST.EXE)",
+          "Remote support (Teams, Zoom, Slack, TeamViewer)"
         ]
       },
       {
-        "category": "Hardware & Infrastructure",
+        "category": "Systems & networking",
         "skills": [
-          "PC Assembly & Configuration",
-          "Hardware Diagnostics",
-          "Virtual Machine Environments",
-          "Home Lab Experimentation",
-          "Router Configuration"
+          "Windows 10/11 and Linux troubleshooting",
+          "Active Directory users and Group Policy",
+          "Networking (IP, DNS, DHCP, TCP/IP)",
+          "Windows Server 2025 (home lab)",
+          "Virtual machines (VMware, VirtualBox)",
+          "Software installation and configuration"
         ]
       },
       {
-        "category": "Development & Tools",
+        "category": "Hardware",
         "skills": [
-          "React (Comfortable)",
-          "Browser Extension API",
-          "Node.js Environments",
-          "Git/GitHub",
-          "AI Tools (GPT, Claude)"
+          "PC assembly and BIOS configuration",
+          "Hardware fault diagnosis",
+          "Laptop and peripheral inventory"
         ]
       },
       {
-        "category": "System Administration",
+        "category": "Scripting & tools",
         "skills": [
-          "Windows Server Experimentation",
-          "VM Configuration",
-          "Structured Data Concepts",
-          "Technical Research & Problem Analysis"
+          "Basic scripting (PowerShell, Bash)",
+          "Git and GitHub",
+          "Web apps with React and TypeScript"
         ]
       }
     ],
@@ -509,26 +508,7 @@
         "name": "AWS Cloud",
         "context": "Cloud platforms and services",
         "goal": "Cloud infrastructure capabilities"
-      },
-      {
-        "name": "AI Application Development",
-        "context": "AI-assisted workflows and tool development",
-        "goal": "Build practical AI-powered solutions"
-      },
-      {
-        "name": "Website Development",
-        "context": "Modern web technologies and frameworks",
-        "goal": "Full-stack development capabilities"
       }
-    ],
-    "tools_and_workflow": [
-      "Virtual Machines (VMware, VirtualBox)",
-      "TeamViewer & Remote Support Tools",
-      "Microsoft Teams",
-      "Git/GitHub",
-      "AI Development Tools (Claude, GPT)",
-      "Windows Server Administration",
-      "SCANPST.EXE & Outlook Diagnostics"
     ]
   },
   "work_experience": [

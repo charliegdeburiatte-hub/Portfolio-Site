@@ -84,7 +84,7 @@ function Hero({ onOpenCV }) {
         </div>
       </article>
 
-      <div className="mt-auto pt-8 [@media(max-height:760px)]:pt-5">
+      <div className="sticky bottom-3 z-10 mt-auto pt-8 sm:static [@media(max-height:760px)]:pt-5">
         <div className="focus-light linen inline-flex gap-2 rounded-full p-2">
           <button type="button" className="btn btn-gloss" onClick={onOpenCV}>
             <FileText size={18} aria-hidden="true" />

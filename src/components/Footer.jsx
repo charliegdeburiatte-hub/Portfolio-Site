@@ -38,7 +38,7 @@ function Footer() {
 
   return (
     <footer className="focus-light px-4 pb-10 pt-6 sm:px-6">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 border-t border-white/15 pt-6 text-[0.9375rem] text-on-field-soft sm:flex-row sm:justify-between">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 border-t border-white/15 pt-6 text-[0.9375rem] text-on-field sm:flex-row sm:justify-between">
         <p className="m-0">© {new Date().getFullYear()} {personal.name} · {personal.location}</p>
         <GlassSwitch />
         <p className="m-0">Built with React + Tailwind CSS</p>

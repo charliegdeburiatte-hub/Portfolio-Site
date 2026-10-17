@@ -50,10 +50,6 @@ function Skills() {
           ))}
         </Group>
 
-        <Group label="Tools & workflow">
-          {skills.tools_and_workflow.map((t) => <Row key={t} title={t} />)}
-        </Group>
-
         <Group label="Soft skills">
           <li>
             <details className="group">
