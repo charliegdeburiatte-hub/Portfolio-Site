@@ -41,7 +41,7 @@ Self-taught. Currently studying Network+, AWS and AI application development. Jo
 ## Brand Commitments
 
 - Tagline: "From IT fundamentals to applied AI, built through real projects".
-- Title in data: "IT Support Specialist & Systems Enthusiast".
+- Title in data: "IT Support Specialist".
 - Writing: British English throughout. No em dashes anywhere, in copy, code comments or commit messages. Plain and direct, first person where it suits. No filler, no inflated language, no "passionate about" or "leveraging" style wording.
 - Voice reference: Charlie has no written sample and composes by speech-to-text, so the reference is how Charlie actually talks. Short, direct sentences, casual and honest, a bit of dry humour, no corporate polish. Real examples: "I guess I installed it locally to one project then." / "Go with lock screen. This is the neat part: I don't have a writing sample." Site copy should read like Charlie explaining something out loud to a hiring manager, tidied for spelling and grammar only. Existing copy in `CONTENT_DATA.json` stays the factual baseline.
 - Visual direction is set by Charlie and binding: Apple Liquid Glass as the base, Windows 7 Aero and iPhone 4 era skeuomorphism as deliberate accents. Recreated in original CSS, SVG and own assets; no Apple or Microsoft logos, icons, wallpapers or screenshots. Details belong in DESIGN.md.
