@@ -65,6 +65,7 @@
   "projects": [
     {
       "id": "job-application-analyzer",
+      "how_built": "Built with React 19 and TypeScript, with PDF.js reading the CV, the Claude API writing the cover letter, and Vercel hosting it. I decided the scoring rules, like required skills counting three times as much as preferred ones. Claude wrote the code.",
       "title": "Job Application Analyser",
       "version": "3.0.0",
       "status": "active",

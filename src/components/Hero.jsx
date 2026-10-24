@@ -69,7 +69,7 @@ function Hero() {
                 View code
                 <span className="sr-only">(opens in a new tab)</span>
               </a>
-              <a className="inline-link" href="#job-application-analyser">Details</a>
+              <a className="inline-link" href="#job-application-analyser">How it was built</a>
             </div>
           </article>
         </aside>
