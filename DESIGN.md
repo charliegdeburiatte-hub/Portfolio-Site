@@ -1,100 +1,92 @@
 # Design
 
-Status: DRAFT, written before the build to record the approved direction and tokens. Impeccable's documenter rewrites this file from the finished build; anything here that the build disproves gets corrected then, not defended.
+Status: DRAFT. Written from Charlie's approved brief (24 Oct 2026) before the build. Replaces the Liquid Glass lock screen direction, which is preserved on the `aero-version` branch. Anything the build disproves gets corrected here, not defended.
 
-## World
+## World: Smoked Glass and Chrome
 
-Liquid Glass lock screen. The site opens like a phone you have just picked up: the name sits where the clock would, widgets state the role and availability, and the top notification is the flagship project. Below the first viewport, projects open as windows.
+A warm near-black body with brushed silver details, like a black-paint rangefinder camera: tight proportions, hairline rules, a precise grid. Clear glass appears on a few key surfaces only. Aero survives as small accents. The page is left-anchored and asymmetric, never centred on one axis.
 
-Three eras, deliberately unequal:
-
-| Era | Share | Where it appears |
+| Element | Role | Where it appears |
 |---|---|---|
-| Apple Liquid Glass | Base, roughly 70% | Backdrop field, nav bar, widgets, notification stack, section surfaces, grouped skills lists, specular light |
-| Windows 7 Aero | Accent | Window chrome on project windows and the CV viewer: glossy title bars, soft edge glow, glass reflection; focus glow |
-| iPhone 4 skeuomorphism | Accent | Tactile controls only: glossy pill buttons, the Glass effects switch, inset form fields, linen on the hero dock, brushed metal rims |
+| Near-black body | Base | Page ground and solid panels. Everything that is not listed as glass is solid |
+| Liquid Glass | Key surfaces only | The nav, the hero Analyser panel, the CV viewer. Nothing else |
+| Brushed chrome | Detail | 1px silver borders on glass panels and the primary button, version chip, hairline rules, input borders, focus ring |
+| Aero | Accent | A thin highlight on the top edge of the nav, the Analyser panel, View CV and project windows. Window-style title strips on project cards |
 
-Rule of thumb: Liquid Glass is the material, Aero frames things you open, iPhone 4 is anything you press.
+Rangefinder influence means proportions and finish only. No fake leather, no viewfinder frames, no shutter sounds, no camera iconography.
 
-## Deliberate choices (not accidents)
+## Hard rules
 
-Gloss, gradients, translucency, inner highlights and textured surfaces are intentional and come from the brief. Impeccable's detector flags several of these patterns by default (glassmorphism, gradient fills, decorative glow). Each override is listed here with its justification, and any new one gets raised with Charlie rather than silently toned down.
+- No logos, names, icons or typefaces from Leica, Apple or Microsoft. Original CSS and SVG only.
+- No cyan, no purple or blue gradients, no red, no gradient text.
+- No glow, no coloured shadows, no side-stripe accent borders, no bounce or elastic easing.
+- No glass on ordinary cards. No card inside a card. No row of three equal icon cards.
+- One primary button on screen at a time (View CV). Everything else is a secondary button or a text link.
+- Left-align headings, body, labels and metadata. Centre nothing without Charlie's approval.
+- Small uppercase labels only for real metadata (versions, dates). Not above every heading.
 
-- **Glass surfaces:** the core material of the pinned world. Text never sits directly on a translucent surface over busy content; body copy lives on near-solid frost (at least 88% opaque).
-- **Gradient backdrop:** this is the field the glass refracts. It is one owned hue (lagoon), not a decorative rainbow.
-- **Glossy buttons and title bars:** iPhone 4 and Aero signatures, limited to controls and window chrome.
-- **Textures:** linen and brushed metal are generated in CSS/SVG at under 1 KB each. No raster textures.
+## Grid
 
-No Apple or Microsoft logos, icons, wallpapers, font files or screenshots. Everything is original CSS, SVG and project assets.
+- Desktop: 12 columns, 1280px max content width, 24px gutters, 32px outer margins.
+- The grid is visible: faint silver hairlines on the column edges in the page background (about 6% opacity). Content snaps to them.
+- Tablet: 8 columns. Mobile: one left-aligned column, 16px margins, no guides.
+- Section spacing varies on purpose. The hero runs tight into Projects, About gets a longer pause, Skills and Contact sit closer together.
+
+## Layout
+
+| Section | Columns | Composition |
+|---|---|---|
+| Nav (glass) | 1-12 | Name as text left. Projects, About, Skills, Contact as links, then View CV (primary). Mobile: name, View CV, menu. No floating bottom bar |
+| Hero | 1-7 | Name, title sentence, short line, spec sheet (Availability, Certificates, Experience: label left, value right, hairlines between), View CV and a "Get in touch" text link |
+| Hero | 8-12 | Analyser panel (glass) over a large outlined "3.0" in brushed chrome, so the glass has something to refract |
+| Projects | 1-12 | Analyser at full width, solid, window framed, with a factual "How it was built" note |
+| Projects | 1-8 + 9-12 | IT projects: write-up in 8 columns, spec column on the right |
+| Projects | 6 + 6 | Software projects, window framed |
+| About | 1-7 / 9-12 | Three paragraphs at reading width; Journey as a hairline list |
+| Skills | 1-3 / 4-12 | Group label left, hairline rows right. No chips, no icon tiles |
+| Contact | 1-5 / 7-12 | Spec rows left, solid form panel right |
+| Footer | 1-12 | Hairline rule above, small left-aligned text |
+
+The hero is only as tall as its content; there is no empty gap below the first fold.
 
 ## Colour
 
-Strategy: Committed. One owned lagoon hue floods the backdrop; the glass and ink are tinted from it; amber is the single warm accent for the primary action and the flagship.
+Strategy: Restrained. Near-black and silvers, one muted warm accent (brass) used sparingly.
 
-| Token | Value | Use |
-|---|---|---|
-| `--field-deep` | `#08485F` | Backdrop base, top of page behind the name |
-| `--field` | `#0A5C78` | Backdrop body |
-| `--field-lit` | `#39B6D8` | Light pool in the backdrop. Never behind text |
-| `--field-glow` | `#A8E6F5` | Specular streak and highlights |
-| `--frost` | `#F4F7FA` | Glass surface tint; solid fallback |
-| `--frost-alpha` | `rgb(244 247 250 / 0.88)` | Text-bearing glass |
-| `--frost-thin` | `rgb(244 247 250 / 0.55)` | Non-text glass (nav, dock, chrome) |
-| `--ink` | `#0D1B26` | Body text (16.3:1 on frost) |
-| `--ink-muted` | `#3D5566` | Secondary text (7.3:1 on frost) |
-| `--link` | `#08607D` | Links on frost (6.6:1) |
-| `--on-field` | `#FFFFFF` | Text on the field (7.5:1 on `--field`, 10:1 on `--field-deep`) |
-| `--on-field-muted` | `#D8F1FA` | Secondary text on the field (6.4:1) |
-| `--amber` | `#E8A33D` | Primary button and flagship accent, ink text on it (8.1:1) |
-| `--amber-hi` | `#F2C46B` | Top of the amber gloss |
+| Token | Value | Use | Contrast on ground |
+|---|---|---|---|
+| `--ground` | `#131211` | Page background | |
+| `--raised` | `#1B1A18` | Solid panels | |
+| `--panel` | `#24221F` | Window title strips, form panel | |
+| `--text` | `#EDEBE6` | Body and headings | 15.7:1 |
+| `--text-2` | `#B9B5AD` | Secondary text | 9.2:1 |
+| `--meta` | `#8E8A83` | Dates and versions only | 5.4:1 (4.6:1 on panel) |
+| `--chrome` | `#9C9891` | Silver details, focus ring, input borders | 6.5:1 |
+| `--hairline` | `#3A3733` | Rules and grid lines (decorative) | |
+| `--brass` | `#C4A06A` | View CV fill, active nav marker, rare markers | 7.6:1; ground text on brass 7.6:1 |
 
-No dark theme: the field is already a deep colour and the scene (recruiters at a desk in daylight, or on a phone) is served by one theme.
+`prefers-contrast: more` raises hairlines to `--chrome` and `--meta` to `--text-2`.
 
 ## Type
 
-System stack, no web font download:
-`-apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif`
+| Role | Face | Rules |
+|---|---|---|
+| Display | Michroma (one weight) | Charlie's name and section headings only. Kept short. Must fit the full name at 360px wide |
+| Everything else | Hanken Grotesk (variable) | Body, title sentence, spec sheets, buttons, labels, forms |
 
-This is the honest face of both eras: SF on Apple devices (Liquid Glass's own typeface), Segoe UI on Windows (Aero's own typeface). It also costs zero bytes. The name uses `ui-rounded` first where available, for the lock-screen clock feel.
+Both are SIL Open Font Licence faces, self-hosted from the project (no Google Fonts stylesheet), Latin subset, `font-display: swap`.
 
-| Role | Size | Weight | Notes |
-|---|---|---|---|
-| Name (clock) | `clamp(3.25rem, 11vw, 8rem)` | 600 | Tight tracking `-0.03em`, line-height 0.95 |
-| H2 section | `clamp(1.75rem, 4vw, 2.5rem)` | 650 | |
-| H3 window title | 1.125rem | 600 | |
-| Body | 1.0625rem (17px) | 400 | Line-height 1.55, max 68ch |
-| Small / label | 0.8125rem (13px) | 500 | Only on solid frost, never on the field |
+## Materials
 
-## Spacing, radius, depth
-
-- **Spacing:** 4px base. Scale 4, 8, 12, 16, 24, 32, 48, 64, 96, 128. More space above a heading than below it.
-- **Radius (concentric: an inner radius equals the outer radius minus padding):**
-  - Widgets 28px
-  - Notification 24px
-  - Section surfaces 32px
-  - Aero windows 12px
-  - Inputs 12px
-  - Pill buttons 999px
-- **Blur tiers:**
-  - `--blur-chrome: 20px` with saturate 160% (nav, dock)
-  - `--blur-panel: 28px` with saturate 140% (hero widgets, notification)
-  - Lower content surfaces use near-solid frost with no `backdrop-filter`. The field behind them is a smooth gradient, so a blur would cost GPU and show nothing.
-- **Budget:** no more than 4 `backdrop-filter` layers on screen at once. Each has a solid `--frost` fallback via `@supports not (backdrop-filter: blur(1px))`.
-- **Shadows:**
-  - Glass: `inset 0 1px 0 rgb(255 255 255 / 0.65), 0 2px 6px rgb(5 40 60 / 0.12), 0 12px 32px rgb(5 40 60 / 0.18)`
-  - Skeuo button: top gloss half, `inset 0 1px 0` highlight, 1px darker bottom edge, short drop shadow
-  - Aero title bar: vertical gloss from `rgb(255 255 255 / 0.7)` to `rgb(168 230 245 / 0.35)`, with a 1px inner white rim and a soft outer glow
+- **Glass:** clear and refractive, `backdrop-filter` blur with a light saturation lift, a 1px chrome border and the Aero top-edge highlight. At most three glass layers on screen. Solid `--raised` fallback under `prefers-reduced-transparency` and when `backdrop-filter` is unsupported.
+- **Brushed chrome:** a 1px repeating linear gradient in silvers on borders and small details. Flagged here as deliberate, because the detector may read it as a decorative gradient.
+- **Aero top edge:** `inset 0 1px 0` white at low opacity. No gloss fills.
+- **Project windows:** a title strip in `--panel` with the title and status, a hairline beneath, solid body. No window control buttons.
 
 ## Motion
 
-- **Signature:** specular light. One rAF-throttled pointer listener writes `--lx`/`--ly`; glass surfaces read them for a soft radial highlight, so light responds to movement. No gyroscope.
-- **On load:** the flagship notification arrives from the top once, and the widgets settle.
-- **Scroll:** a single light streak runs down the page as the reading spine.
-- **`prefers-reduced-motion`:** no arrival, static highlight, static streak.
+Short and damped, like a focus ring turning. 140 to 220ms, `cubic-bezier(0.2, 0, 0, 1)`. No bounce, no elastic, no scroll-jacking. The signature is the focus ring: a 2px chrome ring that settles in on keyboard focus. Under `prefers-reduced-motion` all transitions are instant.
 
-## Preferences and fallbacks
+## Accessibility
 
-- `prefers-reduced-transparency`, or the on-page Glass effects switch set to off: every glass surface becomes solid `--frost` and blur is disabled.
-- `prefers-contrast: more`: solid surfaces, 1px `--ink` borders, no gloss on controls, underlined links.
-- Focus: a 2px solid `--ink` outline with a 2px offset, plus a soft Aero cyan glow. The glow never replaces the outline.
-- Touch targets: at least 44px.
+WCAG 2.2 AA contrast (grey on black is checked token by token above), few `backdrop-filter` layers with solid fallbacks, `prefers-reduced-motion`, `prefers-reduced-transparency` and `prefers-contrast` support, semantic landmarks, visible keyboard focus, touch targets at least 44px.
