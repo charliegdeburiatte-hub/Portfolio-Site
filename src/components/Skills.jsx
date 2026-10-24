@@ -1,25 +1,21 @@
-import { ChevronDown } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 import { SectionHeading } from './ui';
 
-// Settings-style grouped lists: a small label, then rows on one glass plate
-function Group({ label, children, className = '' }) {
+// One spec row per group: label in three columns, values in the other nine
+function Group({ label, children }) {
   return (
-    <section className={`break-inside-avoid mb-6 ${className}`} aria-label={label}>
-      <h3 className="m-0 mb-2 px-4 text-[0.8125rem] font-semibold uppercase tracking-[0.06em] text-on-field-soft">{label}</h3>
-      <ul className="glass m-0 list-none overflow-hidden rounded-[22px] p-0">{children}</ul>
+    <section aria-label={label} className="col-span-full grid grid-cols-subgrid gap-y-2 border-t border-hairline py-5">
+      <h3 className="m-0 text-[0.9375rem] font-semibold text-text-2 sm:col-span-8 lg:col-span-3">{label}</h3>
+      <ul className="m-0 list-none p-0 sm:col-span-8 md:columns-2 md:gap-x-6 lg:col-span-9">{children}</ul>
     </section>
   );
 }
 
-function Row({ title, detail, value }) {
+function Row({ title, value }) {
   return (
-    <li className="flex min-h-12 items-center gap-3 border-b border-field/10 px-4 py-2.5 last:border-b-0">
-      <span className="min-w-0 flex-1">
-        <span className="block leading-snug text-ink">{title}</span>
-        {detail && <span className="block text-[0.875rem] leading-snug text-ink-soft">{detail}</span>}
-      </span>
-      {value && <span className="shrink-0 text-[0.875rem] text-ink-soft">{value}</span>}
+    <li className="flex break-inside-avoid items-baseline justify-between gap-4 border-b border-hairline py-2.5 last:border-b-0">
+      <span className="text-text">{title}</span>
+      {value && <span className="max-w-[55%] text-right text-[0.875rem] text-text-2">{value}</span>}
     </li>
   );
 }
@@ -28,13 +24,13 @@ function Skills() {
   const { skills } = contentData;
 
   return (
-    <section id="skills" aria-labelledby="skills-title" className="page-section">
-      <SectionHeading id="skills-title" title="Skills &amp; expertise" />
+    <section id="skills" aria-labelledby="skills-title" className="wrap pt-4 pb-16 lg:pb-20">
+      <div className="grid-12 gap-y-0">
+        <SectionHeading id="skills-title" title="Skills" className="mb-10" />
 
-      <div className="gap-6 md:columns-2">
         <Group label="Certifications">
           {skills.certifications.map((c) => (
-            <Row key={c.name} title={c.name} value={c.year ? `${c.status} · ${c.year}` : c.status} />
+            <Row key={c.name} title={c.name} value={c.year ? `${c.status}, ${c.year}` : c.status} />
           ))}
         </Group>
 
@@ -46,23 +42,14 @@ function Skills() {
 
         <Group label="Currently learning">
           {skills.actively_learning.map((s) => (
-            <Row key={s.name} title={s.name} detail={s.context} />
+            <Row key={s.name} title={s.name} value={s.context} />
           ))}
         </Group>
 
-        <Group label="Soft skills">
-          <li>
-            <details className="group">
-              <summary className="flex min-h-12 cursor-pointer list-none items-center gap-3 px-4 py-2.5 text-ink [&::-webkit-details-marker]:hidden">
-                <span className="flex-1">{skills.soft_skills.length} soft skills</span>
-                <ChevronDown size={18} className="text-ink-soft transition-transform group-open:rotate-180" aria-hidden="true" />
-              </summary>
-              <p className="m-0 border-t border-field/10 px-4 py-3 text-[0.9375rem] text-ink-soft">
-                {skills.soft_skills.join(', ')}
-              </p>
-            </details>
-          </li>
-        </Group>
+        <section aria-label="Soft skills" className="col-span-full grid grid-cols-subgrid gap-y-2 border-y border-hairline py-5">
+          <h3 className="m-0 text-[0.9375rem] font-semibold text-text-2 sm:col-span-8 lg:col-span-3">Soft skills</h3>
+          <p className="m-0 max-w-[70ch] text-text sm:col-span-8 lg:col-span-9">{skills.soft_skills.join(', ')}</p>
+        </section>
       </div>
     </section>
   );
