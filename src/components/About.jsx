@@ -21,8 +21,6 @@ function About() {
               <p key={para.slice(0, 24)} className="m-0">{para}</p>
             ))}
           </div>
-          <h3 className="mt-6 mb-1 text-[1.0625rem] font-semibold text-ink">What drives me</h3>
-          <p className="m-0 max-w-[68ch] text-ink-soft">{bio.what_drives_me}</p>
         </div>
 
         <div className="glass rounded-[32px] p-3 sm:p-4">
