@@ -15,37 +15,10 @@
   --font-display: "Michroma", "Hanken Grotesk Variable", sans-serif;
   --font-body: "Hanken Grotesk Variable", "Helvetica Neue", Arial, sans-serif;
 
-  /* Previous lock screen tokens, still used by sections not yet rebuilt */
-  /* Interim: mapped onto the new palette so unrebuilt sections stop shouting */
-  --color-field-deep: #131211;
-  --color-field: #9C9891;
-  --color-field-lit: #9C9891;
-  --color-field-glow: #9C9891;
-  --color-frost: #1B1A18;
-  --color-ink: #EDEBE6;
-  --color-ink-soft: #B9B5AD;
-  --color-link: #EDEBE6;
-  --color-on-field: #EDEBE6;
-  --color-on-field-soft: #B9B5AD;
-  --color-amber: #C4A06A;
-  --color-amber-hi: #C4A06A;
-
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-clock: ui-rounded, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
 }
 
 :root {
   --nav-h: 4rem;
-
-  --frost-text: rgb(244 247 250 / 0.88);
-  --frost-chrome: rgb(244 247 250 / 0.72);
-  --blur-chrome: blur(20px) saturate(160%);
-  --blur-panel: blur(28px) saturate(140%);
-
-  --shadow-glass:
-    inset 0 1px 0 rgb(255 255 255 / 0.75),
-    0 2px 6px rgb(5 40 60 / 0.12),
-    0 12px 32px rgb(5 40 60 / 0.18);
 
   --ease-focus: cubic-bezier(0.2, 0, 0, 1);
   --gutter: 1rem;
@@ -58,9 +31,6 @@
     repeating-linear-gradient(90deg, rgb(255 255 255 / 0.07) 0 1px, transparent 1px 3px),
     linear-gradient(180deg, #CFCBC4, #8A8680 55%, #6B6762);
 
-  /* Pointer-led light. Written per element by useSpecular. */
-  --lx: 30%;
-  --ly: 0%;
 }
 
 @layer base {
@@ -357,330 +327,34 @@
     .spec-tight > div { grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1rem; }
   }
 
-  /* ── Liquid Glass ─────────────────────────────────────────────── */
+  /* ── Glass effects switch ─────────────────────────────────────── */
 
-  .glass {
-    position: relative;
-    isolation: isolate;
-    background: linear-gradient(180deg, rgb(255 255 255 / 0.93), rgb(238 245 249 / 0.86));
-    border-radius: 28px;
-    box-shadow:
-      inset 0 12px 20px -14px rgb(255 255 255 / 0.9),
-      var(--shadow-glass);
-  }
-
-  /* Refracting rim: bright where the light hits, nearly gone on the far side */
-  .glass::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    background: linear-gradient(140deg,
-      rgb(255 255 255 / 1),
-      rgb(255 255 255 / 0.25) 30%,
-      rgb(57 182 216 / 0.35) 70%,
-      rgb(255 255 255 / 0.85));
-    padding: 1.5px;
-    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  /* Specular light that follows the pointer */
-  .glass::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    background: radial-gradient(circle at var(--lx) var(--ly), rgb(255 255 255 / 0.55), transparent 55%);
-    opacity: 0.7;
-    pointer-events: none;
-  }
-
-  /* Only surfaces with content moving underneath get a real blur */
-  .glass-blur {
-    -webkit-backdrop-filter: var(--blur-panel);
-    backdrop-filter: var(--blur-panel);
-  }
-
-  .glass-chrome {
-    background: var(--frost-chrome);
-    -webkit-backdrop-filter: var(--blur-chrome);
-    backdrop-filter: var(--blur-chrome);
-  }
-
-  /* ── iPhone 4: things you press ───────────────────────────────── */
-
-  .btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-height: 44px;
-    padding: 0 1.25rem;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    line-height: 1;
-    text-decoration: none;
-    color: var(--color-ink);
-    white-space: nowrap;
-    cursor: pointer;
-    transition: filter 120ms ease, transform 120ms ease;
-  }
-
-  .btn:hover { filter: brightness(1.05); }
-  .btn:active { transform: translateY(1px); filter: brightness(0.96); }
-
-  /* Amber gloss: the main action */
-  .btn-gloss {
-    background: linear-gradient(180deg,
-      #F9DE9E 0%, var(--color-amber-hi) 48%, var(--color-amber) 52%, #DC9128 100%);
-    border: 1px solid #A8691A;
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.75),
-      inset 0 -1px 0 rgb(120 60 0 / 0.15),
-      0 1px 2px rgb(0 0 0 / 0.25),
-      0 4px 12px rgb(110 60 5 / 0.3);
-    text-shadow: 0 1px 0 rgb(255 255 255 / 0.5);
-  }
-
-  .btn-gloss:active {
-    box-shadow:
-      inset 0 2px 4px rgb(120 60 0 / 0.35),
-      0 1px 1px rgb(0 0 0 / 0.2);
-  }
-
-  /* Brushed metal: secondary */
-  .btn-metal {
-    background:
-      repeating-linear-gradient(90deg, rgb(255 255 255 / 0.06) 0 1px, transparent 1px 3px),
-      linear-gradient(180deg, #FDFEFE 0%, #E6ECF0 49%, #D2DBE1 51%, #E8EEF2 100%);
-    border: 1px solid #8D9CA7;
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.9),
-      0 1px 2px rgb(0 0 0 / 0.2),
-      0 4px 10px rgb(5 40 60 / 0.18);
-    text-shadow: 0 1px 0 rgb(255 255 255 / 0.8);
-  }
-
-  .btn-metal:active {
-    box-shadow: inset 0 2px 4px rgb(5 40 60 / 0.25), 0 1px 1px rgb(0 0 0 / 0.15);
-  }
-
-  .btn-sm {
-    min-height: 36px;
-    padding: 0 0.95rem;
-    font-size: 0.875rem;
-  }
-
-  @media (pointer: coarse) {
-    .btn-sm { min-height: 44px; }
-  }
-
-  /* Linen, generated: crosshatch weave plus fine noise, no image download */
-  .linen {
-    background-color: rgb(16 44 58 / 0.62);
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E"),
-      repeating-linear-gradient(0deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 3px),
-      repeating-linear-gradient(90deg, rgb(0 0 0 / 0.08) 0 1px, transparent 1px 3px);
-    -webkit-backdrop-filter: var(--blur-chrome);
-    backdrop-filter: var(--blur-chrome);
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.25),
-      inset 0 -1px 0 rgb(0 0 0 / 0.25),
-      0 10px 30px rgb(0 20 30 / 0.35);
-  }
-
-  /* ── Windows 7 Aero: things that open ─────────────────────────── */
-
-  .aero {
-    border-radius: 12px;
-    padding: 0 7px 7px;
-    background:
-      linear-gradient(180deg, rgb(225 243 251 / 0.92), rgb(178 220 238 / 0.88));
-    border: 1px solid rgb(8 60 85 / 0.55);
-    box-shadow:
-      inset 0 0 0 1px rgb(255 255 255 / 0.65),
-      0 0 28px rgb(168 230 245 / 0.35),
-      0 18px 50px rgb(0 25 40 / 0.45);
-  }
-
-  .aero-titlebar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    min-height: 2.75rem;
-    padding: 0.25rem 0.25rem 0.25rem 0.5rem;
-  }
-
-  /* Glass reflection across the top half of the title bar */
-  .aero-titlebar::before {
-    content: "";
-    position: absolute;
-    inset: 0 -7px auto;
-    height: 52%;
-    border-radius: 11px 11px 0 0;
-    background: linear-gradient(180deg, rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.15));
-    pointer-events: none;
-  }
-
-  .aero-title {
-    position: relative;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    color: var(--color-ink);
-    text-shadow: 0 0 10px rgb(255 255 255 / 0.95), 0 0 2px rgb(255 255 255 / 0.9);
-  }
-
-  .aero-client {
-    border-radius: 4px;
-    background: var(--color-frost);
-    border: 1px solid rgb(8 60 85 / 0.35);
-    box-shadow: inset 0 1px 2px rgb(5 40 60 / 0.12);
-  }
-
-  .aero-close {
-    position: relative;
-    display: inline-grid;
-    place-items: center;
-    width: 3rem;
-    height: 2.25rem;
-    border-radius: 6px;
-    color: #FFFFFF;
-    background: linear-gradient(180deg, #ECA594 0%, #D9644A 46%, #C23A20 54%, #D8603F 100%);
-    border: 1px solid rgb(95 20 8 / 0.7);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55), 0 0 10px rgb(230 90 60 / 0.35);
-    cursor: pointer;
-  }
-
-  .aero-close:hover { filter: brightness(1.08); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55), 0 0 16px rgb(240 110 70 / 0.65); }
-  .aero-close svg { filter: drop-shadow(0 1px 0 rgb(80 10 0 / 0.6)); }
-  /* ── Page rhythm and the light-streak spine ───────────────────── */
-
-  .page-section {
-    position: relative;
-    max-width: 64rem;
-    margin-inline: auto;
-    padding: 4rem 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .page-section { padding: 6rem 1.5rem 5rem 3.5rem; }
-  }
-
-  @media (min-width: 640px) {
-    /* One streak of light runs down the page; every section hangs off it */
-    .spine {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: max(1.25rem, calc(50% - 32rem + 1.25rem));
-      width: 2px;
-      pointer-events: none;
-      background: linear-gradient(180deg,
-        transparent,
-        rgb(168 230 245 / 0.55) 4%,
-        rgb(168 230 245 / 0.35) 50%,
-        rgb(168 230 245 / 0.55) 96%,
-        transparent);
-      box-shadow: 0 0 12px 1px rgb(57 182 216 / 0.45);
-    }
-
-    .spine-node { position: relative; }
-    .spine-node::before {
-      content: "";
-      position: absolute;
-      left: calc(-2.25rem - 4px);
-      top: 0.55em;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #FFFFFF, var(--color-field-glow) 55%, var(--color-field-lit));
-      box-shadow: 0 0 0 3px rgb(168 230 245 / 0.25), 0 0 14px 2px rgb(57 182 216 / 0.7);
-    }
-    h3.spine-node::before { width: 8px; height: 8px; left: calc(-2.25rem - 3px); top: 0.5em; }
-  }
-
-  /* ── iPhone 4 inset fields ────────────────────────────────────── */
-
-  .field-inset {
-    background: linear-gradient(180deg, #E9EFF3, #FFFFFF 18%);
-    border: 1px solid #8D9CA7;
-    box-shadow: inset 0 1px 3px rgb(5 40 60 / 0.28), 0 1px 0 rgb(255 255 255 / 0.9);
-    font: inherit;
-  }
-
-  .field-inset:focus-visible {
-    border-color: var(--color-field);
-  }
-
-  /* ── iPhone 4 switch ──────────────────────────────────────────── */
-
-  .ios-switch {
+  .switch {
     position: relative;
     display: inline-block;
-    width: 3.5rem;
-    height: 1.75rem;
-    border-radius: 999px;
-    background: linear-gradient(180deg, #C9D1D7, #EEF2F5);
-    border: 1px solid #6F7F8A;
-    box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.3);
-    transition: background 200ms ease;
-  }
-
-  .ios-switch.is-on {
-    background: linear-gradient(180deg, #0B6E8F, #39B6D8);
-    border-color: #06455C;
-  }
-
-  .ios-switch-knob {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 1.5rem;
+    width: 2.75rem;
     height: 1.5rem;
+    border-radius: 999px;
+    background: var(--color-panel);
+    border: 1px solid #6F6B65;
+    transition: background-color 180ms var(--ease-focus), border-color 180ms var(--ease-focus);
+  }
+  .switch.is-on { background: var(--color-brass); border-color: #A8864F; }
+  .switch-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 1.125rem;
+    height: 1.125rem;
     border-radius: 50%;
-    background:
-      repeating-linear-gradient(90deg, rgb(255 255 255 / 0.08) 0 1px, transparent 1px 3px),
-      linear-gradient(180deg, #FFFFFF, #D6DEE4);
-    border: 1px solid #7E8E99;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.35), inset 0 1px 0 #FFFFFF;
-    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    background: var(--color-text);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6);
+    transition: transform 180ms var(--ease-focus);
   }
-
-  .ios-switch.is-on .ios-switch-knob { transform: translateX(1.75rem); }
-
-  /* Flagship window: the one place amber glows */
-  .glow-amber {
-    box-shadow:
-      inset 0 0 0 1px rgb(255 255 255 / 0.65),
-      0 0 0 1px rgb(232 163 61 / 0.5),
-      0 0 40px rgb(242 196 107 / 0.35),
-      0 18px 50px rgb(0 25 40 / 0.45);
-  }
+  .switch.is-on .switch-knob { transform: translateX(1.25rem); background: var(--color-ground); box-shadow: none; }
 }
 
 /* ── Motion ─────────────────────────────────────────────────────── */
-
-/* The flagship arrives once, like a push notification */
-@keyframes notify-in {
-  from { transform: translateY(-18px) scale(0.98); opacity: 0; }
-  to   { transform: none; opacity: 1; }
-}
-
-@keyframes settle {
-  from { transform: translateY(8px); opacity: 0; }
-  to   { transform: none; opacity: 1; }
-}
-
-.notify-in { animation: notify-in 700ms cubic-bezier(0.16, 1, 0.3, 1) 350ms both; }
-.settle { animation: settle 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 @keyframes focus-settle {
   from { outline-offset: 7px; outline-color: transparent; }
@@ -700,12 +374,7 @@
   }
 }
 
-/* ── Glass off: no backdrop-filter support, the visitor's setting, or the on-page switch ── */
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass, .glass-chrome { background: var(--color-frost); }
-  .linen { background-color: #12313F; }
-}
+/* ── Glass off: no backdrop-filter support, the visitor's setting, or the footer switch ── */
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .smoke { background: var(--color-raised); }
@@ -713,123 +382,21 @@
 
 @media (prefers-reduced-transparency: reduce) {
   .smoke { background: var(--color-raised); -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .glass, .glass-chrome { background: var(--color-frost); -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .glass::after { display: none; }
-  .linen { background-color: #12313F; -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .aero { background: #CFE8F3; }
 }
 
-:root[data-glass="off"] .glass,
-:root[data-glass="off"] .glass-chrome {
-  background: var(--color-frost);
+:root[data-glass="off"] .smoke {
+  background: var(--color-raised);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
-:root[data-glass="off"] .glass::after { display: none; }
-:root[data-glass="off"] .linen { background-color: #12313F; -webkit-backdrop-filter: none; backdrop-filter: none; }
-:root[data-glass="off"] .aero { background: #CFE8F3; }
 
 @media (prefers-contrast: more) {
   :root { --hairline: var(--color-chrome); --guide: rgb(156 152 145 / 0.14); }
   .meta { color: var(--color-text-2); }
   .smoke { background: var(--color-ground); -webkit-backdrop-filter: none; backdrop-filter: none; border: 1px solid var(--color-chrome); }
-  .btn-secondary { border-color: var(--color-text); }
-  .glass, .glass-chrome { background: #FFFFFF; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; border: 1px solid var(--color-ink); }
-  .glass::before, .glass::after { display: none; }
-  .btn-gloss, .btn-metal { background: #FFFFFF; border: 2px solid var(--color-ink); box-shadow: none; text-shadow: none; }
-  .linen { background: var(--color-field-deep); }
+  .btn-secondary, .field { border-color: var(--color-text); }
   a { text-decoration: underline; }
 }
 
 /* No page scroll behind the open CV window */
 html:has(dialog[open]) { overflow: hidden; }
-
-/* ── Interim neutral skin ─────────────────────────────────────────
-   Flattens the old lock screen classes on sections not yet rebuilt.
-   Each rule goes when its section is rebuilt in the new direction. */
-
-.glass,
-.glass-chrome {
-  background: var(--color-raised);
-  border: 1px solid var(--color-hairline);
-  border-radius: 6px;
-  box-shadow: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  color: var(--color-text);
-}
-.glass::before,
-.glass::after { display: none; }
-
-.aero {
-  padding: 0;
-  border-radius: 6px;
-  background: var(--color-raised);
-  border: 1px solid var(--color-hairline);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
-  color: var(--color-text);
-}
-.aero-titlebar {
-  padding: 0.25rem 0.5rem 0.25rem 1rem;
-  background: var(--color-panel);
-  border-bottom: 1px solid var(--color-hairline);
-  border-radius: 6px 6px 0 0;
-}
-.aero-titlebar::before { display: none; }
-.aero-title { color: var(--color-text); text-shadow: none; }
-.aero-client { background: var(--color-raised); border: 0; border-radius: 0 0 6px 6px; box-shadow: none; }
-.aero-close,
-.aero-close:hover {
-  width: 2.75rem;
-  border-radius: 3px;
-  background: transparent;
-  border: 1px solid #6F6B65;
-  box-shadow: none;
-  color: var(--color-text);
-}
-.aero-close:hover { border-color: var(--color-chrome); }
-.aero-close svg { filter: none; }
-
-.btn { border-radius: 3px; text-shadow: none; transform: none; filter: none; }
-.btn-gloss,
-.btn-gloss:active {
-  background: var(--color-brass);
-  border: 1px solid #A8864F;
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
-  color: var(--color-ground);
-}
-.btn-metal,
-.btn-metal:active {
-  background: transparent;
-  border: 1px solid #6F6B65;
-  box-shadow: none;
-  color: var(--color-text);
-}
-
-.spine,
-.spine-node::before { display: none; }
-.glow-amber { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08); }
-
-.linen {
-  background: var(--color-raised);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  box-shadow: none;
-}
-
-.field-inset {
-  background: var(--color-ground);
-  border: 1px solid #6F6B65;
-  border-radius: 3px;
-  box-shadow: none;
-  color: var(--color-text);
-}
-
-.ios-switch { background: var(--color-panel); border-color: #6F6B65; box-shadow: none; }
-.ios-switch.is-on { background: var(--color-brass); border-color: #A8864F; }
-.ios-switch-knob { background: var(--color-text); border-color: #6F6B65; box-shadow: none; }
-
-@media (prefers-contrast: more) {
-  .glass, .glass-chrome, .aero { background: var(--color-ground); border: 1px solid var(--color-chrome); }
-  .btn-gloss, .btn-metal { background: var(--color-ground); border: 1px solid var(--color-text); color: var(--color-text); }
-}
