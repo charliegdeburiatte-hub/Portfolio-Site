@@ -16,18 +16,19 @@
   --font-body: "Hanken Grotesk Variable", "Helvetica Neue", Arial, sans-serif;
 
   /* Previous lock screen tokens, still used by sections not yet rebuilt */
-  --color-field-deep: #08485F;
-  --color-field: #0A5C78;
-  --color-field-lit: #39B6D8;
-  --color-field-glow: #A8E6F5;
-  --color-frost: #F4F7FA;
-  --color-ink: #0D1B26;
-  --color-ink-soft: #3D5566;
-  --color-link: #08607D;
-  --color-on-field: #FFFFFF;
-  --color-on-field-soft: #D8F1FA;
-  --color-amber: #E8A33D;
-  --color-amber-hi: #F2C46B;
+  /* Interim: mapped onto the new palette so unrebuilt sections stop shouting */
+  --color-field-deep: #131211;
+  --color-field: #9C9891;
+  --color-field-lit: #9C9891;
+  --color-field-glow: #9C9891;
+  --color-frost: #1B1A18;
+  --color-ink: #EDEBE6;
+  --color-ink-soft: #B9B5AD;
+  --color-link: #EDEBE6;
+  --color-on-field: #EDEBE6;
+  --color-on-field-soft: #B9B5AD;
+  --color-amber: #C4A06A;
+  --color-amber-hi: #C4A06A;
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-clock: ui-rounded, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
@@ -119,9 +120,7 @@
     scrollbar-color: #4A4743 var(--color-ground);
   }
 
-  /* Old lock screen surfaces are light; keep their text dark until rebuilt */
-  .glass, .aero, .aero-client, .field-inset { color: var(--color-ink); }
-  .glass a, .aero a { color: var(--color-link); }
+
 }
 
 @layer components {
@@ -670,3 +669,93 @@
 
 /* No page scroll behind the open CV window */
 html:has(dialog[open]) { overflow: hidden; }
+
+/* ── Interim neutral skin ─────────────────────────────────────────
+   Flattens the old lock screen classes on sections not yet rebuilt.
+   Each rule goes when its section is rebuilt in the new direction. */
+
+.glass,
+.glass-chrome {
+  background: var(--color-raised);
+  border: 1px solid var(--color-hairline);
+  border-radius: 6px;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  color: var(--color-text);
+}
+.glass::before,
+.glass::after { display: none; }
+
+.aero {
+  padding: 0;
+  border-radius: 6px;
+  background: var(--color-raised);
+  border: 1px solid var(--color-hairline);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  color: var(--color-text);
+}
+.aero-titlebar {
+  padding: 0.25rem 0.5rem 0.25rem 1rem;
+  background: var(--color-panel);
+  border-bottom: 1px solid var(--color-hairline);
+  border-radius: 6px 6px 0 0;
+}
+.aero-titlebar::before { display: none; }
+.aero-title { color: var(--color-text); text-shadow: none; }
+.aero-client { background: var(--color-raised); border: 0; border-radius: 0 0 6px 6px; box-shadow: none; }
+.aero-close,
+.aero-close:hover {
+  width: 2.75rem;
+  border-radius: 3px;
+  background: transparent;
+  border: 1px solid #6F6B65;
+  box-shadow: none;
+  color: var(--color-text);
+}
+.aero-close:hover { border-color: var(--color-chrome); }
+.aero-close svg { filter: none; }
+
+.btn { border-radius: 3px; text-shadow: none; transform: none; filter: none; }
+.btn-gloss,
+.btn-gloss:active {
+  background: var(--color-brass);
+  border: 1px solid #A8864F;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
+  color: var(--color-ground);
+}
+.btn-metal,
+.btn-metal:active {
+  background: transparent;
+  border: 1px solid #6F6B65;
+  box-shadow: none;
+  color: var(--color-text);
+}
+
+.spine,
+.spine-node::before { display: none; }
+.glow-amber { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08); }
+
+.linen {
+  background: var(--color-raised);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.field-inset {
+  background: var(--color-ground);
+  border: 1px solid #6F6B65;
+  border-radius: 3px;
+  box-shadow: none;
+  color: var(--color-text);
+}
+
+.ios-switch { background: var(--color-panel); border-color: #6F6B65; box-shadow: none; }
+.ios-switch.is-on { background: var(--color-brass); border-color: #A8864F; }
+.ios-switch-knob { background: var(--color-text); border-color: #6F6B65; box-shadow: none; }
+
+@media (prefers-contrast: more) {
+  .glass, .glass-chrome, .aero { background: var(--color-ground); border: 1px solid var(--color-chrome); }
+  .btn-gloss, .btn-metal { background: var(--color-ground); border: 1px solid var(--color-text); color: var(--color-text); }
+}

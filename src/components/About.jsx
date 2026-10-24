@@ -30,9 +30,9 @@ function About() {
               const Icon = ICONS[i] ?? Briefcase;
               const isVantage = item.milestone.includes('VantageUAV');
               return (
-                <li key={item.period} className="rounded-[20px] bg-white/80 p-3.5 shadow-[0_1px_3px_rgb(5_40_60/0.1)]">
+                <li key={item.period} className="border-b border-hairline p-3.5 last:border-b-0">
                   <div className="flex gap-3">
-                    <span className="grid size-9 shrink-0 place-items-center rounded-[10px] bg-field text-on-field shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-[3px] border border-hairline text-text-2">
                       <Icon size={18} aria-hidden="true" />
                     </span>
                     <div className="min-w-0 flex-1">

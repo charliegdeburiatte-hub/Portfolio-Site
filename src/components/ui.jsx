@@ -19,7 +19,7 @@ export function StatusBadge({ status, label }) {
   else mark = <span className="size-2.5 rounded-full bg-current ring-[3px] ring-current/25" aria-hidden="true" />;
 
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/70 px-2.5 py-1 text-[0.8125rem] font-semibold leading-none text-ink">
+    <span className="inline-flex items-center gap-1.5 rounded-[3px] border border-hairline bg-ground px-2.5 py-1 text-[0.8125rem] font-semibold leading-none text-ink">
       <span className="inline-grid size-3.5 place-items-center text-field">{mark}</span>
       {label}
     </span>

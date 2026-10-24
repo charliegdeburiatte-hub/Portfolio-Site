@@ -126,7 +126,7 @@ function Contact({ onOpenCV }) {
                     <a
                       href={href}
                       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="flex min-h-12 items-center gap-3 px-5 py-2 font-medium break-all hover:bg-white/60 sm:px-6"
+                      className="flex min-h-12 items-center gap-3 px-5 py-2 font-medium break-all hover:bg-panel sm:px-6"
                     >
                       <Icon size={18} className="shrink-0" aria-hidden="true" />
                       {label}
