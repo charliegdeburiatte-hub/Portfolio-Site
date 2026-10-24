@@ -18,7 +18,7 @@ The personal portfolio of Charlie De Buriatte, live at charliedeburiatte.com. It
 
 ## Positioning
 
-IT support first. Charlie is an IT Support Specialist (CompTIA A+, Google IT Support Professional Certificate, Tier 1-2 support at VantageUAV) who also builds and ships real AI-assisted tools. The projects prove Charlie goes further than the role asks; they do not reposition Charlie as a web developer.
+IT support first. Charlie is an IT Support Specialist (Google IT Support Professional Certificate, CompTIA A+ exam ready but not yet taken, Tier 1-2 support at VantageUAV) who also builds and ships real AI-assisted tools. The projects prove Charlie goes further than the role asks; they do not reposition Charlie as a web developer.
 
 Self-taught. Currently studying Network+, AWS and AI application development. Job hunting in IT support and web development, open to freelance projects.
 
@@ -40,11 +40,11 @@ Self-taught. Currently studying Network+, AWS and AI application development. Jo
 
 ## Brand Commitments
 
-- Tagline: "From IT fundamentals to applied AI, built through real projects".
-- Title in data: "IT Support Specialist".
-- Writing: British English throughout. No em dashes anywhere, in copy, code comments or commit messages. Plain and direct, first person where it suits. No filler, no inflated language, no "passionate about" or "leveraging" style wording.
-- Voice reference: Charlie has no written sample and composes by speech-to-text, so the reference is how Charlie actually talks. Short, direct sentences, casual and honest, a bit of dry humour, no corporate polish. Real examples: "I guess I installed it locally to one project then." / "Go with lock screen. This is the neat part: I don't have a writing sample." Site copy should read like Charlie explaining something out loud to a hiring manager, tidied for spelling and grammar only. Existing copy in `CONTENT_DATA.json` stays the factual baseline.
-- Visual direction is set by Charlie and binding: Apple Liquid Glass as the base, Windows 7 Aero and iPhone 4 era skeuomorphism as deliberate accents. Recreated in original CSS, SVG and own assets; no Apple or Microsoft logos, icons, wallpapers or screenshots. Details belong in DESIGN.md.
+- Tagline: to be rewritten in the copy pass. The current lines break the writing rules below (three-item lists, "From X to Y").
+- Role title in data: "IT Support Specialist". The hero line under the name is Charlie's chosen sentence: "I start with the simple checks and keep going until the fault makes sense."
+- Writing: British English throughout. No em dashes anywhere, in copy, code comments or commit messages. Plain and direct, first person where it suits. No filler, no inflated language. Avoid "X & Y" title pairs, "From X to Y" structures, three-item lists of phrases, "not just X but Y", summing-up closing lines, and the words enthusiast, passionate, journey, leverage, seamless and cutting-edge. Mix sentence lengths. No emojis.
+- Voice reference: the main written sample is Charlie's own three About answers (why IT support, the VantageUAV Outlook fix, the portfolio), in `bio.medium`. Beyond that, the reference is how Charlie actually talks. Short, direct sentences, casual and honest, a bit of dry humour, no corporate polish. Real examples: "I guess I installed it locally to one project then." / "Go with lock screen. This is the neat part: I don't have a writing sample." Site copy should read like Charlie explaining something out loud to a hiring manager, tidied for spelling and grammar only. Existing copy in `CONTENT_DATA.json` stays the factual baseline.
+- Visual direction is set by Charlie and binding: Smoked Glass and Chrome (warm near-black, brushed silver, glass on a few key surfaces, small Aero accents, rangefinder proportions). Original CSS and SVG only; no Leica, Apple or Microsoft logos, icons, names or typefaces. Details belong in DESIGN.md. The previous Aero lock screen build is kept on the `aero-version` branch.
 
 ## Evidence on Hand
 
@@ -63,7 +63,7 @@ From `src/CONTENT_DATA.json`:
 - **Experience:**
   - IT Technician at VantageUAV, Sep 2021 to Mar 2022: Tier 1-2 support for 25+ remote staff, hardware diagnostics, Microsoft 365.
   - Telephone Interviewer at IFF Research, Sep 2019 to Oct 2020.
-- **Certifications:** Google IT Support Professional Certificate and CompTIA A+, both 2023-2024.
+- **Certifications:** Google IT Support Professional Certificate (2025). CompTIA A+ is exam ready, not yet taken; never present it as passed.
 - **Absent, never fabricate:**
   - testimonials
   - client names (the client project is anonymised on purpose)
