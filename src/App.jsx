@@ -8,12 +8,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import EasterEggs from './components/EasterEggs';
 import CVModal from './components/CVModal';
-import useSpecular from './hooks/useSpecular';
 
 function App() {
   const [cvOpen, setCvOpen] = useState(false);
   const openCV = () => setCvOpen(true);
-  useSpecular();
 
   return (
     <>
@@ -31,13 +29,10 @@ function App() {
       <Navigation onOpenCV={openCV} />
       <main id="main">
         <Hero />
-        <div className="relative">
-          <div className="spine" aria-hidden="true" />
-          <Projects />
-          <About />
-          <Skills />
-          <Contact onOpenCV={openCV} />
-        </div>
+        <Projects />
+        <About />
+        <Skills />
+        <Contact onOpenCV={openCV} />
       </main>
       <Footer />
       <CVModal open={cvOpen} onClose={() => setCvOpen(false)} />
