@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { FileText, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const sections = [
   { id: 'projects', label: 'Projects' },
@@ -44,26 +44,20 @@ function Navigation({ onOpenCV }) {
   }, [menuOpen]);
 
   const linkClass = (id) =>
-    `inline-flex items-center min-h-11 px-3 rounded-full text-[0.9375rem] font-medium no-underline transition-colors ${
-      active === id ? 'bg-white/70 text-ink shadow-[inset_0_1px_0_white]' : 'text-ink hover:bg-white/45'
+    `relative inline-flex items-center min-h-11 px-3 text-[0.9375rem] font-medium no-underline transition-colors duration-150 ${
+      active === id
+        ? 'text-text after:absolute after:inset-x-3 after:bottom-2 after:h-px after:bg-brass'
+        : 'text-text-2 hover:text-text'
     }`;
 
   return (
-    <header ref={menuRef} className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-5">
-      <nav
-        aria-label="Main"
-        className="glass glass-chrome mx-auto flex max-w-5xl items-center gap-1 rounded-full py-1.5 pl-4 pr-1.5"
-      >
-        <a href="#top" className="mr-auto min-h-11 inline-flex items-center font-semibold text-ink no-underline tracking-tight">
-          <span className="sm:hidden">Charlie</span>
-          <span className="hidden sm:inline">Charlie De Buriatte</span>
+    <header ref={menuRef} className="smoke aero-edge fixed inset-x-0 top-0 z-40 border-b border-hairline">
+      <nav aria-label="Main" className="wrap flex h-[var(--nav-h)] items-center gap-2">
+        <a href="#top" className="display mr-auto inline-flex min-h-11 items-center text-[0.8125rem] text-text no-underline sm:text-[0.875rem]">
+          Charlie De Buriatte
         </a>
 
-        <a href="#projects" className={`${linkClass('projects')} md:hidden`} aria-current={active === 'projects' ? 'true' : undefined}>
-          Projects
-        </a>
-
-        <ul className="hidden md:flex items-center gap-0.5 m-0 p-0 list-none">
+        <ul className="m-0 hidden list-none items-center p-0 md:flex">
           {sections.map(({ id, label }) => (
             <li key={id}>
               <a href={`#${id}`} className={linkClass(id)} aria-current={active === id ? 'true' : undefined}>
@@ -73,14 +67,13 @@ function Navigation({ onOpenCV }) {
           ))}
         </ul>
 
-        <button type="button" onClick={onOpenCV} className="btn btn-gloss btn-sm ml-1">
-          <FileText size={16} aria-hidden="true" />
-          CV
+        <button type="button" onClick={onOpenCV} className="btn-primary md:ml-3">
+          View CV
         </button>
 
         <button
           type="button"
-          className="md:hidden inline-grid place-items-center size-11 rounded-full text-ink hover:bg-white/45"
+          className="inline-grid size-11 place-items-center rounded-[3px] text-text-2 hover:text-text md:hidden"
           aria-expanded={menuOpen}
           aria-controls="nav-menu"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -88,19 +81,15 @@ function Navigation({ onOpenCV }) {
         >
           {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
         </button>
-
       </nav>
 
       {menuOpen && (
-        <ul
-          id="nav-menu"
-          className="glass glass-blur md:hidden absolute right-3 top-[calc(100%+0.25rem)] sm:right-5 m-0 w-56 list-none rounded-3xl p-2 settle"
-        >
-          {sections.slice(1).map(({ id, label }) => (
-            <li key={id}>
+        <ul id="nav-menu" className="m-0 list-none border-t border-hairline bg-raised p-0 md:hidden">
+          {sections.map(({ id, label }) => (
+            <li key={id} className="border-b border-hairline last:border-b-0">
               <a
                 href={`#${id}`}
-                className="flex min-h-11 items-center rounded-2xl px-4 font-medium text-ink no-underline hover:bg-white/60"
+                className="wrap flex min-h-12 items-center font-medium text-text no-underline hover:bg-panel"
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
