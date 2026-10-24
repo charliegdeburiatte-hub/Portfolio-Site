@@ -30,7 +30,7 @@ function App() {
       </div>
       <Navigation onOpenCV={openCV} />
       <main id="main">
-        <Hero onOpenCV={openCV} />
+        <Hero />
         <div className="relative">
           <div className="spine" aria-hidden="true" />
           <Projects />

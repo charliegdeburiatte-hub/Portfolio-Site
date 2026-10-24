@@ -254,7 +254,7 @@
   .btn-secondary:hover { border-color: var(--color-chrome); background: rgb(237 235 230 / 0.05); }
   .btn-secondary:active { background: rgb(237 235 230 / 0.09); }
 
-  .text-link {
+  .inline-link {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
@@ -266,7 +266,7 @@
     text-underline-offset: 0.3em;
     transition: text-decoration-color 160ms var(--ease-focus), text-underline-offset 160ms var(--ease-focus);
   }
-  .text-link:hover { text-decoration-color: var(--color-text); text-underline-offset: 0.2em; }
+  .inline-link:hover { text-decoration-color: var(--color-text); text-underline-offset: 0.2em; }
 
   /* ── Spec sheet: label left, value right, hairlines between ───── */
 
@@ -275,7 +275,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.125rem;
-    padding: 0.75rem 0;
+    padding: 0.625rem 0;
     border-bottom: 1px solid var(--hairline);
   }
   .spec dt { color: var(--color-text-2); font-size: 0.9375rem; }
