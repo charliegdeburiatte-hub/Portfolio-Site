@@ -52,6 +52,3 @@ export function TagList({ tags, label = 'Built with' }) {
     </div>
   );
 }
-
-// Temporary: Contact still uses the old name until it is rebuilt
-export const AeroWindow = Window;

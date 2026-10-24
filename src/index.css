@@ -267,6 +267,19 @@
   }
   .inline-link:hover { text-decoration-color: var(--color-text); text-underline-offset: 0.2em; }
 
+  /* ── Form fields ──────────────────────────────────────────────── */
+
+  .field {
+    font: inherit;
+    color: var(--color-text);
+    background: var(--color-ground);
+    border: 1px solid #6F6B65;
+    border-radius: 3px;
+    transition: border-color 160ms var(--ease-focus);
+  }
+  .field:hover { border-color: var(--color-chrome); }
+  .field:focus-visible { border-color: var(--color-chrome); }
+
   /* ── Project windows ──────────────────────────────────────────── */
 
   .window {
