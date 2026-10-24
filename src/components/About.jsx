@@ -15,8 +15,12 @@ function About() {
       <SectionHeading id="about-title" title="About" />
 
       <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-        <div className="glass rounded-[32px] p-6 sm:p-8 lg:sticky lg:top-[calc(var(--nav-h)+1.5rem)]">
-          <p className="m-0 text-[1.1875rem] leading-relaxed text-ink">{bio.medium}</p>
+        <div className="glass rounded-[32px] p-6 sm:p-8">
+          <div className="flex flex-col gap-4 text-[1.1875rem] leading-relaxed text-ink">
+            {bio.medium.split('\n\n').map((para) => (
+              <p key={para.slice(0, 24)} className="m-0">{para}</p>
+            ))}
+          </div>
           <h3 className="mt-6 mb-1 text-[1.0625rem] font-semibold text-ink">What drives me</h3>
           <p className="m-0 max-w-[68ch] text-ink-soft">{bio.what_drives_me}</p>
         </div>
