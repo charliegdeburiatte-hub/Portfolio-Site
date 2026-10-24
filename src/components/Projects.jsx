@@ -15,7 +15,7 @@ const SHOWN_TAGS = {
 };
 const tagsFor = (p) => SHOWN_TAGS[p.id] ?? p.tech_stack;
 
-const IT_PROJECTS = ['homelab-environment', 'intel-platform-diagnostics', 'custom-pc-build'];
+const IT_PROJECTS = ['homelab-environment', 'intel-platform-diagnostics', 'outlook-sync-repair', 'custom-pc-build'];
 const SOFTWARE_PROJECTS = ['freddo-index', 'interview-help', 'freelance-portfolio-client', 'hjelply'];
 
 const byId = (id) => contentData.projects.find((p) => p.id === id);

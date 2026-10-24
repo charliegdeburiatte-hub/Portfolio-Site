@@ -358,6 +358,33 @@
       "impact": "Strengthened analytical thinking and diagnostic methodology for complex hardware issues"
     },
     {
+      "id": "outlook-sync-repair",
+      "title": "Outlook Not Sending or Receiving",
+      "status": "completed",
+      "status_label": "Fixed",
+      "tagline": "Outlook on the web worked fine. The desktop app didn't. That told me where to look.",
+      "description": "At VantageUAV a colleague couldn't send or receive email in Outlook. I worked through the simple checks, used Outlook on the web to rule out the account, then repaired Outlook's local data file with Microsoft's Inbox Repair Tool.",
+      "highlights_title": "How I worked it out",
+      "highlights_ordered": true,
+      "highlights": [
+        "Fully closed Outlook, including its background processes, and reopened it",
+        "Checked the internet connection was stable",
+        "Checked whether Microsoft had any known Outlook issues",
+        "Tried Outlook on the web. It worked, so the account was fine and the fault was in the desktop app",
+        "Suspected the local mailbox file was damaged, looked up Microsoft's repair tool and found SCANPST.EXE in the Office folders",
+        "Ran it once, and Outlook started syncing again"
+      ],
+      "side_title": "Result",
+      "side_text": "Sending and receiving again after a single repair, and my colleague was back to normal.",
+      "tech_stack": [
+        "Outlook",
+        "Outlook on the web",
+        "SCANPST.EXE",
+        "POP/IMAP",
+        "Fault isolation"
+      ]
+    },
+    {
       "id": "portfolio-website",
       "title": "Professional Portfolio Website",
       "status": "active",
