@@ -42,7 +42,7 @@ Rangefinder influence means proportions and finish only. No fake leather, no vie
 | Projects | 1-12 | Analyser at full width, solid, window framed, with a factual "How it was built" note |
 | Projects | 1-8 + 9-12 | IT projects: write-up in 8 columns, spec column on the right |
 | Projects | 6 + 6 | Software projects, window framed |
-| About | 1-7 / 9-12 | Three paragraphs at reading width; Journey as a hairline list |
+| About | 1-7 / 9-12 | Three paragraphs at reading width; Timeline as a hairline list |
 | Skills | 1-3 / 4-12 | Group label left, hairline rows right. No chips, no icon tiles |
 | Contact | 1-5 / 7-12 | Spec rows left, solid form panel right |
 | Footer | 1-12 | Hairline rule above, small left-aligned text |
@@ -90,3 +90,12 @@ Short and damped, like a focus ring turning. 140 to 220ms, `cubic-bezier(0.2, 0,
 ## Accessibility
 
 WCAG 2.2 AA contrast (grey on black is checked token by token above), few `backdrop-filter` layers with solid fallbacks, `prefers-reduced-motion`, `prefers-reduced-transparency` and `prefers-contrast` support, semantic landmarks, visible keyboard focus, touch targets at least 44px.
+
+## Copy
+
+- Use specifics already on the site: VantageUAV, home lab since 2022, Google IT Support certificate, A+ exam ready. Do not invent facts, dates or numbers.
+- No "X & Y" pairs and no "From X to Y" structures.
+- Banned words: enthusiast, passionate, journey, leverage, seamless, cutting-edge.
+- No three-item lists of phrases, no "not just X but Y", no closing lines that sum things up. Mix sentence lengths.
+- British English. No em dashes. No emojis.
+- The Analyser's "How it was built" note states the stack, what Charlie decided and what AI was used for, from Charlie's own account only.
