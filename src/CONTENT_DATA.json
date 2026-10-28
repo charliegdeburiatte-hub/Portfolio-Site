@@ -2,9 +2,10 @@
   "personal": {
     "name": "Charlie De Buriatte",
     "title": "IT Support Specialist",
-    "tagline": "Hands-on IT support, a home lab I keep building on, and real faults fixed step by step",
+    "headline": "I start with the simple checks and keep going until the fault makes sense.",
+    "tagline": "Most of what I know came from fixing real faults, at work and in my home lab.",
     "status": {
-      "current_focus": "IT Systems & AI-assisted development",
+      "current_focus": "IT systems and AI-assisted development",
       "learning": "Network+, AWS, AI application development",
       "experience_level": "Tier 1-2 IT support",
       "availability": "Open to opportunities"
@@ -27,11 +28,11 @@
   "bio": {
     "short": "IT Support Specialist with Tier 1-2 support experience at VantageUAV and a home lab I keep building on. Building expertise through hands-on projects and continuous learning.",
     "medium": "I like IT support for the moment something finally works and the person can get back to what they were doing. I enjoy the figuring-it-out part, working through a fault step by step until it makes sense, but the best bit is seeing the stress lift for the other person. More and more people have started coming to me with their tech problems, and being trusted with that means a lot.\n\nThe fix I remember best from VantageUAV was a colleague who couldn't send or receive email. I started with the simple checks, then tried Outlook on the web. That worked, so the account was fine and the fault was in the desktop app. I found Microsoft's Inbox Repair Tool, ran it, and their email was syncing again.\n\nI'm proudest of this portfolio. The first version had every AI giveaway going: heavy gradients, emojis everywhere, stock phrasing, everything stacked dead centre. It looked finished but felt shallow. Since then I've learned to steer AI tools instead of accepting the first output, and I've replaced the filler with my own words and photos. It taught me that the skill is knowing what good looks like and spotting when the output isn't it.",
-    "full": "I became genuinely interested in technology in my early teens, starting as a typical user before gradually becoming the person who fixed things. Gaming, building PCs, and experimenting with virtual machines sparked a deeper curiosity about how systems actually work beneath the surface. Over time, that curiosity shifted from using technology to understanding and building it.\n\nAlthough I originally considered paths like healthcare or history, I found myself increasingly drawn to systems, infrastructure, and problem-solving. Building my own environments and troubleshooting real hardware issues, including diagnosing instability linked to Intel's 13th generation platform, strengthened my interest in technical problem-solving and persistence.\n\nMore recently, the rapid evolution of AI reignited that same curiosity. What began as casual experimentation evolved into using AI tools to build practical projects and improve workflows. Today, I'm focused on developing strong IT fundamentals while continuing to explore how modern tools, including AI, can enhance real-world systems and operations.",
+    "full": "I became genuinely interested in technology in my early teens, starting as a typical user before gradually becoming the person who fixed things. Gaming, building PCs, and experimenting with virtual machines sparked a deeper curiosity about how systems actually work beneath the surface. Over time, that curiosity turned towards understanding how it works and building it myself.\n\nAlthough I originally considered paths like healthcare or history, I found myself increasingly drawn to systems, infrastructure, and problem-solving. Building my own environments and troubleshooting real hardware issues, including diagnosing instability linked to Intel's 13th generation platform, strengthened my interest in technical problem-solving and persistence.\n\nMore recently, the rapid evolution of AI reignited that same curiosity. What began as casual experimentation evolved into using AI tools to build practical projects and improve workflows. Today, I'm focused on developing strong IT fundamentals while continuing to explore how modern tools, including AI, can enhance real-world systems and operations.",
     "journey_timeline": [
       {
         "period": "Early Teens",
-        "milestone": "From user to builder",
+        "milestone": "Became the one who fixed things",
         "context": "Gaming, building PCs and messing about with tech"
       },
       {
@@ -64,6 +65,7 @@
   "projects": [
     {
       "id": "job-application-analyzer",
+      "how_built": "Built with React 19 and TypeScript, with PDF.js reading the CV, the Claude API writing the cover letter, and Vercel hosting it. I decided the scoring rules, like required skills counting three times as much as preferred ones. Claude wrote the code.",
       "title": "Job Application Analyser",
       "version": "3.0.0",
       "status": "active",
@@ -78,7 +80,7 @@
         "Vite",
         "React Router DOM",
         "Zustand (state management)",
-        "Claude API (Anthropic): cover letters & CV suggestions",
+        "Claude API (Anthropic): cover letters and CV suggestions",
         "Mammoth.js (DOCX parsing)",
         "PDF.js (PDF parsing)",
         "LZ-String (compression)",
@@ -294,7 +296,7 @@
     },
     {
       "id": "custom-pc-build",
-      "title": "Custom PC Build & Optimisation",
+      "title": "Custom PC Build",
       "status": "completed",
       "status_label": "Completed",
       "tagline": "High-performance workstation built from scratch",
@@ -302,7 +304,8 @@
       "tech_stack": [
         "PC Hardware Assembly",
         "BIOS Configuration",
-        "Windows Installation & Optimisation",
+        "Windows Installation",
+        "Windows Optimisation",
         "Driver Management"
       ],
       "highlights_title": "What I did",
@@ -462,7 +465,7 @@
   "skills": {
     "technical_expertise": [
       {
-        "category": "Support & service desk",
+        "category": "Service desk",
         "skills": [
           "Technical support (Tier 1-2)",
           "Ticketing and workflow (Freshdesk)",
@@ -472,7 +475,7 @@
         ]
       },
       {
-        "category": "Systems & networking",
+        "category": "Systems",
         "skills": [
           "Windows 10/11 and Linux troubleshooting",
           "Active Directory users and Group Policy",
@@ -491,7 +494,7 @@
         ]
       },
       {
-        "category": "Scripting & tools",
+        "category": "Scripting",
         "skills": [
           "Basic scripting (PowerShell, Bash)",
           "Git and GitHub",

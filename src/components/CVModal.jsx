@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { Download, ExternalLink, FileText, X } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 
-// The CV opens as an Aero window. A native <dialog> gives focus trapping,
+// The CV opens on smoked glass, one of the three glass surfaces. A native <dialog> gives focus trapping,
 // Escape to close and an inert page behind it for free.
 // Android Chrome has no inline PDF viewer and leaves the iframe blank,
-// so browsers that report none get a download panel instead.
+// so browsers that report none get an open-in-new-tab panel instead.
 const canShowPdf = typeof navigator === 'undefined' || navigator.pdfViewerEnabled !== false;
 
 function CVModal({ open, onClose }) {
@@ -23,42 +23,36 @@ function CVModal({ open, onClose }) {
       aria-labelledby="cv-title"
       onClose={onClose}
       onClick={(e) => { if (e.target === ref.current) onClose(); }}
-      className="cv-dialog m-auto h-[min(92svh,60rem)] w-[min(100%-1.5rem,56rem)] max-w-none max-h-none overflow-visible border-0 bg-transparent p-0 backdrop:bg-[rgb(4_30_42/0.6)] backdrop:backdrop-blur-[6px]"
+      className="cv-dialog m-auto h-[min(92svh,60rem)] w-[min(100%-1.5rem,56rem)] max-w-none max-h-none overflow-visible border-0 bg-transparent p-0 text-text backdrop:bg-[rgb(10_9_8/0.72)]"
     >
-      <div className="aero flex h-full flex-col">
-        <div className="aero-titlebar">
-          <h2 id="cv-title" className="aero-title m-0 mr-auto">Charlie De Buriatte: CV</h2>
-          <button type="button" className="aero-close" onClick={onClose} aria-label="Close CV">
-            <X size={18} strokeWidth={2.75} aria-hidden="true" />
+      <div className="smoke chrome-rim flex h-full flex-col rounded-[6px]">
+        <div className="window-bar bg-transparent">
+          <h2 id="cv-title" className="m-0 mr-auto text-[1rem] font-semibold text-text">Charlie De Buriatte: CV</h2>
+          <button type="button" className="btn-secondary w-11 px-0" onClick={onClose} aria-label="Close CV">
+            <X size={18} aria-hidden="true" />
           </button>
         </div>
 
-        <div className="relative flex flex-wrap items-center gap-2 pb-2">
-          <a className="btn btn-gloss btn-sm" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">
-            <Download size={16} aria-hidden="true" />
-            Download PDF
-          </a>
-          <a className="btn btn-metal btn-sm" href="/Charlie_De_Buriatte_CV.docx" download>
-            <Download size={16} aria-hidden="true" />
-            Download Word
-          </a>
-          <a className="ml-auto inline-flex min-h-11 items-center gap-1.5 px-2 text-[0.9375rem] font-medium" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+        <div className="flex flex-wrap items-center gap-x-5 px-5 py-1">
+          <a className="inline-link" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">Download PDF</a>
+          <a className="inline-link" href="/Charlie_De_Buriatte_CV.docx" download>Download Word</a>
+          <a className="inline-link sm:ml-auto" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
             Open in new tab
-            <ExternalLink size={14} aria-hidden="true" />
+            <ArrowUpRight size={16} aria-hidden="true" />
+            <span className="sr-only">(opens in a new tab)</span>
           </a>
         </div>
 
-        <div className="aero-client relative flex-1 overflow-hidden">
+        <div className="relative m-2 mt-1 flex-1 overflow-hidden rounded-[3px] border border-hairline bg-raised">
           {open && canShowPdf && (
-            <iframe src="/cv.pdf" title="Charlie De Buriatte CV (PDF)" className="absolute inset-0 size-full border-0" />
+            <iframe src="/cv.pdf" title="Charlie De Buriatte CV (PDF)" className="absolute inset-0 size-full border-0 bg-white" />
           )}
           {open && !canShowPdf && (
-            <div className="grid h-full place-content-center justify-items-center gap-4 p-6 text-center">
-              <FileText size={40} className="text-field" aria-hidden="true" />
-              <p className="m-0 max-w-[32ch] text-ink-soft">This browser can't show PDFs inside the page. Open the CV in a new tab, or use the download buttons above.</p>
-              <a className="btn btn-gloss" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-                <ExternalLink size={18} aria-hidden="true" />
+            <div className="flex h-full flex-col items-start justify-center gap-4 p-6">
+              <p className="m-0 max-w-[36ch] text-text-2">This browser can't show PDFs inside the page. Open the CV in a new tab, or use the download links above.</p>
+              <a className="btn-secondary" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
                 Open CV
+                <ArrowUpRight size={16} aria-hidden="true" />
                 <span className="sr-only">(opens in a new tab)</span>
               </a>
             </div>

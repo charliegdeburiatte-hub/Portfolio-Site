@@ -5,7 +5,7 @@ const readGlass = () => {
   try { return localStorage.getItem('glass') !== 'off'; } catch { return true; }
 };
 
-// A real switch: turns every translucent surface solid, for anyone who
+// A real switch: turns the few glass surfaces solid, for anyone who
 // finds the glass harder to read. The choice is remembered on this device.
 function GlassSwitch() {
   const [on, setOn] = useState(readGlass);
@@ -23,11 +23,11 @@ function GlassSwitch() {
       role="switch"
       aria-checked={on}
       onClick={toggle}
-      className="inline-flex min-h-11 items-center gap-3 font-medium text-on-field"
+      className="inline-flex min-h-11 cursor-pointer items-center gap-3 border-0 bg-transparent p-0 font-[inherit] text-text-2 hover:text-text"
     >
       Glass effects
-      <span className={`ios-switch ${on ? 'is-on' : ''}`} aria-hidden="true">
-        <span className="ios-switch-knob" />
+      <span className={`switch ${on ? 'is-on' : ''}`} aria-hidden="true">
+        <span className="switch-knob" />
       </span>
     </button>
   );
@@ -37,11 +37,11 @@ function Footer() {
   const { personal } = contentData;
 
   return (
-    <footer className="focus-light px-4 pb-10 pt-6 sm:px-6">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 border-t border-white/15 pt-6 text-[0.9375rem] text-on-field sm:flex-row sm:justify-between">
-        <p className="m-0">© {new Date().getFullYear()} {personal.name} · {personal.location}</p>
-        <GlassSwitch />
-        <p className="m-0">Built with React + Tailwind CSS</p>
+    <footer className="wrap pb-10">
+      <div className="flex flex-col items-start gap-x-8 gap-y-2 border-t border-hairline pt-6 text-[0.875rem] text-text-2 sm:flex-row sm:items-center">
+        <p className="m-0">© {new Date().getFullYear()} {personal.name}, {personal.location}</p>
+        <p className="m-0">Built with React and Tailwind CSS</p>
+        <span className="sm:ml-auto"><GlassSwitch /></span>
       </div>
     </footer>
   );

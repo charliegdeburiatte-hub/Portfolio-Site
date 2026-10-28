@@ -1,54 +1,38 @@
-import { BookOpen, Briefcase, Gamepad2, GraduationCap, Headset, Phone, Server } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 import { SectionHeading } from './ui';
 
-// Journey as a notification history, newest first
-const ICONS = [BookOpen, GraduationCap, Server, Headset, Phone, Gamepad2];
-
 function About() {
   const { bio, work_experience } = contentData;
-  const journey = [...bio.journey_timeline].reverse();
+  const timeline = [...bio.journey_timeline].reverse();
   const vantage = work_experience.find((job) => job.company === 'VantageUAV');
 
   return (
-    <section id="about" aria-labelledby="about-title" className="page-section">
-      <SectionHeading id="about-title" title="About" />
+    <section id="about" aria-labelledby="about-title" className="wrap pt-4 pb-24 lg:pb-32">
+      <div className="grid-12 gap-y-10">
+        <SectionHeading id="about-title" title="About" />
 
-      <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-        <div className="glass rounded-[32px] p-6 sm:p-8">
-          <div className="flex flex-col gap-4 text-[1.1875rem] leading-relaxed text-ink">
-            {bio.medium.split('\n\n').map((para) => (
-              <p key={para.slice(0, 24)} className="m-0">{para}</p>
-            ))}
-          </div>
+        <div className="flex max-w-[64ch] flex-col gap-5 text-[1.125rem] leading-[1.65] text-text sm:col-span-8 lg:col-span-7">
+          {bio.medium.split('\n\n').map((para) => (
+            <p key={para.slice(0, 24)} className="m-0">{para}</p>
+          ))}
         </div>
 
-        <div className="glass rounded-[32px] p-3 sm:p-4">
-          <h3 className="m-0 px-3 pt-2 pb-3 text-[1.0625rem] font-semibold text-ink">Journey</h3>
-          <ol className="m-0 flex list-none flex-col gap-2 p-0">
-            {journey.map((item, i) => {
-              const Icon = ICONS[i] ?? Briefcase;
+        <div className="sm:col-span-8 lg:col-span-4 lg:col-start-9">
+          <h3 className="m-0 border-b border-hairline pb-3 text-[1rem] font-semibold text-text">Timeline</h3>
+          <ol className="m-0 list-none p-0">
+            {timeline.map((item) => {
               const isVantage = item.milestone.includes('VantageUAV');
               return (
-                <li key={item.period} className="rounded-[20px] bg-white/80 p-3.5 shadow-[0_1px_3px_rgb(5_40_60/0.1)]">
-                  <div className="flex gap-3">
-                    <span className="grid size-9 shrink-0 place-items-center rounded-[10px] bg-field text-on-field shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]">
-                      <Icon size={18} aria-hidden="true" />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-baseline justify-between gap-x-3">
-                        <p className="m-0 font-semibold leading-snug text-ink">{item.milestone}</p>
-                        <p className="m-0 text-[0.875rem] text-ink-soft">{item.period}</p>
-                      </div>
-                      {isVantage && vantage ? (
-                        <ul className="mt-1.5 mb-0 list-disc pl-5 text-[0.9375rem] text-ink-soft marker:text-field" aria-label="What I did at VantageUAV">
-                          {vantage.responsibilities.map((r) => <li key={r} className="mb-1.5">{r}</li>)}
-                        </ul>
-                      ) : (
-                        <p className="m-0 mt-0.5 text-[0.9375rem] text-ink-soft">{item.context}</p>
-                      )}
-                    </div>
-                  </div>
+                <li key={item.period} className="border-b border-hairline py-4">
+                  <p className="meta m-0">{item.period}</p>
+                  <p className="mt-1 mb-0 font-semibold leading-snug text-text">{item.milestone}</p>
+                  {isVantage && vantage ? (
+                    <ul className="steps mt-1 text-[0.9375rem] text-text-2" aria-label="What I did at VantageUAV">
+                      {vantage.responsibilities.map((r) => <li key={r}>{r}</li>)}
+                    </ul>
+                  ) : (
+                    <p className="mt-1 mb-0 text-[0.9375rem] text-text-2">{item.context}</p>
+                  )}
                 </li>
               );
             })}
