@@ -6,11 +6,11 @@ import { SectionHeading, StatusBadge, TagList, Window } from './ui';
 const FLAGSHIP_TAGS = ['React 19', 'TypeScript', 'Claude API (Anthropic)', 'PDF.js (PDF parsing)', 'Vercel (deployment)'];
 const SHOWN_TAGS = {
   'homelab-environment': ['Windows Server 2025', 'Active Directory', 'Group Policy', 'Freshdesk', 'PowerShell'],
-  'intel-platform-diagnostics': ['DDU', 'Hardware swap testing', 'Voltage monitoring', 'BSOD diagnosis', 'BIOS & microcode update'],
+  'intel-platform-diagnostics': ['DDU', 'Hardware swap testing', 'Voltage monitoring', 'BSOD diagnosis', 'BIOS and microcode update'],
   'freddo-index': ['React', 'Vite', 'Recharts', 'Supabase'],
   'interview-help': ['Electron', 'React', 'Ollama (local LLM)', 'Whisper (local)', 'SQLite'],
   'freelance-portfolio-client': ['Next.js 16', 'TypeScript', 'Sanity CMS', 'Playwright (E2E tests)'],
-  hjelply: ['React & TypeScript', 'Node.js & Express', 'PostgreSQL', 'Docker'],
+  hjelply: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Docker'],
 };
 const tagsFor = (p) => SHOWN_TAGS[p.id] ?? p.tech_stack;
 

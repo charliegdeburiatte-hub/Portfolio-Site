@@ -5,7 +5,7 @@
     "headline": "I start with the simple checks and keep going until the fault makes sense.",
     "tagline": "Most of what I know came from fixing real faults, at work and in my home lab.",
     "status": {
-      "current_focus": "IT Systems & AI-assisted development",
+      "current_focus": "IT systems and AI-assisted development",
       "learning": "Network+, AWS, AI application development",
       "experience_level": "Tier 1-2 IT support",
       "availability": "Open to opportunities"
@@ -80,7 +80,7 @@
         "Vite",
         "React Router DOM",
         "Zustand (state management)",
-        "Claude API (Anthropic): cover letters & CV suggestions",
+        "Claude API (Anthropic): cover letters and CV suggestions",
         "Mammoth.js (DOCX parsing)",
         "PDF.js (PDF parsing)",
         "LZ-String (compression)",
@@ -296,7 +296,7 @@
     },
     {
       "id": "custom-pc-build",
-      "title": "Custom PC Build & Optimisation",
+      "title": "Custom PC Build",
       "status": "completed",
       "status_label": "Completed",
       "tagline": "High-performance workstation built from scratch",
@@ -304,7 +304,8 @@
       "tech_stack": [
         "PC Hardware Assembly",
         "BIOS Configuration",
-        "Windows Installation & Optimisation",
+        "Windows Installation",
+        "Windows Optimisation",
         "Driver Management"
       ],
       "highlights_title": "What I did",
@@ -464,7 +465,7 @@
   "skills": {
     "technical_expertise": [
       {
-        "category": "Support & service desk",
+        "category": "Service desk",
         "skills": [
           "Technical support (Tier 1-2)",
           "Ticketing and workflow (Freshdesk)",
@@ -474,7 +475,7 @@
         ]
       },
       {
-        "category": "Systems & networking",
+        "category": "Systems",
         "skills": [
           "Windows 10/11 and Linux troubleshooting",
           "Active Directory users and Group Policy",
@@ -493,7 +494,7 @@
         ]
       },
       {
-        "category": "Scripting & tools",
+        "category": "Scripting",
         "skills": [
           "Basic scripting (PowerShell, Bash)",
           "Git and GitHub",
