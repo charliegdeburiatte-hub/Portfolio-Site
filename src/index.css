@@ -68,6 +68,11 @@
     text-wrap: balance;
   }
 
+  /* Keep a lone word off the last line of body copy */
+  p, li, dd {
+    text-wrap: pretty;
+  }
+
   [id] {
     scroll-margin-top: calc(var(--nav-h) + 1rem);
   }
