@@ -121,7 +121,7 @@ function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-title" className="wrap pt-6 pb-28 lg:pb-40">
       <div className="grid-12 gap-y-10">
-        <SectionHeading id="projects-title" title="Projects" intro="Lab work, real faults fixed, and the tools I've built along the way" />
+        <SectionHeading id="projects-title" title="Projects" intro="IT write-ups on real faults come after the Analyser. Everything else I've built is at the bottom." />
         <div className="col-span-full">
           <Flagship />
         </div>
