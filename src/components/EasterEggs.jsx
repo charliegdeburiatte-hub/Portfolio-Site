@@ -135,7 +135,7 @@ function RamCounter() {
   const done   = count >= MAX;
 
   return (
-    <div style={{ color: done ? '#80ff80' : '#ffcc00', minHeight: '1.75em' }}>
+    <div style={{ color: done ? '#EDEBE6' : '#C4A06A', minHeight: '1.75em' }}>
       {`  [${bar}]  ${String(count).padStart(5)}MB / ${MAX}MB${done ? ' ......... OK' : ''}`}
     </div>
   );
@@ -178,46 +178,46 @@ function BootMenu({ onDismiss }) {
     <div style={{
       position: 'absolute', inset: 0,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: '#000',
+      background: '#131211',
     }}>
       {message ? (
         <div style={{
-          fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+          fontFamily: "'JetBrains Mono', monospace",
           fontSize: '14px',
-          color: '#ffcc00',
+          color: '#C4A06A',
           textAlign: 'center',
           lineHeight: 2,
           whiteSpace: 'pre',
         }}>
           {message}
-          <div style={{ color: '#555', marginTop: '16px', fontSize: '12px' }}>
+          <div style={{ color: '#8E8A83', marginTop: '16px', fontSize: '12px' }}>
             Press any key...
           </div>
         </div>
       ) : (
         <div style={{
-          fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+          fontFamily: "'JetBrains Mono', monospace",
           fontSize: '14px',
           color: '#999',
           lineHeight: 1.9,
         }}>
-          <div style={{ color: '#555' }}>{`╔${W}╗`}</div>
-          <div style={{ color: '#555' }}>
+          <div style={{ color: '#8E8A83' }}>{`╔${W}╗`}</div>
+          <div style={{ color: '#8E8A83' }}>
             {'║'}<span style={{ color: '#fff', fontWeight: 'bold' }}>
               {'                    BOOT MENU                      '}
             </span>{'║'}
           </div>
-          <div style={{ color: '#555' }}>{`╠${W}╣`}</div>
-          <div style={{ color: '#555' }}>{'║' + ' '.repeat(52) + '║'}</div>
+          <div style={{ color: '#8E8A83' }}>{`╠${W}╣`}</div>
+          <div style={{ color: '#8E8A83' }}>{'║' + ' '.repeat(52) + '║'}</div>
 
           {BOOT_OPTIONS.map((opt, i) => {
             const isSelected = i === selected;
             return (
-              <div key={opt.key} style={{ color: '#555' }}>
+              <div key={opt.key} style={{ color: '#8E8A83' }}>
                 {'║  '}
                 <span style={{
                   color: isSelected ? '#000' : '#ccc',
-                  background: isSelected ? '#80ff80' : 'transparent',
+                  background: isSelected ? '#EDEBE6' : 'transparent',
                   fontWeight: isSelected ? 'bold' : 'normal',
                 }}>
                   {isSelected ? '►' : ' '}
@@ -228,16 +228,16 @@ function BootMenu({ onDismiss }) {
             );
           })}
 
-          <div style={{ color: '#555' }}>{'║' + ' '.repeat(52) + '║'}</div>
-          <div style={{ color: '#555' }}>{`╠${W}╣`}</div>
-          <div style={{ color: '#555' }}>
+          <div style={{ color: '#8E8A83' }}>{'║' + ' '.repeat(52) + '║'}</div>
+          <div style={{ color: '#8E8A83' }}>{`╠${W}╣`}</div>
+          <div style={{ color: '#8E8A83' }}>
             {'║'}
-            <span style={{ color: '#777', fontSize: '12px' }}>
+            <span style={{ color: '#8E8A83', fontSize: '12px' }}>
               {'  ↑↓ to select   ENTER to boot   ESC for shell          '}
             </span>
             {'║'}
           </div>
-          <div style={{ color: '#555' }}>{`╚${W}╝`}</div>
+          <div style={{ color: '#8E8A83' }}>{`╚${W}╝`}</div>
         </div>
       )}
     </div>
@@ -276,12 +276,12 @@ function BiosScreen({ onDismiss }) {
   const styleFor = (s) => {
     switch (s) {
       case 'header':    return { color: '#fff', fontWeight: 'bold' };
-      case 'ok':        return { color: '#80ff80' };
-      case 'highlight': return { color: '#80ff80', fontWeight: 'bold' };
-      case 'warn':      return { color: '#ffcc00' };
-      case 'crit':      return { color: '#ff6060', fontWeight: 'bold' };
-      case 'info':      return { color: '#00ccff' };
-      case 'dim':       return { color: '#444' };
+      case 'ok':        return { color: '#EDEBE6' };
+      case 'highlight': return { color: '#EDEBE6', fontWeight: 'bold' };
+      case 'warn':      return { color: '#C4A06A' };
+      case 'crit':      return { color: '#C4A06A', fontWeight: 'bold' };
+      case 'info':      return { color: '#B9B5AD' };
+      case 'dim':       return { color: '#8E8A83' };
       default:          return { color: '#999' };
     }
   };
@@ -289,7 +289,7 @@ function BiosScreen({ onDismiss }) {
   return (
     <div style={{
       position: 'fixed', inset: 0,
-      background: '#000',
+      background: '#131211',
       zIndex: 10000,
       overflow: 'hidden',
       cursor: showMenu ? 'default' : 'pointer',
@@ -302,7 +302,7 @@ function BiosScreen({ onDismiss }) {
             position: 'absolute', inset: 0,
             padding: '32px 48px',
             overflowY: 'auto',
-            fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+            fontFamily: "'JetBrains Mono', monospace",
             fontSize: '13px',
             lineHeight: 1.75,
             scrollbarWidth: 'none',
