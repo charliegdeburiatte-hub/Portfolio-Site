@@ -47,12 +47,12 @@ function Flagship() {
       <div className="grid gap-8 md:grid-cols-12 md:gap-6">
         <div className="md:col-span-8">
           <p className="m-0 max-w-[40ch] text-[clamp(1.25rem,2vw,1.5rem)] font-medium leading-snug text-text">{p.tagline}.</p>
-          <p className="mt-4 mb-0 max-w-[66ch] text-text-2">{p.description}</p>
+          <p className="mt-4 mb-0 max-w-[58ch] text-text-2">{p.description}</p>
           {p.how_built && (
             <>
               <h4 className="mt-7 mb-0 text-[0.9375rem] font-semibold text-text">How it was built</h4>
               {p.how_built.split('\n\n').map((para) => (
-                <p key={para.slice(0, 24)} className="mt-2 mb-0 max-w-[66ch] text-text-2">{para}</p>
+                <p key={para.slice(0, 24)} className="mt-2 mb-0 max-w-[58ch] text-text-2">{para}</p>
               ))}
             </>
           )}
@@ -77,7 +77,7 @@ function ProjectWindow({ project }) {
   return (
     <Window id={id} title={title} badge={<StatusBadge status={status} label={status_label} />}>
       <p className="m-0 font-medium leading-snug text-text">{tagline}</p>
-      <p className="mt-2 mb-4 text-[0.9375rem] text-text-2">{description}</p>
+      <p className="mt-2 mb-4 max-w-[58ch] text-[0.9375rem] text-text-2">{description}</p>
       <TagList tags={tagsFor(project)} />
       <ProjectLinks links={links} />
     </Window>
@@ -93,9 +93,9 @@ function WideProjectWindow({ project }) {
       <div className="grid gap-8 md:grid-cols-12 md:gap-6">
         <div className="md:col-span-8">
           <p className="m-0 max-w-[48ch] text-[1.1875rem] font-medium leading-snug text-text">{tagline}</p>
-          <p className="mt-3 mb-0 max-w-[66ch] text-text-2">{description}</p>
+          <p className="mt-3 mb-0 max-w-[58ch] text-text-2">{description}</p>
           <h4 className="mt-6 mb-0 text-[0.9375rem] font-semibold text-text">{project.highlights_title}</h4>
-          <List className={`steps mt-2 mb-0 max-w-[66ch] text-text-2 ${List === 'ol' ? 'steps-numbered' : ''}`}>
+          <List className={`steps mt-2 mb-0 max-w-[58ch] text-text-2 ${List === 'ol' ? 'steps-numbered' : ''}`}>
             {highlights.map((h) => <li key={h}>{h}</li>)}
           </List>
         </div>
