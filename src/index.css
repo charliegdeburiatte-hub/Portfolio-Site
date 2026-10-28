@@ -180,6 +180,14 @@
     pointer-events: none;
   }
 
+  /* Full-bleed bars take the chrome on the bottom edge only */
+  .chrome-rim.rim-bottom::before {
+    inset: auto 0 0;
+    height: 1px;
+    padding: 0;
+    mask: none;
+  }
+
   /* Aero, kept small: a thin highlight along the top edge */
   .aero-edge { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14); }
 

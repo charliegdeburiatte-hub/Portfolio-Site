@@ -51,7 +51,7 @@ function Navigation({ onOpenCV }) {
     }`;
 
   return (
-    <header ref={menuRef} className="smoke aero-edge fixed inset-x-0 top-0 z-40 border-b border-hairline">
+    <header ref={menuRef} className="smoke chrome-rim rim-bottom aero-edge fixed inset-x-0 top-0 z-40">
       <nav aria-label="Main" className="wrap flex h-[var(--nav-h)] items-center gap-2">
         <a href="#top" className="display mr-auto inline-flex min-h-11 items-center text-[0.8125rem] text-text no-underline sm:text-[0.875rem]">
           Charlie De Buriatte
