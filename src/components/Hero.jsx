@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 
-function Hero() {
+function Hero({ onOpenCV }) {
   const { name, headline, tagline, location } = contentData.personal;
   const flagship = contentData.projects[0];
   const certs = contentData.skills.certifications;
@@ -36,8 +36,8 @@ function Hero() {
           </dl>
 
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
-            <a className="btn-secondary" href="#contact">Get in touch</a>
-            <a className="inline-link" href="#projects">See the projects</a>
+            <button type="button" className="btn-secondary" onClick={onOpenCV}>View CV</button>
+            <a className="inline-link" href="#contact">Get in touch</a>
           </div>
         </div>
 

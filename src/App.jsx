@@ -28,7 +28,7 @@ function App() {
       </div>
       <Navigation onOpenCV={openCV} />
       <main id="main">
-        <Hero />
+        <Hero onOpenCV={openCV} />
         <Projects />
         <About />
         <Skills />
