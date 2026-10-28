@@ -50,7 +50,7 @@ function Hero({ onOpenCV }) {
             3.0
           </span>
 
-          <article className="smoke chrome-rim relative mt-[clamp(5.5rem,10vw,8.5rem)] rounded-[6px] p-6 sm:p-7">
+          <article className="smoke chrome-rim aero-edge relative mt-[clamp(5.5rem,10vw,8.5rem)] rounded-[6px] p-6 sm:p-7">
             <p className="meta m-0">v{flagship.version} · Mar 2026</p>
             <h2 id="flagship-title" className="mt-3 mb-0 text-[1.375rem] font-semibold leading-tight text-text">
               {flagship.title}
