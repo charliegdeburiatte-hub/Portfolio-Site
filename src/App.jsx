@@ -21,6 +21,7 @@ function App() {
       >
         Skip to content
       </a>
+      <div className="grain" data-check="grain" aria-hidden="true" />
       <div className="grid-guides" aria-hidden="true">
         <div className="wrap grid-12">
           {Array.from({ length: 12 }, (_, i) => <span key={i} />)}
@@ -28,6 +29,17 @@ function App() {
       </div>
       <Navigation onOpenCV={openCV} />
       <main id="main">
+        {/* The engraved scale along the top edge of the grid: one numbered major tick per column */}
+        <div className="wrap pt-[calc(var(--nav-h)+1rem)]" aria-hidden="true">
+          <div className="scale" data-check="scale">
+            {Array.from({ length: 12 }, (_, i) => (
+              <span key={i}>
+                <span className="scale-tick" data-tick="major" style={{ '--i': i }} />
+                <span className="scale-num" style={{ '--i': i }}>{i + 1}</span>
+              </span>
+            ))}
+          </div>
+        </div>
         <Hero onOpenCV={openCV} />
         <Projects />
         <About />
