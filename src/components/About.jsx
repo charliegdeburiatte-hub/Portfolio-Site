@@ -9,26 +9,26 @@ function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="wrap pt-4 pb-24 lg:pb-32">
       <div className="grid-12 gap-y-10">
-        <SectionHeading id="about-title" title="About" />
+        <SectionHeading id="about-title" title="About" start={2} />
 
-        <div className="flex max-w-[64ch] flex-col gap-5 text-[1.125rem] leading-[1.65] text-text sm:col-span-8 lg:col-span-7">
+        <div className="flex max-w-[64ch] flex-col gap-5 text-[1.125rem] leading-[1.65] text-text sm:col-span-8 lg:col-span-6 lg:col-start-2">
           {bio.medium.split('\n\n').map((para) => (
             <p key={para.slice(0, 24)} className="m-0">{para}</p>
           ))}
         </div>
 
         <div className="sm:col-span-8 lg:col-span-4 lg:col-start-9">
-          <h3 className="m-0 border-b border-hairline pb-3 text-[1rem] font-semibold text-text">Timeline</h3>
+          <h3 className="m-0 pb-2 text-[1rem] font-semibold text-text">Timeline</h3>
           <ol className="m-0 list-none p-0">
             {timeline.map((item) => {
               const isVantage = item.milestone.includes('VantageUAV');
               return (
-                <li key={item.period} className="border-b border-hairline py-4">
-                  <p className="meta m-0">{item.period}</p>
-                  <p className="mt-1 mb-0 font-semibold leading-snug text-text">{item.milestone}</p>
+                <li key={item.period} className="py-3">
+                  <p className="m-0 text-[0.875rem] text-anodised">{item.period}</p>
+                  <p className="mt-0.5 mb-0 font-semibold leading-snug text-text">{item.milestone}</p>
                   {isVantage && vantage ? (
-                    <ul className="steps mt-1 text-[0.9375rem] text-text-2" aria-label="What I did at VantageUAV">
-                      {vantage.responsibilities.map((r) => <li key={r}>{r}</li>)}
+                    <ul className="mt-1 mb-0 list-disc pl-4 text-[0.9375rem] text-text-2 marker:text-anodised" aria-label="What I did at VantageUAV">
+                      {vantage.responsibilities.map((r) => <li key={r} className="mt-1">{r}</li>)}
                     </ul>
                   ) : (
                     <p className="mt-1 mb-0 text-[0.9375rem] text-text-2">{item.context}</p>
