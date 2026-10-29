@@ -33,18 +33,19 @@
 
 }
 
+/* Unlayered, like :root above: inside @layer base these lost to it and never applied */
+@media (min-width: 640px) {
+  :root { --gutter: 1.25rem; --margin: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  :root { --gutter: 1.5rem; --margin: 2rem; }
+}
+
 @layer base {
   html {
     background: var(--color-ground);
     color-scheme: dark;
     -webkit-text-size-adjust: 100%;
-  }
-
-  @media (min-width: 640px) {
-    :root { --gutter: 1.25rem; --margin: 1.5rem; }
-  }
-  @media (min-width: 1024px) {
-    :root { --gutter: 1.5rem; --margin: 2rem; }
   }
 
   @media (prefers-reduced-motion: no-preference) {
