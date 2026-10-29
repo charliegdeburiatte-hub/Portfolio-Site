@@ -58,7 +58,8 @@
     font-size: 1.0625rem;
     line-height: 1.55;
     color: var(--color-text);
-    background: var(--color-ground);
+    /* No background here: html paints the ground, so the fixed grid
+       guides at z-index -1 are not covered by body's own box */
     font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
   }
