@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <!-- Placeholder until src/assets/analyser.png exists. Neutral wireframe, no data. -->
+  <rect width="1200" height="900" fill="#1C1D20"/>
+  <rect x="0" y="0" width="1200" height="72" fill="#26282B"/>
+  <circle cx="44" cy="36" r="10" fill="#45484C"/>
+  <rect x="72" y="28" width="220" height="16" rx="3" fill="#45484C"/>
+  <rect x="48" y="112" width="1104" height="96" rx="8" fill="none" stroke="#5C6065" stroke-width="3" stroke-dasharray="14 10"/>
+  <text x="80" y="156" font-family="sans-serif" font-size="34" font-weight="700" fill="#E6E8EA">Placeholder</text>
+  <text x="80" y="190" font-family="sans-serif" font-size="24" fill="#A3A7AC">Analyser screenshot goes here: src/assets/analyser.png</text>
+  <rect x="48" y="248" width="520" height="600" rx="10" fill="#232427"/>
+  <rect x="84" y="290" width="300" height="18" rx="4" fill="#45484C"/>
+  <rect x="84" y="330" width="440" height="12" rx="4" fill="#34363A"/>
+  <rect x="84" y="356" width="400" height="12" rx="4" fill="#34363A"/>
+  <rect x="84" y="382" width="420" height="12" rx="4" fill="#34363A"/>
+  <rect x="84" y="430" width="440" height="160" rx="8" fill="#1C1D20"/>
+  <rect x="84" y="620" width="200" height="48" rx="6" fill="#5C6065"/>
+  <rect x="608" y="248" width="544" height="600" rx="10" fill="#232427"/>
+  <circle cx="880" cy="470" r="150" fill="none" stroke="#45484C" stroke-width="22"/>
+  <path d="M880 320 A150 150 0 0 1 1022 520" fill="none" stroke="#9DA2A8" stroke-width="22"/>
+  <rect x="660" y="680" width="440" height="12" rx="4" fill="#34363A"/>
+  <rect x="660" y="706" width="380" height="12" rx="4" fill="#34363A"/>
+  <rect x="660" y="732" width="410" height="12" rx="4" fill="#34363A"/>
+</svg>
