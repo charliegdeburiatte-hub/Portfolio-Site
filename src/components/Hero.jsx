@@ -43,12 +43,32 @@ function Hero({ onOpenCV }) {
 
         <aside aria-labelledby="flagship-title" className="relative sm:col-span-8 lg:col-span-5 lg:self-start lg:pt-6">
           {/* Outlined version numeral: something real for the glass to bend */}
-          <span
+          <svg
             aria-hidden="true"
-            className="pointer-events-none absolute top-0 right-0 select-none text-[clamp(8rem,17vw,14rem)] font-[200] leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1px_rgb(156_152_145/0.45)]"
+            focusable="false"
+            viewBox="0 0 125 100"
+            className="numeral pointer-events-none absolute top-0 right-0 h-[1em] w-auto select-none overflow-visible text-[clamp(8rem,17vw,14rem)]"
           >
-            3.0
-          </span>
+            <defs>
+              {/* Brushed silver, same ramp as --brushed: light at the top, darker below */}
+              <linearGradient id="numeral-ramp" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#CFCBC4" />
+                <stop offset="0.55" stopColor="#8A8680" />
+                <stop offset="1" stopColor="#6B6762" />
+              </linearGradient>
+              {/* The grain: a faint light line every few pixels across the stroke */}
+              <linearGradient id="numeral-grain" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1.4" y2="0" spreadMethod="repeat">
+                <stop offset="0" stopColor="#fff" stopOpacity="0.35" />
+                <stop offset="0.33" stopColor="#fff" stopOpacity="0.35" />
+                <stop offset="0.33" stopColor="#fff" stopOpacity="0" />
+                <stop offset="1" stopColor="#fff" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <g fontSize="100" fontWeight="200" letterSpacing="-4" textAnchor="end" fill="none" strokeWidth="1.25">
+              <text x="125" y="78" stroke="url(#numeral-ramp)" vectorEffect="non-scaling-stroke">3.0</text>
+              <text x="125" y="78" stroke="url(#numeral-grain)" vectorEffect="non-scaling-stroke">3.0</text>
+            </g>
+          </svg>
 
           <article className="smoke chrome-rim aero-edge relative mt-[clamp(5.5rem,10vw,8.5rem)] rounded-[6px] p-6 sm:p-7">
             <p className="meta m-0">v{flagship.version} · Mar 2026</p>
