@@ -46,12 +46,12 @@ function Navigation({ onOpenCV }) {
   const linkClass = (id) =>
     `relative inline-flex items-center min-h-11 px-3 text-[0.9375rem] font-medium no-underline transition-colors duration-150 ${
       active === id
-        ? 'text-text after:absolute after:inset-x-3 after:bottom-2 after:h-px after:bg-brass'
+        ? 'text-text after:absolute after:inset-x-3 after:bottom-2 after:h-px after:bg-text'
         : 'text-text-2 hover:text-text'
     }`;
 
   return (
-    <header ref={menuRef} className="smoke chrome-rim rim-bottom aero-edge fixed inset-x-0 top-0 z-40">
+    <header ref={menuRef} className="glass glass-bar fixed inset-x-0 top-0 z-40">
       <nav aria-label="Main" className="wrap flex h-[var(--nav-h)] items-center gap-2">
         <a href="#top" className="display mr-auto inline-flex min-h-11 items-center text-[0.8125rem] text-text no-underline sm:text-[0.875rem]">
           Charlie De Buriatte
@@ -84,9 +84,9 @@ function Navigation({ onOpenCV }) {
       </nav>
 
       {menuOpen && (
-        <ul id="nav-menu" className="m-0 list-none border-t border-hairline bg-raised p-0 md:hidden">
+        <ul id="nav-menu" className="m-0 list-none border-t border-rules bg-raised p-0 md:hidden">
           {sections.map(({ id, label }) => (
-            <li key={id} className="border-b border-hairline last:border-b-0">
+            <li key={id} className="border-b border-rules last:border-b-0">
               <a
                 href={`#${id}`}
                 className="wrap flex min-h-12 items-center font-medium text-text no-underline hover:bg-panel"
