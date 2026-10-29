@@ -41,13 +41,17 @@ function Hero({ onOpenCV }) {
           </div>
         </div>
 
-        <aside aria-labelledby="flagship-title" className="relative sm:col-span-8 lg:col-span-5 lg:self-start lg:pt-6">
+        <aside
+          aria-labelledby="flagship-title"
+          className="relative sm:col-span-8 lg:col-span-5 lg:self-start"
+          style={{ '--numeral': 'clamp(8rem, 17vw, 14rem)' }}
+        >
           {/* Outlined version numeral: something real for the glass to bend */}
           <svg
             aria-hidden="true"
             focusable="false"
             viewBox="0 0 125 100"
-            className="numeral pointer-events-none absolute top-0 right-0 h-[1em] w-auto select-none overflow-visible text-[clamp(8rem,17vw,14rem)]"
+            className="numeral pointer-events-none absolute top-0 right-0 h-[1em] w-auto select-none overflow-visible text-[length:var(--numeral)]"
           >
             <defs>
               {/* Brushed silver, same ramp as --brushed: light at the top, darker below */}
@@ -70,7 +74,8 @@ function Hero({ onOpenCV }) {
             </g>
           </svg>
 
-          <article className="smoke chrome-rim aero-edge relative mt-[clamp(5.5rem,10vw,8.5rem)] rounded-[6px] p-6 sm:p-7">
+          {/* Panel top sits at 0.47 of the numeral size: the glass covers the lower part of the digits */}
+          <article className="smoke chrome-rim aero-edge relative mt-[calc(var(--numeral)*0.47)] rounded-[6px] p-6 sm:p-7">
             <p className="meta m-0">v{flagship.version} · Mar 2026</p>
             <h2 id="flagship-title" className="mt-3 mb-0 text-[1.375rem] font-semibold leading-tight text-text">
               {flagship.title}
