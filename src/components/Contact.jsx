@@ -46,45 +46,42 @@ function Contact({ onOpenCV }) {
         <SectionHeading
           id="contact-title"
           title="Get in touch"
+          start={4}
           intro="Open to IT support roles and freelance work. Remote preferred."
         />
 
-        <dl className="spec self-start sm:col-span-8 lg:col-span-5 lg:col-start-1">
-          {links.map(({ label, href, text, external }) => (
-            <div key={label}>
-              <dt>{label}</dt>
-              <dd>
+        {/* Plain lines, no table: each says what it is in the sentence itself */}
+        <div className="self-start sm:col-span-8 lg:col-span-4 lg:col-start-4">
+          <ul className="m-0 list-none p-0">
+            {links.map(({ label, href, text, external }) => (
+              <li key={label} className="py-1">
+                <span className="text-text-2">{label} </span>
                 <a
                   href={href}
-                  className="inline-link min-h-0 break-all"
+                  className="inline-link min-h-11 break-all"
                   {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
                   {text}
                   {external && <span className="sr-only">(opens in a new tab)</span>}
                 </a>
-              </dd>
-            </div>
-          ))}
-          <div>
-            <dt>Based in</dt>
-            <dd>{location}. Remote preferred.</dd>
-          </div>
-          <div>
-            <dt>CV</dt>
-            <dd className="flex flex-wrap gap-x-5">
-              <button type="button" className="inline-link cursor-pointer border-0 bg-transparent p-0 font-[inherit]" onClick={onOpenCV}>View CV</button>
-              <a className="inline-link" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">PDF</a>
-              <a className="inline-link" href="/Charlie_De_Buriatte_CV.docx" download>Word</a>
-            </dd>
-          </div>
-        </dl>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 mb-0 text-text-2">Based in {location}. Remote preferred.</p>
+          <p className="mt-4 mb-0 flex flex-wrap items-center gap-x-5">
+            <span className="text-text-2">CV</span>
+            <button type="button" className="inline-link cursor-pointer border-0 bg-transparent p-0 font-[inherit]" onClick={onOpenCV}>View CV</button>
+            <a className="inline-link" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">PDF</a>
+            <a className="inline-link" href="/Charlie_De_Buriatte_CV.docx" download>Word</a>
+          </p>
+        </div>
 
-        <div className="rounded-[4px] border border-hairline bg-raised p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7">
+        <div className="rounded-[6px] border border-rules bg-panel p-5 sm:col-span-8 sm:p-7 lg:col-span-5 lg:col-start-8">
           <h3 className="m-0 text-[1rem] font-semibold text-text">Send a message</h3>
           {status === 'success' ? (
             <div className="mt-4" role="status">
               <p className="m-0 flex items-center gap-2 font-semibold text-text">
-                <CheckCircle size={18} className="text-chrome" aria-hidden="true" />
+                <CheckCircle size={18} className="text-anodised" aria-hidden="true" />
                 Message sent
               </p>
               <p className="mt-1 mb-0 text-text-2">Thanks for getting in touch. I&apos;ll get back to you soon.</p>
@@ -112,7 +109,7 @@ function Contact({ onOpenCV }) {
 
               {status === 'error' && (
                 <p className="m-0 flex items-start gap-2 text-[0.9375rem] text-text" role="alert">
-                  <AlertCircle size={18} className="mt-0.5 shrink-0 text-brass" aria-hidden="true" />
+                  <AlertCircle size={18} className="mt-0.5 shrink-0 text-text" aria-hidden="true" />
                   <span>
                     That didn&apos;t send. Please email me directly instead:{' '}
                     <a href={`mailto:${contact.email}`}>{contact.email}</a>
