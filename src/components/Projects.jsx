@@ -1,140 +1,95 @@
-import { ArrowUpRight } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
-import { SectionHeading, StatusBadge, TagList, Window } from './ui';
-
-// Shown on the page; the full stack stays in CONTENT_DATA.json
-const FLAGSHIP_TAGS = ['React 19', 'TypeScript', 'Claude API (Anthropic)', 'PDF.js (PDF parsing)', 'Vercel (deployment)'];
-const SHOWN_TAGS = {
-  'homelab-environment': ['Windows Server 2025', 'Active Directory', 'Group Policy', 'Freshdesk', 'PowerShell'],
-  'intel-platform-diagnostics': ['DDU', 'Hardware swap testing', 'Voltage monitoring', 'BSOD diagnosis', 'BIOS and microcode update'],
-  'freddo-index': ['React', 'Vite', 'Recharts', 'Supabase'],
-  'interview-help': ['Electron', 'React', 'Ollama (local LLM)', 'Whisper (local)', 'SQLite'],
-  'freelance-portfolio-client': ['Next.js 16', 'TypeScript', 'Sanity CMS', 'Playwright (E2E tests)'],
-  hjelply: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Docker'],
-};
-const tagsFor = (p) => SHOWN_TAGS[p.id] ?? p.tech_stack;
+import { SectionHeading } from './ui';
 
 const IT_PROJECTS = ['homelab-environment', 'intel-platform-diagnostics', 'outlook-sync-repair', 'custom-pc-build'];
 const SOFTWARE_PROJECTS = ['freddo-index', 'interview-help', 'freelance-portfolio-client', 'hjelply'];
 
+// Only years the content already states. The rest stay blank rather than guessed:
+// the Analyser shipped in Mar 2026, the home lab runs from 2022, and the Outlook
+// fix was at VantageUAV (Sep 2021 to Mar 2022).
+const YEARS = {
+  'job-application-analyzer': '2026',
+  'homelab-environment': 'Since 2022',
+  'outlook-sync-repair': '2021 to 2022',
+};
+
 const byId = (id) => contentData.projects.find((p) => p.id === id);
 
-function ProjectLinks({ links, primary }) {
+function Links({ links }) {
   if (!links || (!links.demo && !links.github)) return null;
   return (
-    <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-1">
+    <span className="flex flex-wrap gap-x-4">
       {links.demo && (
-        <a className={primary ? 'btn-secondary' : 'inline-link'} href={links.demo} target="_blank" rel="noopener noreferrer">
-          {primary ? 'Open app' : 'Live site'}
-          <ArrowUpRight size={16} aria-hidden="true" />
+        <a className="inline-link" href={links.demo} target="_blank" rel="noopener noreferrer">
+          Open app
           <span className="sr-only">(opens in a new tab)</span>
         </a>
       )}
       {links.github && (
         <a className="inline-link" href={links.github} target="_blank" rel="noopener noreferrer">
-          View code
+          Code
           <span className="sr-only">(opens in a new tab)</span>
         </a>
       )}
-    </div>
+    </span>
   );
 }
 
-function Flagship() {
-  const p = byId('job-application-analyzer');
+// A plain row: name, one line, year, links. No box, no title bar, no status dot
+function Row({ project, children, titleAs = 'h4' }) {
+  const Title = titleAs;
+  const { id, title, tagline, links } = project;
   return (
-    <Window id="job-application-analyser" title={p.title} badge={<StatusBadge status="active" label={p.status_label} />}>
-      <div className="grid gap-8 md:grid-cols-12 md:gap-6">
-        <div className="md:col-span-8">
-          <p className="m-0 max-w-[40ch] text-[clamp(1.25rem,2vw,1.5rem)] font-medium leading-snug text-text">{p.tagline}.</p>
-          <p className="mt-4 mb-0 max-w-[58ch] text-text-2">{p.description}</p>
-          {p.how_built && (
-            <>
-              <h4 className="mt-7 mb-0 text-[0.9375rem] font-semibold text-text">How it was built</h4>
-              {p.how_built.split('\n\n').map((para) => (
-                <p key={para.slice(0, 24)} className="mt-2 mb-0 max-w-[58ch] text-text-2">{para}</p>
-              ))}
-            </>
-          )}
-          <ProjectLinks links={p.links} primary />
-        </div>
-        <div className="md:col-span-4">
-          <h4 className="m-0 text-[0.9375rem] font-semibold text-text">Why I built it</h4>
-          <p className="mt-1 mb-5 text-[0.9375rem] text-text-2">{p.why_built}</p>
-          <dl className="spec spec-tight">
-            <div><dt>Released</dt><dd><span className="meta text-text-2">Mar 2026</span></dd></div>
-            <div><dt>Built in</dt><dd>{p.metrics.development_time}</dd></div>
-            <div><dt>Stack</dt><dd><TagList tags={FLAGSHIP_TAGS} /></dd></div>
-          </dl>
-        </div>
+    <li id={id === 'job-application-analyzer' ? 'job-application-analyser' : id} className="py-4 lg:col-span-9 lg:grid lg:grid-cols-subgrid lg:items-baseline">
+      <div className="lg:col-span-6">
+        <Title className="m-0 text-[1.0625rem] font-semibold leading-snug text-text">{title}</Title>
+        <p className="mt-1 mb-0 max-w-[60ch] text-text-2">{tagline}</p>
+        {children}
       </div>
-    </Window>
+      <p className="mt-1 mb-0 text-[0.9375rem] text-text-2 lg:col-span-1 lg:mt-0">{YEARS[project.id] ?? ''}</p>
+      <div className="lg:col-span-2"><Links links={links} /></div>
+    </li>
   );
 }
 
-function ProjectWindow({ project }) {
-  const { id, title, status, status_label, tagline, description, links } = project;
+function Group({ id, title, ids, first }) {
   return (
-    <Window id={id} title={title} badge={<StatusBadge status={status} label={status_label} />}>
-      <p className="m-0 font-medium leading-snug text-text">{tagline}</p>
-      <p className="mt-2 mb-4 max-w-[58ch] text-[0.9375rem] text-text-2">{description}</p>
-      <TagList tags={tagsFor(project)} />
-      <ProjectLinks links={links} />
-    </Window>
-  );
-}
-
-// IT write-ups: the steps in eight columns, a spec column on the right
-function WideProjectWindow({ project }) {
-  const { id, title, status, status_label, tagline, description, highlights } = project;
-  const List = project.highlights_ordered ? 'ol' : 'ul';
-  return (
-    <Window id={id} title={title} badge={<StatusBadge status={status} label={status_label} />}>
-      <div className="grid gap-8 md:grid-cols-12 md:gap-6">
-        <div className="md:col-span-8">
-          <p className="m-0 max-w-[48ch] text-[1.1875rem] font-medium leading-snug text-text">{tagline}</p>
-          <p className="mt-3 mb-0 max-w-[58ch] text-text-2">{description}</p>
-          <h4 className="mt-6 mb-0 text-[0.9375rem] font-semibold text-text">{project.highlights_title}</h4>
-          <List className={`steps mt-2 mb-0 max-w-[58ch] text-text-2 ${List === 'ol' ? 'steps-numbered' : ''}`}>
-            {highlights.map((h) => <li key={h}>{h}</li>)}
-          </List>
-        </div>
-        <dl className="spec spec-tight self-start md:col-span-4">
-          <div><dt>{project.side_title ?? 'Why'}</dt><dd>{project.side_text ?? project.why_built}</dd></div>
-          <div><dt>Tools</dt><dd><TagList tags={tagsFor(project)} label="Tools" /></dd></div>
-        </dl>
-      </div>
-    </Window>
-  );
-}
-
-function Group({ id, title, children }) {
-  return (
-    <section aria-labelledby={id} className="col-span-full mt-16 first:mt-0">
-      <h3 id={id} className="m-0 mb-5 border-b border-hairline pb-3 text-[1.125rem] font-semibold text-text">{title}</h3>
-      {children}
+    <section aria-labelledby={id} className={`col-span-full grid-cols-subgrid lg:col-span-9 lg:col-start-4 lg:grid ${first ? '' : 'mt-10'}`}>
+      <h3 id={id} className="m-0 text-[0.9375rem] font-semibold text-text-2 lg:col-span-9">{title}</h3>
+      <ul className="m-0 list-none p-0 lg:col-span-9 lg:grid lg:grid-cols-subgrid">
+        {ids.map((pid) => <Row key={pid} project={byId(pid)} />)}
+      </ul>
     </section>
   );
 }
 
 function Projects() {
+  const flagship = byId('job-application-analyzer');
   return (
-    <section id="projects" aria-labelledby="projects-title" className="wrap pt-6 pb-28 lg:pb-40">
-      <div className="grid-12 gap-y-10">
-        <SectionHeading id="projects-title" title="Projects" intro="IT write-ups on real faults come after the Analyser. Everything else I've built is at the bottom." />
-        <div className="col-span-full">
-          <Flagship />
-        </div>
-        <Group id="projects-it" title="IT and infrastructure">
-          <div className="flex flex-col gap-6">
-            {IT_PROJECTS.map((pid) => <WideProjectWindow key={pid} project={byId(pid)} />)}
-          </div>
-        </Group>
-        <Group id="projects-software" title="Other software">
-          <div className="grid gap-6 md:grid-cols-2">
-            {SOFTWARE_PROJECTS.map((pid) => <ProjectWindow key={pid} project={byId(pid)} />)}
-          </div>
-        </Group>
+    <section id="projects" aria-labelledby="projects-title" className="wrap pt-6 pb-28 lg:pb-36">
+      <div className="grid-12 gap-y-8">
+        <SectionHeading
+          id="projects-title"
+          title="Projects"
+          start={4}
+          intro="The Analyser comes first. IT work and the other software I've built follow it."
+        />
+
+        <ul className="m-0 col-span-full list-none p-0 lg:col-span-9 lg:col-start-4 lg:grid lg:grid-cols-subgrid">
+          <Row project={flagship} titleAs="h3">
+            {flagship.how_built && (
+              <div className="mt-4">
+                <h4 className="m-0 text-[0.9375rem] font-semibold text-text">How it was built</h4>
+                {flagship.how_built.split('\n\n').map((para) => (
+                  <p key={para.slice(0, 24)} className="mt-1 mb-0 max-w-[60ch] text-[0.9375rem] text-text-2">{para}</p>
+                ))}
+              </div>
+            )}
+          </Row>
+        </ul>
+
+        <Group id="projects-it" title="IT and infrastructure" ids={IT_PROJECTS} first />
+        <Group id="projects-software" title="Other software" ids={SOFTWARE_PROJECTS} />
       </div>
     </section>
   );
