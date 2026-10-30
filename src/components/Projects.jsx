@@ -36,14 +36,14 @@ function Links({ links }) {
 }
 
 // A plain row: name, one line, year, links. No box, no title bar, no status dot
-function Row({ project, children, titleAs = 'h4' }) {
+function Row({ project, children, line, titleAs = 'h4' }) {
   const Title = titleAs;
   const { id, title, tagline, links } = project;
   return (
     <li id={id === 'job-application-analyzer' ? 'job-application-analyser' : id} className="py-4 lg:col-span-12 lg:grid lg:grid-cols-subgrid lg:items-baseline">
       <div className="lg:col-span-8">
         <Title className="m-0 text-[1.0625rem] font-semibold leading-snug text-text">{title}</Title>
-        <p className="mt-1 mb-0 max-w-[60ch] text-text-2">{tagline}</p>
+        <p className="mt-1 mb-0 max-w-[60ch] text-text-2">{line ?? tagline}</p>
         {children}
       </div>
       <p className="mt-1 mb-0 text-[0.9375rem] text-text-2 lg:col-span-2 lg:mt-0">{YEARS[project.id] ?? ''}</p>
@@ -75,7 +75,9 @@ function Projects() {
         />
 
         <ul className="m-0 col-span-full list-none p-0 lg:grid lg:grid-cols-subgrid">
-          <Row project={flagship} titleAs="h3">
+          {/* The hero panel already carries the Analyser's tagline, so this row uses the first
+              sentence of Charlie's own "why I built it" from the data instead */}
+          <Row project={flagship} titleAs="h3" line={`${flagship.why_built.split('. ')[0]}.`}>
             {flagship.how_built && (
               <div className="mt-4">
                 <h4 className="m-0 text-[0.9375rem] font-semibold text-text">How it was built</h4>
