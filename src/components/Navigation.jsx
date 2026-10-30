@@ -84,9 +84,9 @@ function Navigation({ onOpenCV }) {
       </nav>
 
       {menuOpen && (
-        <ul id="nav-menu" className="m-0 list-none border-t border-rules bg-raised p-0 md:hidden">
+        <ul id="nav-menu" className="m-0 list-none border-t border-silver bg-raised p-0 md:hidden">
           {sections.map(({ id, label }) => (
-            <li key={id} className="border-b border-rules last:border-b-0">
+            <li key={id} className="border-b border-silver last:border-b-0">
               <a
                 href={`#${id}`}
                 className="wrap flex min-h-12 items-center font-medium text-text no-underline hover:bg-panel"

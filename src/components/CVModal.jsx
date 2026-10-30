@@ -25,8 +25,8 @@ function CVModal({ open, onClose }) {
       onClick={(e) => { if (e.target === ref.current) onClose(); }}
       className="cv-dialog fixed inset-0 m-[var(--margin)] h-[calc(100svh-2*var(--margin))] w-[calc(100%-2*var(--margin))] max-w-none max-h-none overflow-visible border-0 bg-transparent p-0 text-text backdrop:bg-[rgb(8_8_9/0.72)]"
     >
-      <div className="glass flex h-full flex-col rounded-[8px]">
-        <div className="flex min-h-[2.875rem] items-center gap-3 border-b border-rules px-5 py-2">
+      <div className="glass glass-frame flex h-full flex-col rounded-[8px]">
+        <div className="flex min-h-[2.875rem] items-center gap-3 border-b border-silver px-5 py-2">
           <h2 id="cv-title" className="m-0 mr-auto text-[1rem] font-semibold text-text">Charlie De Buriatte: CV</h2>
           <button type="button" className="btn-secondary w-11 px-0" onClick={onClose} aria-label="Close CV">
             <X size={18} aria-hidden="true" />
@@ -42,7 +42,7 @@ function CVModal({ open, onClose }) {
           </a>
         </div>
 
-        <div className="relative m-2 mt-1 flex-1 overflow-hidden rounded-[4px] border border-rules bg-raised">
+        <div className="relative m-2 mt-1 flex-1 overflow-hidden rounded-[4px] border border-silver bg-raised">
           {open && canShowPdf && (
             <iframe src="/cv.pdf" title="Charlie De Buriatte CV (PDF)" className="absolute inset-0 size-full border-0 bg-white" />
           )}

@@ -38,7 +38,7 @@ function Footer() {
 
   return (
     <footer className="wrap pb-10">
-      <div className="flex flex-col items-start gap-x-8 gap-y-2 border-t border-rules pt-6 text-[0.875rem] text-text-2 sm:flex-row sm:items-center">
+      <div className="flex flex-col items-start gap-x-8 gap-y-2 border-t border-silver-lo pt-6 text-[0.875rem] text-text-2 sm:flex-row sm:items-center">
         <p className="m-0">© {new Date().getFullYear()} {personal.name}, {personal.location}</p>
         <p className="m-0">Built with React and Tailwind CSS</p>
         <span className="sm:ml-auto"><GlassSwitch /></span>

@@ -11,6 +11,11 @@
   --color-anodised: #8A8D91;
   --color-red: #D6232A;
 
+  /* Silver chrome (DESIGN.md S1 to S6) */
+  --color-silver-hi: #F2F4F6;
+  --color-silver: #9DA2A8;
+  --color-silver-lo: #5C6065;
+
   --font-sans: "Hanken Grotesk Variable", sans-serif;
   --font-display: "Michroma", "Hanken Grotesk Variable", sans-serif;
 }
@@ -23,8 +28,10 @@
   --margin: 1rem;
   --guide: rgb(138 141 145 / 0.07);
 
-  /* Polished chrome: the primary button and the nameplate edge only */
-  --chrome: linear-gradient(180deg, #F2F4F6 0%, #9DA2A8 55%, #5C6065 100%);
+  /* Polished silver chrome: light at the top or top left, dark at the bottom or bottom right */
+  --chrome: linear-gradient(180deg, var(--color-silver-hi) 0%, var(--color-silver) 55%, var(--color-silver-lo) 100%);
+  --chrome-band: linear-gradient(180deg, var(--color-silver-hi), var(--color-silver) 50%, var(--color-silver-lo));
+  --chrome-frame: linear-gradient(135deg, var(--color-silver-hi) 0%, var(--color-silver) 45%, var(--color-silver-lo) 100%);
 }
 
 /* Unlayered, like :root above: inside @layer base these lost to it and never applied */
@@ -203,30 +210,41 @@
     box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.35), 0 18px 40px -18px rgb(0 0 0 / 0.7);
   }
 
-  /* Chamfer: a 1px bright line along the top edge, fading out */
-  .glass::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 1px;
-    border-radius: inherit;
-    background: linear-gradient(90deg, rgb(255 255 255 / 0.28), transparent 85%);
-    pointer-events: none;
-  }
-
-  /* A faint diagonal specular across the glass */
+  /* The chamfer (a 1px bright line along the top edge, fading out) and a faint
+     diagonal specular share one layer, which leaves ::before free for the frame */
   .glass::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgb(255 255 255 / 0.07) 0%, rgb(255 255 255 / 0.02) 30%, transparent 55%);
+    background:
+      linear-gradient(90deg, rgb(255 255 255 / 0.28), transparent 85%) top / 100% 1px no-repeat,
+      linear-gradient(135deg, rgb(255 255 255 / 0.07) 0%, rgb(255 255 255 / 0.02) 30%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* S3, S4: a 2px silver frame, light at the top left to dark at the bottom right */
+  .glass-frame { border: 0; }
+  .glass-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    padding: 2px;
+    border-radius: inherit;
+    background: var(--chrome-frame);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
     pointer-events: none;
   }
 
   /* Full-bleed bars have no side edges */
-  .glass-bar { border-width: 0 0 1px; }
+  /* S1: full-bleed bars carry a 3px silver band along the bottom edge, no side edges */
+  .glass-bar {
+    border-width: 0 0 3px;
+    border-image: var(--chrome-band) 1;
+  }
 
   /* ── Nameplate: a steel plate with a polished chrome edge. The letters stay flat ── */
 
@@ -275,11 +293,16 @@
   }
 
   /* The one primary action on screen, View CV: polished chrome, black lettering */
+  /* S2: a silver fill inside a separate chrome bezel; a dark seam parts the two */
   .btn-primary {
     color: var(--color-ground);
-    background: var(--chrome);
-    border: 1px solid #5C6065;
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.75), inset 0 -1px 0 rgb(0 0 0 / 0.25);
+    border: 2px solid transparent;
+    background:
+      linear-gradient(180deg, var(--color-silver-hi), var(--color-silver)) padding-box,
+      var(--chrome-band) border-box;
+    box-shadow:
+      inset 0 0 0 1px rgb(14 14 15 / 0.6),
+      inset 0 2px 0 rgb(255 255 255 / 0.7);
   }
   .btn-primary:hover { filter: brightness(1.06); }
   .btn-primary:active { filter: brightness(0.94); }
@@ -363,16 +386,17 @@
 
   /* ── Form fields ──────────────────────────────────────────────── */
 
+  /* S5: field borders sit on the form panel, so they use the mid silver (6.7:1 there) */
   .field {
     font: inherit;
     color: var(--color-text);
     background: var(--color-ground);
-    border: 1px solid var(--color-anodised);
+    border: 1px solid var(--color-silver);
     border-radius: 3px;
     transition: border-color 160ms var(--ease-focus);
   }
-  .field:hover { border-color: var(--color-anodised); }
-  .field:focus-visible { border-color: var(--color-anodised); }
+  .field:hover { border-color: var(--color-silver-hi); }
+  .field:focus-visible { border-color: var(--color-silver-hi); }
 
   /* ── Glass effects switch ─────────────────────────────────────── */
 

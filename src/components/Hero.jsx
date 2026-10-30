@@ -56,7 +56,7 @@ function Hero({ onOpenCV }) {
           id="analyser-panel"
           data-check="analyser-panel"
           aria-labelledby="flagship-title"
-          className="glass relative z-10 -mt-20 rounded-[8px] p-6 sm:col-span-8 sm:p-7 lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:-mt-16 lg:self-start"
+          className="glass glass-frame relative z-10 -mt-20 rounded-[8px] p-6 sm:col-span-8 sm:p-7 lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:-mt-16 lg:self-start"
         >
           <div className="flex items-start gap-6">
             <div className="min-w-0 flex-1">
