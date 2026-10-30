@@ -27,12 +27,12 @@ function Hero({ onOpenCV }) {
           <h1 id="hero-name" className="display m-0 max-w-[11ch] text-[clamp(1.75rem,4.4vw,5.5rem)] text-text lg:max-w-none">
             {name}
           </h1>
-          <p className="mt-3 mb-0 text-[clamp(1rem,1.4vw,1.25rem)] font-medium text-text-2">IT support, {location}</p>
+          <p className="lines-snap-155 mt-3 mb-0 text-[clamp(1rem,1.4vw,1.25rem)] font-medium text-text-2">IT support, {location}</p>
         </div>
 
         {/* The first-screen silver hairline (S5), above the headline */}
         <div className="row-start-2 border-t border-silver-lo pt-4 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:mt-10 lg:pt-8">
-          <p className="m-0 max-w-[30ch] text-[clamp(1.25rem,1.75vw,2.75rem)] font-medium leading-[1.3] text-text">
+          <p className="m-0 max-w-[30ch] text-[clamp(1.25rem,1.75vw,2.75rem)] font-medium lines-snap-130 text-text">
             {headline}
           </p>
         </div>

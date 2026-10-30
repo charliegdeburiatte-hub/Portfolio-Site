@@ -187,7 +187,14 @@
     font-weight: 400;
     letter-spacing: 0;
     line-height: 1.12;
+    /* Whole-pixel lines, so nothing below starts on a fraction of a pixel */
+    line-height: round(nearest, 1.12em, 1px);
   }
+
+  /* The same rounding for body-face lines that sit above the hero glass. Browsers
+     without round() keep the plain ratio from the line before. */
+  .lines-snap-130 { line-height: 1.3; line-height: round(nearest, 1.3em, 1px); }
+  .lines-snap-155 { line-height: 1.55; line-height: round(nearest, 1.55em, 1px); }
 
   /* ── Glass: the nav, the Analyser panel, the CV viewer. Nothing else ── */
 
