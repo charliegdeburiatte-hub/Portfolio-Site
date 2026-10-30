@@ -9,8 +9,8 @@
 //   analyser-panel  the glass Analyser panel
 //   grain           the pebble grain layer
 //   scale           the engraved scale; its major ticks carry data-tick="major"
-// Photographs (img elements) are left out of the pixel checks, with a margin
-// for the glass blur that spreads their colours past their edges.
+// Test 10 leaves out photographs, but only the pixels where the image itself is the
+// top layer: glass, plates or anything else drawn over an image is still checked.
 
 import { spawn } from 'node:child_process';
 import { chromium } from 'playwright';
@@ -18,7 +18,7 @@ import { chromium } from 'playwright';
 const BRASS = /#c4a06a|rgba?\(\s*196[\s,]+160[\s,]+106/i;
 const FONTS = ['Michroma', 'Hanken Grotesk Variable'];
 const BANNED_FONTS = /\b(inter|geist|roboto|open sans|space grotesk|arial|helvetica|segoe|system-ui|-apple-system|blinkmacsystemfont)\b/i;
-const PHOTO_MARGIN = 24; // px around each photo, twice the minimum glass blur
+const PHOTO_STEP = 1; // sample every pixel inside each image, so layer edges are exact
 
 let failures = 0;
 const report = (ok, id, name, width, detail) => {
@@ -39,11 +39,28 @@ async function startPreview() {
   throw new Error('vite preview did not start; run npm run build first');
 }
 
-// Where the photographs are on the current screen, padded for the glass blur around them
-const photoRects = (page) => page.evaluate((m) => [...document.querySelectorAll('img, picture, video')]
-  .map((el) => el.getBoundingClientRect())
-  .filter((r) => r.width && r.height)
-  .map((r) => [r.left - m, r.top - m, r.right + m, r.bottom + m]), PHOTO_MARGIN);
+// Where a photograph is the top layer on the current screen, as runs of [x0, x1, y0, y1]:
+// each image's box is sampled on a small grid, and a cell counts only if the topmost
+// element at its centre is that image (or inside it, for picture and video)
+const photoRects = (page) => page.evaluate((step) => {
+  const runs = [];
+  for (const el of document.querySelectorAll('img, picture, video')) {
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    const x0 = Math.max(0, Math.floor(r.left)), x1 = Math.min(innerWidth, Math.ceil(r.right));
+    const y0 = Math.max(0, Math.floor(r.top)), y1 = Math.min(innerHeight, Math.ceil(r.bottom));
+    for (let y = y0; y < y1; y += step) {
+      let start = -1;
+      for (let x = x0; x <= x1; x += step) {
+        const top = x < x1 ? document.elementFromPoint(x + step / 2, y + step / 2) : null;
+        const isPhoto = !!top && (top === el || el.contains(top));
+        if (isPhoto && start < 0) start = x;
+        if (!isPhoto && start >= 0) { runs.push([start, x, y, y + step]); start = -1; }
+      }
+    }
+  }
+  return runs;
+}, PHOTO_STEP);
 
 // Screenshot the whole page one viewport at a time, so each check sees what a screen sees
 async function screens(page) {
@@ -71,7 +88,11 @@ async function analyse(browser, shot) {
     const g = c.getContext('2d', { willReadFrequently: true });
     g.drawImage(img, 0, 0);
     const { data } = g.getImageData(0, 0, c.width, c.height);
-    const inPhoto = (x, y) => photos.some(([l, t, r, b]) => x >= l && x < r && y >= t && y < b);
+    const mask = new Uint8Array(c.width * c.height);
+    for (const [x0, x1, y0, y1] of photos) {
+      for (let y = Math.max(0, y0); y < Math.min(c.height, y1); y++) mask.fill(1, y * c.width + Math.max(0, x0), y * c.width + Math.min(c.width, x1));
+    }
+    const inPhoto = (x, y) => mask[y * c.width + x] === 1;
     let red = 0, warm = 0, total = 0;
     let firstWarm = null;
     for (let i = 0, n = 0; i < data.length; i += 4, n += 1) {
