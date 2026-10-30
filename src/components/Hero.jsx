@@ -11,10 +11,11 @@ function Hero({ onOpenCV }) {
   const flagship = contentData.projects[0];
 
   return (
-    <section id="top" aria-labelledby="hero-name" className="wrap pt-6 pb-16 lg:pt-10 lg:pb-12">
+    <section id="top" aria-labelledby="hero-name" className="wrap pt-6 pb-8 lg:pt-10 lg:pb-6">
       {/* Desktop: the plate sits in front of the screenshot's top left; the glass panel covers the
           screenshot's lower part across exactly the same columns, so there is always image behind
-          the glass. It overlaps the plate by 2.5rem, inside the plate's 3rem bottom padding, so it
+          the glass. From 1800px wide both start a column earlier, on column 6, so the gap to the hero text
+          stays short. The panel overlaps the plate by 2.5rem, inside the plate's 3rem bottom padding, so it
           never reaches the letters. The screenshot takes its height from the grid, not the image.
           Phones: plate, headline, then the screenshot and panel sharing one cell, then the prose. */}
       <div className="grid-12 gap-y-4 lg:gap-y-0">
@@ -31,13 +32,13 @@ function Hero({ onOpenCV }) {
 
         {/* The first-screen silver hairline (S5), above the headline */}
         <div className="row-start-2 border-t border-silver-lo pt-4 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:mt-10 lg:pt-8">
-          <p className="m-0 max-w-[30ch] text-[clamp(1.25rem,2vw,1.625rem)] font-medium leading-[1.3] text-text">
+          <p className="m-0 max-w-[30ch] text-[clamp(1.25rem,1.75vw,2.75rem)] font-medium leading-[1.3] text-text">
             {headline}
           </p>
         </div>
 
         {/* The screenshot the glass bends */}
-        <figure className="photo relative z-[1] col-start-1 row-start-3 m-0 overflow-hidden sm:col-span-8 lg:col-span-6 lg:col-start-7 lg:row-span-3 lg:row-start-1">
+        <figure className="photo relative z-[1] col-start-1 row-start-3 m-0 overflow-hidden sm:col-span-8 lg:col-span-6 lg:col-start-7 3xl:col-span-7 3xl:col-start-6 lg:row-span-3 lg:row-start-1">
           <img
             src={screenshot ?? placeholder}
             alt={screenshot
@@ -54,7 +55,7 @@ function Hero({ onOpenCV }) {
           id="analyser-panel"
           data-check="analyser-panel"
           aria-labelledby="flagship-title"
-          className="glass glass-frame relative z-10 col-start-1 row-start-3 mt-12 rounded-[8px] p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-2 lg:-mt-10"
+          className="glass glass-frame relative z-10 col-start-1 row-start-3 mt-12 rounded-[8px] p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7 3xl:col-span-7 3xl:col-start-6 lg:row-span-2 lg:row-start-2 lg:-mt-10"
         >
           <div className="flex flex-col items-start gap-5 sm:h-full sm:flex-row sm:gap-6">
             <div className="min-w-0 flex-1">
@@ -89,7 +90,7 @@ function Hero({ onOpenCV }) {
         </article>
 
         <div className="row-start-4 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:row-start-3 lg:pt-5">
-          <p className="m-0 max-w-[52ch] text-text-2">
+          <p className="m-0 max-w-[52ch] text-[clamp(1.0625rem,0.86vw,1.375rem)] text-text-2">
             I&apos;m after IT support roles or freelance work, remote by preference, from {location}.
             Since Tier 1-2 support at VantageUAV I&apos;ve run a home lab, started in 2022, and earned the
             Google IT Support certificate, with CompTIA A+ studied to exam ready.

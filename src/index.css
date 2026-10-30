@@ -18,6 +18,9 @@
 
   --font-sans: "Hanken Grotesk Variable", sans-serif;
   --font-display: "Michroma", "Hanken Grotesk Variable", sans-serif;
+
+  /* Very wide screens: the hero screenshot and glass start a column earlier */
+  --breakpoint-3xl: 112.5rem;
 }
 
 :root {
