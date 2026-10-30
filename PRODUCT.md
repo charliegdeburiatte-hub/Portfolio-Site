@@ -63,14 +63,13 @@ From `src/CONTENT_DATA.json`:
   - testimonials
   - client names (the client project is anonymised on purpose)
   - metrics beyond those in the data
-  - product screenshots (none in the repo yet; the hero shows a labelled placeholder until `src/assets/analyser.png` is supplied)
+  - product screenshots other than `src/assets/analyser.png`, which was taken from the live Analyser on 30 Oct 2026 using a made-up CV ("Sam Example") and a made-up IT support advert. Its 78% score is a real result for that fictional input
 
 Known copy issues to raise with Charlie, not fix silently:
 
 - The About text says "I've replaced the filler with my own words and photos", but the site has no photos.
 - The last About paragraph ends on a summing-up line ("It taught me that the skill is knowing what good looks like..."), which the writing rules ban. It is Charlie's own sentence.
 - Copy drafted for v2 and not yet approved: the two hero sentences, the Projects intro and the dial label "Score a CV".
-- The placeholder caption "Analyser screenshot goes here: src/assets/analyser.png" is visible on the live page until the real screenshot is added.
 - Seven projects show no year, because the data gives none. Only the Analyser, the home lab and the Outlook fix have one.
 
 Resolved since the last version of this list: the Hjelply title no longer has an em dash, and the footer no longer shows status text or a version. The BIOS easter egg still says v3.0, kept under Charlie's easter egg ruling.
