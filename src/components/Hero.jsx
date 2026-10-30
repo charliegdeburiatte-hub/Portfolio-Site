@@ -90,7 +90,7 @@ function Hero({ onOpenCV }) {
         </article>
 
         <div className="row-start-4 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:row-start-3 lg:pt-5">
-          <p className="m-0 max-w-[52ch] text-[clamp(1.0625rem,0.86vw,1.375rem)] text-text-2">
+          <p className="m-0 max-w-[60ch] text-[clamp(1.0625rem,0.86vw,1.375rem)] text-text-2">
             I&apos;m after IT support roles or freelance work, remote by preference, from {location}.
             Since Tier 1-2 support at VantageUAV I&apos;ve run a home lab, started in 2022, and earned the
             Google IT Support certificate, with CompTIA A+ studied to exam ready.
