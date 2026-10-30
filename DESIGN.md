@@ -58,7 +58,7 @@ Every section starts on column 1, the hero's left edge, so the page reads down o
 |---|---|---|
 | Nav (glass) | 1 | Name as text left; Projects, About, Skills, Contact; View CV (primary). Phone: name, View CV, menu |
 | Scale | 1-12 | Engraved ticks under the nav, no numbers. Desktop only |
-| Hero | 1 | Nameplate in columns 1-8, the name on one line from 1024px. The screenshot fills columns 7-12 behind the plate's right end, taking its height from the grid. The glass Analyser panel covers the screenshot across the same columns 7-12, so it is always over image, and overlaps the plate by 2.5rem inside the plate's 3rem bottom padding. A 1px `--silver-lo` rule, then the headline, prose, View CV (secondary) and Get in touch in 1-5. Phones: plate, rule and headline, then the screenshot and panel sharing one cell, then the prose |
+| Hero | 1 | Nameplate in columns 1-8, the name on one line from 1024px. The screenshot fills columns 7-12 behind the plate's right end, taking its height from the grid. The glass Analyser panel covers the screenshot across the same columns 7-12 (6-12 from 1800px, so the gap to the hero text stays short), so it is always over image, and overlaps the plate by 2.5rem inside the plate's 3rem bottom padding. A 1px `--silver-lo` rule, then the headline, prose, View CV (secondary) and Get in touch in 1-5. Phones: plate, rule and headline, then the screenshot and panel sharing one cell, then the prose |
 | Projects | 1 | Plain rows: name and one line in 1-8, year in 9-10, links in 11-12. The Analyser row carries the How it was built note. No boxes, no status dots |
 | About | 1 | Three paragraphs in 1-6, the timeline in 9-12 |
 | Skills | 1 | Group name in 1-3, items running on as wrapped text across 4-12 |
