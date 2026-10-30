@@ -41,8 +41,10 @@ async function startPreview() {
 }
 
 // Where a photograph is the top layer on the current screen, as runs of [x0, x1, y0, y1]:
-// each image's box is sampled on a small grid, and a cell counts only if the topmost
-// element at its centre is that image (or inside it, for picture and video)
+// each pixel in an image's box counts only if the topmost element at that pixel is the
+// image (or inside it, for picture and video). Pixels are sampled at their top-left
+// corner: Chromium's hit test rounds a half-pixel centre up to the next row or column,
+// which would credit the row above a layer edge to the layer instead of the image.
 const photoRects = (page) => page.evaluate((step) => {
   const runs = [];
   for (const el of document.querySelectorAll('img, picture, video')) {
@@ -53,7 +55,7 @@ const photoRects = (page) => page.evaluate((step) => {
     for (let y = y0; y < y1; y += step) {
       let start = -1;
       for (let x = x0; x <= x1; x += step) {
-        const top = x < x1 ? document.elementFromPoint(x + step / 2, y + step / 2) : null;
+        const top = x < x1 ? document.elementFromPoint(x, y) : null;
         const isPhoto = !!top && (top === el || el.contains(top));
         if (isPhoto && start < 0) start = x;
         if (!isPhoto && start >= 0) { runs.push([start, x, y, y + step]); start = -1; }
@@ -250,7 +252,7 @@ async function cssHasBrass(page) {
 
 async function run(url) {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
-  const heights = { 390: 844, 1440: 900, 1920: 1080, 2560: 1440 };
+  const heights = { 360: 780, 390: 844, 414: 896, 1440: 900, 1920: 1080, 2560: 1440 };
   const widths = process.env.CHECK_WIDTHS ? process.env.CHECK_WIDTHS.split(',').map(Number) : [1440, 390];
   for (const [width, height] of widths.map((w) => [w, heights[w] ?? 900])) {
     const page = await browser.newPage({ viewport: { width, height } });
