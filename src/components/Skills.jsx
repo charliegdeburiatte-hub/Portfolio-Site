@@ -30,7 +30,7 @@ function Skills() {
   return (
     <section id="skills" aria-labelledby="skills-title" className="wrap pt-4 pb-14 lg:pb-16">
       <div className="grid-12 gap-y-0">
-        <SectionHeading id="skills-title" title="Skills" start={1} className="mb-6" />
+        <SectionHeading id="skills-title" title="Skills" className="mb-6" />
 
         <Group label="Certifications">
           {skills.certifications.map((c) => (

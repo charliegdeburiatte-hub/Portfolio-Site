@@ -52,17 +52,17 @@ No brass, gold or warm metal on any control. The engraved scale, the knurl and t
 
 ## Layout
 
-Each section starts on a different column, so the grid shows by what hangs off it.
+Every section starts on column 1, the hero's left edge, so the page reads down one line (Charlie's ruling of 30 Oct 2026, replacing v2's staggered start columns). The right-hand spans vary by section.
 
 | Section | Start | Composition |
 |---|---|---|
 | Nav (glass) | 1 | Name as text left; Projects, About, Skills, Contact; View CV (primary). Phone: name, View CV, menu |
 | Scale | 1-12 | Engraved ticks under the nav, no numbers. Desktop only |
 | Hero | 1 | Nameplate in columns 1-8, the name on one line from 1024px. The screenshot fills columns 7-12 behind the plate's right end, taking its height from the grid. The glass Analyser panel covers the screenshot across the same columns 7-12, so it is always over image, and overlaps the plate by 2.5rem inside the plate's 3rem bottom padding. A 1px `--silver-lo` rule, then the headline, prose, View CV (secondary) and Get in touch in 1-5. Phones: plate, rule and headline, then the screenshot and panel sharing one cell, then the prose |
-| Projects | 4 | Plain rows: name and one line, year, links. The Analyser row carries the How it was built note. No boxes, no status dots |
-| About | 2 | Three paragraphs in 2-7, the timeline in 9-12 |
+| Projects | 1 | Plain rows: name and one line in 1-8, year in 9-10, links in 11-12. The Analyser row carries the How it was built note. No boxes, no status dots |
+| About | 1 | Three paragraphs in 1-6, the timeline in 9-12 |
 | Skills | 1 | Group name in 1-3, items running on as wrapped text across 4-12 |
-| Contact | 4 | Contact lines in 4-7, a solid form panel in 8-12 |
+| Contact | 1 | Contact lines in 1-5, a solid form panel in 7-12 |
 | Footer | 1-12 | A rule above, small left-aligned text |
 
 The hero runs tight into Projects; About gets a longer pause; Skills and Contact sit closer together.

@@ -46,12 +46,11 @@ function Contact({ onOpenCV }) {
         <SectionHeading
           id="contact-title"
           title="Get in touch"
-          start={4}
           intro="Open to IT support roles and freelance work. Remote preferred."
         />
 
         {/* Plain lines, no table: each says what it is in the sentence itself */}
-        <div className="self-start sm:col-span-8 lg:col-span-4 lg:col-start-4">
+        <div className="self-start sm:col-span-8 lg:col-span-5 lg:col-start-1">
           <ul className="m-0 list-none p-0">
             {links.map(({ label, href, text, external }) => (
               <li key={label} className="py-1">
@@ -76,7 +75,7 @@ function Contact({ onOpenCV }) {
           </p>
         </div>
 
-        <div className="rounded-[6px] border border-silver bg-panel p-5 sm:col-span-8 sm:p-7 lg:col-span-5 lg:col-start-8">
+        <div className="rounded-[6px] border border-silver bg-panel p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7">
           <h3 className="m-0 text-[1rem] font-semibold text-text">Send a message</h3>
           {status === 'success' ? (
             <div className="mt-4" role="status">

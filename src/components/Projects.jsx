@@ -40,13 +40,13 @@ function Row({ project, children, titleAs = 'h4' }) {
   const Title = titleAs;
   const { id, title, tagline, links } = project;
   return (
-    <li id={id === 'job-application-analyzer' ? 'job-application-analyser' : id} className="py-4 lg:col-span-9 lg:grid lg:grid-cols-subgrid lg:items-baseline">
-      <div className="lg:col-span-6">
+    <li id={id === 'job-application-analyzer' ? 'job-application-analyser' : id} className="py-4 lg:col-span-12 lg:grid lg:grid-cols-subgrid lg:items-baseline">
+      <div className="lg:col-span-8">
         <Title className="m-0 text-[1.0625rem] font-semibold leading-snug text-text">{title}</Title>
         <p className="mt-1 mb-0 max-w-[60ch] text-text-2">{tagline}</p>
         {children}
       </div>
-      <p className="mt-1 mb-0 text-[0.9375rem] text-text-2 lg:col-span-1 lg:mt-0">{YEARS[project.id] ?? ''}</p>
+      <p className="mt-1 mb-0 text-[0.9375rem] text-text-2 lg:col-span-2 lg:mt-0">{YEARS[project.id] ?? ''}</p>
       <div className="lg:col-span-2"><Links links={links} /></div>
     </li>
   );
@@ -54,9 +54,9 @@ function Row({ project, children, titleAs = 'h4' }) {
 
 function Group({ id, title, ids, first }) {
   return (
-    <section aria-labelledby={id} className={`col-span-full grid-cols-subgrid lg:col-span-9 lg:col-start-4 lg:grid ${first ? '' : 'mt-10'}`}>
-      <h3 id={id} className="m-0 text-[0.9375rem] font-semibold text-text-2 lg:col-span-9">{title}</h3>
-      <ul className="m-0 list-none p-0 lg:col-span-9 lg:grid lg:grid-cols-subgrid">
+    <section aria-labelledby={id} className={`col-span-full grid-cols-subgrid lg:col-span-12 lg:grid ${first ? '' : 'mt-10'}`}>
+      <h3 id={id} className="m-0 text-[0.9375rem] font-semibold text-text-2 lg:col-span-12">{title}</h3>
+      <ul className="m-0 list-none p-0 lg:col-span-12 lg:grid lg:grid-cols-subgrid">
         {ids.map((pid) => <Row key={pid} project={byId(pid)} />)}
       </ul>
     </section>
@@ -71,11 +71,10 @@ function Projects() {
         <SectionHeading
           id="projects-title"
           title="Projects"
-          start={4}
           intro="The Analyser comes first. IT work and the other software I've built follow it."
         />
 
-        <ul className="m-0 col-span-full list-none p-0 lg:col-span-9 lg:col-start-4 lg:grid lg:grid-cols-subgrid">
+        <ul className="m-0 col-span-full list-none p-0 lg:grid lg:grid-cols-subgrid">
           <Row project={flagship} titleAs="h3">
             {flagship.how_built && (
               <div className="mt-4">

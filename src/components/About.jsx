@@ -9,9 +9,9 @@ function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="wrap pt-4 pb-24 lg:pb-32">
       <div className="grid-12 gap-y-10">
-        <SectionHeading id="about-title" title="About" start={2} />
+        <SectionHeading id="about-title" title="About" />
 
-        <div className="flex max-w-[64ch] flex-col gap-5 text-[1.125rem] leading-[1.65] text-text sm:col-span-8 lg:col-span-6 lg:col-start-2">
+        <div className="flex max-w-[64ch] flex-col gap-5 text-[1.125rem] leading-[1.65] text-text sm:col-span-8 lg:col-span-6 lg:col-start-1">
           {bio.medium.split('\n\n').map((para) => (
             <p key={para.slice(0, 24)} className="m-0">{para}</p>
           ))}
