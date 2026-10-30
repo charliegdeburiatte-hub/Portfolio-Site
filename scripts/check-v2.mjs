@@ -1,6 +1,7 @@
 // Acceptance tests for BRIEF CHANGES v2.
 //
 // Usage: npm run build && node scripts/check-v2.mjs [url]
+// Extra widths: CHECK_WIDTHS=390,1440,1920,2560 node scripts/check-v2.mjs (default 1440 and 390).
 // With no url it serves dist/ itself with `vite preview` and stops it afterwards.
 // Prints PASS or FAIL per test at 1440px and 390px and exits 1 if anything fails.
 //
@@ -249,7 +250,9 @@ async function cssHasBrass(page) {
 
 async function run(url) {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
-  for (const [width, height] of [[1440, 900], [390, 844]]) {
+  const heights = { 390: 844, 1440: 900, 1920: 1080, 2560: 1440 };
+  const widths = process.env.CHECK_WIDTHS ? process.env.CHECK_WIDTHS.split(',').map(Number) : [1440, 390];
+  for (const [width, height] of widths.map((w) => [w, heights[w] ?? 900])) {
     const page = await browser.newPage({ viewport: { width, height } });
     await page.goto(url, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
@@ -289,7 +292,7 @@ async function run(url) {
     report(worstRed < 0.01, 6, 'Red #D6232A covers under 1% of pixels on every screen', width,
       `worst screen ${(worstRed * 100).toFixed(3)}% over ${shots.length} screens`);
 
-    if (width === 1440) {
+    if (width >= 1024) {
       const misaligned = d.ticks.filter((x) => !d.cols.some((c) => Math.abs(c - x) <= 1));
       report(d.ticks.length >= 12 && misaligned.length === 0, 7, 'Scale has 12+ major ticks, each on a grid column', width,
         `${d.ticks.length} major ticks, ${misaligned.length} off-column`);
