@@ -29,14 +29,11 @@ function App() {
       </div>
       <Navigation onOpenCV={openCV} />
       <main id="main">
-        {/* The engraved scale along the top edge of the grid: one numbered major tick per column */}
+        {/* The engraved scale along the top edge of the grid: one major tick per column */}
         <div className="wrap pt-[calc(var(--nav-h)+1rem)]" aria-hidden="true">
           <div className="scale" data-check="scale">
             {Array.from({ length: 12 }, (_, i) => (
-              <span key={i}>
-                <span className="scale-tick" data-tick="major" style={{ '--i': i }} />
-                <span className="scale-num" style={{ '--i': i }}>{i + 1}</span>
-              </span>
+              <span key={i} className="scale-tick" data-tick="major" style={{ '--i': i }} />
             ))}
           </div>
         </div>

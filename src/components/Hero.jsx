@@ -12,34 +12,32 @@ function Hero({ onOpenCV }) {
 
   return (
     <section id="top" aria-labelledby="hero-name" className="wrap pt-6 pb-16 lg:pt-10 lg:pb-12">
-      <div className="grid-12 gap-y-8 lg:gap-y-0">
+      {/* Desktop: the plate sits in front of the screenshot's top left; the glass panel covers the
+          screenshot's lower part across exactly the same columns, so there is always image behind
+          the glass. It overlaps the plate by 2.5rem, inside the plate's 3rem bottom padding, so it
+          never reaches the letters. The screenshot takes its height from the grid, not the image.
+          Phones: plate, headline, then the screenshot and panel sharing one cell, then the prose. */}
+      <div className="grid-12 gap-y-4 lg:gap-y-0">
         {/* Nameplate: columns 1 to 8, steel with a chrome edge, flat lettering */}
         <div
           data-check="name-block"
-          className="nameplate px-6 py-7 sm:col-span-8 lg:col-span-8 lg:col-start-1 lg:row-start-1 lg:self-start lg:px-10 lg:pt-10 lg:pb-12"
+          className="nameplate z-[2] row-start-1 px-6 py-5 sm:col-span-8 lg:col-span-8 lg:col-start-1 lg:self-start lg:px-10 lg:pt-9 lg:pb-12"
         >
-          <h1 id="hero-name" className="display m-0 max-w-[11ch] text-[clamp(1.75rem,4.4vw,4rem)] text-text">
+          <h1 id="hero-name" className="display m-0 max-w-[11ch] text-[clamp(1.75rem,4.4vw,5.5rem)] text-text lg:max-w-none">
             {name}
           </h1>
+          <p className="mt-3 mb-0 text-[clamp(1rem,1.4vw,1.25rem)] font-medium text-text-2">IT support, {location}</p>
         </div>
 
-        <div className="sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:pt-12">
+        {/* The first-screen silver hairline (S5), above the headline */}
+        <div className="row-start-2 border-t border-silver-lo pt-4 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:mt-10 lg:pt-8">
           <p className="m-0 max-w-[30ch] text-[clamp(1.25rem,2vw,1.625rem)] font-medium leading-[1.3] text-text">
             {headline}
           </p>
-          <p className="mt-5 mb-0 max-w-[52ch] text-text-2">
-            I&apos;m after IT support roles or freelance work, remote by preference, from {location}.
-            Since Tier 1-2 support at VantageUAV I&apos;ve run a home lab, started in 2022, and earned the
-            Google IT Support certificate, with CompTIA A+ studied to exam ready.
-          </p>
-          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
-            <button type="button" className="btn-secondary" onClick={onOpenCV}>View CV</button>
-            <a className="inline-link" href="#contact">Get in touch</a>
-          </div>
         </div>
 
         {/* The screenshot the glass bends */}
-        <figure className="photo m-0 overflow-hidden sm:col-span-8 lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-1 lg:self-start">
+        <figure className="photo relative z-[1] col-start-1 row-start-3 m-0 overflow-hidden sm:col-span-8 lg:col-span-6 lg:col-start-7 lg:row-span-3 lg:row-start-1">
           <img
             src={screenshot ?? placeholder}
             alt={screenshot
@@ -47,18 +45,18 @@ function Hero({ onOpenCV }) {
               : 'Placeholder: the Analyser screenshot has not been added yet'}
             width="1200"
             height="900"
-            className="block h-auto w-full"
+            className="absolute inset-0 block h-full w-full object-cover object-left-top"
           />
         </figure>
 
-        {/* Analyser panel: glass, overlapping the nameplate's lower right edge and the screenshot */}
+        {/* Analyser panel: glass over the screenshot, overlapping the nameplate's lower right edge */}
         <article
           id="analyser-panel"
           data-check="analyser-panel"
           aria-labelledby="flagship-title"
-          className="glass glass-frame relative z-10 -mt-20 rounded-[8px] p-6 sm:col-span-8 sm:p-7 lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:-mt-16 lg:self-start"
+          className="glass glass-frame relative z-10 col-start-1 row-start-3 mt-12 rounded-[8px] p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-2 lg:-mt-10"
         >
-          <div className="flex items-start gap-6">
+          <div className="flex flex-col items-start gap-5 sm:h-full sm:flex-row sm:gap-6">
             <div className="min-w-0 flex-1">
               <p className="m-0 flex items-center gap-2 text-[0.875rem] text-text-2">
                 <span className="status-dot" aria-hidden="true" />
@@ -81,7 +79,7 @@ function Hero({ onOpenCV }) {
             </div>
 
             {/* The score dial: the one knurled control. It opens the Analyser to score a CV */}
-            <a className="dial" href={flagship.links.demo} target="_blank" rel="noopener noreferrer">
+            <a className="dial sm:self-end" href={flagship.links.demo} target="_blank" rel="noopener noreferrer">
               Score
               <br />
               a CV
@@ -89,6 +87,18 @@ function Hero({ onOpenCV }) {
             </a>
           </div>
         </article>
+
+        <div className="row-start-4 sm:col-span-8 lg:col-span-5 lg:col-start-1 lg:row-start-3 lg:pt-5">
+          <p className="m-0 max-w-[52ch] text-text-2">
+            I&apos;m after IT support roles or freelance work, remote by preference, from {location}.
+            Since Tier 1-2 support at VantageUAV I&apos;ve run a home lab, started in 2022, and earned the
+            Google IT Support certificate, with CompTIA A+ studied to exam ready.
+          </p>
+          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <button type="button" className="btn-secondary" onClick={onOpenCV}>View CV</button>
+            <a className="inline-link" href="#contact">Get in touch</a>
+          </div>
+        </div>
       </div>
     </section>
   );

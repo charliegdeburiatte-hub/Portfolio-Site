@@ -152,14 +152,14 @@
   }
 
   /* ── The scale: engraved ticks along the top edge of the grid ────── */
-  /* A major tick on every column edge, numbered; three minor ticks between.
+  /* A major tick on every column edge, three minor ticks between, no numbers.
      The minor ticks repeat every quarter column step, so they meet the majors exactly. */
 
   .scale {
     --col: calc((100% - 11 * var(--gutter)) / 12);
     position: relative;
     display: none;
-    height: 1.75rem;
+    height: 0.875rem;
     background-image: linear-gradient(90deg, rgb(138 141 145 / 0.55) 1px, transparent 1px);
     background-size: calc((100% + var(--gutter)) / 48) 5px;
     background-repeat: repeat-x;
@@ -177,16 +177,6 @@
     /* Engraved: the cut catches a little light on its lower edge */
     box-shadow: 0 1px 0 rgb(255 255 255 / 0.08);
   }
-  .scale-num {
-    position: absolute;
-    top: 9px;
-    left: calc(var(--i) * (var(--col) + var(--gutter)) + 5px);
-    font-size: 0.6875rem;
-    line-height: 1;
-    color: var(--color-anodised);
-    text-shadow: 0 1px 0 rgb(0 0 0 / 0.7);
-  }
-
   /* ── Display type ─────────────────────────────────────────────── */
 
   .display {
@@ -468,8 +458,7 @@
   .glass { background: var(--color-ground); -webkit-backdrop-filter: none; backdrop-filter: none; border-color: var(--color-anodised); }
   .glass::after { display: none; }
   .btn-secondary, .field, .photo { border-color: var(--color-text); }
-  .scale-tick, .scale-num { color: var(--color-text-2); background-color: var(--color-text-2); }
-  .scale-num { background: none; }
+  .scale-tick { background-color: var(--color-text-2); }
   a { text-decoration: underline; }
 }
 
