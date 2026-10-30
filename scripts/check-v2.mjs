@@ -39,6 +39,12 @@ async function startPreview() {
   throw new Error('vite preview did not start; run npm run build first');
 }
 
+// Where the photographs are on the current screen, padded for the glass blur around them
+const photoRects = (page) => page.evaluate((m) => [...document.querySelectorAll('img, picture, video')]
+  .map((el) => el.getBoundingClientRect())
+  .filter((r) => r.width && r.height)
+  .map((r) => [r.left - m, r.top - m, r.right + m, r.bottom + m]), PHOTO_MARGIN);
+
 // Screenshot the whole page one viewport at a time, so each check sees what a screen sees
 async function screens(page) {
   const height = await page.evaluate(() => document.documentElement.scrollHeight);
@@ -47,11 +53,7 @@ async function screens(page) {
   for (let y = 0; y < height; y += vh) {
     await page.evaluate((top) => window.scrollTo(0, top), y);
     await page.waitForTimeout(120);
-    const photos = await page.evaluate((m) => [...document.querySelectorAll('img, picture, video')]
-      .map((el) => el.getBoundingClientRect())
-      .filter((r) => r.width && r.height)
-      .map((r) => [r.left - m, r.top - m, r.right + m, r.bottom + m]), PHOTO_MARGIN);
-    shots.push({ png: (await page.screenshot()).toString('base64'), photos });
+    shots.push({ png: (await page.screenshot()).toString('base64'), photos: await photoRects(page) });
   }
   await page.evaluate(() => window.scrollTo(0, 0));
   return shots;
@@ -259,7 +261,7 @@ async function run(url) {
     const shots = await screens(page);
     // One more screen with keyboard focus showing, so the red focus ring is counted too
     await page.keyboard.press('Tab'); await page.keyboard.press('Tab');
-    shots.push({ png: (await page.screenshot()).toString('base64'), photos: [] });
+    shots.push({ png: (await page.screenshot()).toString('base64'), photos: await photoRects(page) });
     const results = [];
     for (const s of shots) results.push(await analyse(browser, s));
     const worstRed = Math.max(...results.map((r) => r.red));
