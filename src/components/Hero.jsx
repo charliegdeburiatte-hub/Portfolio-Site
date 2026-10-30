@@ -79,11 +79,11 @@ function Hero({ onOpenCV }) {
               </div>
             </div>
 
-            {/* The score dial: the one knurled control. It opens the Analyser to score a CV */}
+            {/* The score dial: the one knurled control. It opens the Analyser */}
             <a className="dial sm:self-end" href={flagship.links.demo} target="_blank" rel="noopener noreferrer">
-              Score
+              Open
               <br />
-              a CV
+              app
               <span className="sr-only">(opens the Analyser in a new tab)</span>
             </a>
           </div>
