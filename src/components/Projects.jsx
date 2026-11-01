@@ -35,32 +35,36 @@ function Links({ links }) {
   );
 }
 
-// A plain row: name, one line, year, links. No box, no title bar, no status dot
+// A plain row: name, one line, then the year and links together underneath, so they
+// stay next to the words they belong to at every width. No box, no title bar, no status dot
 function Row({ project, children, line, titleAs = 'h4' }) {
   const Title = titleAs;
   const { id, title, tagline, links } = project;
+  const year = YEARS[project.id];
+  const hasLinks = links && (links.demo || links.github);
   return (
-    <li id={id === 'job-application-analyzer' ? 'job-application-analyser' : id} className="py-4 lg:col-span-12 lg:grid lg:grid-cols-subgrid lg:items-baseline">
-      <div className="lg:col-span-8">
-        <Title className="m-0 text-[1.0625rem] font-semibold leading-snug text-text">{title}</Title>
-        <p className="mt-1 mb-0 max-w-[60ch] text-text-2">{line ?? tagline}</p>
-        {children}
-      </div>
-      {/* A year only where the data gives one. On desktop an empty cell holds the column,
-          so the links stay lined up; below that, rows without a year leave no gap */}
-      {YEARS[project.id]
-        ? <p className="mt-1 mb-0 text-note text-text-2 lg:col-span-2 lg:mt-0">{YEARS[project.id]}</p>
-        : <span className="hidden lg:col-span-2 lg:block" aria-hidden="true" />}
-      <div className="lg:col-span-2"><Links links={links} /></div>
+    <li id={id === 'job-application-analyzer' ? 'job-application-analyser' : id} className="py-4">
+      <Title className="m-0 text-[1.0625rem] font-semibold leading-snug text-text">{title}</Title>
+      <p className="mt-1 mb-0 max-w-[60ch] text-text-2">{line ?? tagline}</p>
+      {children}
+      {/* A year only where the data gives one */}
+      {(year || hasLinks) && (
+        <div className="mt-1 flex flex-wrap items-center gap-x-5">
+          {year && <span className="text-note text-text-2">{year}</span>}
+          <Links links={links} />
+        </div>
+      )}
     </li>
   );
 }
 
-function Group({ id, title, ids, first }) {
+// From 1024px the two groups sit side by side, IT work on the left
+function Group({ id, title, ids, side }) {
+  const place = side === 'right' ? 'mt-10 lg:col-span-6 lg:col-start-7 lg:mt-0' : 'lg:col-span-6 lg:col-start-1';
   return (
-    <section aria-labelledby={id} className={`col-span-full grid-cols-subgrid lg:col-span-12 lg:grid ${first ? '' : 'mt-10'}`}>
-      <h3 id={id} className="m-0 text-note font-semibold text-text-2 lg:col-span-12">{title}</h3>
-      <ul className="m-0 list-none p-0 lg:col-span-12 lg:grid lg:grid-cols-subgrid">
+    <section aria-labelledby={id} className={`col-span-full ${place}`}>
+      <h3 id={id} className="m-0 text-note font-semibold text-text-2">{title}</h3>
+      <ul className="m-0 list-none p-0">
         {ids.map((pid) => <Row key={pid} project={byId(pid)} />)}
       </ul>
     </section>
@@ -78,7 +82,7 @@ function Projects() {
           intro="The Analyser comes first. IT work and the other software I've built follow it."
         />
 
-        <ul className="m-0 col-span-full list-none p-0 lg:grid lg:grid-cols-subgrid">
+        <ul className="m-0 col-span-full list-none p-0 lg:col-span-8">
           {/* The hero panel already carries the Analyser's tagline, so this row uses the first
               sentence of Charlie's own "why I built it" from the data instead */}
           <Row project={flagship} titleAs="h3" line={`${flagship.why_built.split('. ')[0]}.`}>
@@ -93,8 +97,8 @@ function Projects() {
           </Row>
         </ul>
 
-        <Group id="projects-it" title="IT and infrastructure" ids={IT_PROJECTS} first />
-        <Group id="projects-software" title="Other software" ids={SOFTWARE_PROJECTS} />
+        <Group id="projects-it" title="IT and infrastructure" ids={IT_PROJECTS} side="left" />
+        <Group id="projects-software" title="Other software" ids={SOFTWARE_PROJECTS} side="right" />
       </div>
     </section>
   );
