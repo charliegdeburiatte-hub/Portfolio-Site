@@ -203,6 +203,32 @@ async function domChecks(page) {
       }
     }
 
+    // Measure: the widest multi-line paragraph or list item, as average characters per line
+    {
+      let worst = 0, who = '';
+      for (const el of document.querySelectorAll('main p, main li')) {
+        if (el.querySelector('p, li') || !el.getClientRects().length) continue;
+        const lh = parseFloat(getComputedStyle(el).lineHeight) || 24;
+        const lines = Math.round(el.getBoundingClientRect().height / lh);
+        if (lines < 2) continue;
+        const cpl = el.textContent.trim().length / lines;
+        if (cpl > worst) { worst = cpl; who = el.textContent.trim().slice(0, 32); }
+      }
+      out.measure = { worst: Math.round(worst), who };
+    }
+
+    // Span: how much of the window each section's content covers, left edge to right edge
+    out.spans = ['top', 'projects', 'about', 'skills', 'contact'].map((id) => {
+      const sec = document.getElementById(id);
+      let l = Infinity, r = -Infinity;
+      for (const el of sec.querySelectorAll('p, li, h1, h2, h3, h4, a, button, input, textarea, img')) {
+        const q = el.getBoundingClientRect();
+        if (!q.width || el.closest('.sr-only')) continue;
+        l = Math.min(l, q.left); r = Math.max(r, q.right);
+      }
+      return [id, (r - l) / window.innerWidth];
+    });
+
     // 5. Name block at column 1
     const name = document.querySelector('[data-check="name-block"]');
     out.nameLeft = name ? name.getBoundingClientRect().left : null;
@@ -306,6 +332,14 @@ async function run(url) {
 
     report(!!d.hero && d.hero.overImage >= 0.99 && d.hero.nameInside && d.hero.zeroTracks === 0, 'hero', 'Hero layout: panel over the screenshot, name on its plate, no collapsed grid tracks', width,
       d.hero ? `panel ${(d.hero.overImage * 100).toFixed(0)}% over the screenshot, name ${d.hero.nameInside ? 'inside' : 'overflows'} the plate, ${d.hero.zeroTracks} of ${d.hero.tracks} tracks collapsed` : 'hero elements not found');
+
+    report(d.measure.worst <= 80, 'measure', 'No paragraph or list item runs over 80 characters a line', width,
+      `widest ${d.measure.worst} characters a line${d.measure.who ? `, "${d.measure.who}..."` : ''}`);
+    if (width >= 1440) {
+      const narrow = d.spans.filter(([, f]) => f < 0.8);
+      report(narrow.length === 0, 'span', 'Every section spans at least 80% of the window', width,
+        narrow.length ? `narrow: ${narrow.map(([id, f]) => `${id} ${Math.round(f * 100)}%`).join(', ')}` : `narrowest ${Math.round(Math.min(...d.spans.map(([, f]) => f)) * 100)}%`);
+    }
 
     const shots = await screens(page);
     // One more screen with keyboard focus showing, so the red focus ring is counted too
