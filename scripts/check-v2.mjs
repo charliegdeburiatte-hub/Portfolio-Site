@@ -1,9 +1,10 @@
 // Acceptance tests for BRIEF CHANGES v2.
 //
 // Usage: npm run build && node scripts/check-v2.mjs [url]
-// Extra widths: CHECK_WIDTHS=390,1440,1920,2560 node scripts/check-v2.mjs (default 1440 and 390).
+// Other widths: CHECK_WIDTHS=360,414 node scripts/check-v2.mjs (default 390, 1440, 1920 and 2560).
 // With no url it serves dist/ itself with `vite preview` and stops it afterwards.
-// Prints PASS or FAIL per test at 1440px and 390px and exits 1 if anything fails.
+// Prints PASS or FAIL per test at 390, 1440, 1920 and 2560px wide, plus the phone S3 test at
+// 360x640 and 390x664 (always run), and exits 1 if anything fails.
 //
 // The page marks what the tests look for with data-check attributes:
 //   name-block      the nameplate around Charlie's name
@@ -253,7 +254,7 @@ async function cssHasBrass(page) {
 async function run(url) {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const heights = { 360: 780, 390: 844, 414: 896, 1440: 900, 1920: 1080, 2560: 1440 };
-  const widths = process.env.CHECK_WIDTHS ? process.env.CHECK_WIDTHS.split(',').map(Number) : [1440, 390];
+  const widths = process.env.CHECK_WIDTHS ? process.env.CHECK_WIDTHS.split(',').map(Number) : [390, 1440, 1920, 2560];
   for (const [width, height] of widths.map((w) => [w, heights[w] ?? 900])) {
     const page = await browser.newPage({ viewport: { width, height } });
     await page.goto(url, { waitUntil: 'networkidle' });
@@ -317,6 +318,32 @@ async function run(url) {
         d.wrongFontCount && `${d.wrongFontCount} elements, e.g. ${d.wrongFont.join('; ')}`,
         d.bannedFonts.length && `banned in font stacks: ${d.bannedFonts.join(' | ')}`].filter(Boolean).join('; '));
 
+    await page.close();
+  }
+
+  // S3 on phones (Charlie's ruling of 30 Oct 2026): at visible viewport heights real phone
+  // browsers leave, the name, the role line and the Analyser panel's title and first line are
+  // visible without scrolling, below the nav and above the bottom of the screen
+  console.log('\n── phone first screen ──');
+  for (const [width, height] of [[360, 640], [390, 664]]) {
+    const page = await browser.newPage({ viewport: { width, height } });
+    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(300);
+    const r = await page.evaluate(() => {
+      const nav = document.querySelector('header').getBoundingClientRect().bottom;
+      const firstLine = (el) => { if (!el) return null; const g = document.createRange(); g.selectNodeContents(el); return g.getClientRects()[0] ?? null; };
+      const items = {
+        name: document.querySelector('#hero-name')?.getBoundingClientRect(),
+        'role line': document.querySelector('#hero-name + p')?.getBoundingClientRect(),
+        'panel title': document.querySelector('#flagship-title')?.getBoundingClientRect(),
+        'panel first line': firstLine(document.querySelector('#flagship-title + p')),
+      };
+      return Object.entries(items).map(([k, b]) => [k, b ? b.top >= nav && b.bottom <= innerHeight : false, b ? Math.round(b.bottom) : null]);
+    });
+    const hidden = r.filter(([, ok]) => !ok);
+    report(hidden.length === 0, 'S3', 'Name, role line, panel title and first line visible without scrolling', `${width}x${height}`,
+      hidden.length ? `not visible: ${hidden.map(([k]) => k).join(', ')}` : `lowest item ends at y ${Math.max(...r.map(([, , y]) => y))}`);
     await page.close();
   }
   await browser.close();
