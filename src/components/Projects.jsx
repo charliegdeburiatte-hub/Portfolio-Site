@@ -76,11 +76,7 @@ function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-title" className="wrap pt-6 pb-28 lg:pb-36">
       <div className="grid-12 gap-y-8">
-        <SectionHeading
-          id="projects-title"
-          title="Projects"
-          intro="The Analyser comes first. IT work and the other software I've built follow it."
-        />
+        <SectionHeading id="projects-title" title="Projects" />
 
         <ul className="m-0 col-span-full list-none p-0 lg:col-span-8">
           {/* The hero panel already carries the Analyser's tagline, so this row uses the first
