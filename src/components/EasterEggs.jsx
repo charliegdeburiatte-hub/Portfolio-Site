@@ -135,7 +135,7 @@ function RamCounter() {
   const done   = count >= MAX;
 
   return (
-    <div style={{ color: done ? '#E6E8EA' : '#E6E8EA', minHeight: '1.75em' }}>
+    <div style={{ color: done ? 'var(--color-text)' : 'var(--color-text)', minHeight: '1.75em' }}>
       {`  [${bar}]  ${String(count).padStart(5)}MB / ${MAX}MB${done ? ' ......... OK' : ''}`}
     </div>
   );
@@ -179,18 +179,18 @@ function BootMenu({ onDismiss }) {
       position: 'absolute', inset: 0,
       display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start',
       padding: '12vh 8vw',
-      background: '#0E0E0F',
+      background: 'var(--color-ground)',
     }}>
       {message ? (
         <div style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: '14px',
-          color: '#E6E8EA',
+          color: 'var(--color-text)',
           lineHeight: 2,
           whiteSpace: 'pre',
         }}>
           {message}
-          <div style={{ color: '#8A8D91', marginTop: '16px', fontSize: '12px' }}>
+          <div style={{ color: 'var(--color-anodised)', marginTop: '16px', fontSize: '12px' }}>
             Press any key...
           </div>
         </div>
@@ -198,26 +198,26 @@ function BootMenu({ onDismiss }) {
         <div style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: '14px',
-          color: '#999',
+          color: 'var(--color-text-2)',
           lineHeight: 1.9,
         }}>
-          <div style={{ color: '#8A8D91' }}>{`╔${W}╗`}</div>
-          <div style={{ color: '#8A8D91' }}>
-            {'║'}<span style={{ color: '#fff', fontWeight: 'bold' }}>
+          <div style={{ color: 'var(--color-anodised)' }}>{`╔${W}╗`}</div>
+          <div style={{ color: 'var(--color-anodised)' }}>
+            {'║'}<span style={{ color: 'var(--color-text)', fontWeight: 'bold' }}>
               {'                    BOOT MENU                      '}
             </span>{'║'}
           </div>
-          <div style={{ color: '#8A8D91' }}>{`╠${W}╣`}</div>
-          <div style={{ color: '#8A8D91' }}>{'║' + ' '.repeat(52) + '║'}</div>
+          <div style={{ color: 'var(--color-anodised)' }}>{`╠${W}╣`}</div>
+          <div style={{ color: 'var(--color-anodised)' }}>{'║' + ' '.repeat(52) + '║'}</div>
 
           {BOOT_OPTIONS.map((opt, i) => {
             const isSelected = i === selected;
             return (
-              <div key={opt.key} style={{ color: '#8A8D91' }}>
+              <div key={opt.key} style={{ color: 'var(--color-anodised)' }}>
                 {'║  '}
                 <span style={{
-                  color: isSelected ? '#000' : '#ccc',
-                  background: isSelected ? '#E6E8EA' : 'transparent',
+                  color: isSelected ? 'var(--color-ground)' : 'var(--color-text-2)',
+                  background: isSelected ? 'var(--color-text)' : 'transparent',
                   fontWeight: isSelected ? 'bold' : 'normal',
                 }}>
                   {isSelected ? '►' : ' '}
@@ -228,16 +228,16 @@ function BootMenu({ onDismiss }) {
             );
           })}
 
-          <div style={{ color: '#8A8D91' }}>{'║' + ' '.repeat(52) + '║'}</div>
-          <div style={{ color: '#8A8D91' }}>{`╠${W}╣`}</div>
-          <div style={{ color: '#8A8D91' }}>
+          <div style={{ color: 'var(--color-anodised)' }}>{'║' + ' '.repeat(52) + '║'}</div>
+          <div style={{ color: 'var(--color-anodised)' }}>{`╠${W}╣`}</div>
+          <div style={{ color: 'var(--color-anodised)' }}>
             {'║'}
-            <span style={{ color: '#8A8D91', fontSize: '12px' }}>
+            <span style={{ color: 'var(--color-anodised)', fontSize: '12px' }}>
               {'  ↑↓ to select   ENTER to boot   ESC for shell          '}
             </span>
             {'║'}
           </div>
-          <div style={{ color: '#8A8D91' }}>{`╚${W}╝`}</div>
+          <div style={{ color: 'var(--color-anodised)' }}>{`╚${W}╝`}</div>
         </div>
       )}
     </div>
@@ -275,21 +275,21 @@ function BiosScreen({ onDismiss }) {
 
   const styleFor = (s) => {
     switch (s) {
-      case 'header':    return { color: '#fff', fontWeight: 'bold' };
-      case 'ok':        return { color: '#E6E8EA' };
-      case 'highlight': return { color: '#E6E8EA', fontWeight: 'bold' };
-      case 'warn':      return { color: '#E6E8EA' };
-      case 'crit':      return { color: '#E6E8EA', fontWeight: 'bold' };
-      case 'info':      return { color: '#A3A7AC' };
-      case 'dim':       return { color: '#8A8D91' };
-      default:          return { color: '#999' };
+      case 'header':    return { color: 'var(--color-text)', fontWeight: 'bold' };
+      case 'ok':        return { color: 'var(--color-text)' };
+      case 'highlight': return { color: 'var(--color-text)', fontWeight: 'bold' };
+      case 'warn':      return { color: 'var(--color-text)' };
+      case 'crit':      return { color: 'var(--color-text)', fontWeight: 'bold' };
+      case 'info':      return { color: 'var(--color-text-2)' };
+      case 'dim':       return { color: 'var(--color-anodised)' };
+      default:          return { color: 'var(--color-text-2)' };
     }
   };
 
   return (
     <div style={{
       position: 'fixed', inset: 0,
-      background: '#0E0E0F',
+      background: 'var(--color-ground)',
       zIndex: 10000,
       overflow: 'hidden',
       cursor: showMenu ? 'default' : 'pointer',
