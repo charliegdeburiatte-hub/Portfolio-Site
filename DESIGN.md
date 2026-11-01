@@ -83,7 +83,7 @@ The hero runs tight into Projects; About gets a longer pause; Skills and Contact
 | `--silver` | `#9DA2A8` | Mid silver, View CV fill | 7.5:1; ground lettering on it 7.5:1 |
 | `--silver-lo` | `#5C6065` | Dark end of the gradient, silver dividers on the ground (S5) | 3.05:1 (2.72:1 on panel, so not for dividers there) |
 
-`prefers-contrast: more` raises the guides, turns glass solid with an anodised border, and lifts borders and the scale to the text colours.
+`prefers-contrast: more` raises the guides, turns glass solid with an anodised border, lifts borders and the scale to the text colours, and raises secondary text `#A3A7AC` to the body text colour `#E6E8EA`.
 
 ## Type
 
@@ -105,7 +105,7 @@ Both are SIL Open Font Licence faces, self-hosted from the project (no Google Fo
 
 ## Motion
 
-Short and damped, like a focus ring turning. 140 to 220ms, `cubic-bezier(0.2, 0, 0, 1)`. No bounce, no elastic, no scroll-jacking. The focus ring is 2px red and settles in on keyboard focus. Under `prefers-reduced-motion` all transitions are instant.
+Short and damped, like a focus ring turning. 140 to 220ms, `cubic-bezier(0.2, 0, 0, 1)`. No bounce, no elastic, no scroll-jacking. The focus ring is 2px red and settles in on keyboard focus. Under `prefers-reduced-motion` nothing moves or flashes (the focus ring's settle, the link underline's shift, the switch knob's slide and the BIOS cursor blink stop), while the short colour and brightness fades that show a state change stay (Charlie's approval of polish item D3, 1 Nov 2026).
 
 ## Accessibility
 
