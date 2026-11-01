@@ -53,6 +53,16 @@
 @media (min-width: 1024px) {
   :root { --gutter: 1.5rem; --margin: 2rem; }
 }
+/* Large screens: the whole page scales with the window from 1440px, so type, spacing and
+   measures grow together (16px at 1440 to 20px at 2560 for a 16px browser default). It is in
+   rem, so a visitor's own text size setting still applies. Silver widths are in px and stay put. */
+@media (min-width: 1440px) {
+  html {
+    font-size: clamp(1rem, 0.35714vw + 0.67857rem, 1.25rem);
+    /* Whole pixels only, so layout edges do not land on fractions of a pixel */
+    font-size: round(nearest, clamp(1rem, 0.35714vw + 0.67857rem, 1.25rem), 1px);
+  }
+}
 
 @layer base {
   html {
