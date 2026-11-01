@@ -24,7 +24,7 @@ function Hero({ onOpenCV }) {
           data-check="name-block"
           className="nameplate z-[2] row-start-1 px-6 py-5 sm:col-[1/span_8] lg:col-span-8 lg:col-start-1 lg:self-start lg:px-10 lg:pt-9 lg:pb-12"
         >
-          <h1 id="hero-name" className="display m-0 max-w-[11ch] text-[clamp(1.75rem,4.4vw,5.5rem)] text-text lg:max-w-none">
+          <h1 id="hero-name" className="display m-0 max-w-[11ch] text-[clamp(1.75rem,4.4vw,5.5rem)] text-text sm:max-w-none">
             {name}
           </h1>
           <p className="lines-snap-155 mt-3 mb-0 text-[clamp(1rem,1.4vw,1.25rem)] font-medium text-text-2">IT support, {location}</p>
