@@ -51,10 +51,11 @@ function Contact({ onOpenCV }) {
 
         {/* Plain lines, no table: each says what it is in the sentence itself */}
         <div className="self-start sm:col-span-8 lg:col-span-5 lg:col-start-1">
-          <ul className="m-0 list-none p-0">
+          {/* One list, one rhythm: every line is a 44px row, 8px apart */}
+          <ul className="m-0 flex list-none flex-col gap-2 p-0">
             {links.map(({ label, href, text, external }) => (
-              <li key={label} className="py-1">
-                <span className="text-text-2">{label} </span>
+              <li key={label} className="flex min-h-11 flex-wrap items-center">
+                <span className="text-text-2">{label}&nbsp;</span>
                 <a
                   href={href}
                   className="inline-link min-h-11 break-all"
@@ -65,16 +66,16 @@ function Contact({ onOpenCV }) {
                 </a>
               </li>
             ))}
+            <li className="flex min-h-11 items-center text-text-2">Based in {location}. Remote preferred.</li>
+            <li className="flex min-h-11 flex-wrap items-center">
+              <span className="text-text-2">CV&nbsp;</span>
+              <span className="inline-flex flex-wrap items-center gap-x-5">
+                <button type="button" className="inline-link cursor-pointer border-0 bg-transparent p-0 font-[inherit]" onClick={onOpenCV}>View CV</button>
+                <a className="inline-link" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">PDF</a>
+                <a className="inline-link" href="/Charlie_De_Buriatte_CV.docx" download>Word</a>
+              </span>
+            </li>
           </ul>
-          <p className="mt-4 mb-0 text-text-2">Based in {location}. Remote preferred.</p>
-          <p className="mt-4 mb-0">
-            <span className="text-text-2">CV </span>
-            <span className="inline-flex flex-wrap items-center gap-x-5">
-              <button type="button" className="inline-link cursor-pointer border-0 bg-transparent p-0 font-[inherit]" onClick={onOpenCV}>View CV</button>
-              <a className="inline-link" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">PDF</a>
-              <a className="inline-link" href="/Charlie_De_Buriatte_CV.docx" download>Word</a>
-            </span>
-          </p>
         </div>
 
         <div className="rounded-[6px] border border-silver bg-panel p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7">
