@@ -185,6 +185,24 @@ async function domChecks(page) {
     out.overflow = document.documentElement.scrollWidth - window.innerWidth;
     out.spanPx = [Math.round(minL), Math.round(maxR)];
 
+    // Hero layout: the glass panel sits over the screenshot, the name stays on its plate,
+    // and the grid has no collapsed tracks (the tablet break of b6e4ffb produced all three)
+    {
+      const g = document.querySelector('#top .grid-12');
+      const plateEl = document.querySelector('[data-check="name-block"]');
+      const panelEl = document.querySelector('[data-check="analyser-panel"]');
+      const figEl = document.querySelector('#top figure');
+      const nameEl = document.querySelector('#hero-name');
+      if (g && plateEl && panelEl && figEl && nameEl) {
+        const P = panelEl.getBoundingClientRect(), F = figEl.getBoundingClientRect(), L = plateEl.getBoundingClientRect();
+        const inter = Math.max(0, Math.min(P.right, F.right) - Math.max(P.left, F.left)) * Math.max(0, Math.min(P.bottom, F.bottom) - Math.max(P.top, F.top));
+        const range = document.createRange(); range.selectNodeContents(nameEl);
+        const nameRight = Math.max(...[...range.getClientRects()].map((r) => r.right));
+        const tracks = getComputedStyle(g).gridTemplateColumns.split(' ').map(parseFloat);
+        out.hero = { overImage: inter / (P.width * P.height), nameInside: nameRight <= L.right - parseFloat(getComputedStyle(plateEl).paddingRight) + 0.5, zeroTracks: tracks.filter((t) => t < 1).length, tracks: tracks.length };
+      }
+    }
+
     // 5. Name block at column 1
     const name = document.querySelector('[data-check="name-block"]');
     out.nameLeft = name ? name.getBoundingClientRect().left : null;
@@ -285,6 +303,9 @@ async function run(url) {
     const col1 = d.cols[0];
     report(d.nameLeft != null && col1 != null && Math.abs(d.nameLeft - col1) <= 1, 5, 'Name block starts at grid column 1', width,
       d.nameLeft == null ? 'name block not found' : `name x ${d.nameLeft.toFixed(1)}, column 1 x ${col1?.toFixed(1)}`);
+
+    report(!!d.hero && d.hero.overImage >= 0.99 && d.hero.nameInside && d.hero.zeroTracks === 0, 'hero', 'Hero layout: panel over the screenshot, name on its plate, no collapsed grid tracks', width,
+      d.hero ? `panel ${(d.hero.overImage * 100).toFixed(0)}% over the screenshot, name ${d.hero.nameInside ? 'inside' : 'overflows'} the plate, ${d.hero.zeroTracks} of ${d.hero.tracks} tracks collapsed` : 'hero elements not found');
 
     const shots = await screens(page);
     // One more screen with keyboard focus showing, so the red focus ring is counted too
