@@ -85,9 +85,9 @@ function Hero({ onOpenCV }) {
 
         <div className="row-start-4 sm:col-[1/span_8] lg:col-span-5 lg:col-start-1 lg:row-start-3 lg:pt-5">
           <p className="m-0 max-w-[60ch] text-[clamp(1.0625rem,1vw,1.375rem)] text-text-2">
-            I&apos;m after IT support roles or freelance work, remote by preference, from {location}.
-            Since Tier 1-2 support at VantageUAV I&apos;ve run a home lab, started in 2022, and earned the
-            Google IT Support certificate, with CompTIA A+ studied to exam ready.
+            I&apos;m looking for IT support roles or freelance work, ideally remote, from Looe in Cornwall.
+            Tier 1-2 support at VantageUAV, a home lab since 2022 and the Google IT Support certificate are
+            behind me; CompTIA A+ is studied but not sat yet.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
             <button type="button" className="btn-secondary" onClick={onOpenCV}>View CV</button>
