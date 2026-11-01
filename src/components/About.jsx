@@ -17,7 +17,7 @@ function About() {
           ))}
         </div>
 
-        <div className="sm:col-span-8 lg:col-span-4 lg:col-start-9">
+        <div className="max-w-[56ch] sm:col-span-8 lg:col-span-5 lg:col-start-8">
           <h3 className="m-0 pb-2 text-[1rem] font-semibold text-text">Timeline</h3>
           <ol className="m-0 list-none p-0">
             {timeline.map((item) => {

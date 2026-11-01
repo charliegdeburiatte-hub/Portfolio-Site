@@ -10,7 +10,7 @@ function Group({ label, children }) {
   return (
     <section aria-label={label} className="col-span-full grid grid-cols-subgrid gap-y-2 py-4">
       <h3 className="m-0 text-note font-semibold text-text-2 sm:col-span-8 lg:col-span-3">{label}</h3>
-      <ul className="m-0 flex max-w-[78ch] list-none flex-wrap gap-x-7 gap-y-1 p-0 sm:col-span-8 lg:col-span-9">{children}</ul>
+      <ul className="m-0 flex max-w-[78ch] list-none flex-wrap gap-x-7 gap-y-1 p-0 sm:col-span-8 lg:col-span-9 lg:max-w-none">{children}</ul>
     </section>
   );
 }
