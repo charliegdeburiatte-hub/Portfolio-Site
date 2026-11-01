@@ -41,7 +41,7 @@ function Contact({ onOpenCV }) {
   ];
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="wrap pt-4 pb-24 lg:pb-32">
+    <section id="contact" aria-labelledby="contact-title" className="wrap pt-4 pb-16 lg:pb-20">
       <div className="grid-12 gap-y-10">
         <SectionHeading
           id="contact-title"
