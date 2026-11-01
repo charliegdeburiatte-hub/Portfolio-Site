@@ -1,10 +1,6 @@
 import contentData from '../CONTENT_DATA.json';
-import placeholder from '../assets/analyser-placeholder.svg';
-
-// The glass sits over a real screenshot of the Analyser at src/assets/analyser.png.
-// Until that file exists, a clearly labelled placeholder stands in.
-const shots = import.meta.glob('../assets/analyser.png', { eager: true, import: 'default' });
-const screenshot = shots['../assets/analyser.png'];
+// The glass sits over a real screenshot of the Analyser, taken with a made-up CV
+import screenshot from '../assets/analyser.png';
 
 function Hero({ onOpenCV }) {
   const { name, headline, location } = contentData.personal;
@@ -40,10 +36,8 @@ function Hero({ onOpenCV }) {
         {/* The screenshot the glass bends */}
         <figure className="photo relative z-[1] col-start-1 row-start-3 m-0 overflow-hidden sm:col-[1/span_8] lg:col-span-6 lg:col-start-7 3xl:col-span-7 3xl:col-start-6 lg:row-span-3 lg:row-start-1">
           <img
-            src={screenshot ?? placeholder}
-            alt={screenshot
-              ? 'The Job Application Analyser showing a CV scored against a job description'
-              : 'Placeholder: the Analyser screenshot has not been added yet'}
+            src={screenshot}
+            alt="The Job Application Analyser showing a CV scored against a job description"
             width="1200"
             height="900"
             className="absolute inset-0 block h-full w-full object-cover object-left-top"

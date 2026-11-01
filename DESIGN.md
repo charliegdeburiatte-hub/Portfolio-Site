@@ -101,7 +101,7 @@ Both are SIL Open Font Licence faces, self-hosted from the project (no Google Fo
 - **Knurl:** two crossed repeating gradients at 45 and -45 degrees, masked to the dial's rim. Used once.
 - **Scale:** 1px anodised ticks with a faint light edge below, as if cut into metal. Minor ticks repeat every quarter column step so they meet the majors exactly.
 - **Grain:** an SVG fractal-noise tile in grey on a fixed layer at 3.5% opacity.
-- **Screenshot:** the glass sits over `src/assets/analyser.png`. Until that exists, a labelled placeholder (`analyser-placeholder.svg`) stands in, with no invented score.
+- **Screenshot:** the glass sits over `src/assets/analyser.png`, taken from the live Analyser in dark mode with a made-up CV and job advert, so its 78% score is real for fictional input. The placeholder that stood in before it has been removed.
 
 ## Motion
 

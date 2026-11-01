@@ -11,9 +11,9 @@ Mode: Persuade. Audience: recruiters and hiring managers for IT support roles, s
 
 Approved content decisions: 2026-10-09: remove "Professional Portfolio Website" from the page; remove footer status text and version label; CV is a PDF view with PDF and Word downloads. 2026-10-29 (BRIEF CHANGES v2): projects are plain rows (name, one line, year, links); the hero spec table becomes two sentences of prose; no version meta strings, uppercase labels or link arrows. 2026-10-30: silver chrome as hard requirements S1 to S6 in DESIGN.md; mid silver for dividers on panels and glass.
 
-Build path: code-led (no image generation available). The Analyser screenshot (`src/assets/analyser.png`) is owner-supplied; a labelled placeholder stands in until then.
+Build path: code-led (no image generation available). The Analyser screenshot (`src/assets/analyser.png`) was taken from the live app with a made-up CV.
 
-Unresolved: copy drafted for v2 awaits approval; the screenshot is missing; the scale numerals go in the arrange step.
+Unresolved: copy drafted for v2 awaits approval.
 
 ## Direction contract
 
