@@ -67,11 +67,13 @@ function Contact({ onOpenCV }) {
             ))}
           </ul>
           <p className="mt-4 mb-0 text-text-2">Based in {location}. Remote preferred.</p>
-          <p className="mt-4 mb-0 flex flex-wrap items-center gap-x-5">
-            <span className="text-text-2">CV</span>
-            <button type="button" className="inline-link cursor-pointer border-0 bg-transparent p-0 font-[inherit]" onClick={onOpenCV}>View CV</button>
-            <a className="inline-link" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">PDF</a>
-            <a className="inline-link" href="/Charlie_De_Buriatte_CV.docx" download>Word</a>
+          <p className="mt-4 mb-0">
+            <span className="text-text-2">CV </span>
+            <span className="inline-flex flex-wrap items-center gap-x-5">
+              <button type="button" className="inline-link cursor-pointer border-0 bg-transparent p-0 font-[inherit]" onClick={onOpenCV}>View CV</button>
+              <a className="inline-link" href="/cv.pdf" download="Charlie_De_Buriatte_CV.pdf">PDF</a>
+              <a className="inline-link" href="/Charlie_De_Buriatte_CV.docx" download>Word</a>
+            </span>
           </p>
         </div>
 
