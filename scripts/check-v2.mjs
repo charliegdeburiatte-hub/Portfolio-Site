@@ -1,9 +1,10 @@
 // Acceptance tests for BRIEF CHANGES v2.
 //
 // Usage: npm run build && node scripts/check-v2.mjs [url]
-// Other widths: CHECK_WIDTHS=360,414 node scripts/check-v2.mjs (default 390, 1440, 1920 and 2560).
+// Other widths: CHECK_WIDTHS=360,414 node scripts/check-v2.mjs (default: 390, the tablet band 640,
+// 768, 820, 834 and 1023, then 1440, 1920 and 2560).
 // With no url it serves dist/ itself with `vite preview` and stops it afterwards.
-// Prints PASS or FAIL per test at 390, 1440, 1920 and 2560px wide, plus the phone S3 test at
+// Prints PASS or FAIL per test at each default width, plus the phone S3 test at
 // 360x640 and 390x664 (always run), and exits 1 if anything fails.
 //
 // The page marks what the tests look for with data-check attributes:
@@ -253,8 +254,8 @@ async function cssHasBrass(page) {
 
 async function run(url) {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
-  const heights = { 360: 780, 390: 844, 414: 896, 1440: 900, 1920: 1080, 2560: 1440 };
-  const widths = process.env.CHECK_WIDTHS ? process.env.CHECK_WIDTHS.split(',').map(Number) : [390, 1440, 1920, 2560];
+  const heights = { 360: 780, 390: 844, 414: 896, 640: 960, 768: 1024, 820: 1180, 834: 1194, 1023: 768, 1440: 900, 1920: 1080, 2560: 1440 };
+  const widths = process.env.CHECK_WIDTHS ? process.env.CHECK_WIDTHS.split(',').map(Number) : [390, 640, 768, 820, 834, 1023, 1440, 1920, 2560];
   for (const [width, height] of widths.map((w) => [w, heights[w] ?? 900])) {
     const page = await browser.newPage({ viewport: { width, height } });
     await page.goto(url, { waitUntil: 'networkidle' });
