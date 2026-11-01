@@ -46,7 +46,11 @@ function Row({ project, children, line, titleAs = 'h4' }) {
         <p className="mt-1 mb-0 max-w-[60ch] text-text-2">{line ?? tagline}</p>
         {children}
       </div>
-      <p className="mt-1 mb-0 text-[0.9375rem] text-text-2 lg:col-span-2 lg:mt-0">{YEARS[project.id] ?? ''}</p>
+      {/* A year only where the data gives one. On desktop an empty cell holds the column,
+          so the links stay lined up; below that, rows without a year leave no gap */}
+      {YEARS[project.id]
+        ? <p className="mt-1 mb-0 text-[0.9375rem] text-text-2 lg:col-span-2 lg:mt-0">{YEARS[project.id]}</p>
+        : <span className="hidden lg:col-span-2 lg:block" aria-hidden="true" />}
       <div className="lg:col-span-2"><Links links={links} /></div>
     </li>
   );
