@@ -494,7 +494,8 @@
 :root[data-glass="off"] .glass::after { display: none; }
 
 @media (prefers-contrast: more) {
-  :root { --guide: rgb(138 141 145 / 0.16); }
+  /* Secondary text rises to the body text colour */
+  :root { --guide: rgb(138 141 145 / 0.16); --color-text-2: var(--color-text); }
   .glass { background: var(--color-ground); -webkit-backdrop-filter: none; backdrop-filter: none; border-color: var(--color-anodised); }
   .glass::after { display: none; }
   .btn-secondary, .field, .photo { border-color: var(--color-text); }
