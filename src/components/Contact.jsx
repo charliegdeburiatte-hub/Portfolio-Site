@@ -78,7 +78,7 @@ function Contact({ onOpenCV }) {
           </ul>
         </div>
 
-        <div className="rounded-[6px] border border-silver bg-panel p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7">
+        <div className="rounded-md border border-silver bg-panel p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7">
           <h3 className="m-0 text-[1rem] font-semibold text-text">Send a message</h3>
           {status === 'success' ? (
             <div className="mt-4" role="status">

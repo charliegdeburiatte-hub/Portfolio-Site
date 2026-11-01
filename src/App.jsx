@@ -17,7 +17,7 @@ function App() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-[3px] focus:bg-raised focus:px-4 focus:py-3 focus:font-semibold focus:text-text"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-sm focus:bg-raised focus:px-4 focus:py-3 focus:font-semibold focus:text-text"
       >
         Skip to content
       </a>

@@ -84,7 +84,7 @@ function Navigation({ onOpenCV }) {
 
         <button
           type="button"
-          className="inline-grid size-11 place-items-center rounded-[3px] text-text-2 hover:text-text md:hidden"
+          className="inline-grid size-11 place-items-center rounded-sm text-text-2 hover:text-text md:hidden"
           aria-expanded={menuOpen}
           aria-controls="nav-menu"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
