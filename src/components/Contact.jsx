@@ -46,7 +46,7 @@ function Contact({ onOpenCV }) {
         <SectionHeading
           id="contact-title"
           title="Get in touch"
-          intro="Open to IT support roles and freelance work. Remote preferred."
+          intro="Open to IT support roles and freelance work."
         />
 
         {/* Plain lines, no table: each says what it is in the sentence itself */}
