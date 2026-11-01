@@ -59,7 +59,7 @@ function Hero({ onOpenCV }) {
         >
           <div className="flex flex-col items-start gap-5 sm:h-full sm:flex-row sm:gap-6">
             <div className="min-w-0 flex-1">
-              <p className="m-0 flex items-center gap-2 text-[0.875rem] text-text-2">
+              <p className="m-0 flex items-center gap-2 text-fine text-text-2">
                 <span className="status-dot" aria-hidden="true" />
                 Live
               </p>
@@ -67,7 +67,7 @@ function Hero({ onOpenCV }) {
                 {flagship.title}
               </h2>
               <p className="mt-2 mb-0 max-w-[48ch] text-text">{flagship.tagline}.</p>
-              <p className="mt-3 mb-0 max-w-[52ch] text-[0.9375rem] text-text-2">
+              <p className="mt-3 mb-0 max-w-[52ch] text-note text-text-2">
                 Scoring runs in your browser. Only the cover letter step sends text to Anthropic, using your own API key.
               </p>
               <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1">

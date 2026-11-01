@@ -9,7 +9,7 @@ const lowerFirst = (s) => (s ? s[0].toLowerCase() + s.slice(1) : s);
 function Group({ label, children }) {
   return (
     <section aria-label={label} className="col-span-full grid grid-cols-subgrid gap-y-2 py-4">
-      <h3 className="m-0 text-[0.9375rem] font-semibold text-text-2 sm:col-span-8 lg:col-span-3">{label}</h3>
+      <h3 className="m-0 text-note font-semibold text-text-2 sm:col-span-8 lg:col-span-3">{label}</h3>
       <ul className="m-0 flex max-w-[78ch] list-none flex-wrap gap-x-7 gap-y-1 p-0 sm:col-span-8 lg:col-span-9">{children}</ul>
     </section>
   );
@@ -51,7 +51,7 @@ function Skills() {
         </Group>
 
         <section aria-label="Soft skills" className="col-span-full grid grid-cols-subgrid gap-y-2 py-4">
-          <h3 className="m-0 text-[0.9375rem] font-semibold text-text-2 sm:col-span-8 lg:col-span-3">Soft skills</h3>
+          <h3 className="m-0 text-note font-semibold text-text-2 sm:col-span-8 lg:col-span-3">Soft skills</h3>
           <p className="m-0 max-w-[70ch] text-text sm:col-span-8 lg:col-span-9">{skills.soft_skills.join(', ')}</p>
         </section>
       </div>

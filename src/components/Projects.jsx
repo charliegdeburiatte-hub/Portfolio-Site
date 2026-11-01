@@ -49,7 +49,7 @@ function Row({ project, children, line, titleAs = 'h4' }) {
       {/* A year only where the data gives one. On desktop an empty cell holds the column,
           so the links stay lined up; below that, rows without a year leave no gap */}
       {YEARS[project.id]
-        ? <p className="mt-1 mb-0 text-[0.9375rem] text-text-2 lg:col-span-2 lg:mt-0">{YEARS[project.id]}</p>
+        ? <p className="mt-1 mb-0 text-note text-text-2 lg:col-span-2 lg:mt-0">{YEARS[project.id]}</p>
         : <span className="hidden lg:col-span-2 lg:block" aria-hidden="true" />}
       <div className="lg:col-span-2"><Links links={links} /></div>
     </li>
@@ -59,7 +59,7 @@ function Row({ project, children, line, titleAs = 'h4' }) {
 function Group({ id, title, ids, first }) {
   return (
     <section aria-labelledby={id} className={`col-span-full grid-cols-subgrid lg:col-span-12 lg:grid ${first ? '' : 'mt-10'}`}>
-      <h3 id={id} className="m-0 text-[0.9375rem] font-semibold text-text-2 lg:col-span-12">{title}</h3>
+      <h3 id={id} className="m-0 text-note font-semibold text-text-2 lg:col-span-12">{title}</h3>
       <ul className="m-0 list-none p-0 lg:col-span-12 lg:grid lg:grid-cols-subgrid">
         {ids.map((pid) => <Row key={pid} project={byId(pid)} />)}
       </ul>
@@ -84,9 +84,9 @@ function Projects() {
           <Row project={flagship} titleAs="h3" line={`${flagship.why_built.split('. ')[0]}.`}>
             {flagship.how_built && (
               <div className="mt-4">
-                <h4 className="m-0 text-[0.9375rem] font-semibold text-text">How it was built</h4>
+                <h4 className="m-0 text-note font-semibold text-text">How it was built</h4>
                 {flagship.how_built.split('\n\n').map((para) => (
-                  <p key={para.slice(0, 24)} className="mt-1 mb-0 max-w-[60ch] text-[0.9375rem] text-text-2">{para}</p>
+                  <p key={para.slice(0, 24)} className="mt-1 mb-0 max-w-[60ch] text-note text-text-2">{para}</p>
                 ))}
               </div>
             )}

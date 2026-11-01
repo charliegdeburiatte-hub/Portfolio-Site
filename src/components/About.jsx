@@ -24,14 +24,14 @@ function About() {
               const isVantage = item.milestone.includes('VantageUAV');
               return (
                 <li key={item.period} className="py-3">
-                  <p className="m-0 text-[0.875rem] text-anodised">{item.period}</p>
+                  <p className="m-0 text-fine text-anodised">{item.period}</p>
                   <p className="mt-0.5 mb-0 font-semibold leading-snug text-text">{item.milestone}</p>
                   {isVantage && vantage ? (
-                    <ul className="mt-1 mb-0 list-disc pl-4 text-[0.9375rem] text-text-2 marker:text-anodised" aria-label="What I did at VantageUAV">
+                    <ul className="mt-1 mb-0 list-disc pl-4 text-note text-text-2 marker:text-anodised" aria-label="What I did at VantageUAV">
                       {vantage.responsibilities.map((r) => <li key={r} className="mt-1">{r}</li>)}
                     </ul>
                   ) : (
-                    <p className="mt-1 mb-0 text-[0.9375rem] text-text-2">{item.context}</p>
+                    <p className="mt-1 mb-0 text-note text-text-2">{item.context}</p>
                   )}
                 </li>
               );

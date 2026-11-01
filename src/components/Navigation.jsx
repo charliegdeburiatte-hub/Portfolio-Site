@@ -55,7 +55,7 @@ function Navigation({ onOpenCV }) {
   }, [menuOpen]);
 
   const linkClass = (id) =>
-    `relative inline-flex items-center min-h-11 px-3 text-[0.9375rem] font-medium no-underline transition-colors duration-150 ${
+    `relative inline-flex items-center min-h-11 px-3 text-note font-medium no-underline transition-colors duration-150 ${
       active === id
         ? 'text-text after:absolute after:inset-x-3 after:bottom-2 after:h-px after:bg-text'
         : 'text-text-2 hover:text-text'
@@ -64,7 +64,7 @@ function Navigation({ onOpenCV }) {
   return (
     <header ref={menuRef} className="glass glass-bar fixed inset-x-0 top-0 z-40">
       <nav aria-label="Main" className="wrap flex h-[var(--nav-h)] items-center gap-2">
-        <a href="#top" className="display mr-auto inline-flex min-h-11 items-center text-[0.8125rem] text-text no-underline sm:text-[0.875rem]">
+        <a href="#top" className="display mr-auto inline-flex min-h-11 items-center text-[0.8125rem] text-text no-underline sm:text-fine">
           Charlie De Buriatte
         </a>
 

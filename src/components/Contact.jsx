@@ -94,23 +94,23 @@ function Contact({ onOpenCV }) {
           ) : (
             <form onSubmit={handleSubmit} className="mt-5 space-y-5">
               <div>
-                <label htmlFor="contact-name" className="text-[0.9375rem] font-medium text-text-2">Name</label>
+                <label htmlFor="contact-name" className="text-note font-medium text-text-2">Name</label>
                 <input id="contact-name" type="text" name="name" autoComplete="name" value={formData.name}
                   onChange={handleChange} required className={fieldClass} />
               </div>
               <div>
-                <label htmlFor="contact-email" className="text-[0.9375rem] font-medium text-text-2">Email</label>
+                <label htmlFor="contact-email" className="text-note font-medium text-text-2">Email</label>
                 <input id="contact-email" type="email" name="email" autoComplete="email" value={formData.email}
                   onChange={handleChange} required className={fieldClass} />
               </div>
               <div>
-                <label htmlFor="contact-message" className="text-[0.9375rem] font-medium text-text-2">Message</label>
+                <label htmlFor="contact-message" className="text-note font-medium text-text-2">Message</label>
                 <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange}
                   required rows={5} className={`${fieldClass} resize-y`} />
               </div>
 
               {status === 'error' && (
-                <p className="m-0 flex items-start gap-2 text-[0.9375rem] text-text" role="alert">
+                <p className="m-0 flex items-start gap-2 text-note text-text" role="alert">
                   <AlertCircle size={18} className="mt-0.5 shrink-0 text-text" aria-hidden="true" />
                   <span>
                     That didn&apos;t send. Please email me directly instead:{' '}
