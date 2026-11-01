@@ -1,6 +1,6 @@
 # Design
 
-Status: DRAFT. Direction from BRIEF CHANGES v2 (29 Oct 2026), with the silver chrome tightened into the checkable requirements below (30 Oct 2026). Stages 1 and 2 (30 Oct 2026, commits 23f730e and b6e4ffb) meet S1 to S6 at 390, 1440, 1920 and 2560px: the whole Analyser panel and its frame are in the first screen at every width, and a 1px `--silver-lo` rule sits above the headline. Charlie approved the layout stage and the plate's role line on 30 Oct 2026. This stays a draft until the copy and content stage (Stage 3) is approved, since it changes what the hero shows. Replaces the warm smoked glass and brass direction on `smoked-glass`, which replaced the Aero lock screen on `aero-version`. Anything the build disproves gets corrected here, not defended.
+Status: DRAFT. Direction from BRIEF CHANGES v2 (29 Oct 2026), with the silver chrome tightened into the checkable requirements below (30 Oct 2026). Stages 1 and 2 (30 Oct 2026, commits 23f730e and b6e4ffb) meet S1 to S6 at 390, 1440, 1920 and 2560px: the whole Analyser panel and its frame are in the first screen at desktop widths, and on phones the name, role line and the panel's title and first line are visible at 360x640 and 390x664, and a 1px `--silver-lo` rule sits above the headline. Charlie approved the layout stage and the plate's role line on 30 Oct 2026. This stays a draft until the copy and content stage (Stage 3) is approved, since it changes what the hero shows. Replaces the warm smoked glass and brass direction on `smoked-glass`, which replaced the Aero lock screen on `aero-version`. Anything the build disproves gets corrected here, not defended.
 
 ## World: Instrument
 
@@ -20,7 +20,7 @@ No Leica name or logo, no script lettering, no brown leather colour, no viewfind
 
 ## Silver chrome: hard requirements
 
-Each requirement passes or fails on what renders, checked at 390, 1440, 1920 and 2560px wide. S1 to S4 and S6 must be visible in the first screen, before any scrolling. The silver tokens are `--silver-hi` `#F2F4F6`, `--silver` `#9DA2A8` and `--silver-lo` `#5C6065`. A "silver gradient" runs from `--silver-hi` through `--silver` to `--silver-lo`, light at the top or top left, dark at the bottom or bottom right.
+Each requirement passes or fails on what renders, checked at 390, 1440, 1920 and 2560px wide. S1 to S4 and S6 must be visible in the first screen, before any scrolling. On phones S3's first-screen condition is narrower (Charlie's ruling of 30 Oct 2026): at visible viewport heights of about 640px (360px wide) and 664px (390px wide), the name, the role line and the top of the Analyser panel, its title and first line, are visible without scrolling; the rest of the panel and its frame may continue below. The silver tokens are `--silver-hi` `#F2F4F6`, `--silver` `#9DA2A8` and `--silver-lo` `#5C6065`. A "silver gradient" runs from `--silver-hi` through `--silver` to `--silver-lo`, light at the top or top left, dark at the bottom or bottom right.
 
 | ID | Requirement | Pass when |
 |---|---|---|
