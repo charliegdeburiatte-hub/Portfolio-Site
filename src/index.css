@@ -312,7 +312,7 @@
     background: transparent;
     border: 1px solid var(--color-anodised);
   }
-  .btn-secondary:hover { border-color: var(--color-anodised); background: rgb(230 232 234 / 0.05); }
+  .btn-secondary:hover { border-color: var(--color-text); background: rgb(230 232 234 / 0.05); }
   .btn-secondary:active { background: rgb(230 232 234 / 0.09); }
 
   .inline-link {
