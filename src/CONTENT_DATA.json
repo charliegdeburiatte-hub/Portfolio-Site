@@ -150,8 +150,7 @@
       "id": "freddo-index",
       "title": "The Freddo Index",
       "status": "active",
-      "status_label": "Live",
-      "tagline": "A live economic dashboard that tracks the cost of living in the only unit that matters",
+      "tagline": "An economic dashboard that tracks the cost of living in the only unit that matters",
       "description": "A satirical but serious economic dashboard that measures the cost of living in Freddos, the only unit that matters. Live data comes from a Supabase backend, with Recharts visualisations and a full data pipeline tracking price changes over time. By Royal Appointment. 10p was a fair price.",
       "tech_stack": [
         "React 18",
