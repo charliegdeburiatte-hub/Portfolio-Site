@@ -58,7 +58,7 @@ Every section starts on column 1, the hero's left edge, so the page reads down o
 |---|---|---|
 | Nav (glass) | 1 | Name as text left; Projects, About, Skills, Contact; View CV (primary). Phone: name, View CV, menu |
 | Scale | 1-12 | Engraved ticks under the nav, no numbers. Desktop only |
-| Hero | 1 | Nameplate in columns 1-8, the name on one line from 1024px. The screenshot fills columns 7-12 behind the plate's right end, taking its height from the grid. The glass Analyser panel covers the screenshot across the same columns 7-12 (6-12 from 1800px, so the gap to the hero text stays short), so it is always over image, and overlaps the plate by 2.5rem inside the plate's 3rem bottom padding. A 1px `--silver-lo` rule, then the headline, prose, View CV (secondary) and Get in touch in 1-5. Phones: plate, rule and headline, then the screenshot and panel sharing one cell, then the prose |
+| Hero | 1 | Nameplate in columns 1-8, the name on one line from 1024px. The screenshot fills columns 7-12 behind the plate's right end, taking its height from the grid. The glass Analyser panel covers the screenshot across the same columns 7-12 (6-12 from 1800px, so the gap to the hero text stays short), so it is always over image, and overlaps the plate by 2.5rem inside the plate's 3rem bottom padding. A 1px `--silver-lo` rule, then the headline, prose, View CV (secondary) and Get in touch in 1-5. Phones: plate, rule and headline, then the screenshot and panel sharing one cell, then the prose. Below 1024px the screenshot is zoomed 1.5× from its bottom left, so the app's working area shows instead of a score ring the panel would half cover |
 | Projects | 1 | Plain rows: name and one line in 1-8, year in 9-10, links in 11-12. The Analyser row carries the How it was built note. No boxes, no status dots |
 | About | 1 | Three paragraphs in 1-6, the timeline in 9-12 |
 | Skills | 1 | Group name in 1-3, items running on as wrapped text across 4-12 |
@@ -98,10 +98,10 @@ Both are SIL Open Font Licence faces, self-hosted from the project (no Google Fo
 
 - **Glass:** `backdrop-filter: blur(16px) saturate(115%)` over `--panel` at 52%. A 1px chamfer along the top edge fading from `rgba(255,255,255,0.28)` to transparent, a faint diagonal specular, and a darker bottom edge for the bevel. The Analyser panel and CV viewer also carry the 2px silver frame (S3, S4); the nav carries the 3px silver band (S1). Solid `--raised` fallback under `prefers-reduced-transparency`, the footer's Glass effects switch, and when `backdrop-filter` is unsupported.
 - **Nameplate:** a steel plate in `--raised` to `--panel` with a 2px polished chrome edge (the chrome gradient through a mask). The lettering is flat `--text`, never gradient-filled.
-- **Knurl:** two crossed repeating gradients at 45 and -45 degrees, masked to the dial's rim. Used once.
+- **Knurl:** two crossed repeating gradients at 45 and -45 degrees, masked to the dial's rim. Used once. The dial's label sits centred in the face (grid centring, not `text-align`).
 - **Scale:** 1px anodised ticks with a faint light edge below, as if cut into metal. Minor ticks repeat every quarter column step so they meet the majors exactly.
 - **Grain:** an SVG fractal-noise tile in grey on a fixed layer at 3.5% opacity.
-- **Screenshot:** the glass sits over `src/assets/analyser.png`, taken from the live Analyser in dark mode with a made-up CV and job advert, so its 78% score is real for fictional input. The placeholder that stood in before it has been removed.
+- **Screenshot:** the glass sits over `src/assets/analyser.png`, taken from the live Analyser in dark mode with a made-up CV and job advert, so its 78% score is real for fictional input. The score shows from 1024px; phones and tablets show the lower part of the same screenshot. The placeholder that stood in before it has been removed.
 
 ## Motion
 
