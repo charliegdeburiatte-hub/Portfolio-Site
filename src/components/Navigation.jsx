@@ -41,16 +41,18 @@ function Navigation({ onOpenCV }) {
     };
   }, []);
 
-  // Close the phone menu on Escape or a tap outside it
+  // Close the phone menu on Escape, a tap outside it, or focus moving out of it
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false); };
-    const onDown = (e) => { if (!menuRef.current?.contains(e.target)) setMenuOpen(false); };
+    const onOutside = (e) => { if (!menuRef.current?.contains(e.target)) setMenuOpen(false); };
     window.addEventListener('keydown', onKey);
-    window.addEventListener('pointerdown', onDown);
+    window.addEventListener('pointerdown', onOutside);
+    window.addEventListener('focusin', onOutside);
     return () => {
       window.removeEventListener('keydown', onKey);
-      window.removeEventListener('pointerdown', onDown);
+      window.removeEventListener('pointerdown', onOutside);
+      window.removeEventListener('focusin', onOutside);
     };
   }, [menuOpen]);
 
