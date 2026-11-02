@@ -62,7 +62,7 @@ function Hero({ onOpenCV }) {
               </h2>
               <p className="mt-2 mb-0 max-w-[48ch] text-text">{flagship.tagline}.</p>
               <p className="mt-3 mb-0 max-w-[52ch] text-note text-text-2">
-                Scoring runs in your browser. Only the cover letter step sends text to Anthropic, using your own API key.
+                Scoring runs in your browser. Only the cover letter step sends text to Anthropic, using your own API key. The screenshot uses a made-up example CV.
               </p>
               <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1">
                 <a className="inline-link" href={flagship.links.github} target="_blank" rel="noopener noreferrer">
