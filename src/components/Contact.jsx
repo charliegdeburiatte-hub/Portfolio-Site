@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 import contentData from '../CONTENT_DATA.json';
 import { SectionHeading } from './ui';
@@ -9,6 +9,12 @@ function Contact({ onOpenCV }) {
   const { contact, location } = contentData.personal;
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const statusRef = useRef(null);
+
+  // The form or its button disappears once a send finishes, so focus moves to the result
+  useEffect(() => {
+    if (status === 'success' || status === 'error') statusRef.current?.focus();
+  }, [status]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -81,7 +87,7 @@ function Contact({ onOpenCV }) {
         <div className="rounded-md border border-silver bg-panel p-5 sm:col-span-8 sm:p-7 lg:col-span-6 lg:col-start-7">
           <h3 className="m-0 text-[1rem] font-semibold text-text">Send a message</h3>
           {status === 'success' ? (
-            <div className="mt-4" role="status">
+            <div ref={statusRef} tabIndex={-1} className="mt-4" role="status">
               <p className="m-0 flex items-center gap-2 font-semibold text-text">
                 <CheckCircle size={18} className="text-anodised" aria-hidden="true" />
                 Message sent
@@ -110,7 +116,7 @@ function Contact({ onOpenCV }) {
               </div>
 
               {status === 'error' && (
-                <p className="m-0 flex items-start gap-2 text-note text-text" role="alert">
+                <p ref={statusRef} tabIndex={-1} className="m-0 flex items-start gap-2 text-note text-text" role="alert">
                   <AlertCircle size={18} className="mt-0.5 shrink-0 text-text" aria-hidden="true" />
                   <span>
                     That didn&apos;t send. Please email me directly instead:{' '}
