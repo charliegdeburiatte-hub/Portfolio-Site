@@ -52,7 +52,7 @@ From `src/CONTENT_DATA.json`:
 
 - **Flagship:** Job Application Analyser v3.0.0. A privacy-first web app that scores your CV and then writes your cover letter. GitHub and live demo links exist. The design must make this stand out.
 - **Other projects shown on the site**, in page order:
-  - IT and infrastructure: Home Lab Infrastructure, Intel 13th Gen Platform Investigation, Outlook Not Sending or Receiving (the VantageUAV fix), Custom PC Build. None has a link.
+  - IT and infrastructure: Home lab, Intel 13th Gen platform investigation, Outlook not sending or receiving (the VantageUAV fix), Custom PC build. None has a link.
   - Other software: The Freddo Index (GitHub), Interview Help v1.0.0 (GitHub), Client Portfolio Site (anonymised, no links), Hjelply: Community Support Platform (paused, GitHub).
 - **In the data but not shown:** Professional Portfolio Website, removed from the page by Charlie's decision of 9 Oct 2026.
 - **Experience:**

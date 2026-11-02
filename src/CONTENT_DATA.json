@@ -296,7 +296,7 @@
     },
     {
       "id": "custom-pc-build",
-      "title": "Custom PC Build",
+      "title": "Custom PC build",
       "status": "completed",
       "status_label": "Completed",
       "tagline": "High-performance workstation built from scratch",
@@ -326,7 +326,7 @@
     },
     {
       "id": "intel-platform-diagnostics",
-      "title": "Intel 13th Gen Platform Investigation",
+      "title": "Intel 13th Gen platform investigation",
       "status": "completed",
       "status_label": "Completed",
       "tagline": "Stutters, crashes and random blue screens that everything said was the graphics card. It wasn't.",
@@ -362,7 +362,7 @@
     },
     {
       "id": "outlook-sync-repair",
-      "title": "Outlook Not Sending or Receiving",
+      "title": "Outlook not sending or receiving",
       "status": "completed",
       "status_label": "Fixed",
       "tagline": "Outlook on the web worked fine. The desktop app didn't. That told me where to look.",
@@ -423,7 +423,7 @@
     },
     {
       "id": "homelab-environment",
-      "title": "Home Lab Infrastructure",
+      "title": "Home lab",
       "status": "active",
       "status_label": "Ongoing",
       "tagline": "A small Windows domain and service desk I run on my own PC",
