@@ -86,7 +86,7 @@ function Hero({ onOpenCV }) {
         <div className="row-start-4 sm:col-[1/span_8] lg:col-span-5 lg:col-start-1 lg:row-start-3 lg:pt-5">
           <p className="m-0 max-w-[60ch] text-[clamp(1.0625rem,1vw,1.375rem)] text-text-2">
             I&apos;m looking for IT support roles or freelance work, ideally remote, from Looe in Cornwall.
-            I did Tier 1-2 support at VantageUAV and have run a home lab since 2022. I also have the Google IT
+            I did Tier 1‑2 support at VantageUAV and have run a home lab since 2022. I also have the Google IT
             Support certificate, and I&apos;ve studied for CompTIA A+ but haven&apos;t sat the exam yet.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2">
