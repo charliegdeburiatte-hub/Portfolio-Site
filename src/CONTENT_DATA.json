@@ -57,7 +57,7 @@
       },
       {
         "period": "Current",
-        "milestone": "Studying Network+ and AWS",
+        "milestone": "Studying Network+. AWS Cloud Practitioner (planned)",
         "context": "Running a home lab alongside, and building tools when they solve a real problem"
       }
     ]
@@ -532,8 +532,7 @@
         "goal": "Expand infrastructure knowledge"
       },
       {
-        "name": "AWS Cloud",
-        "context": "Cloud platforms and services",
+        "name": "AWS Cloud Practitioner (planned)",
         "goal": "Cloud infrastructure capabilities"
       }
     ]
