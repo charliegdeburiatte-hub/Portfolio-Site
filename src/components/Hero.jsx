@@ -37,7 +37,7 @@ function Hero({ onOpenCV }) {
         <figure className="photo relative z-[1] col-start-1 row-start-3 m-0 overflow-hidden sm:col-[1/span_8] lg:col-span-6 lg:col-start-7 3xl:col-span-7 3xl:col-start-6 lg:row-span-3 lg:row-start-1">
           <img
             src={screenshot}
-            alt="The Job Application Analyser showing a CV scored against a job description"
+            alt="The Job Application Analyser showing a made-up example CV scored against a job description"
             width="1200"
             height="900"
             className="absolute inset-0 block h-full w-full object-cover object-left-top"
